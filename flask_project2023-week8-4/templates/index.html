@@ -1,0 +1,33 @@
+<!DOCTYPE html>  
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Home</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+        <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="navbar__logo">
+                <a href="">pal00Market</a>
+            </div>
+            <ul class="navbar__menu">
+                <!--href 속 "\list" 등이 어디로 연결될지 application.py에서 정의해주어야 한다.-->
+                <li><a href="\reg_reviews">상품 보기</a></li>
+                <li><a href="\reg_items">상품 등록</a></li>
+                <li><a href="\list">랭킹</a></li>
+                <li><a href="\review">리뷰 작성</a></li>
+            </ul>
+            <a href="#" class="navbar__toogleBtn"> <i class="fas fa-bars"></i> </a>
+        </nav>
+        
+    
+    <section>
+        <!-- navigation bar와 같은 페이지의 중복 부분을 cpy하지 않고 서브 페이지에서 모두 동일하게 사용하도록 하는 코드 -->
+        {% block section %}
+        
+        {% endblock section %}
+    </section>
+    </body>
+</html>
