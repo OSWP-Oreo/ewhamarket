@@ -1,0 +1,29 @@
+/* Style the top navigation bar */
+nav {
+  overflow: hidden;
+  background-color: #BCD6F3;
+}
+
+/* Style the topnav links */
+.navbar__logo{
+    font-size: 50px;
+    text-decoration: none;
+}
+.navbar__menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.navbar__menu li{
+    display: inline;
+    text-align: center;
+    padding : 7px 8px;
+    text-decoration: none;
+    color: black;
+}
+
+/* Change color on hover */
+li a:hover {
+  background-color: #044288 ;
+  color: white;
+}
