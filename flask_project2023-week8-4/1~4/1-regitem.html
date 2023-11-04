@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<!--수정해야 할 곳 검색 키워드: '추가'-->
+<!--백엔드연동 키워드: '백엔드'-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>상품등록</title>
+    <link href="1-style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body> <!--1,8 가로폭 지정-->
+    <header> {% include '../templates/header.html' %}</header>
+    <main>
+        <nav>{% include '../templates/nav.html' %}</nav>
+        <!--추가: 페이지 제목. 각 페이지마다 있는 사항 -> 통일필요-->
+        <div class="main-header">
+            <h1 class="main-header__title">상품등록</h1>
+            <span class="main-header__seller">판매자 : {{ usrname }}</span> <!--백엔드연동: 로그인정보 -> 판매자 불러오기-->
+        </div>
+
+        <!------------------입력 폼 시작------------------->
+        <form action="/submit_regiterd_item" method="post">
+            <!--상품 이름-->
+            <div id="item-name-input">
+                <label for="item-name">상품 이름</label>
+                <input type="text" id="item-name" name="item-name" required><br><br>
+            </div>
+
+            <!--상품 타입-->
+            <div id="item-type-input">
+                <input type="radio" name="item-type" id="item-type" value="assignment" required>과제물
+                <input type="radio" name="item-type" id="item-type" value="note" required>노트 정리
+                <input type="radio" name="item-type" id="item-type" value="etc" required>기타<br><br>
+            </div>
+
+            <!--가격-->
+            <div id="price-input">
+                <label for="price">가격</label>
+                <img class="input-regitem-img" src="../static/point.svg">
+                <input type="number" id="price" name="price" oninput="addCommas(this);" required><br><br>
+            </div>
+
+            <!--강의-->
+            <div id="course-input">
+                <div id="type-course-input">
+                    <label for="course">강의</label>
+                    <!--전공/교양-->
+                    <select id="course" name="type-course" placeholder="전공/교양">
+                        <option value="major">전공</option>
+                        <option value="libral">교양</option>
+                    </select>
+                </div>
+                <!--단과대-->
+                <div id="college-input">
+                    <select name="college" placeholder="단과대">
+                        <option value="libarts">인문대</option>
+                        <option value="sosci">사과대</option>
+                        <option value="natsci">자연대</option>
+                        <option value="eng">공대</option>
+                        <option value="music">음대</option>
+                        <option value="art">조예대</option>
+                        <option value="edu">사범대</option>
+                        <option value="busniss">경영대</option>
+                        <option value="sciincon">신융대</option>
+                        <option value="medicine">의대</option>
+                        <option value="nursing">간호대</option>
+                        <option value="pharmacy">약대</option>
+                        <option value="scranton">스크대</option>
+                        <option value="ai">인지대</option>
+                        <option value="hokma">호크마</option>
+                    </select><br>
+                </div>
+                <!--과목명/학수번호-->
+                <div id="course-number-input">
+                    <img class="input-regitem-img" src="../static/search_icon.svg">
+                    <select name="course-number" placeholder="과목명/학수번호">
+                        <!--단과대 데이터베이스 내에서 검색하여 선택하게 함-->
+                        <!--백엔드연동-->
+                    </select>
+                </div>
+                <input type="text" id="professor" name="professor" placeholder="교수님 성함"><br><br>
+            </div>
+
+            <!--상세 설명-->
+            <div id="description-input">
+                <label for="description">상세설명</label>
+                <input type="text" id="description" name="description" placeholder="상품에 대해 간략하게 설명해주세요." required>
+            </div>
+
+            <!--판매 상품 파일 등록-->
+            <div id="item-register-input">
+                <label for="item-register">상품등록</label>
+                <input type="file" id="item-register" name="item-register" placeholder="상품을 등록해주세요.">
+            </div>
+
+            <!--사진 등록-->
+            <div id="photo-register-input">
+                <label for="photo-register">사진등록</label>
+                <!--추가: class 5번 화면과 같은 이름으로-->
+                <input type="file" id="photo-register" class="" name="photo-register"
+                    placeholder="처음으로 불러온 사진이 대표사진으로 설정됩니다.">
+            </div>
+
+            <!--등록하기 버튼-->
+            <div>
+                <input type="submit" value="Submit!"><br><br>
+            </div>
+
+        </form>
+
+    </main>
+</body>
+
+</html>
