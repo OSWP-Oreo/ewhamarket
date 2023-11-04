@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>상품등록</title>
+        <link href="static/style.css" type="text/css" rel="stylesheet">
+    </head>
+    <body> <!--1,8 가로폭 지정-->
+        <!--페이지 제목. class="1-title"-->
+        <h1 class="" style="display:inline;">상품등록</h1>
+        <span>판매자 : {{}}</span> <!--be-->
+        <div>
+            <table> <!--content-->
+                <tr> <!--첫 번째 행: 한 행을 나타내는 태그 tr-->
+                    <!--'상품 이름': CSS로 위쪽정렬 필요-->
+                    <th>상품 이름</th> <!--상품 이름 및 타입-->
+                    <td>
+                        <input id="pd-name" type="text" class="">
+                        <div id="pd-type">
+                            <input type="radio" class="" value="assignment">과제물
+                            <input type="radio" class="" value="note">노트 정리
+                            <input type="radio" class="" value="etc">기타
+                        </div>
+                        <!--class="caution"-->
+                        <p class="">본인의 순수한 창작물이 아닌 상품은 등록할 수 없습니다.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>가격</th>
+                    <td>
+                        <div>
+                            <!--돈 모양 그림 삽입-->
+                            <img src="", alt="">
+                            <input id="pd-price" type="number" class="">
+                        </div>
+                        
+                    </td>
+                </tr>
+
+                        
+                    </td>
+                </tr>
+            
+                    
+                    
+            </table>
+            <label for="name">상품 이름: </label>
+            <input type="text" name="name" id="name" required><br><br>
+            <div>
+            <label for="type"> 상품 종류: </label>
+                <input type="radio" name="type" id="type" value="과제물" checked required>과제물
+                <input type="radio" name="type" id="type" value="과제물" checked required>노트 정리
+                <input type="radio" name="type" id="type" value="과제물" checked required>기타
+                <br><br> </div>
+    </body>
+</html>
