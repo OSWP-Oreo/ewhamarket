@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<!--수정해야 할 곳 검색 키워드: '추가'-->
+<!--백엔드연동 키워드: '백엔드'-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>상품등록</title>
+    <link href="1-style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body> <!--1,8 가로폭 지정-->
+    <header> {% include '../templates/header.html' %}</header>
+    <main>
+        <!------내비게이션------->
+        <nav>{% include '../templates/nav.html' %}</nav>
+        <!--추가: 페이지 제목. 각 페이지마다 있는 사항 -> 통일필요-->
+        <div class="main-header">
+            <h1 class="main-header__title">상품 보기</h1>
+        </div>
+        <!-------------------------상품검색-------------------------->
+    </main>
+    <!----------------------------필터---------------------------->
+    <aside>
+        <!--제목-->
+        <h3>필터</h3>
+        <input type="reset" value="초기화">
+        <!--등록년도-->
+        <!--태그-->
+        <!--판매자-->
+    </aside>
+</body>
+</html>
