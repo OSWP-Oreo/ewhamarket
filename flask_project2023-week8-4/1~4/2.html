@@ -6,19 +6,84 @@
 <head>
     <meta charset="UTF-8">
     <title>상품등록</title>
-    <link href="1-style.css" type="text/css" rel="stylesheet">
+    <link href="1~4 style.css" type="text/css" rel="stylesheet">
+    <script src="1-main.js"></script>
 </head>
 
 <body> <!--1,8 가로폭 지정-->
     <header> {% include '../templates/header.html' %}</header>
     <main>
-        <!------내비게이션------->
+        <!--------------------------내비게이션----------------------->
         <nav>{% include '../templates/nav.html' %}</nav>
+        <!-------------------------페이지 제목----------------------->
         <!--추가: 페이지 제목. 각 페이지마다 있는 사항 -> 통일필요-->
         <div class="main-header">
             <h1 class="main-header__title">상품 보기</h1>
         </div>
         <!-------------------------상품검색-------------------------->
+        <div id="search">
+            <input type="text" id="search__course-number" name="search__course-number" placeholder="과목명/학수번호로 입력하세요.">
+            <img class="input-img" src="../static/search_icon.svg">
+        </div>
+        <!-------1과 중복: 
+            추후 바로 아래 줄부터 ***까지 {%incldue course-info.html%}로 대체----->
+        <!--전공/교양-->
+        <span id="regitem__course__course-type">
+            <label for="course-type">강의</label>                    
+            <select id="course-type" name="course-type" placeholder="전공/교양">
+                <option value="major">전공</option>
+                <option value="libral">교양</option>
+            </select>
+        </span>
+        <!--단과대-->
+        <!--전공/교양-->
+        <div id="regitem__course__course-type">
+            <label for="course-type">강의</label>                    
+            <select id="course-type" name="course-type" placeholder="전공/교양">
+                <option value="major">전공</option>
+                <option value="libral">교양</option>
+            </select>
+        </div>
+        <!--단과대-->
+        <div id="regitem__course__college">
+            <select name="college" placeholder="단과대">
+                <option value="libarts">인문대</option>
+                <option value="sosci">사과대</option>
+                <option value="natsci">자연대</option>
+                <option value="eng">공대</option>
+                <option value="music">음대</option>
+                <option value="art">조예대</option>
+                <option value="edu">사범대</option>
+                <option value="busniss">경영대</option>
+                <option value="sciincon">신융대</option>
+                <option value="medicine">의대</option>
+                <option value="nursing">간호대</option>
+                <option value="pharmacy">약대</option>
+                <option value="scranton">스크대</option>
+                <option value="ai">인지대</option>
+                <option value="hokma">호크마</option>
+            </select><br>
+        </div>
+        <!--------------------***-->
+        <!--학과-->
+        만들기
+        <!--타입: 1과 중복, 추후 {%include%}-->
+        <div>
+            <input type="radio" name="item-type" id="item-type" value="assignment" required>과제물
+            <input type="radio" name="item-type" id="item-type" value="note" required>노트 정리
+            <input type="radio" name="item-type" id="item-type" value="etc" required>기타<br><br>
+        </div>
+        <!-------------------------상품보기-------------------------->
+        <!------정렬------->
+        <div>
+            <span onClick="sortby_regdate()">등록순</span> |
+            <span onClick="sortby_popular()"> 인기순</span> |
+            <span onClick="sortby_lowprice()"> 낮은 가격순</span>
+        </div>
+        <!-----상품카드----->
+
+        <!--페이지네이션---->
+        12345
     </main>
     <!----------------------------필터---------------------------->
     <aside>
@@ -30,4 +95,5 @@
         <!--판매자-->
     </aside>
 </body>
+
 </html>
