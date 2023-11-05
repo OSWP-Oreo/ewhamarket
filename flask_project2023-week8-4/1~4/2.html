@@ -21,58 +21,27 @@
             <h1 class="main-header__title">상품 보기</h1>
         </div>
         <!-------------------------상품검색-------------------------->
-        <div>
+        <div id="search">
             <!-------1과 중복: 
             추후 바로 아래 줄부터 ***까지 {%incldue (요소이름).html%}로 대체----->
             <!-----과목/학수번호검색-->
-            <div id="search">
-                <input type="text" id="search__course-number" name="search__course-number"
-                    placeholder="과목명/학수번호로 입력하세요.">
-                <img class="input-img" src="../static/search_icon.svg">
+            <div id="search__course-number">
+                {% include 'regitem__course__course-number.html' %}
             </div>
-
-
             <!--전공/교양-->
-            <span id="regitem__course__course-type">
-                <label for="course-type">강의</label>
-                <select id="course-type" name="course-type" placeholder="전공/교양">
-                    <option value="major">전공</option>
-                    <option value="libral">교양</option>
-                </select>
+            <span id="search__course-type">
+                {% include 'regitem__course__course-type.html' %}
             </span>
             <!--단과대-->
-            <!--전공/교양-->
-            <div id="regitem__course__course-type">
-                <label for="course-type">강의</label>
-                <select id="course-type" name="course-type" placeholder="전공/교양">
-                    <option value="major">전공</option>
-                    <option value="libral">교양</option>
-                </select>
-            </div>
-            <!--단과대-->
-            <div id="regitem__course__college">
-                <select name="college" placeholder="단과대">
-                    <option value="libarts">인문대</option>
-                    <option value="sosci">사과대</option>
-                    <option value="natsci">자연대</option>
-                    <option value="eng">공대</option>
-                    <option value="music">음대</option>
-                    <option value="art">조예대</option>
-                    <option value="edu">사범대</option>
-                    <option value="busniss">경영대</option>
-                    <option value="sciincon">신융대</option>
-                    <option value="medicine">의대</option>
-                    <option value="nursing">간호대</option>
-                    <option value="pharmacy">약대</option>
-                    <option value="scranton">스크대</option>
-                    <option value="ai">인지대</option>
-                    <option value="hokma">호크마</option>
-                </select><br>
-            </div>
-            <!--------------------***-->
+            <span id="search__faculty">
+                {% include 'regitem__course__faculty.html' %}
+            </span>
             <!--학과-->
-            만들기
-            <!--타입: 1과 중복, 추후 {%include%}-->
+                <select name="department" placeholder="학과">
+                    <option value="libarts">인문대</option>
+                    
+                </select><br>
+            <!--타입: 1과 중복, {%include%}-->
             <div>
                 <input type="radio" name="item-type" id="item-type" value="assignment" required>과제물
                 <input type="radio" name="item-type" id="item-type" value="note" required>노트 정리
