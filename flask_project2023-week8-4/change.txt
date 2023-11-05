@@ -1,0 +1,10 @@
+1-main.js -> 1~4 main.js
+    2.html의 학과 필드 동적 범위 변경 코드 예시 삽입
+1.html
+    중복코드처리: {%include 'regitem_type.html' %}
+2.html
+    학과
+    중복코드처리: {%include 'regitem_type.html' %}
+regitem_type.html 추가
+static 파일 추가, 1~4 js 및 1~4 css 파일 옮김
+이에 따른 1.html, 2.html 파일 내 경로 수정
