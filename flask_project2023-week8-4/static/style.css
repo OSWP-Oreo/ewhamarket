@@ -27,6 +27,23 @@ body {
     font-family: Inter;
 }
 
+/*버튼 서식 - 속이 채워진*/
+.default-blue-box{
+  background-color:#0081a7;
+}
+.light-blue-box{
+  background-color:#00afb9;
+}
+.light-grey-box{
+  background-color:#d9d9d9;
+}
+/*버튼 서식 - 테두리가 있는*/
+.default-blue-border-box{
+  border:#0081a7;
+}
+
+
+
 /*입력 폼 가운데 정렬*/
 .outer {
     text-align: center;
