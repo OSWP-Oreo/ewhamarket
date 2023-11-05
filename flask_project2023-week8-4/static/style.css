@@ -22,3 +22,40 @@
   width:auto;
   height:auto;
 }
+
+body {
+    font-family: Inter;
+}
+
+/*입력 폼 가운데 정렬*/
+.outer {
+    text-align: center;
+    border-radius:10px;
+}
+.signup-inner {
+    display: inline-block;
+    text-align: left;
+}
+.login-inner {
+    display: inline-block;
+    text-align: center;
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #C6C4C4;
+}
+
+/*main-header*/
+.main-header {
+    text-align: center;
+    font-weight: bold;
+}
+#main-hr {
+    background: #00afb9;
+    height: 1px;
+    width: 800px;
+    border: 0;
+}
