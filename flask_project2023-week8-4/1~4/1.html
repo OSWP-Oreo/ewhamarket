@@ -12,9 +12,8 @@
 
 <body> <!--1,8 가로폭 지정-->
     <header> {% include '../templates/header.html' %}</header>
+    <nav>{% include '../templates/nav.html' %}</nav>
     <main>
-        <nav>{% include '../templates/nav.html' %}</nav>
-        <!--추가: 페이지 제목. 각 페이지마다 있는 사항 -> 통일필요-->
         <div class="main-header">
             <h1 class="main-header__title">상품등록</h1>
             <span class="main-header__seller">판매자 : {{ usrname }}</span> <!--백엔드연동: 로그인정보 -> 판매자 불러오기-->
@@ -66,6 +65,12 @@
             <div id="regitem__description">
                 <label for="description">상세설명</label>
                 <input type="text" id="description" name="description" placeholder="상품에 대해 간략하게 설명해주세요." required>
+            </div>
+
+            <!--해시태그-->
+            <div id="regitem__tag">
+                <label for="tag">해시태그</label>
+                <input type="text" id="tag" name="tag" placeholder="#를 기준으로 구분됩니다. 예)#자료구조 #연결리스트" required><br><br>
             </div>
 
             <!--판매 상품 파일 등록-->
