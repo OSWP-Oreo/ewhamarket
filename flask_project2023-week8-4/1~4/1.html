@@ -44,43 +44,21 @@
 
             <!--강의-->
             <div id="regitem__course">
-                <!--2에서 반복됨: 추후 이 안쪽은 전보 {%incldue course-info.html%}로 대체-->
+                <!--2에서 반복됨: 추후 이 안쪽은 전보 {%incldue 'course-info.html' %}로 대체-->
                 <!--전공/교양-->
                 <div id="regitem__course__course-type">
-                    <label for="course-type">강의</label>                    
-                    <select id="course-type" name="course-type" placeholder="전공/교양">
-                        <option value="major">전공</option>
-                        <option value="libral">교양</option>
+                    {% include 'regitem__course__course-type' %}
                     </select>
                 </div>
                 <!--단과대-->
                 <div id="regitem__course__college">
-                    <select name="college" placeholder="단과대">
-                        <option value="libarts">인문대</option>
-                        <option value="sosci">사과대</option>
-                        <option value="natsci">자연대</option>
-                        <option value="eng">공대</option>
-                        <option value="music">음대</option>
-                        <option value="art">조예대</option>
-                        <option value="edu">사범대</option>
-                        <option value="busniss">경영대</option>
-                        <option value="sciincon">신융대</option>
-                        <option value="medicine">의대</option>
-                        <option value="nursing">간호대</option>
-                        <option value="pharmacy">약대</option>
-                        <option value="scranton">스크대</option>
-                        <option value="ai">인지대</option>
-                        <option value="hokma">호크마</option>
-                    </select><br>
+                    {% include 'regitem__course__college' %}             
                 </div>
                 <!--과목명/학수번호-->
                 <div id="regitem__course__course-number">
-                    <img class="input-img" src="../static/search_icon.svg">
-                    <select name="course-number" placeholder="과목명/학수번호">
-                        <!--단과대 데이터베이스 내에서 검색하여 선택하게 함-->
-                        <!--백엔드연동-->
-                    </select>
+                    {% include 'regitem__course__course-number.html' %}
                 </div>
+                <!--교수님-->
                 <div id="regitem__course__professor">
                     <input type="text" id="professor" name="professor" placeholder="교수님 성함"><br><br>
                 </div>
