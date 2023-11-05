@@ -65,10 +65,11 @@ body {
     border: 1px solid #C6C4C4;
 }
 
-/*main-header*/
+/*페이지 제목: main-header*/
 .main-header {
     text-align: center;
     font-weight: bold;
+    border-bottom-color:#0081a7;
 }
 #main-hr {
     background: #00afb9;
