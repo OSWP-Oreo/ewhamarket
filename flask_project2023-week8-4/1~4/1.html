@@ -6,8 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <title>상품등록</title>
-    <link href="1~4 style.css" type="text/css" rel="stylesheet">
-    <script src="1-main.js"></script>
+    <link href="static/1~4 style.css" type="text/css" rel="stylesheet">
+    <script src="static/1~4 main.js"></script>
 </head>
 
 <body> <!--1,8 가로폭 지정-->
@@ -30,9 +30,7 @@
 
             <!--상품 타입: 2에서 반복됨-->
             <div id="regitem__type">
-                <input type="radio" name="item-type" id="item-type" value="assignment" required>과제물
-                <input type="radio" name="item-type" id="item-type" value="note" required>노트 정리
-                <input type="radio" name="item-type" id="item-type" value="etc" required>기타<br><br>
+                {% include 'regitem__type.html' %}    
             </div>
 
             <!--가격-->
