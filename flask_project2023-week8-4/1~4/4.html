@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<!--수정해야 할 곳 검색 키워드: '추가'-->
+<!--클래스 통일/변경해야 할 곳 검색 키워드: '클래스통일'-->
+<!--백엔드연결 키워드: '백엔드'-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>상품 구매 화면</title>
+    <link href="../static/style.css" type="text/css" rel="stylesheet">
+    <script class="input-img" src="../static/main.js"></script>
+</head>
+
+<body> <!--1,8 가로폭 지정-->
+    <header> {% include '../templates/header.html' %}</header>
+    <main>
+        <!--------------------------내비게이션----------------------->
+        <nav>{% include '../templates/nav.html' %}</nav>
+        <section>
+            <!-------------------------구매완료안내----------------------->
+            <div>
+                <h1 id="order-confirmation">구매가 완료되었습니다!</h1>
+                <h2 id="ordered-item"><!--백엔드에서 받아오기--></h2>
+            </div>
+            <!-------------------------결제품목상세안내------------------->
+            <table id="ordered-item-info">
+                <tr>
+                    <th>과목</th>
+                    <td><!--백엔드받아오기--></td>
+                </tr>
+                <tr>
+                    <th>상품유형</th>
+                    <td><!--백엔드받아오기--></td>
+                </tr>
+                <tr>
+                    <th>페이지수</th>
+                    <td><!--백엔드받아오기--></td>
+                </tr>
+                <tr>
+                    <th>파일</th>
+                    <td><!--백엔드받아오기--></td>
+                </tr>
+                <tr>
+                    <th>문의처</th>
+                    <td><!--(회원정보에서)백엔드받아오기--></td>
+                </tr>
+            </table>
+            <div id="postorder-option">
+                <!--다운링크로 이동-->
+                <a href="">전자책 다운로드</a>
+                <a href="5.html">리뷰 작성하기(+100포인트)</a>
+            </div>
+            <p class="warning">
+                *본 자료는 대한민국 저작권법의 보호를 받고 있습니다. 저작권자 이외의 비인가된 유통이 발견 또는 제보될 시 민형사상의 엄격한 제재가 발생할 수 있습니다.
+            </p>
+        </section>
+        <section id="recommend">
+            <img src="" class="">
+            <div id="recommend__item">
+                <div id="recommend__item__title">
+                    <img class="input-img" src=""> <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
+                    <div id="recommend__item__title__course-and-prof">
+                        <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
+                    </div>
+                    <div id="recommend__item__title__item-name">
+                        <!--백엔드에서 등록된 item-name 불러오기-->
+                    </div>
+                    <span id="recommend__item__title__seller">
+                        <!--백엔드에서 등록된 판매자 이름 불러오기-->
+                    </span>
+                </div>
+                <div id="recommend__item__info">
+                    <div id="recommend__item__info__price">
+                        <img class="input-img" src="../static/img/point.svg">
+                        <!--가격 백엔드에서 불러오기-->
+                    </div>
+                    <span id="recommend__item__info__buyer">
+                        <img class="input-img" src="../static/img/download.svg">
+                        <!--다운로드/판매횟수 백엔드에서 불러오기-->
+                    </span>
+                    <span id="recommend__item__info__rate">
+                        <img class="input-img" src="../static/img/star.svg">
+                        <!--별점 백엔드에서 불러오기-->
+                    </span>
+                    <div id="recommend__item__info__tag">
+                        <!--백엔드에서 불러오기-->
+                    </div>
+                    <span id="recommend__item__info__review">
+                        <!--추가: 리뷰화면으로 연결-->
+                        <a href="">리뷰</a>
+                    </span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>
