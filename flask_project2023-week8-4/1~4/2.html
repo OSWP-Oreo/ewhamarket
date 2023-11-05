@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <!--수정해야 할 곳 검색 키워드: '추가'-->
+<!--클래스 통일/변경해야 할 곳 검색 키워드: '클래스통일'-->
 <!--백엔드연동 키워드: '백엔드'-->
 
 <head>
     <meta charset="UTF-8">
     <title>상품등록</title>
-    <link href="static/1~4 style.css" type="text/css" rel="stylesheet">
-    <script src="static/1~4 main.js"></script>
+    <link href="../static/style.css" type="text/css" rel="stylesheet">
+    <script src="../static/main.js"></script>
 </head>
 
 <body> <!--1,8 가로폭 지정-->
@@ -49,51 +50,317 @@
             </span>
         </div>
         <!-------------------------상품보기-------------------------->
-        <div>
+        <div id="item-view">
             <!------정렬------->
-            <div>
+            <div id="item-view__sorting"> <!--js-->
                 <span onClick="sortby_regdate()">등록순</span> |
                 <span onClick="sortby_popular()"> 인기순</span> |
                 <span onClick="sortby_lowprice()"> 낮은 가격순</span>
             </div>
             <!-----상품카드----->
-            <div id="item-card">
-                <div id="item-card__title">
-                    <img src=""> <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
-                    <div id="item-card__title__course-and-prof">
-                        <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
+            <!--여러 개-->
+            <ul id="items">
+                <li id="item-card1">
+                    <div id="item-card__title">
+                        <img src=""> <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
+                        <div id="item-card__title__course-and-prof">
+                            <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
+                        </div>
+                        <div id="item-card__title__item-name">
+                            <!--백엔드에서 등록된 item-name 불러오기-->
+                        </div>
+                        <span id="item-card__title__seller">
+                            <!--백엔드에서 등록된 판매자 이름 불러오기-->
+                        </span>
                     </div>
-                    <div id="item-card__title__item-name">
-                        <!--백엔드에서 등록된 item-name 불러오기-->
+                    <div id="item-card__info">
+                        <div id="item-card__info__price">
+                            <!--가격 백엔드에서 불러오기-->
+                        </div>
+                        <span id="item-card__info__buyer">
+                            <!--다운로드/판매횟수 백엔드에서 불러오기-->
+                        </span>
+                        <span id="item-card__info__rate">
+                            <!--별점 백엔드에서 불러오기-->
+                        </span>
+                        <div id="item-card__info__tag">
+                            <!--백엔드에서 불러오기-->
+                        </div>
+                        <span id="item-card__info__review">
+                            <!--추가: 리뷰화면으로 연결-->
+                            <a href="">리뷰</a>
+                        </span>
                     </div>
-                    <span id="item-card__title__seller">
-                        <!--백엔드에서 등록된 판매자 이름 불러오기-->
-                    </span>
-                </div>
-                <div id="item-card__info">
-                    <div id="item-card__info__price">
-                        <!--가격 백엔드에서 불러오기-->
+                </li>
+                <li id="item-card2">
+                    <div id="item-card__title">
+                        <img src=""> <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
+                        <div id="item-card__title__course-and-prof">
+                            <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
+                        </div>
+                        <div id="item-card__title__item-name">
+                            <!--백엔드에서 등록된 item-name 불러오기-->
+                        </div>
+                        <span id="item-card__title__seller">
+                            <!--백엔드에서 등록된 판매자 이름 불러오기-->
+                        </span>
                     </div>
-                    <span id="item-card__info__buyer">
-                        <!--다운로드/판매횟수 백엔드에서 불러오기-->
-                    </span>
-                    <span id="item-card__info__rate">
-                        <!--별점 백엔드에서 불러오기-->
-                    </span>
-                    <div id="item-card__info__tag">
-                        <!--백엔드에서 불러오기-->
+                    <div id="item-card__info">
+                        <div id="item-card__info__price">
+                            <!--가격 백엔드에서 불러오기-->
+                        </div>
+                        <span id="item-card__info__buyer">
+                            <!--다운로드/판매횟수 백엔드에서 불러오기-->
+                        </span>
+                        <span id="item-card__info__rate">
+                            <!--별점 백엔드에서 불러오기-->
+                        </span>
+                        <div id="item-card__info__tag">
+                            <!--백엔드에서 불러오기-->
+                        </div>
+                        <span id="item-card__info__review">
+                            <!--추가: 리뷰화면으로 연결-->
+                            <a href="">리뷰</a>
+                        </span>
                     </div>
-                    <span id="item-card__info__review">
-                        <!--추가: 리뷰화면으로 연결-->
-                        <a href="">리뷰</a>
-                    </span>
-                </div>
-            </div>
-        </div>
+                </li>
+                <li id="item-card3">
+                    <div id="item-card__title">
+                        <img src=""> <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
+                        <div id="item-card__title__course-and-prof">
+                            <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
+                        </div>
+                        <div id="item-card__title__item-name">
+                            <!--백엔드에서 등록된 item-name 불러오기-->
+                        </div>
+                        <span id="item-card__title__seller">
+                            <!--백엔드에서 등록된 판매자 이름 불러오기-->
+                        </span>
+                    </div>
+                    <div id="item-card__info">
+                        <div id="item-card__info__price">
+                            <!--가격 백엔드에서 불러오기-->
+                        </div>
+                        <span id="item-card__info__buyer">
+                            <!--다운로드/판매횟수 백엔드에서 불러오기-->
+                        </span>
+                        <span id="item-card__info__rate">
+                            <!--별점 백엔드에서 불러오기-->
+                        </span>
+                        <div id="item-card__info__tag">
+                            <!--백엔드에서 불러오기-->
+                        </div>
+                        <span id="item-card__info__review">
+                            <!--추가: 리뷰화면으로 연결-->
+                            <a href="">리뷰</a>
+                        </span>
+                    </div>
+                </li>
+                <li id="item-card4">
+                    <div id="item-card__title">
+                        <img src=""> <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
+                        <div id="item-card__title__course-and-prof">
+                            <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
+                        </div>
+                        <div id="item-card__title__item-name">
+                            <!--백엔드에서 등록된 item-name 불러오기-->
+                        </div>
+                        <span id="item-card__title__seller">
+                            <!--백엔드에서 등록된 판매자 이름 불러오기-->
+                        </span>
+                    </div>
+                    <div id="item-card__info">
+                        <div id="item-card__info__price">
+                            <!--가격 백엔드에서 불러오기-->
+                        </div>
+                        <span id="item-card__info__buyer">
+                            <!--다운로드/판매횟수 백엔드에서 불러오기-->
+                        </span>
+                        <span id="item-card__info__rate">
+                            <!--별점 백엔드에서 불러오기-->
+                        </span>
+                        <div id="item-card__info__tag">
+                            <!--백엔드에서 불러오기-->
+                        </div>
+                        <span id="item-card__info__review">
+                            <!--추가: 리뷰화면으로 연결-->
+                            <a href="">리뷰</a>
+                        </span>
+                    </div>
+                </li>
+                <li id="item-card5">
+                    <div id="item-card__title">
+                        <img src=""> <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
+                        <div id="item-card__title__course-and-prof">
+                            <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
+                        </div>
+                        <div id="item-card__title__item-name">
+                            <!--백엔드에서 등록된 item-name 불러오기-->
+                        </div>
+                        <span id="item-card__title__seller">
+                            <!--백엔드에서 등록된 판매자 이름 불러오기-->
+                        </span>
+                    </div>
+                    <div id="item-card__info">
+                        <div id="item-card__info__price">
+                            <!--가격 백엔드에서 불러오기-->
+                        </div>
+                        <span id="item-card__info__buyer">
+                            <!--다운로드/판매횟수 백엔드에서 불러오기-->
+                        </span>
+                        <span id="item-card__info__rate">
+                            <!--별점 백엔드에서 불러오기-->
+                        </span>
+                        <div id="item-card__info__tag">
+                            <!--백엔드에서 불러오기-->
+                        </div>
+                        <span id="item-card__info__review">
+                            <!--추가: 리뷰화면으로 연결-->
+                            <a href="">리뷰</a>
+                        </span>
+                    </div>
+                </li>
+                <li id="item-card6">
+                    <div id="item-card__title">
+                        <img src=""> <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
+                        <div id="item-card__title__course-and-prof">
+                            <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
+                        </div>
+                        <div id="item-card__title__item-name">
+                            <!--백엔드에서 등록된 item-name 불러오기-->
+                        </div>
+                        <span id="item-card__title__seller">
+                            <!--백엔드에서 등록된 판매자 이름 불러오기-->
+                        </span>
+                    </div>
+                    <div id="item-card__info">
+                        <div id="item-card__info__price">
+                            <!--가격 백엔드에서 불러오기-->
+                        </div>
+                        <span id="item-card__info__buyer">
+                            <!--다운로드/판매횟수 백엔드에서 불러오기-->
+                        </span>
+                        <span id="item-card__info__rate">
+                            <!--별점 백엔드에서 불러오기-->
+                        </span>
+                        <div id="item-card__info__tag">
+                            <!--백엔드에서 불러오기-->
+                        </div>
+                        <span id="item-card__info__review">
+                            <!--추가: 리뷰화면으로 연결-->
+                            <a href="">리뷰</a>
+                        </span>
+                    </div>
+                </li>
+                <li id="item-card7">
+                    <div id="item-card__title">
+                        <img src=""> <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
+                        <div id="item-card__title__course-and-prof">
+                            <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
+                        </div>
+                        <div id="item-card__title__item-name">
+                            <!--백엔드에서 등록된 item-name 불러오기-->
+                        </div>
+                        <span id="item-card__title__seller">
+                            <!--백엔드에서 등록된 판매자 이름 불러오기-->
+                        </span>
+                    </div>
+                    <div id="item-card__info">
+                        <div id="item-card__info__price">
+                            <!--가격 백엔드에서 불러오기-->
+                        </div>
+                        <span id="item-card__info__buyer">
+                            <!--다운로드/판매횟수 백엔드에서 불러오기-->
+                        </span>
+                        <span id="item-card__info__rate">
+                            <!--별점 백엔드에서 불러오기-->
+                        </span>
+                        <div id="item-card__info__tag">
+                            <!--백엔드에서 불러오기-->
+                        </div>
+                        <span id="item-card__info__review">
+                            <!--추가: 리뷰화면으로 연결-->
+                            <a href="">리뷰</a>
+                        </span>
+                    </div>
+                </li>
+                <li id="item-card8">
+                    <div id="item-card__title">
+                        <img src=""> <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
+                        <div id="item-card__title__course-and-prof">
+                            <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
+                        </div>
+                        <div id="item-card__title__item-name">
+                            <!--백엔드에서 등록된 item-name 불러오기-->
+                        </div>
+                        <span id="item-card__title__seller">
+                            <!--백엔드에서 등록된 판매자 이름 불러오기-->
+                        </span>
+                    </div>
+                    <div id="item-card__info">
+                        <div id="item-card__info__price">
+                            <!--가격 백엔드에서 불러오기-->
+                        </div>
+                        <span id="item-card__info__buyer">
+                            <!--다운로드/판매횟수 백엔드에서 불러오기-->
+                        </span>
+                        <span id="item-card__info__rate">
+                            <!--별점 백엔드에서 불러오기-->
+                        </span>
+                        <div id="item-card__info__tag">
+                            <!--백엔드에서 불러오기-->
+                        </div>
+                        <span id="item-card__info__review">
+                            <!--추가: 리뷰화면으로 연결-->
+                            <a href="">리뷰</a>
+                        </span>
+                    </div>
+                </li>
+                <li id="item-card9">
+                    <div id="item-card__title">
+                        <img src=""> <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
+                        <div id="item-card__title__course-and-prof">
+                            <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
+                        </div>
+                        <div id="item-card__title__item-name">
+                            <!--백엔드에서 등록된 item-name 불러오기-->
+                        </div>
+                        <span id="item-card__title__seller">
+                            <!--백엔드에서 등록된 판매자 이름 불러오기-->
+                        </span>
+                    </div>
+                    <div id="item-card__info">
+                        <div id="item-card__info__price">
+                            <!--가격 백엔드에서 불러오기-->
+                        </div>
+                        <span id="item-card__info__buyer">
+                            <!--다운로드/판매횟수 백엔드에서 불러오기-->
+                        </span>
+                        <span id="item-card__info__rate">
+                            <!--별점 백엔드에서 불러오기-->
+                        </span>
+                        <div id="item-card__info__tag">
+                            <!--백엔드에서 불러오기-->
+                        </div>
+                        <span id="item-card__info__review">
+                            <!--추가: 리뷰화면으로 연결-->
+                            <a href="">리뷰</a>
+                        </span>
+                    </div>
+                </li>
+            </ul>
 
-        <!--페이지네이션---->
-        <div>
-            12345
+            <!-------------------------페이지네이션---------------------->
+            <!--클래스통일-->
+            <!--js로-->
+            <ul id="item-view__pagination" class="pagination"> 
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+            </ul>
+
         </div>
     </main>
     <!----------------------------필터---------------------------->
