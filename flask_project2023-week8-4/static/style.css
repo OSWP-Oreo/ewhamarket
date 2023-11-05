@@ -76,6 +76,13 @@ body {
 #main-hr {
     background: #00afb9;
     height: 1px;
-    width: 800px;
+    width: 1000px;
     border: 0;
+}
+
+/*10번 화면 대학 선택 버튼 통일*/
+.btn10 {
+    width: 110px;
+    border-color: #00afb9;
+    border-radius:10px;
 }
