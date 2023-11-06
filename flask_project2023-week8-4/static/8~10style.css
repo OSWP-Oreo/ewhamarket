@@ -1,9 +1,4 @@
 ﻿/*입력 폼 가운데 정렬*/
-.signup-inner {
-    display: inline-block;
-    text-align: left;
-}
-
 .login-inner {
     display: inline-block;
     text-align: center;
