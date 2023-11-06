@@ -25,23 +25,28 @@
             <div class="signup-inner">
                 <!-- 입력 폼 시작 -->
                 <form id="regitem" action="/submit_regiterd_item" method="post">
-                    <!-- 상품 이름 -->
                     <table>
-                        <tr>
+                        <tr><!-- 상품 이름 -->
                             <th>상품 이름</th>
                             <td><input type="text" id="item-name" name="item-name" required></td>
-
                         </tr>
-                        <tr>
+                        <tr><!-- 상품 타입: 2에서 반복됨 -->
                             <th></th>
                             <td>{% include '1~4/regitem__type.html' %}</td>
                         </tr>
-                        <tr>
+                        <tr><!-- 가격 -->
                             <th>가격</th>
                             <td>
-                                <input type="number" class="input-with-img" id="price" name="price"
-                                    oninput="addCommas(this);" required><br><br>
-                                <img class="input-img" src="/static/img/point.svg">
+                                <input type="number" class="input-with-icon" id="price" name="price"
+                                    oninput="addCommas(this);" style="background-image: url(/static/img/point.svg);"required>
+                            </td>
+                        </tr>
+                        <tr> <!--강의 -->
+                            <th>강의</th>
+                            <td>
+                                {% include '1~4/regitem__course__course-type.html' %}
+                                {% include '1~4/regitem__course__faculty.html' %}
+                                {% include '1~4/regitem__course__course-number.html' %}
                             </td>
                         </tr>
                     </table>
@@ -76,12 +81,12 @@
                     </div>
 
                     <!-- 강의 -->
-                    <div id="regitem__course">
+                    <div>
                         <!-- 2에서 반복됨: 추후 이 안쪽은 전보 include 'course-info.html' 로 대체 -->
                         <!-- 전공/교양 -->
                         <div id="regitem__course__course-type">
                             {% include '1~4/regitem__course__course-type.html' %}
-                            </select>
+
                         </div>
                         <!-- 단과대 -->
                         <div id="regitem__course__faculty">

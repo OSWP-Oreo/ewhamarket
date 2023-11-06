@@ -1,29 +1,51 @@
 /*페이지 제목 '상품등록'*/
 
-.main-header__seller{
+.main-header__seller {
     font-size: 10pt;
     color: var(--deep-grey);
     font-weight: lighter;
-  }
-
-/*인풋창 및 아이템카드 작은 이미지(돋보기, 포인트, 별표)*/
-.input-with-img{
-    position: relative;
 }
+
+.regitem-inner{
+    
+}
+
+/*인풋창*/
+input{
+    width: 100%;
+    height: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--light-grey);
+}
+select{
+    width: 48%;
+    height: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--light-grey);
+}
+.input-with-icon {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: 90% 50%;
+}
+/*상품 타입 선택 크기 조절*/
+#item-type{
+    width: 20px;
+    height: 15px;
+}
+
+/*인풋창용 작은 이미지*/
 .input-img {
     max-width: 20px;
     max-height: 20px;
     width: auto;
     height: auto;
-    
-  }
+}
 
-
-/**/
-
-
-input{
-    border-width: 1px;
-    border-style:solid;
-    border-color:#d9d9d9;
+/*필드 제목의 위치*/
+th{
+    vertical-align: top;
 }
