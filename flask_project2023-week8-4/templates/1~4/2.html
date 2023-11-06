@@ -78,8 +78,8 @@
                 <form id="filter-body">
                     <!--등록년도-->
                     <label for="filter-body__year-f">등록년도</label><br>
-                    <input id="filter-body__year-f" type="number" name="filter-body__year-f" style="width: 30%;"> ~
-                    <input id="filter-body__year-t" type="number" name="filter-body__year-t" style="width: 30%;">
+                    <input id="filter-body__year-f" type="number" name="filter-body__year-f" style="width: 43%;"> ~
+                    <input id="filter-body__year-t" type="number" name="filter-body__year-t" style="width: 43%; text-align: right;">
                     <br><br>
                     <!--태그-->
                     <label for="filter-body__tag">태그</label><br>
@@ -89,7 +89,9 @@
                     <input id="filter-body__seller" type="text" name="filter-body__seller"><br><br>
                 </form>
                 <!--백엔드연결-->
-                <input type="submit" value="적용하기"></button><br><br>
+                <div style="display: block; text-align:center;">
+                    <input type="submit" value="적용하기">
+                </div>
             </aside>
             <!-------------------------상품보기-------------------------->
             <section id="view-item">
@@ -103,49 +105,7 @@
                 <ul id="items">
                     <!--item-card1 에시. js&백엔드 연결 후 데이터 삭제-->
                     <li id="item-card1">
-                        <div class="item-card">
-                            <div class="item-card__title">
-                                <img class="item-card__img" src="/static/img/logo.png">
-                                <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
-                                <div class="item-card__title__course-and-prof">
-                                    <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
-                                    자료구조 20481 | 홍길동 교수님
-                                </div>
-                                <div class="item-card__title__item-name">
-                                    <!--백엔드에서 등록된 item-name 불러오기-->
-                                    제 6장 연결리스트1 정리
-                                </div>
-                                <span class="item-card__title__seller">
-                                    <!--백엔드에서 등록된 판매자 이름 불러오기-->
-                                    by. 이화인
-                                </span>
-                            </div>
-                            <div class="item-card__info">
-                                <div class="item-card__info__price">
-                                    <img class="input-img" src="/static/img/point.svg">
-                                    <!--가격 백엔드에서 불러오기-->
-                                    1000
-                                </div>
-                                <span class="item-card__info__buyer">
-                                    <img class="input-img" src="/static/img/download.svg">
-                                    <!--다운로드/판매횟수 백엔드에서 불러오기-->
-                                    28
-                                </span>
-                                <span class="item-card__info__rate">
-                                    <img class="input-img" src="/static/img/star.svg">
-                                    <!--별점 백엔드에서 불러오기-->
-                                    4.8
-                                </span>
-                                <div class="item-card__info__tag">
-                                    <!--백엔드에서 불러오기-->
-                                    #자료구조 #연결리스트
-                                </div>
-                                <span class="item-card__info__review">
-                                    <!--추가: 리뷰화면으로 연결-->
-                                    <a href="">리뷰</a>
-                                </span>
-                            </div>
-                        </div>
+                        {% include '1~4/item-card.html' %}
                     </li>
                     <li id="item-card2">
                         {% include '1~4/item-card.html' %}
