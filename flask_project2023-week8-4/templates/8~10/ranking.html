@@ -8,7 +8,7 @@
 <body>
     <div class="main-header">
         <h1 class="main-header__title"> 이화여자대학교 월간 랭킹 </h1>
-        <hr id="main-hr">
+        <hr class="main-hr">
     </div>
 
     <div class="outer">
@@ -30,9 +30,108 @@
             <button class="btn10">스크랜튼대학</button>
             <button class="btn10">인공지능대학</button>
             <button class="btn10">호크마교양대학</button><br><br>
+        </div><br><br>
+
+        <!--랭킹 순위 별 프로필, 포인트 불러오기 백엔드 연동 필요: 유저네임, 유저프로필(img),  포인트(range의 value) 값 넣기-->
+        <div class="ranking-inner">
+            <table style="float: left;">
+                <tr>
+                    <td>1</td>
+                    <td><img src="../../static/img/profile.jpg"></td>
+                    <td>이화인</td>
+                    <td class="level">lv.3</td>
+                    <td>
+                        <div class="bar-container">
+                            <div class="bar" id="bar1"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><img src="../../static/img/profile.jpg"></td>
+                    <td>감자</td>
+                    <td class="level">lv.3</td>
+                    <td>
+                        <div class="bar-container">
+                            <div class="bar" id="bar2"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><img src="../../static/img/profile.jpg"></td>
+                    <td>구름이</td>
+                    <td class="level">lv.3</td>
+                    <td>
+                        <div class="bar-container">
+                            <div class="bar" id="bar3"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><img src="../../static/img/profile.jpg"></td>
+                    <td>오레오오</td>
+                    <td class="level">lv.3</td>
+                    <td>
+                        <div class="bar-container">
+                            <div class="bar" id="bar4"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><img src="../../static/img/profile.jpg"></td>
+                    <td>감자돌이</td>
+                    <td class="level">lv.3</td>
+                    <td>
+                        <div class="bar-container">
+                            <div class="bar" id="bar5"></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <table style="text-align: left; width: 200px; line-height: 50%; float:right;">
+                <tr>
+                    <td>주간랭킹</td>
+                </tr>
+                <tr>
+                    <td>1. 이화인</td>
+                </tr>
+                <tr>
+                    <td>2. 감자</td>
+                </tr>
+                <tr>
+                    <td>3. 구름이</td>
+                </tr>
+                <tr>
+                    <td>4. 오레오오</td>
+                </tr>
+                <tr>
+                    <td>5. 감자돌이</td>
+                </tr>
+            </table>
+
         </div>
     </div>
 
-    <link rel="stylesheet" href="../static/style.css">
+    <script>
+        function setBarWidth(barId, value) {
+            const bar = document.getElementById(barId);
+            const width = (value / 1000000) * 100; // 범위를 백분율로 변환
+            bar.style.width = width + '%';
+        }
+
+        // 각 막대그래프의 값 설정
+        setBarWidth('bar1', 900000); // 첫 번째 막대그래프
+        setBarWidth('bar2', 700000); // 두 번째 막대그래프
+        setBarWidth('bar3', 680000); // 세 번째 막대그래프
+        setBarWidth('bar4', 540000);  // 네 번째 막대그래프
+        setBarWidth('bar5', 450000);  // 다섯 번째 막대그래프
+    </script>
+
+    <link rel="stylesheet" href="../../static/style.css">
+    <link rel="stylesheet" href="../../static/8~10Style.css">
 </body>
 </html>
