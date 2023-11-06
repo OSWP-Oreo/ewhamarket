@@ -22,6 +22,18 @@ def view_items():
 def view_reg_review():
     return render_template("1~4/4.html")
 
+@application.route("/8~10/signup")
+def view_signup():
+    return render_template("8~10/signup.html")
+
+@application.route("/8~10/login")
+def view_login():
+    return render_template("8~10/login.html")
+
+@application.route("/8~10/ranking")
+def view_ranking():
+    return render_template("8~10/ranking.html")
+
 @application.route("/submit_item")
 def reg_item_submit():
     name=request.args.get("name")

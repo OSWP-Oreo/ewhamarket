@@ -7,6 +7,24 @@
   --medium-grey: #c6c4c4;
   --deep-grey: #a4a4a4;
 }
+/*헤더 & 내비게이션*/
+header{
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+#logo-container{
+  flex: 1;
+  text-align: center;
+}
+#logo {
+  width: 120px;
+  height: 110px;
+}
+#loggedin-account{
+  flex: 1;
+  text-align:right;
+}
 
 /*페이지 컨텐츠 제목*/
 .contents-title{
@@ -14,13 +32,6 @@
   padding-left: 40%;
   padding-bottom:5px;
   border-bottom: solid black 1pt;
-}
-
-.input-img{
-  max-width: 20px;
-  max-height: 20px;
-  width:auto;
-  height:auto;
 }
 
 body {

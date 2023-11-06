@@ -1,0 +1,17 @@
+/*페이지 제목*/
+.main-header__seller{
+    font-size: 10pt;
+    color: var(--deep-grey);
+    font-weight: lighter;
+  }
+
+/*인풋창 및 아이템카드 작은 이미지(돋보기, 포인트, 별표)*/
+.input-img {
+    max-width: 20px;
+    max-height: 20px;
+    width: auto;
+    height: auto;
+  }
+
+
+  
