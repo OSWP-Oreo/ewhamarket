@@ -6,21 +6,21 @@ application = Flask(__name__)
 def hello():
     return render_template("index.html")
 
-@application.route("/list")
+@application.route("/1~4/1")
 def view_list():
     return render_template("1~4/1.html")
 
-@application.route("/review")
+@application.route("/1~4/2")
 def view_review():
-    render_template("1~4/2.html")
+    return render_template("1~4/2.html")
 
-@application.route("/reg_items")
+@application.route("/1~4/3")
 def view_items():
-    return render_template("reg_items.html")
+    return render_template("1~4/3.html")
 
-@application.route("/reg_review")
+@application.route("/1~4/4")
 def view_reg_review():
-    return render_template("reg_review.html")
+    return render_template("1~4/4.html")
 
 @application.route("/submit_item")
 def reg_item_submit():
