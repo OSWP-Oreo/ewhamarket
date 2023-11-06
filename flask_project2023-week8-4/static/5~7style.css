@@ -39,6 +39,46 @@
     flex: 30%;
   }
   
-  .oneLine h3, .oneLine p {
+  .oneLine h3, .oneLine p, .oneLine h1 {
     display: inline;
   }
+  .btn-clicked{
+    background-color: #00AFB9;
+    border: none;
+    border-radius: 50px;
+    height: 30px;
+    color: #FFF;
+  }
+
+  .btn-unclicked{
+    background-color: #ffffff;
+    border-color: #00AFB9;
+    border-radius: 50px;
+    height: 30px;
+    color: #000000;
+  }
+  .file-button {
+    display:inline-block;
+    height: 80px;
+    width: 100px;
+    background-color: #d9d9d9;
+    text-align: center;
+    text-align : center;
+    padding-top: 50px;
+}
+label {
+    cursor: pointer;
+}
+
+/* 못생긴 기존 input 숨기기 */
+#chooseFile {
+    visibility: hidden;
+}
+/*페이지 6*/
+.review-summary__box{
+  padding-left: 15%;
+  padding-right: 15%;
+  border-radius: 20px;
+  border-color: null;
+  background-color: #d9d9d9;
+}

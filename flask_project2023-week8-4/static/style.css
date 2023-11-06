@@ -111,11 +111,21 @@ body {
 .main-header {
     text-align: center;
 }
+/*페이지 제목왼쪽 정렬: main-header-left*/
+.main-heade-left{
+  text-align: left;
+}
 .main-hr {
     background: #00afb9;
     height: 1px;
-    width: 1000px;
+    width: auto;
     border: 0;
+}
+
+/*padding 오 왼 15%: padding*/
+.padding{
+  padding-left: 15%;
+  padding-right: 15%;
 }
 
 /*warning 문구: 색상, 폰트사이즈 통일*/
