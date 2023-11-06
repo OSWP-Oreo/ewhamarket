@@ -111,14 +111,14 @@ th {
 }
 
 #filter-body input {
-    width: 70%;
+    width: 100%;
 }
 
 #filter input[type="submit"] {
     background-color: var(--light-blue);
     border: none;
     border-radius: 5px;
-    width: 100%;
+    width: 100pt;
     color: white;
     font-size: 9pt;
 }
@@ -136,7 +136,47 @@ th {
     border: 1px var(--medium-grey) solid;
     border-radius: 10px;
     box-shadow: 2px 2px 2px var(--light-grey);
+    padding: 15pt;
     margin: 10pt;
+    display: grid;
+    grid-template-columns: 120pt 1fr;
+}
+.item-card .item-card__course-and-prof{
+    font-size: 10pt;
+    color: var(--font-grey);
+}
+.item-card .item-card__item-name{
+    font-size: 15pt;
+}
+.item-card .item-card__seller{
+    font-size: 12pt;
+    color: var(--font-grey);
+}
+
+.item-card .item-card__price{
+    color: red;
+    display: flex;
+    justify-content: left;
+}
+.item-card .item-card__rate{
+    color: var(--font-grey);
+    display: flex;
+    justify-content: end;
+}
+.item-card .item-card__tag{
+    color: var(--font-grey);
+    display: flex;
+    text-align: right;
+}
+.item-card__review{
+    text-align: right;
+}
+.item-card__review a{
+    text-decoration: none;
+    color: var(--default-blue);
+    font-weight: bold;
+    padding: 2px;
+    border-radius: 5px;
 }
 
 /*별점,다운로드 작은 이미지*/
@@ -148,7 +188,8 @@ th {
 }
 
 .item-card__img{
-    max-height: 50pt;
+    max-height: 100pt;
     height: auto;
     width: auto;
+    border: 1px var(--light-grey) solid;
 }
