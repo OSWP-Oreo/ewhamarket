@@ -1,3 +1,10 @@
+/*****************페이지 레이아웃******************/
+.regitem-inner {
+    /*signup-inner랑 합치기*/
+    display: inline-block;
+    text-align: left;
+}
+/*******************1.html************************/
 /*페이지 제목 '상품등록'*/
 .main-header__seller {
     font-size: 10pt;
@@ -5,11 +12,6 @@
     font-weight: lighter;
 }
 
-.regitem-inner {
-    /*signup-inner랑 합치기*/
-    display: inline-block;
-    text-align: left;
-}
 
 /*인풋창*/
 input {
@@ -193,18 +195,42 @@ th {
     text-decoration: none;
     color: black;
 }
-
-/*별점,다운로드 작은 이미지*/
+/********************3.html*************************/
+#item-info{
+    display: grid;
+    grid-template-columns: 300px 1fr;
+}
+.item-detail__img-container{
+    text-align: center;
+}
+/*********************이미지*******************/
+/*별&다운로드*/
 .input-img {
     max-width: 20px;
     max-height: 20px;
     width: auto;
     height: auto;
 }
-
+/*2.html item card 상품사진*/
 .item-card__img{
     max-height: 100pt;
     height: auto;
     width: auto;
     border: 1px var(--light-grey) solid;
 }
+/*3.html 큰 상품사진*/
+.item-detail__main-img{
+    max-height: 162pt;
+    height: auto;
+    width: auto;
+    border: 1px var(--light-grey) solid;
+}
+
+/*3.html 작은 상품사진*/
+.item-detail__sub-img{
+    max-height: 50pt;
+    height: auto;
+    width: auto;
+    border: 1px var(--light-grey) solid;
+}
+
