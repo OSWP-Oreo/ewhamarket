@@ -51,21 +51,6 @@ body {
     text-align: center;
     border-radius:10px;
 }
-.signup-inner {
-    display: inline-block;
-    text-align: left;
-}
-.login-inner {
-    display: inline-block;
-    text-align: center;
-    width: 500px;
-    height: 300px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 1px solid #C6C4C4;
-}
 
 /*페이지 제목: main-header*/
 .main-header {
@@ -78,11 +63,4 @@ body {
     height: 1px;
     width: 1000px;
     border: 0;
-}
-
-/*10번 화면 대학 선택 버튼 통일*/
-.btn10 {
-    width: 110px;
-    border-color: #00afb9;
-    border-radius:10px;
 }
