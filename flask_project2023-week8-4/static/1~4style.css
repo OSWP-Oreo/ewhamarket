@@ -6,46 +6,69 @@
     font-weight: lighter;
 }
 
-.regitem-inner{
-    
+.signup-inner {
+    display: inline-block;
+    text-align: left;
 }
 
 /*인풋창*/
-input{
+input {
     width: 100%;
     height: 20px;
     border-width: 1px;
     border-style: solid;
     border-color: var(--light-grey);
 }
-select{
-    width: 48%;
-    height: 20px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: var(--light-grey);
+input[type="submit"]{
+    height: auto;
 }
+/*필드 제목의 위치*/
+th {
+    vertical-align: top;
+}
+
 .input-with-icon {
     position: relative;
     background-repeat: no-repeat;
     background-size: 18px 18px;
-    background-position: 90% 50%;
+    background-position: 95% 50%;
 }
+
 /*상품 타입 선택 크기 조절*/
-#item-type{
+#item-type {
     width: 20px;
     height: 15px;
 }
 
-/*인풋창용 작은 이미지*/
+#regitem__course-type,
+#regitem__course-faculty,
+#regitem__course-number,
+#regitem__professor {
+    width: 48%;
+    height: 25px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--light-grey);
+}
+
+#regitem__description {
+    height: 80px;
+}
+
+#item-upload,
+#photo-upload {
+    color: var(--deep-grey);
+    height: 25px;
+    border: 1px solid var(--light-grey);
+    padding: 6px 12px;
+    cursor: pointer;
+
+}
+
+/*별점,다운로드 작은 이미지*/
 .input-img {
     max-width: 20px;
     max-height: 20px;
     width: auto;
     height: auto;
-}
-
-/*필드 제목의 위치*/
-th{
-    vertical-align: top;
 }
