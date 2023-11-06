@@ -6,70 +6,76 @@
         </head>
         
         <body>
-            {% include 'header-and-nav.html'%}
-        <div class="main-header">
-                <h1 class=".contents-title">리뷰 작성</h1>
+            <div class="main-header">
+                <h1 class="main-header">리뷰 작성</h1>
                 <link href="../../static/style.css" type="text/css" rel="stylesheet">
-            </div>
+             </div>
 
-            <div class = "review-info__box">
-                <link href="../../static/5~7style.css" rel="stylesheet">
-                <div class="box left"> <!--일단예시로 로고 사진 넣어둠. 나중에 해당 문서의 사진 불러오는걸로 바꾸기-->
-                    <img src="../../static/img/logo.png" width=100% height=auto title = "" alt="상품 예시 사진입니다">  
+                <div class = "review-info__box">
+                    <link href="../../static/5~7style.css" rel="stylesheet">
+                    <div class="box left"> <!--일단예시로 로고 사진 넣어둠. 나중에 해당 문서의 사진 불러오는걸로 바꾸기-->
+                        <img src="../../static/img/logo.png" width=100% height=auto title = "" alt="상품 예시 사진입니다">  
+                    </div>
+                    
+                    <!--리뷰 인포-->
+                    <div class = "box middle">
+                        <div class = "review-info__title">
+                            <span>
+                                오픈sw플랫폼 정리노트
+                            </span>
+                        </div>
+                    <!--리뷰 인포 두번째 줄 : 과목명 교수명 학수번호-->
+                        <div class = "review-info__text">
+                            <span>오픈sw플랫폼</span>
+                            <span>오세은 교수님</span>
+                            <span>학수번호 00000</span>
+                        </div><br>
+                    <!--리뷰 인포 세번째 줄 : 작성자-->
+                        <div class = "review-info__text">
+                            <img src="../../static/img/logo.png" width="10%">
+                            <span style="justify-content: center;">작성자 이름</span>
+                        </div>           
+                </div> 
+                    <!--오른쪽 별점-->
+                <div class = "box right">
+                    <!--별점하기-->
+                </div>
                 </div>
                 
-                <!--리뷰 인포-->
-               <div class = "box middle">
-                    <div class = "review-info__title">
-                        <span>
-                            오픈sw플랫폼 정리노트
-                        </span>
-                    </div>
-                <!--리뷰 인포 두번째 줄 : 과목명 교수명 학수번호-->
-                    <div class = "review-info__text">
-                        <span>오픈sw플랫폼</span>
-                        <span>오세은 교수님</span>
-                        <span>학수번호 00000</span>
-                    </div><br>
-                <!--리뷰 인포 세번째 줄 : 작성자-->
-                    <div class = "review-info__text">
-                        <img src="../../static/img/logo.png" width="10%">
-                        <span style="justify-content: center;">작성자 이름</span>
-                    </div>           
-               </div> 
-                 <!--오른쪽 별점-->
-               <div class = "box right">
-                <!--별점하기-->
-               </div>
-            </div>
-            <form style="padding-left: 15%; padding-right: 15%;">
-                <h3>키워드</h3>
-                <button>자세한 설명</button>
-                <button>핵심 위주</button>
-                <button>문제 풀이</button><br><Br>
-            
-            
-                <h3>상세 리뷰</h3>
-                <input style="width: 100%;" type="text" id="title" name="title" placeholder="리뷰의 제목을 입력해주세요">
-                <textarea style="width: 100%;" rows="7" id="title" name="title" maxlength="3000" 
-                placeholder="상품에 대한 리뷰를 작성해주세요
+                <form style="padding-left: 15%; padding-right: 15%;">
+                    <h3>키워드</h3>
+                    <button type="button" class="btn-clicked">자세한 설명</button>
+                    <button type="button" class="btn-unclicked">핵심 위주</button>
+                    <button type="button" class="btn-unclicked">문제 풀이</button><br><Br>
+                
+                
+                    <h3>상세 리뷰</h3>
+                    <input style="width: 100%;" type="text" id="title" name="title" placeholder="리뷰의 제목을 입력해주세요">
+                    <textarea style="width: 100%;" rows="7" id="title" name="title" maxlength="3000" 
+                    placeholder="상품에 대한 리뷰를 작성해주세요
 
 정확하고 중요한 정보인가요?
 체계적으로 정리되어 있나요?
 어떤 방향으로 도움이 되었나요?">
-                </textarea>                 
-                <!--글자수 카운트하는거 만들기-->
-                <!--사진 첨부-->
-                <div class = "oneLine">
-                    <h3>사진 첨부</h3>
-                    <p>(선택)</p>
-                    <!--사진 개수에 따라서 숫자 올라가는거 만들기-->
-                </div>
+                    </textarea>                 
+                    <!--글자수 카운트 만들기-->
+                    <!--사진 첨부-->
+                    <div class = "oneLine">
+                        <h3>사진 첨부</h3>
+                        <p>(선택)</p><br>
+                        
+                        <form method="post" enctype="multipart/form-data">
+                            <div>
+                                <label for="chooseFile" class="file-button">
+                                    add image<br>+
+                                </label>
+                            </div>
+                            <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+                        </form>
+                    </div>
 
-        
-                 
-
-            </form>
-            <!--사진 첨부ㅏ는거 만들기-->
+                    <!--제출 버튼-->
+                    <input type="submit" value="등록"> 
+                </form>        
     </body>
 </html>
