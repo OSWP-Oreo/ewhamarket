@@ -18,11 +18,11 @@
     <main>
         <div class="main-header">
             <h1 class="main-header__title">상품등록</h1>
-            <span class="main-header__seller">판매자 : {{ usrname }}</span>
-            <hr id="main-hr">
+            <div class="main-header__seller">판매자 : {{ usrname }}</div>
+            <hr class="main-hr">
         </div>
         <div class="outer">
-            <div class="login-inner">
+            <div class="signup-inner">
                 <!-- 입력 폼 시작 -->
                 <form id="regitem" action="/submit_regiterd_item" method="post">
                     <!-- 상품 이름 -->

@@ -1,4 +1,5 @@
-/*페이지 제목*/
+/*페이지 제목 '상품등록'*/
+
 .main-header__seller{
     font-size: 10pt;
     color: var(--deep-grey);
@@ -12,6 +13,5 @@
     width: auto;
     height: auto;
   }
-
 
   

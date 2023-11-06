@@ -101,12 +101,15 @@ body {
     text-align: center;
     border-radius:10px;
 }
+  /*1.상품등록 8.회원가입 정렬*/
+.signup-inner {
+  display: inline-block;
+  text-align: left;
+}
 
 /*페이지 제목: main-header*/
 .main-header {
     text-align: center;
-    font-weight: bold;
-    border-bottom-color:#0081a7;
 }
 .main-hr {
     background: #00afb9;
