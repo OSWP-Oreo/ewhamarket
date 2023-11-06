@@ -7,11 +7,23 @@
   }
 
 /*인풋창 및 아이템카드 작은 이미지(돋보기, 포인트, 별표)*/
+.input-with-img{
+    position: relative;
+}
 .input-img {
     max-width: 20px;
     max-height: 20px;
     width: auto;
     height: auto;
+    
   }
 
-  
+
+/**/
+
+
+input{
+    border-width: 1px;
+    border-style:solid;
+    border-color:#d9d9d9;
+}
