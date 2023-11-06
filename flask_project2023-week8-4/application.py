@@ -8,11 +8,11 @@ def hello():
 
 @application.route("/list")
 def view_list():
-    return render_template("list.html")
+    return render_template("1~4/1.html")
 
 @application.route("/review")
 def view_review():
-    render_template("review.html")
+    render_template("1~4/2.html")
 
 @application.route("/reg_items")
 def view_items():
