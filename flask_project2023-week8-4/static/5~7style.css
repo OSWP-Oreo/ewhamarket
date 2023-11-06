@@ -1,0 +1,44 @@
+/*리뷰 페이지*/
+.review-info__box{
+    border-radius: 5px;
+    border: 2px solid #C6C4C4;
+    background: #FFF;
+    padding: 20px;
+    margin-left: 15%;
+    margin-right: 15%;
+    display: flex; 
+  }
+  .review-info__title{
+    color: #000;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.72px;
+  }
+  .review-info__text{
+    color: #343434;
+    font-family: Inter;
+    font-size: normal;
+    font-style: normal;
+    line-height: normal;
+  }
+  .box {
+    padding: 10px;
+  }
+  
+  .box.left {
+    flex: 20%; /* flex 속성을 사용하여 너비를 조절합니다. */
+  }
+  
+  .box.middle {
+    flex: 50%; /* flex 속성을 사용하여 너비를 조절합니다. */
+  }
+  .box.right{
+    flex: 30%;
+  }
+  
+  .oneLine h3, .oneLine p {
+    display: inline;
+  }
