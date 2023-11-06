@@ -16,114 +16,176 @@
     {% include 'header-and-nav.html' %}
     <main>
         <!-------------------------페이지 제목----------------------->
-        <!--추가: 페이지 제목. 각 페이지마다 있는 사항 -> 통일필요-->
         <div class="main-header">
             <h1 class="main-header__title">상품 보기</h1>
             <hr class="main-hr">
         </div>
         <!-------------------------상품검색-------------------------->
-        <section id="search">
-            <!-------1과 중복: 
-            추후 바로 아래 줄부터 ***까지 include (요소이름).html로 대체----->
-            <!-----과목/학수번호검색-->
-            <div id="search__course-number">
-                {% include '1~4/regitem__course__course-number.html' %}
-            </div>
-            <!--전공/교양-->
-            <span id="search__course-type">
-                {% include '1~4/regitem__course__course-type.html' %}
-            </span>
-            <!--단과대-->
-            <span id="search__faculty">
-                {% include '1~4/regitem__course__faculty.html' %}
-            </span>
-            <!--학과-->
-            <span id="search__department">
-                <select name="department" placeholder="학과">
+        <section id="search-item">
+            <!---------------과목/학수번호검색--------------->
+            <!--과목명/학수번호-->
+            <input class="course-number" class="input-with-icon" type="search" name="course-number"
+                placeholder="과목명/학수번호">
+            <!--백엔드연동: 데이터베이스 내에서 검색하여 선택하게 함-->
+            <div>
+                <!--전공/교양-->
+                <select class="course-type" name="course-type" style="width:18%;">
+                    <option value="" disabled selected>전공/교양</option>
+                    <option value="major">전공</option>
+                    <option value="libral">교양</option>
+                </select>
+                <!--단과대-->
+                <select class="course-faculty" name="faculty" style="width:18%;"">
+                    <option value="" disabled selected>단과대</option>
+                    <option value=" libarts">인문대</option>
+                    <option value="sosci">사과대</option>
+                    <option value="natsci">자연대</option>
+                    <option value="eng">공대</option>
+                    <option value="music">음대</option>
+                    <option value="art">조예대</option>
+                    <option value="edu">사범대</option>
+                    <option value="busniss">경영대</option>
+                    <option value="converg">신융대</option>
+                    <option value="medicine">의대</option>
+                    <option value="nursing">간호대</option>
+                    <option value="pharmacy">약대</option>
+                    <option value="scranton">스크대</option>
+                    <option value="ai">인지대</option>
+                    <option value="hokma">호크마</option>
+                </select>
+                <!--학과-->
+                <select id="search-item__department" name="department" style="width:18%;">
+                    <option value="" disabled selected>학과</option>
                     <!-- 옵션은 JavaScript로 동적으로 추가 -->
                     <!-- '단과대'의 입력에 따라 '학과'의 입력 가능 범위를 동적으로 변경-->
-                </select><br>
-            </span>
-            <!--타입-->
-            <span id="search__type">
-                {% include '1~4/regitem__type.html' %}
-            </span>
-        </section>
-        <!-------------------------상품보기-------------------------->
-        <section id="item-view">
-            <!------정렬------->
-            <div id="item-view__sorting"> <!--js-->
-                <span onClick="sortby_regdate()">등록순</span> |
-                <span onClick="sortby_popular()"> 인기순</span> |
-                <span onClick="sortby_lowprice()"> 낮은 가격순</span>
+                </select>
+                <!--타입-->
+                <span id="search-item__type">
+                    {% include '1~4/regitem__type.html' %}
+                </span>
             </div>
-            <!-----상품카드----->
-            <!--여러 개-->
-            <ul id="items">
-                <li id="item-card1">
-                    {% include '1~4/item-card.html' %}
-                </li>
-                <li id="item-card2">
-                   {% include '1~4/item-card.html' %}
-                </li>
-                <li id="item-card3">
-                   {% include '1~4/item-card.html' %}
-                </li>
-                <li id="item-card4">
-                   {% include '1~4/item-card.html' %}
-                </li>
-                <li id="item-card5">
-                   {% include '1~4/item-card.html' %}
-                </li>
-                <li id="item-card6">
-                   {% include '1~4/item-card.html' %}
-                </li>
-                <li id="item-card7">
-                   {% include '1~4/item-card.html' %}
-                </li>
-                <li id="item-card8">
-                   {% include '1~4/item-card.html' %}
-                </li>
-                <li id="item-card9">
-                   {% include '1~4/item-card.html' %}
-                </li>
-            </ul>
-
-            <!-------------------------페이지네이션---------------------->
-            <!--클래스통일-->
-            <!--js로 페이지네이션 기능 구현-->
-            <ul id="item-view__pagination" class="pagination">
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-            </ul>
-
         </section>
-        <!----------------------------필터---------------------------->
-        <aside id="filter">
-            <!--제목-->
-            <div id="filter-header">
-                <h3>필터</h3>
-                <input type="reset" value="초기화">
-            </div>
-            <form id="filter-body">
-                <!--등록년도-->
-                <label for="filter-body__year">등록년도</label>
-                <input type="number" id="filter-body__year" name="filter-body__year"><br><br>
-                <!--태그-->
-                <label for="filter-body__tag">태그</label>
-                <input type="text" id="filter-body__tag" name="filter-body__tag"><br><br>
-                <img class="input-img" src="/static/img/search_icon.svg">
-                <!--판매자-->
-                <label for="filter-body__seller">판매자</label>
-                <input type="text" id="filter-body__seller" name="filter-body__seller"><br><br>
-                <img class="input-img" src="/static/img/search_icon.svg">
-            </form>
-            <!--백엔드연결-->
-            <input type="submit" value="적용하기"></button><br><br>
-        </aside>
+        <!-------------------------본컨텐츠-------------------------->
+        <div id="grid-item">
+            <!----------------------------필터---------------------------->
+            <aside id="filter">
+                <!--제목-->
+                <div id="filter-header">
+                    <p style="color: #5a5a5a;">필터</p>
+                    <input id="filter-reset-butn" type="reset" value="초기화">
+                    <hr style="color: #f7f7f7;">
+                </div>
+                <form id="filter-body">
+                    <!--등록년도-->
+                    <label for="filter-body__year-f">등록년도</label><br>
+                    <input id="filter-body__year-f" type="number" name="filter-body__year-f" style="width: 30%;"> ~
+                    <input id="filter-body__year-t" type="number" name="filter-body__year-t" style="width: 30%;">
+                    <br><br>
+                    <!--태그-->
+                    <label for="filter-body__tag">태그</label><br>
+                    <input id="filter-body__tag" type="text" name="filter-body__tag"><br><br>
+                    <!--판매자-->
+                    <label for="filter-body__seller">판매자</label><br>
+                    <input id="filter-body__seller" type="text" name="filter-body__seller"><br><br>
+                </form>
+                <!--백엔드연결-->
+                <input type="submit" value="적용하기"></button><br><br>
+            </aside>
+            <!-------------------------상품보기-------------------------->
+            <section id="view-item">
+                <!------정렬------->
+                <div class="sorting"> <!--js-->
+                    <span onClick="sortby_regdate()">등록순</span> |
+                    <span onClick="sortby_popular()"> 인기순</span> |
+                    <span onClick="sortby_lowprice()"> 낮은 가격순</span>
+                </div>
+                <!-----상품카드----->
+                <ul id="items">
+                    <!--item-card1 에시. js&백엔드 연결 후 데이터 삭제-->
+                    <li id="item-card1">
+                        <div class="item-card">
+                            <div class="item-card__title">
+                                <img class="item-card__img" src="/static/img/logo.png">
+                                <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
+                                <div class="item-card__title__course-and-prof">
+                                    <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
+                                    자료구조 20481 | 홍길동 교수님
+                                </div>
+                                <div class="item-card__title__item-name">
+                                    <!--백엔드에서 등록된 item-name 불러오기-->
+                                    제 6장 연결리스트1 정리
+                                </div>
+                                <span class="item-card__title__seller">
+                                    <!--백엔드에서 등록된 판매자 이름 불러오기-->
+                                    by. 이화인
+                                </span>
+                            </div>
+                            <div class="item-card__info">
+                                <div class="item-card__info__price">
+                                    <img class="input-img" src="/static/img/point.svg">
+                                    <!--가격 백엔드에서 불러오기-->
+                                    1000
+                                </div>
+                                <span class="item-card__info__buyer">
+                                    <img class="input-img" src="/static/img/download.svg">
+                                    <!--다운로드/판매횟수 백엔드에서 불러오기-->
+                                    28
+                                </span>
+                                <span class="item-card__info__rate">
+                                    <img class="input-img" src="/static/img/star.svg">
+                                    <!--별점 백엔드에서 불러오기-->
+                                    4.8
+                                </span>
+                                <div class="item-card__info__tag">
+                                    <!--백엔드에서 불러오기-->
+                                    #자료구조 #연결리스트
+                                </div>
+                                <span class="item-card__info__review">
+                                    <!--추가: 리뷰화면으로 연결-->
+                                    <a href="">리뷰</a>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="item-card2">
+                        {% include '1~4/item-card.html' %}
+                    </li>
+                    <li id="item-card3">
+                        {% include '1~4/item-card.html' %}
+                    </li>
+                    <li id="item-card4">
+                        {% include '1~4/item-card.html' %}
+                    </li>
+                    <li id="item-card5">
+                        {% include '1~4/item-card.html' %}
+                    </li>
+                    <li id="item-card6">
+                        {% include '1~4/item-card.html' %}
+                    </li>
+                    <li id="item-card7">
+                        {% include '1~4/item-card.html' %}
+                    </li>
+                    <li id="item-card8">
+                        {% include '1~4/item-card.html' %}
+                    </li>
+                    <li id="item-card9">
+                        {% include '1~4/item-card.html' %}
+                    </li>
+                </ul>
+
+                <!-------------------------페이지네이션---------------------->
+                <!--클래스통일-->
+                <!--js로 페이지네이션 기능 구현-->
+                <ul class="pagination">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                </ul>
+
+            </section>
+        </div>
     </main>
 
 </body>

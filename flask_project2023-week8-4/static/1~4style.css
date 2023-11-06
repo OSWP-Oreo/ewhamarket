@@ -1,12 +1,12 @@
 /*페이지 제목 '상품등록'*/
-
 .main-header__seller {
     font-size: 10pt;
     color: var(--deep-grey);
     font-weight: lighter;
 }
 
-.signup-inner {
+.regitem-inner {
+    /*signup-inner랑 합치기*/
     display: inline-block;
     text-align: left;
 }
@@ -19,9 +19,11 @@ input {
     border-style: solid;
     border-color: var(--light-grey);
 }
-input[type="submit"]{
+
+input[type="submit"] {
     height: auto;
 }
+
 /*필드 제목의 위치*/
 th {
     vertical-align: top;
@@ -40,10 +42,11 @@ th {
     height: 15px;
 }
 
-#regitem__course-type,
-#regitem__course-faculty,
-#regitem__course-number,
-#regitem__professor {
+.course-type,
+.course-faculty,
+.course-number,
+#regitem__professor,
+#search-item__department {
     width: 48%;
     height: 25px;
     border-width: 1px;
@@ -65,10 +68,87 @@ th {
 
 }
 
+/*************************************2.html*********************************/
+/*검색창*/
+#search-item {
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    padding: 10pt;
+    text-align: center;
+}
+#search-item input[type="search"] {
+    background-image: url(/static/img/search_icon.svg);
+    width: 70%;
+    margin: 5pt;
+}
+#search-item div{
+    margin-bottom: 5pt;
+}
+
+#search-item__type {
+    font-size: 10pt;
+}
+
+/*그리드*/
+#grid-item {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+/*필터*/
+#filter-reset-butn {
+    appearance: none;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    color: var(--deep-grey);
+}
+
+#filter-body label {
+    font-size: 10pt;
+    color: var(--deep-grey);
+}
+
+#filter-body input {
+    width: 70%;
+}
+
+#filter input[type="submit"] {
+    background-color: var(--light-blue);
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    color: white;
+    font-size: 9pt;
+}
+/*정렬*/
+#view-item .sorting{
+    text-align: right;
+    font-size: 10pt;
+    margin-top: 10pt;
+}
+/*item card*/
+#items{
+    list-style: none;
+}
+.item-card {
+    border: 1px var(--medium-grey) solid;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px var(--light-grey);
+    margin: 10pt;
+}
+
 /*별점,다운로드 작은 이미지*/
 .input-img {
     max-width: 20px;
     max-height: 20px;
     width: auto;
     height: auto;
+}
+
+.item-card__img{
+    max-height: 50pt;
+    height: auto;
+    width: auto;
 }
