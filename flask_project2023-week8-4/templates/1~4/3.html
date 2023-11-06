@@ -14,47 +14,68 @@
 
 <body> <!--1,8 가로폭 지정-->
     {% include 'header-and-nav.html'%}
-        <!----------------------상품보기------------------------->
-        <!----2번 화면 item card 중복 요소 있음-->
+    <!----------------------상품보기------------------------->
+    <!----2번 화면 item card 중복 요소 있음-->
+    <main>
         <section id="item-info">
             <!-------------------대표상품이미지------------------>
             <!--가능하다면 js로
                     (1)이미지 개수에 따라 다르게 보이도록(없는 칸은 회색단색으로 표시
                     (2)이미지 클릭 시 그 이미지가 제일 큰 이미지창에 보이도록-->
             <div id="item-info__img">
-                <!--대표이미지:1번-->
-                <img id="item-info__img__1" class="input-img" src="">
-                <img id="item-info__img__2" class="input-img" src="">
-                <img id="item-info__img__3" class="input-img" src="">
-                <img id="item-info__img__4" class="input-img" src="">
-                <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
+                <!--추후 js 백엔드 연결 시 사진 삭제-->
+                <!--대표이미지main. 1,2,3 서브이미지 중 하나 확대. default는 img-1-->
+                <div class="item-detail__img-container">
+                    <img id="item-info__img-main" class="item-detail__main-img" src="/static/img/logo.png">
+                </div>
+                <div class="item-detail__img-container">
+                    <img id="item-info__img-1" class="item-detail__sub-img" src="/static/img/logo.png">
+                    <img id="item-info__img-2" class="item-detail__sub-img" src="/static/img/logo.png">
+                    <img id="item-info__img-3" class="item-detail__sub-img" src="/static/img/logo.png">
+                    <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
+                </div>
             </div>
-            <div id="item-info__course-and-prof">
-                <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
+            <div class="item-card__info">
+                <div class="item-card__course-and-prof">
+                    <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
+                    자료구조 20481 | 홍길동 교수님
+                </div>
+                <strong class="item-card__item-name">
+                    <!--백엔드에서 등록된 item-name 불러오기-->
+                    제 6장 연결리스트1 정리
+                </strong>
+                <span class="item-card__seller">
+                    <!--백엔드에서 등록된 판매자 이름 불러오기-->
+                    BY. 이화인
+                    <br><br></span>
+                <div class="price-rate-continer">
+                    <span class="item-card__price">
+                        <img class="input-img" src="/static/img/point.svg" style="margin-right: 5px;">
+                        <!--가격 백엔드에서 불러오기-->
+                        1000
+                    </span>
+                    <span class="item-card__rate">
+                        <span class="item-card__download" style="margin-right: 10px;">
+                            <img class="input-img" src="/static/img/download.svg">
+                            <!--다운로드/판매횟수 백엔드에서 불러오기-->
+                            28
+                        </span>
+                        <span class="item-card__star">
+                            <img class="input-img" src="/static/img/star.svg">
+                            <!--별점 백엔드에서 불러오기-->
+                            4.8
+                        </span>
+                    </span>
+                </div>
+                <div class="item-card__tag">
+                    <!--백엔드에서 불러오기-->
+                    #자료구조 #연결리스트
+                </div>
+                <div class="item-card__review">
+                    <!--추가: 리뷰화면으로 연결-->
+                    <a href="" style="border: 1.5px solid var(--light-grey);">리뷰</a>
+                </div>
             </div>
-            <div id="item-info__item-name">
-                <!--백엔드에서 등록된 item-name 불러오기-->
-            </div>
-            <span id="item-info__seller">
-                판매자 <!--백엔드에서 등록된 판매자 이름 불러오기-->
-            </span>
-
-            <div id="item-info__price">
-                <img class="input-img" src="../static/img/point.svg">
-                <!--가격 백엔드에서 불러오기-->
-            </div>
-            <span id="item-info__buyer">
-                <img class="input-img" src="../static/img/download.svg">
-                <!--다운로드/판매횟수 백엔드에서 불러오기-->
-            </span>
-            <span id="item-info__rate">
-                <img class="input-img" src="../static/img/star.svg">
-                <!--별점 백엔드에서 불러오기-->
-            </span>
-            <div id="item-info__tag">
-                <!--백엔드에서 불러오기-->
-            </div>
-
         </section>
         <!----------------------장바구니/구매------------------------->
         <section id="buy-option">
@@ -78,9 +99,6 @@
             </div>
 
         </section>
-
-
-
     </main>
 
 </body>
