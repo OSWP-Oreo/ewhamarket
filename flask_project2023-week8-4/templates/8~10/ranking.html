@@ -6,6 +6,33 @@
 </head>
 
 <body>
+
+    <header>
+        <div class="header">
+            <!--logo-->
+            <div id="logo-container">
+                <img id="logo" src="../../static/img/logo.png">
+            </div>
+            <!--프로필, 사용자이름, 로그아웃-->
+            <div id="loggedin-account">
+                <!--이미지 추가-->
+                <img src="../../static/img/profile.jpg">
+                <!--마이페이지:이화인클릭 / 로그인화면:로그아웃클릭-->
+                <a href="">이화인</a> | <a href="">로그아웃</a>
+            </div>
+        </div>
+    </header>
+
+    <!--내비게이션-->
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#">상품등록</a></li>
+            <li class="nav-item"><a href="#">상품보기</a></li>
+            <li class="nav-item"><a href="#">리뷰작성</a></li>
+            <li class="nav-item"><a href="#">랭킹</a></li>
+        </ul>
+    </nav>
+
     <div class="main-header">
         <h1 class="main-header__title"> 이화여자대학교 월간 랭킹 </h1>
         <hr class="main-hr">
@@ -14,7 +41,7 @@
     <div class="outer">
         <div class="signup-inner">
             <br>
-            <button class="active" style="width: 110px; color:white; background-color: #00afb9; border:none; border-radius: 10px;">전체</button>
+            <button id="btn10-active">전체</button>
             <button class="btn10">인문과학대학</button>
             <button class="btn10">사회과학대학</button>
             <button class="btn10">자연과학대학</button>
@@ -92,7 +119,7 @@
                 </tr>
             </table>
 
-            <table style="text-align: left; width: 200px; line-height: 50%; float:right;">
+            <table id="weekly-rank">
                 <tr>
                     <td>주간랭킹</td>
                 </tr>
