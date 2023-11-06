@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="main-header">
+        <h1 class="main-header__title"> 회원가입 </h1>
+        <hr id="main-hr">
+    </div>
+
+    <div class="outer">
+        <form>
+            <div class="signup-inner">
+                <p style="color:red; font-size: 10px">*은 필수</p>
+                <label for="ID">*아이디: </label>
+                <input type="text" required id="ID" name="ID" placeholder="영문/숫자 조합" />
+                <button id="중복체크" style="border:none; background-color: #D9D9D9; color: #7f7f7f">중복확인</button><br /><br />
+                <!--중복체크 기능 구현 필요-->
+
+                <label for="PW">*비밀번호: </label>
+                <input type="password" required id="PW" name="PW" placeholder="영문/숫자 조합 8~16자" /><br /><br />
+
+                <label for="PWconfirm">*비밀번호 확인: </label>
+                <input type="password" required id="PWconfirm" name="PWconfirm" /><br /><br />
+
+                <label for="email">*이메일 주소: </label>
+                <input type="email" required id="email" name="email" /><br /><br />
+
+                <label for="HP">전화번호: </label>
+                <input type="tel" id="HP" name="HP" /><br /><br />
+
+                <label for="department, major">대학 / 학과: </label>
+                <input type="search" id="department" name="department" />
+                <input type="search" id="major" name="major" /><br /><br />
+
+                <label for="name">*닉네임: </label>
+                <input type="text" required id="name" name="name" />
+                <button id="중복체크" style="border:none; background-color: #D9D9D9; color: #7f7f7f">중복확인</button><br /><br />
+                <!--중복체크 기능 구현 필요-->
+
+            </div>
+            <div class="light-blue-btn">
+                <button style="width:200px; color:white; font-size: 25px;"><b>가입하기</b></button>
+            </div>
+        </form>
+    </div>
+
+    <link rel="stylesheet" href="../static/style.css">
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>리뷰작성화면</title>  
+    </head>
+
+    <body>
+        <header>{% include '../templates/header.html' %}</header>
+        <nav>{% include '../templates/nav.html' %}</nav>
+        <div class="main-header">
+                <h1 class="main-header__title">리뷰 작성</h1>
+                <hr id="main-hr">
+            </div>
+
+            <div class = "outer">
+                <div class="subject" style="border-radius: 5px;">
+                </div>
+            </div>
+            <form>
+                <h3>키워드</h3>
+                <button>자세한 설명</button>
+                <button>핵심 위주</button>
+                <button>문제 풀이</button><br><Br>
+            </form>
+            <form>
+                <h3>상세 리뷰</h3>
+                <input style="width: 100%; type="text" id="title" name="title" placeholder="리뷰의 제목을 입력해주세요">
+                <textarea style="width: 100%;" rows="6" id="title" name="title" placeholder="상품에 대한 리뷰를 작성해주세요
+정확하고 중요한 정보인가요?
+체계적으로 정리되어 있나요?
+어떤 방향으로 도움이 되었나요?"></textarea><!--글자수 카운트하는거 만들기-->
+            </form>
+            <!--사진 첨부ㅏ는거 만들기-->
+        
+        
+    </body>
+
+</html>
