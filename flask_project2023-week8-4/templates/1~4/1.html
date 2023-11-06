@@ -13,12 +13,12 @@
 </head>
 
 <body>
-    {% include 'header.html' %}
+    {% include 'header-and-nav.html' %}
 
     <main>
         <div class="main-header">
-            <h1 class="main-header__title">상품등록</h1>
-            <div class="main-header__seller">판매자 : {{ usrname }}</div>
+            <h1>상품등록</h1>
+            <div>판매자 : {{ usrname }}</div>
             <hr class="main-hr">
         </div>
         <div class="outer">
@@ -26,6 +26,38 @@
                 <!-- 입력 폼 시작 -->
                 <form id="regitem" action="/submit_regiterd_item" method="post">
                     <!-- 상품 이름 -->
+                    <table>
+                        <tr>
+                            <th>상품 이름</th>
+                            <td><input type="text" id="item-name" name="item-name" required></td>
+
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>{% include '1~4/regitem__type.html' %}</td>
+                        </tr>
+                        <tr>
+                            <th>가격</th>
+                            <td>
+                                <input type="number" class="input-with-img" id="price" name="price"
+                                    oninput="addCommas(this);" required><br><br>
+                                <img class="input-img" src="/static/img/point.svg">
+                            </td>
+                        </tr>
+                    </table>
+
+
+
+
+                    <br><br><br><br>
+                    <hr><br><br><br><br>
+
+
+
+
+
+
+
                     <div id="regitem__name">
                         <label for="item-name">상품 이름</label>
                         <input type="text" id="item-name" name="item-name" required><br><br>
