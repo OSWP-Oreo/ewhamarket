@@ -51,8 +51,9 @@
                 </h3>
                 <!--드롭다운 학과별 리뷰 선택-->
                 <form> 
-                    <label for = "major">학과별 리뷰</label>
+                    <label for = "major"></label>
                     <select id ="major">
+                        <option value="학과전체" selected>학과전체</option>
                         <option value="인문과학대학">인문과학대학</option>
                         <option value="사회과학대학">사회과학대학</option>
                         <option value="자연과학대학">자연과학대학</option>
@@ -68,25 +69,22 @@
                         <option value="스크랜튼대학">스크랜튼대학</option>
                         <option value="호크마교양대학">호크마교양대학</option>
                     </select>
-                    <label for = "organize">정렬</label>
+                    <label for = "organize"></label>
                     <select id="organize">
                         <option value="최신순">최신순</option>
-                        <option value="추천순">추천순</option>
+                        <option value="추천순" selected>추천순</option>
                         <option value="별점높은순">높은별점</option>
                         <option value="낮은별점순">낮은별점</option>
                     </select>
                 </form>
             </div>
+            
             <div class="main-hr" style="background-color: #BCBCBC;"></div>
             <article style="padding-inline-start: 5%; padding-inline-end: 5%;">
-                <div>
-                    <p class="reveiw-title">리뷰 제목</p>
-                    <p>ㅇ</p>
-                </div>
-                <div class="main-hr" style="background-color: #BCBCBC;"></div>
-
+                {% include '5~7/review.html' %}
+                {% include '5~7/review.html' %}
+                {% include '5~7/review.html' %}
             </article>
-
         </main>
     </body>
 </html>
