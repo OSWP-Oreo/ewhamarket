@@ -45,7 +45,7 @@
                 </div>
             </div>
             <!--전체 리뷰-->
-            <div class="oneLine">
+            <div class="inLine">
                 <h3>
                 전체 리뷰
                 </h3>
@@ -70,6 +70,7 @@
                         <option value="호크마교양대학">호크마교양대학</option>
                     </select>
                     <label for = "organize"></label>
+                    <!--드랍다운 정렬 선택-->
                     <select id="organize">
                         <option value="최신순">최신순</option>
                         <option value="추천순" selected>추천순</option>
@@ -78,13 +79,33 @@
                     </select>
                 </form>
             </div>
-            
+            <!--선-->
             <div class="main-hr" style="background-color: #BCBCBC;"></div>
+            <!--리뷰 보기-->
             <article style="padding-inline-start: 5%; padding-inline-end: 5%;">
                 {% include '5~7/review.html' %}
+                <hr>
                 {% include '5~7/review.html' %}
+                <hr>
+                {% include '5~7/review.html' %}
+                <hr>
+                {% include '5~7/review.html' %}
+                <hr>
+                {% include '5~7/review.html' %}
+                <hr>
                 {% include '5~7/review.html' %}
             </article>
+            <!--페이지 선택 창-->
+            <ul class="pagination">
+                <li><a href="">&lt;</a></li>
+                <li><a href="">1</a></li>
+                <li><a href="">2</a></li>
+                <li><a href="">3</a></li>
+                <li><a href="">4</a></li>
+                <li><a href="">5</a></li>
+                <li><a href="">&gt;</a></li>
+            </ul>
+            
         </main>
     </body>
 </html>
