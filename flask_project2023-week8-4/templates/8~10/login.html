@@ -6,7 +6,26 @@
 </head>
 
 <body>
-    {% include 'header-and-nav.html'%}
+    <!--{% include 'header-and-nav.html'%}-->
+    <!--통일된 헤더-네비게이션바와 다른 부분 수정해서 넣어두었습니다.-->
+    <header>
+        <div class="header">
+            <!--logo-->
+            <div id="logo-container">
+                <img id="logo" src="../../static/img/logo.png">
+            </div>
+        </div>
+    </header>
+
+    <!--내비게이션-->
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#">상품등록</a></li>
+            <li class="nav-item"><a href="#">상품보기</a></li>
+            <li class="nav-item"><a href="#">리뷰작성</a></li>
+            <li class="nav-item"><a href="#">랭킹</a></li>
+        </ul>
+    </nav>
 
     <div class="main-header">
         <h1 class="main-header__title"> 로그인 </h1>
