@@ -79,7 +79,7 @@
     font-size: 20px;
 }
 
-/*월간 랭킹 포인트 가로 막대그래프*/
+/*10번화면 월간 랭킹 포인트 가로 막대그래프*/
 .bar-container {
     width: 300px;
     height: 40px;
@@ -96,7 +96,7 @@
     transition: width 1s;
 }
 
-/*주간랭킹*/
+/*10번화면 주간랭킹*/
 #weekly-rank {
     text-align: left;
     width: 200px;
@@ -104,7 +104,7 @@
     float: right;
 }
 
-/*10번 화면 대학 선택 버튼*/
+/*10번화면 대학 선택 버튼*/
 .btn10 {
     width: 110px;
     border-color: #00afb9;
