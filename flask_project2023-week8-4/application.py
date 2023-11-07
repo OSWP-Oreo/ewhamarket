@@ -6,6 +6,11 @@ application = Flask(__name__)
 def hello():
     return render_template("index.html")
 
+@application.route("/index")
+def comback_home():
+    return render_template("index.html")
+
+# 1~4
 @application.route("/1~4/1")
 def view_reg_items():
     return render_template("1~4/1.html")
