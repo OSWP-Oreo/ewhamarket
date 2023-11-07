@@ -24,6 +24,12 @@ a.button {
     border-radius: 5px;
     transition: all 0.2s;
 }
+.flex-container3 a{
+    font-size: 10pt;
+    width: 200px;
+    border-radius: 10px;
+    margin: 20px 10px 0 0;
+}
 #item-info-container a.button{
     margin: 10px 20px 10px 0;
 }
@@ -56,7 +62,23 @@ a.button {
 
 .flex-container1{
     display: flex;
-    flex-flow: column;
+    flex-flow: column wrap;
+    align-items: center;
+}
+.flex-container2{
+    display: flex;
+    justify-content: center;
+    padding: 5pt;
+    margin-bottom: 5pt;
+    border-bottom: 1px solid var(--medium-grey);
+}
+.flex-container3{
+    display: flex;
+    justify-content: center;
+}
+#flex-order-container{
+    display: flex;
+    flex-flow: column wrap;
     align-items: center;
 }
 .flex-container1 h1{
@@ -66,15 +88,14 @@ a.button {
 .flex-container1 div{
     font-size: 15pt;
 }
-.flex-container2{
-    display: flex;
-    justify-content: center;
-    padding: 5pt;
-    margin-bottom: 5pt;
-    border-bottom: 1px solid var(--medium-grey);
+#order_warning-msg{
+    max-width: 413px;
+    word-wrap: break-word;
+    margin: 5px 40px 0 40px;
 }
 .orderInfo-header{
     width: 100pt;
+    font-weight: 600;
     font-size: 12pt;
     color: var(--light-blue);
     text-align: left;
