@@ -9,12 +9,13 @@
     <title>상품보기</title>
     <link href="/static/1~4style.css" type="text/css" rel="stylesheet">
     <link href="/static/style.css" type="text/css" rel="stylesheet">
+    <link href="/static/btn.css" type="text/css" rel="stylesheet">
     <script src="/static/1~4main.js"></script>
 </head>
 
 <body> <!--1,8 가로폭 지정-->
     {% include 'header-and-nav.html' %}
-    <main>
+    <main class="padding">
         <!-------------------------페이지 제목----------------------->
         <div class="main-header">
             <h1 class="main-header__title">상품 보기</h1>
@@ -70,16 +71,17 @@
             <!----------------------------필터---------------------------->
             <aside id="filter">
                 <!--제목-->
-                <div id="filter-header">
-                    <p style="color: #5a5a5a;">필터</p>
-                    <input id="filter-reset-butn" type="reset" value="초기화">
-                    <hr style="color: #f7f7f7;">
+                <div class="filter__flex-container">
+                    <p class="filter__flex-item" >필터</p>
+                    <input class="filter__flex-item" id="filter-reset-butn" type="reset" value="초기화">
                 </div>
+                <hr style="color: #f7f7f7;">
                 <form id="filter-body">
                     <!--등록년도-->
                     <label for="filter-body__year-f">등록년도</label><br>
-                    <input id="filter-body__year-f" type="number" name="filter-body__year-f" style="width: 43%;"> ~
-                    <input id="filter-body__year-t" type="number" name="filter-body__year-t" style="width: 43%; text-align: right;">
+                    <input id="filter-body__year-f" type="number" name="filter-body__year-f" style="width: 35%;"> ~
+                    <input id="filter-body__year-t" type="number" name="filter-body__year-t"
+                        style="width: 35%; text-align: right;">
                     <br><br>
                     <!--태그-->
                     <label for="filter-body__tag">태그</label><br>
@@ -137,7 +139,9 @@
                 <!--클래스통일-->
                 <!--js로 페이지네이션 기능 구현, 현재 페이지는 굵은/색이다른 글씨-->
                 <ul class="pagination">
-                    <li><a href="#"><</a></li>
+                    <li><a href="#">
+                            << /a>
+                    </li>
                     <li><a href="#">1</a></li>
                     <li><a href="#">2</a></li>
                     <li><a href="#">3</a></li>
