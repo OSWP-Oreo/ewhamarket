@@ -7,21 +7,36 @@ def hello():
     return render_template("index.html")
 
 @application.route("/1~4/1")
-def view_list():
+def view_reg_items():
     return render_template("1~4/1.html")
 
 @application.route("/1~4/2")
-def view_review():
+def view_items():
     return render_template("1~4/2.html")
 
 @application.route("/1~4/3")
-def view_items():
+def view_item_detail():
     return render_template("1~4/3.html")
 
 @application.route("/1~4/4")
-def view_reg_review():
+def view_order_confirmation():
     return render_template("1~4/4.html")
 
+# 5~7
+@application.route("/5~7/5")
+def view_reg_review():
+    return render_template("5~7/5.html")
+
+@application.route("/5~7/6")
+def view_reviews():
+    return render_template("5~7/6.html")
+
+@application.route("/5~7/7")
+def view_review_detail():
+    return render_template("5~7/7.html")
+
+
+# 8~10
 @application.route("/8~10/signup")
 def view_signup():
     return render_template("8~10/signup.html")
