@@ -173,12 +173,14 @@ th {
 .item-card__review{
     text-align: right;
 }
+
 .item-card__review a{
     text-decoration: none;
     color: var(--default-blue);
     font-weight: bold;
     padding: 2px;
     border-radius: 5px;
+    border: 1.5px solid var(--light-grey);
 }
 
 /*페이지네이션*/
@@ -196,11 +198,17 @@ th {
     color: black;
 }
 /********************3.html*************************/
-#item-info{
+/*제품 이미지 및 정보, 구매버튼*/
+#item-info-container{
     display: grid;
     grid-template-columns: 300px 1fr;
+    margin: 30px;
 }
 .item-detail__img-container{
+    text-align: center;
+}
+/*상세설명, 리뷰*/
+#item-detail-btn{
     text-align: center;
 }
 /*********************이미지*******************/
