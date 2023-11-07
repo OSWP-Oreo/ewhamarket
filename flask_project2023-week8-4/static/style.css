@@ -8,8 +8,16 @@
   --deep-grey: #a4a4a4;
   --font-grey: #676767;
 }
+/*폰트*/
+@font-face {
+  font-family: 'Inter'; /*font 이름*/
+  font-style: 'normal'; /* font 스타일 정의 (기울임, 일반) */
+  font-weight: 400; /* font 굵기 정의 */
+  /* 브라우저&디바이스 환경에 따른 font 파일 위치 정의 */
+  src: url('/static/Inter-font.ttf') format('truetype');
+}
 
-/*헤더 & 내비게이션*/
+/*****************헤더 & 내비게이션*****************/
 header {
   padding: 20px;
   display: flex;
@@ -42,6 +50,7 @@ header {
   width: 30px;
 }
 
+/*navigation*/
 .navbar {
   background-color: #cfe2e4;
   text-align: center;
