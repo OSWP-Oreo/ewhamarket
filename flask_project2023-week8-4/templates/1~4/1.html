@@ -9,20 +9,20 @@
     <title>상품등록</title>
     <link href="/static/1~4style.css" type="text/css" rel="stylesheet">
     <link href="/static/style.css" type="text/css" rel="stylesheet">
+    <link href="/static/btn.css" type="text/css" rel="stylesheet">
     <script src="/static/1~4main.js"></script>
 </head>
 
 <body>
     {% include 'header-and-nav.html' %}
-
     <main>
-        <div class="main-header">
-            <h1>상품등록</h1>
+        <div class="main-header main-header__flex-container">
+            <h1 class="main-header__title">상품등록</h1>
             <span>판매자 : {{ usrname }}</span>
-            <hr class="main-hr">
         </div>
+            <hr class="main-hr">
         <div class="outer">
-            <div class="regitem-inner">
+            <div class="signup-inner">
                 <!-- 입력 폼 시작 -->
                 <form id="regitem" action="/submit_regiterd_item" method="post">
                     <table>
