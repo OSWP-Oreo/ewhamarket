@@ -6,13 +6,32 @@
 </head>
 
 <body>
-    {% include 'header-and-nav.html'%}
+    <!--{% include 'header-and-nav.html'%}-->
+    <!--통일된 헤더-네비게이션바와 다른 부분 수정해서 넣어두었습니다.-->
+    <header>
+        <div class="header">
+            <!--logo-->
+            <div id="logo-container">
+                <img id="logo" src="../../static/img/logo.png">
+            </div>
+        </div>
+    </header>
+
+    <!--내비게이션-->
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#">상품등록</a></li>
+            <li class="nav-item"><a href="#">상품보기</a></li>
+            <li class="nav-item"><a href="#">리뷰작성</a></li>
+            <li class="nav-item"><a href="#">랭킹</a></li>
+        </ul>
+    </nav>
 
     <div class="main-header">
         <h1 class="main-header__title"> 회원가입 </h1>
         <hr class="main-hr">
     </div>
-
+    <link href="../../static/style.css" rel="stylesheet" />
     <div class="outer">
         <form>
             <div class="signup-inner">
@@ -52,27 +71,27 @@
                     <option value="호크마교양대학">호크마교양대학</option>
                 </select>
 
-                    <select id="dropdown2">
-                        <option value="국어국문학과">국어국문학과</option>
-                        <option value="중어중문학과">중어중문학과</option>
-                        <option value="불어불문학과">불어불문학과</option>
-                        <option value="독어독문학과">독어독문학과</option>
-                        <option value="사학과">사학과</option>
-                        <option value="철학과">철학과</option>
-                        <option value="기독교학과">기독교학과</option>
-                        <option value="영어영문학부">영어영문학부</option>
-                    </select>
-                    <br>
-                    <br>
+                <select id="dropdown2">
+                    <option value="국어국문학과">국어국문학과</option>
+                    <option value="중어중문학과">중어중문학과</option>
+                    <option value="불어불문학과">불어불문학과</option>
+                    <option value="독어독문학과">독어독문학과</option>
+                    <option value="사학과">사학과</option>
+                    <option value="철학과">철학과</option>
+                    <option value="기독교학과">기독교학과</option>
+                    <option value="영어영문학부">영어영문학부</option>
+                </select>
+                <br>
+                <br>
 
-                    <label for="name">*닉네임: </label>
-                    <input type="text" required id="name" name="name" />
-                    <button class="중복체크">중복확인</button>
-                    <br />
-                    <br />
-                    <!--중복체크 기능 구현 필요-->
+                <label for="name">*닉네임: </label>
+                <input type="text" required id="name" name="name" />
+                <button class="중복체크">중복확인</button>
+                <br />
+                <br />
+                <!--중복체크 기능 구현 필요-->
 
-</div>
+            </div>
             <div class="light-blue-btn">
                 <button style="background-color: #00afb9; border: none; border-radius: 5px; width: 200px; color: white; font-size: 25px; "><b>가입하기</b></button>
             </div>
