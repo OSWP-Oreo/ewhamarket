@@ -238,7 +238,7 @@ th {
 }
 .item-card__rate{
     color: var(--font-grey);
-    flex-basis: 50%;
+    justify-content: right;
 }
 .item-card__tag{
     color: var(--font-grey);
@@ -289,9 +289,6 @@ th {
 .item-card__price{
     font-size: 20px;
 }
-.item-card__rate{
-    just
-}
 
 /*3.html 큰 상품사진*/
 .item-detail__main-img{
@@ -328,10 +325,11 @@ th {
 
 /*button*/
 #order-btn{
-    width: 200px;
+    width: 80%;
+    height: 40px;
     justify-self: center;
 }
-#order__view-rate__container .button{
+#order__view-rate__container.button{
     display: block;    
     width: 100%;
     padding: 0;
@@ -346,6 +344,16 @@ th {
 
 #descr-btn{
     border-top-left-radius: 5px;
+    display: block;    
+    width: 100%;
+    padding: 0;
+    border: none;
+    box-shadow: 1px 1px var(--light-grey);
+    font-weight: 600;
+    font-size: 13pt;
+    text-align: center;
+    line-height: 50px;
+    transition: all 0.2s;
 }
 #descr-btn:hover, #review-btn:hover{
     background-color: var(--default-blue);
@@ -355,9 +363,17 @@ th {
     cursor: pointer;
 }
 #review-btn{
-    border-radius: 0;
     border-top-right-radius: 5px;
-    border-left: 0;
+    display: block;    
+    width: 100%;
+    padding: 0;
+    border: none;
+    box-shadow: 1px 1px var(--light-grey);
+    font-weight: 600;
+    font-size: 13pt;
+    text-align: center;
+    line-height: 50px;
+    transition: all 0.2s;
 }
 
 /*********************이미지*******************/
