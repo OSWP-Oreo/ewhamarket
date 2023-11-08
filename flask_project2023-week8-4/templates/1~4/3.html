@@ -32,6 +32,7 @@
                     <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
                     자료구조 20481 | 홍길동 교수님
                 </div>
+                
                 <strong class="item-card__item-name" style="font-size: 30px;">
                     <!--백엔드에서 등록된 item-name 불러오기-->
                     제 6장 연결리스트1 정리
@@ -40,6 +41,7 @@
                     <!--백엔드에서 등록된 판매자 이름 불러오기-->
                     BY. 이화인
                     <br><br></span>
+                
                 <div class="price-rate-container">
                     <span class="item-card__price">
                         <img class="input-img" src="/static/img/point.svg" style="margin-right: 5px;">
@@ -59,6 +61,10 @@
                         </span>
                     </span>
                 </div><br>
+                <div class="item-card__type">
+                    <!--item type; 백엔드에서받기 아래 텍스트는 예시-->
+                    <span>Type</span> 노트 정리
+                    <br><br></div>
                 <div class="item-card__tag">
                     <!--백엔드에서 불러오기-->
                     #자료구조 #연결리스트
@@ -70,10 +76,8 @@
                 <img id="item-info__img-3" class="item-detail__sub-img" src="/static/img/logo.png">
                 <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
             </div>
-            <div id="order-option"><!--장바구니/구매 버튼-->
-                <!--장바구니에 담기/구매하기: 장바구니/결재 화면 없음-->
-                <a href="" title="into-cart" class="button btnFade btnBorderDefaultblue">장바구니</a>
-                <a href="" title="to-payment" class="button btnFade btnDefaultblue">바로 구매</a>
+            <div><!--구매 버튼-->
+                <a href="/1~4/4.html" title="to-payment" id="order-btn" class="button btnFade btnDefaultblue">바로 구매하기</a>
             </div>
 
             <div id="order__view-rate__container"><!-------------------------상세설명/리뷰--------------------->
