@@ -136,6 +136,12 @@ a, a:visited{
   width: 1100px;
   border: 0;
 }
+.main-hr__padding {
+  background: #00afb9;
+  height: 1px;
+  width: 100%;
+  border: 0;
+}
 
 /*padding 오 왼 15%: padding*/
 .padding {
