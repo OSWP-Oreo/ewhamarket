@@ -47,6 +47,7 @@ a.button {
 .btnLightblue{
     background: var(--light-blue);
     color: #fff;
+    border: 0;
 }
 /* FADE */
 /*장바구니 및 바로 구매 호버 효과*/
@@ -56,4 +57,8 @@ a.button {
 .btnFade.btnBorderDefaultblue:hover{
     border-color: var(--light-grey);
     background: var(--light-grey);
+}
+.btnFade.btnLightblue:hover{
+    background: var(--default-blue);
+    color: #fff;
 }
