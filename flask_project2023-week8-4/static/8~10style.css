@@ -35,9 +35,13 @@
 /*8번화면 중복체크 버튼*/
 .중복체크 {
     border: none;
-    background-color: #D9D9D9;
-    color: #7f7f7f
+    border-radius: 5px;
+    background-color: #d9d9d9;
+    color: #000000;
 }
+    .중복체크:hover {
+        background-color: #a4a4a4;
+    }
 
 /*9번화면 아이디, 비밀번호 입력 칸*/
 #input-ID {
@@ -56,21 +60,18 @@
     line-height: 50%;
 }
 #login-btn {
-    background-color: #00afb9;
-    border: none;
     border-radius: 5px;
     width: 200px;
     height: 30px;
-    color: white;
     font-size: 15px;
+    border: none;
 }
 #signup-btn {
-    border: none;
     border-radius: 5px;
     width: 200px;
     height: 30px;
-    color: #00afb9;
     font-size: 15px;
+    border: none;
 }
 
 /*10번화면 level*/
@@ -110,10 +111,14 @@
     border-color: #00afb9;
     border-radius: 10px;
 }
+    .btn10:hover {
+        background-color: #00afb9;
+        color: white;
+    }
 #btn10-active {
     width: 110px;
     color: white;
     background-color: #00afb9;
-    border: none;
+    border-color: #00afb9;
     border-radius: 10px;
 }
