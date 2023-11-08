@@ -22,9 +22,15 @@
         </div>
             <hr class="main-hr">
         <div class="outer">
-            <div class="signup-inner">
+            <div id="regitem-container" class="signup-inner">
                 <!-- 입력 폼 시작 -->
                 <form id="regitem" action="/submit_regiterd_item" method="post">
+                    
+        
+                    <!----수정-->
+                    
+                    
+                    
                     <table>
                         <tr><!-- 상품 이름 -->
                             <th>상품 이름</th>
@@ -109,9 +115,8 @@
                         </tr>
                     </table>
                     <!-- 등록하기 버튼 -->
-                    <div style="display: block; text-align:center;">
-                        <input class="btn1" type="submit" value="등록하기">
-                    </div>
+                    <input type="submit" value="등록하기" id="regitem-submit" class="button btnFade btnLightblue">
+                    
                 </form>
             </div>
         </div>

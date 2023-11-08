@@ -36,7 +36,7 @@
     display: flex;
     justify-content: center;
 }
-#flex-order-container{
+.flex-container{
     display: flex;
     flex-flow: column wrap;
     align-items: center;
@@ -81,10 +81,6 @@ input {
     border-width: 1px;
     border-style: solid;
     border-color: var(--light-grey);
-}
-
-input[type="submit"] {
-    height: auto;
 }
 
 /*필드 제목의 위치*/
@@ -316,14 +312,25 @@ th {
 }
 
 /*button*/
-#filter input[type="submit"]{
+#regitem-submit{
+    display: block;
+    position: relative;
+    width: 200px;
+    height: 30px;
+    padding: 0;
+    font-weight: 600;
+    text-align: center;
+    
+    border-radius: 5px;
+    transition: all 0.2s;
+}
+#filter-submit{
     display: block;
     position: relative;
     height: 30px;
     padding: 0;
     font-weight: 600;
     text-align: center;
-    line-height: 10px;
     
     border-radius: 5px;
     transition: all 0.2s;
@@ -331,7 +338,8 @@ th {
 #order-btn{
     width: 80%;
     height: 40px;
-    justify-self: center;
+    line-height: 2.5;
+    place-self: center;
 }
 #order__view-rate__container.button{
     display: block;    
