@@ -14,7 +14,7 @@
             <!--페이지 정보-->
             <div class="main-header-left">
                 <div class="oneLine">
-                    <h1 class="main-header__title">리뷰</h1>
+                    <h1 class="main-header">리뷰</h1>
                     <p>(92)</p><!--추가: 리뷰 숫자 받아와서 숫자 작성하는것-->
                 </div>
                     <hr class="main-hr__padding">     
@@ -24,20 +24,35 @@
             <div class ="review-summary__box">
                 <!--좌측 별점-->
                 <div class="box left">
-                    <!--별점-->
+                    <form class="mb-3" name="myform" id="myform" method="post">
+                        <p>★★★★★</p>
+                    </form>
+                    
                 </div>
                 <div class="box middle" style="padding-left: 10%;">
                     <div>
-                        <p><!--추가: 숫자-->00%의 구매자가 <!--속성 중 하나--> "자세한 설명" 이라고 생각해요 </p>
+                        <p><!--추가: 숫자-->00%의 구매자가 <!--속성 중 하나--> <span style="color: #0081a7; font-size: large;">"자세한 설명"</span> 이라고 생각해요 </p>
                         <table><!--바 추가해야 함-->
                             <tr>
                                 <td>자세한 설명</td>
+                                <td>
+                                    <progress class="progress-bar" value="64" max="100"></progress>
+                                    <label class="progress-label">64%</label>
+                                </td>
                             </tr>
                             <tr>
                                 <td>핵심 위주</td>
+                                <td>
+                                    <progress class="progress-bar" value="19" max="100"></progress>
+                                    <label class="progress-label">19%</label>
+                                </td>
                             </tr>
                             <tr>
                                 <td>문제 풀이</td>
+                                <td>
+                                    <progress class="progress-bar" value="3" max="100"></progress>
+                                    <label class="progress-label">3%</label>
+                                </td>
                             </tr>
                         </table>
 
