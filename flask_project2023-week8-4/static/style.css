@@ -89,6 +89,8 @@ header {
 /*body*/
 body {
   font-family: Inter;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -146,7 +148,7 @@ body {
 .main-hr {
   background: #00afb9;
   height: 1px;
-  width: auto;
+  width: 1100px;
   border: 0;
 }
 
