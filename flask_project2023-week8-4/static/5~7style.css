@@ -143,8 +143,8 @@ label {
   display: flex;
   height: 160px;
   min-width: 200px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 /*열 flex*/
 .rowcontainer{
@@ -162,7 +162,7 @@ label {
 .review-date{
   align-self: flex-end;
   color: #6F6F6F;
-  font-size: 14px;
+  font-size: 9px;
   letter-spacing: 0.3px;
 }
 .review-profile{
@@ -171,11 +171,11 @@ label {
 }
 .review-id{
   color: #000;
-  font-size: 14px;
+  font-size: 12px;
 }
 .review-major{
   color: #000;
-  font-size: 14px;
+  font-size: 12px;
 }
 .review-hr{
   width:1px;
@@ -188,6 +188,7 @@ label {
   text-align: justify;
   padding-top: 5px;
   padding-bottom: 5px;
+  font-size: 15px;
 }
 .review-recommend-button{
   width: 80px;
@@ -217,19 +218,22 @@ label {
   height: 1px;
   background-color: #DDDDDD;
   color: #DDDDDD;
+  padding-bottom: 0px;
+  justify-self: baseline;
 }
 .review-img{
   align-self: center;
-  height: 160px;
+  justify-self: center;
+  height: 120px;
   width: auto;
 }
-/*******************************************************************************/
-/*******************************페이지7******************************************/
+/**************************************************************************************************************************************/
+/******************************************************************페이지7*************************************************************/
 .detail-review__page{
-  width: 993px;
-  height: 768px;
+  width: 70%;
+  height: 80%;
   border-radius: 50px;
-  background: #ffffff;
+  background: #747474;
   padding: 40px;
 }
 
