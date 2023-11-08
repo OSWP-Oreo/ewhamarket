@@ -10,6 +10,10 @@
     align-items: baseline;
     gap: 10px;
 }
+#regitem-container{
+    display: grid;
+    
+}
 .filter__flex-container{
     display: flex;
     align-items: center;
