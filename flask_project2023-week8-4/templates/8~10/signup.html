@@ -6,7 +6,7 @@
 </head>
 
 <body>
-   
+
     <!--통일된 헤더-네비게이션바와 다른 부분 수정해서 넣어두었습니다.-->
     <header>
         <div class="header">
@@ -20,10 +20,10 @@
     <!--내비게이션-->
     <nav class="navbar">
         <ul class="nav-list">
-            <li class="nav-item"><a href="#">상품등록</a></li>
-            <li class="nav-item"><a href="#">상품보기</a></li>
-            <li class="nav-item"><a href="#">리뷰작성</a></li>
-            <li class="nav-item"><a href="#">랭킹</a></li>
+            <li class="nav-item"><a href="1.html">상품등록</a></li>
+            <li class="nav-item"><a href="2.html">상품보기</a></li>
+            <li class="nav-item"><a href="5.html">리뷰작성</a></li>
+            <li class="nav-item"><a href="ranking.html">랭킹</a></li>
         </ul>
     </nav>
 
@@ -36,64 +36,74 @@
         <form>
             <div class="signup-inner">
                 <p class="warning-msg">*은 필수</p>
-                <label for="ID">*아이디: </label>
-                <input type="text" required id="ID" name="ID" placeholder="영문/숫자 조합" />
-                <button class="중복체크">중복확인</button><br /><br />
-                <!--중복체크 기능 구현 필요-->
-
-                <label for="PW">*비밀번호: </label>
-                <input type="password" required id="PW" name="PW" placeholder="영문/숫자 조합 8~16자" /><br /><br />
-
-                <label for="PWconfirm">*비밀번호 확인: </label>
-                <input type="password" required id="PWconfirm" name="PWconfirm" /><br /><br />
-
-                <label for="email">*이메일 주소: </label>
-                <input type="email" required id="email" name="email" /><br /><br />
-
-                <label for="HP">전화번호: </label>
-                <input type="tel" id="HP" name="HP" /><br /><br />
-
-                <label for="dropdown1, dropdown2">대학 / 학과: </label>
-                <select id="dropdown1">
-                    <option value="인문과학대학">인문과학대학</option>
-                    <option value="사회과학대학">사회과학대학</option>
-                    <option value="자연과학대학">자연과학대학</option>
-                    <option value="엘텍공과대학">엘텍공과대학</option>
-                    <option value="음악대학">음악대학</option>
-                    <option value="조형예술대학">조형예술대학</option>
-                    <option value="사범대학">사범대학</option>
-                    <option value="경영대학">경영대학</option>
-                    <option value="신산업융합대학">신산업융합대학</option>
-                    <option value="의과대학">의과대학</option>
-                    <option value="간호대학">간호대학</option>
-                    <option value="약학대학">약학대학</option>
-                    <option value="스크랜튼대학">스크랜튼대학</option>
-                    <option value="호크마교양대학">호크마교양대학</option>
-                </select>
-
-                <select id="dropdown2">
-                    <option value="국어국문학과">국어국문학과</option>
-                    <option value="중어중문학과">중어중문학과</option>
-                    <option value="불어불문학과">불어불문학과</option>
-                    <option value="독어독문학과">독어독문학과</option>
-                    <option value="사학과">사학과</option>
-                    <option value="철학과">철학과</option>
-                    <option value="기독교학과">기독교학과</option>
-                    <option value="영어영문학부">영어영문학부</option>
-                </select>
-                <br>
-                <br>
-
-                <label for="name">*닉네임: </label>
-                <input type="text" required id="name" name="name" />
-                <button class="중복체크">중복확인</button>
-                <br />
-                <br />
-                <!--중복체크 기능 구현 필요-->
-
-            </div>
-            <div class="light-blue-btn">
-                <button style="background-color: #00afb9; border: none; border-radius: 5px; width: 200px; color: white; font-size: 25px; "><b>가입하기</b></button>
+                <table style="height: 300px;">
+                    <tr>
+                        <th>*아이디</th>
+                        <td><input type="text" required id="ID" name="ID" placeholder="영문/숫자 조합" /></td>
+                        <td><button class="중복체크">중복확인</button></td>
+                    </tr>
+                    <tr>
+                        <th>*비밀번호</th>
+                        <td><input type="password" required id="PW" name="PW" placeholder="영문/숫자 조합 8~16자" /></td>
+                    </tr>
+                    <tr>
+                        <th>*비밀번호 확인</th>
+                        <td><input type="password" required id="PWconfirm" name="PWconfirm" /></td>
+                    </tr>
+                    <tr>
+                        <th>*이메일 주소</th>
+                        <td><input type="email" required id="email" name="email" /></td>
+                    </tr>
+                    <tr>
+                        <th>전화번호</th>
+                        <td><input type="tel" id="HP" name="HP" /></td>
+                    </tr>
+                    <tr>
+                        <th>대학 / 학과</th>
+                        <td>
+                            <select id="dropdown1" style="width:100%;">
+                                <option value="인문과학대학">인문과학대학</option>
+                                <option value="사회과학대학">사회과학대학</option>
+                                <option value="자연과학대학">자연과학대학</option>
+                                <option value="엘텍공과대학">엘텍공과대학</option>
+                                <option value="음악대학">음악대학</option>
+                                <option value="조형예술대학">조형예술대학</option>
+                                <option value="사범대학">사범대학</option>
+                                <option value="경영대학">경영대학</option>
+                                <option value="신산업융합대학">신산업융합대학</option>
+                                <option value="의과대학">의과대학</option>
+                                <option value="간호대학">간호대학</option>
+                                <option value="약학대학">약학대학</option>
+                                <option value="스크랜튼대학">스크랜튼대학</option>
+                                <option value="호크마교양대학">호크마교양대학</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="dropdown2" style="width:172px;">
+                                <option value="국어국문학과">국어국문학과</option>
+                                <option value="중어중문학과">중어중문학과</option>
+                                <option value="불어불문학과">불어불문학과</option>
+                                <option value="독어독문학과">독어독문학과</option>
+                                <option value="사학과">사학과</option>
+                                <option value="철학과">철학과</option>
+                                <option value="기독교학과">기독교학과</option>
+                                <option value="영어영문학부">영어영문학부</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>*닉네임</th>
+                        <td>
+                            <input type="text" required id="name" name="name" />
+                        </td>
+                        <td>
+                            <button class="중복체크">중복확인</button>
+                        </td>
+                    </tr>
+                </table>
+            </div><br><br>
+            <div>
+                <button class="btnFade btnDefaultblue" id="signup-btn"><b>가입하기</b></button>
             </div>
 
         </form>
@@ -101,5 +111,6 @@
 
     <link rel="stylesheet" href="../../static/style.css">
     <link rel="stylesheet" href="../../static/8~10Style.css">
+    <link rel="stylesheet" href="../../static/btn.css">
 </body>
 </html>
