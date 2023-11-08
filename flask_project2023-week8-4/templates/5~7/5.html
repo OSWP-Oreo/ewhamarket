@@ -3,47 +3,68 @@
         <head>
             <meta charset="UTF-8">
             <title>리뷰작성화면</title>
+            <link href="../../static/style.css" type="text/css" rel="stylesheet">
+            <link href="../../static/5~7style.css" rel="stylesheet">
+            
         </head>
         
         <body>
             {% include 'header-and-nav.html' %}
+            <main class="padding">
             <div class="main-header">
-                <h1 class="main-header">리뷰 작성</h1>
-                <link href="../../static/style.css" type="text/css" rel="stylesheet">
-             </div>
-
-                <div class = "review-info__box">
-                    <link href="../../static/5~7style.css" rel="stylesheet">
-                    <div class="box left"> <!--백엔드: 일단예시로 로고 사진 넣어둠. 나중에 해당 문서의 사진 불러오는걸로 바꾸기-->
-                        <img src="../../static/img/logo.png" width=100% height=auto alt="상품 예시 사진입니다">  
-                    </div>
-                    
-                    <!--리뷰 인포-->
-                    <div class = "box middle">
-                        <div class = "review-info__title">
-                            <span>
-                                오픈sw플랫폼 정리노트
-                            </span>
+                <h1 class="main-header">리뷰 작성</h1> 
+                <div class="main-hr__padding"></div><br>
+            </div>
+                <!---------------->
+                <div class="grid-container-wrapper">
+                    <div class="grid-container">
+                        <div class="box left">
+                        <img src="../../static/img/logo.png" width="100%"style="max-height: 180px;" alt="상품 예시 사진입니다">
                         </div>
-                    <!--리뷰 인포 두번째 줄 : 과목명 교수명 학수번호-->
-                        <div class = "review-info__text">
+                    
+                        <div class="box middle">
+                        <div class="review-info__title">
+                            <span>오픈sw플랫폼 정리노트</span>
+                        </div>
+                        <div class="review-info__text">
                             <span>오픈sw플랫폼</span>
                             <span>오세은 교수님</span>
                             <span>학수번호 00000</span>
-                        </div><br>
-                    <!--리뷰 인포 세번째 줄 : 작성자-->
-                        <div class = "review-info__text">
+                        </div>
+                        <div class="review-info__text">
                             <img src="../../static/img/logo.png" width="10%">
                             <span style="justify-content: center;">작성자 이름</span>
-                        </div>           
-                </div> 
-                    <!--오른쪽 별점-->
-                <div class = "box right">
-                    <!--별점하기-->
-                </div>
-                </div>
+                        </div>
+                        </div>
+                    
+                        <div class="box right">
+                        <form class="mb-3" name="myform" id="myform" method="post">
+                            <fieldset>
+                                <p id="selectedRating" class="rating-num">0.0</p>
+                                <input type="radio" name="reviewStar" value="5" id="rate1"><label for="rate1">★</label>
+                                <input type="radio" name="reviewStar" value="4" id="rate2"><label for="rate2">★</label>
+                                <input type="radio" name="reviewStar" value="3" id="rate3"><label for="rate3">★</label>
+                                <input type="radio" name="reviewStar" value="2" id="rate4"><label for "rate4">★</label>
+                                <input type="radio" name="reviewStar" value="1" id="rate5"><label for="rate5">★</label>
+                            </fieldset>
+                        </form>
+                        <script>
+                            const radioInputs = document.querySelectorAll('input[type="radio"]');
+                            const selectedRating = document.getElementById('selectedRating');
+
+                            radioInputs.forEach((input) => {
+                            input.addEventListener('change', () => {
+                                selectedRating.textContent = input.value + '.0';
+                            });
+                            });
+                        </script>
+                        </div>
+                    </div>
+                  </div>
+                <!---------------->
                 
-                <form style="padding-left: 15%; padding-right: 15%;">
+                
+                <form>
                     <h3>키워드</h3>
                     <button type="button" class="btn-clicked">자세한 설명</button>
                     <button type="button" class="btn-unclicked">핵심 위주</button>
@@ -62,9 +83,9 @@
                     <!--글자수 카운트 만들기-->
                     <!--사진 첨부-->
                     <div class = "oneLine">
-                        <h3>사진 첨부</h3>
+                        <h3>사진 첨부</h3><br>
                         <p>(선택)</p><br>
-                        
+                    </div>                        
                         <form method="post" enctype="multipart/form-data">
                             <div>
                                 <label for="chooseFile" class="file-button">
@@ -73,10 +94,11 @@
                             </div>
                             <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
                         </form>
-                    </div>
+
 
                     <!--제출 버튼-->
                     <input type="submit" value="등록"> 
-                </form>        
+                </form>
+            </main>            
     </body>
 </html>
