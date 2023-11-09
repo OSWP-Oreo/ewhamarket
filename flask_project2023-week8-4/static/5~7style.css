@@ -125,7 +125,7 @@ label {
 #chooseFile {
   visibility: hidden;
 }
-/*페이지 6*/
+/*페이지 6*/ 
 .review-summary__box{
 padding-left: 10%;
 padding-right: 10%;
@@ -231,16 +231,15 @@ padding-top: 1px;
 padding-bottom: 1px;
 gap: 7px;
 }
-
+#profile-rowcontainer{
+  align-items: center;
+}
+#review-rate{
+  font-size: 20px;
+}
 .review-title{
 font-size: 21px;
 align-items: flex-end
-}
-.review-date{
-align-self: flex-end;
-color: #6F6F6F;
-font-size: 9px;
-letter-spacing: 0.3px;
 }
 .review-profile{
 height: 20px;
@@ -255,9 +254,9 @@ color: #000;
 font-size: 12px;
 }
 .review-hr{
-width:1px;
+width:0.5px;
+height: 20px;
 border-width:0;
-color:#BCBCBC;
 background-color:#BCBCBC;
 }
 
@@ -273,17 +272,6 @@ height: 30px;
 display: flex;
 align-items: center;
 justify-content: center;
-border-radius: 30px;
-border: 0.5px solid #ADADAD;
-background: rgba(247, 247, 247, 0.50);
-padding-bottom: 0px;
-}
-.review-reply-button{
-width: 60px;
-height: 30px;
-display: flex;
-justify-content: center;
-align-items: center;
 border-radius: 30px;
 border: 0.5px solid #ADADAD;
 background: rgba(247, 247, 247, 0.50);
@@ -333,8 +321,24 @@ text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 }
 .rating-num{
 text-align: center;
-font-size: 30px;
+align-items: baseline;
+font-size: 24px;
 }
+.rating-container {
+  display: flex;
+  align-items: center;
+}
+
+.rating-star {
+  font-size: 40px;
+  cursor: default;
+  color: #ccc; /* 빈 별 색상 */
+}
+
+.rating-star.filled {
+  color: rgba(250, 208, 0, 0.99); /* 채워진 별 색상 */
+}
+
 
 /******************************************************************페이지7*************************************************************/
 .detail-review-container{
@@ -358,31 +362,27 @@ display: inline-block;
 width: 70%;
 height:auto;
 border-radius: 50px;
-background: #747474;
+background: #ffffff;
 padding: 40px;
 box-sizing: border-box;
 }
+
 .detail-review-title{
-font-size: 28px;
+font-size: 23px;
 align-items: flex-end;
 }
-.detail-review-date{
-align-self: flex-end;
-color: #6F6F6F;
-font-size: 18px;
-letter-spacing: 0.3px;
-}
+
 .detail-review-profile{
 height: 20px;
 width: 20px;
 }
 .detail-review-id{
 color: #4E4E4E;
-font-size: 18px;
+font-size: 12px;
 }
 .detail-review-major{
 color: #4E4E4E;
-font-size: 18px;
+font-size: 12px;
 }
 .detail-review-tag{
 width: 100px;
@@ -395,27 +395,33 @@ background-color: #ffffff;
 }
 .detail-review-main{
 text-align: justify;
-padding-top: 5px;
-padding-bottom: 5px;
+padding-top: 20px;
+padding-bottom: 20px;
 font-size: 15px;
 }
 #detail-review-rate{
   font-size: 12px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+#detail-review-tag-button{
+  height: 30px;
+  font-size: 12px;
+  margin-bottom: 0px;
 }
 .detail-review-recommend-button{
-width: 80px;
-height: 30px;
-display: flex;
-align-items: center;
-justify-content: center;
-border-radius: 30px;
-border: 0.5px solid #ADADAD;
-background: rgba(247, 247, 247, 0.50);
-padding-bottom: 0px;
+  width: 80px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  border: 0.5px solid #ADADAD;
+  background: rgba(247, 247, 247, 0.50);
+  padding-bottom: 0px;
 }
 
 .detail-review-img{
-align-self: center;
-height: 160px;
+height: 80%;
 width: auto;
 }
