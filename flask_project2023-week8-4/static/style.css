@@ -78,6 +78,19 @@ header {
   font-weight: bold;
 }
 
+#my-point{
+  display: flex;
+  justify-content: flex-end;
+}
+
+#my-point-container{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 200px;
+}
+
+
 /*페이지 컨텐츠 제목*/
 .contents-title {
   display: inline;
