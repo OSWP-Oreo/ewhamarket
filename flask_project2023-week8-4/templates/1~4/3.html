@@ -7,10 +7,10 @@
 <head>
     <meta charset="UTF-8">
     <title>상품세부화면</title>
-    <link href="/static/1~4style.css" type="text/css" rel="stylesheet">
-    <link href="/static/style.css" type="text/css" rel="stylesheet">
-    <link href="/static/btn.css" type="text/css" rel="stylesheet">
-    <script src="/static/1~4main.js"></script>
+    <link href="../../static/1~4style.css" type="text/css" rel="stylesheet">
+    <link href="../../static/style.css" type="text/css" rel="stylesheet">
+    <link href="../../static/btn.css" type="text/css" rel="stylesheet">
+    <script src="../../static/1~4main.js"></script>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
                     (2)이미지 클릭 시 그 이미지가 제일 큰 이미지창에 보이도록-->
             <!--추후 js 백엔드 연결 시 사진 삭제-->
             <div><!--대표이미지main. 1,2,3 서브이미지 중 하나 확대. default는 img-1-->
-                <img class="item-detail__main-img" src="/static/img/logo.png">
+                <img class="item-detail__main-img" src="../../static/img/logo.png">
             </div>
             <div class="item-card__info"><!--아이템 정보-->
                 <div class="item-card__course-and-prof">
@@ -44,18 +44,18 @@
 
                 <div class="price-rate-container">
                     <span class="item-card__price">
-                        <img class="input-img" src="/static/img/point.svg" style="margin-right: 5px;">
+                        <img class="input-img" src="../../static/img/point.svg" style="margin-right: 5px;">
                         <!--가격 백엔드에서 불러오기-->
                         1000
                     </span>
                     <span class="item-card__rate">
                         <span class="item-card__download" style="margin-right: 10px;">
-                            <img class="input-img" src="/static/img/download.svg">
+                            <img class="input-img" src="../../static/img/download.svg">
                             <!--다운로드/판매횟수 백엔드에서 불러오기-->
                             28
                         </span>
                         <span class="item-card__star">
-                            <img class="input-img" src="/static/img/star.svg">
+                            <img class="input-img" src="../../static/img/star.svg">
                             <!--별점 백엔드에서 불러오기-->
                             4.8
                         </span>
@@ -79,13 +79,13 @@
                 </div>
             </div>
             <div class="item-detail__sub-img-container"><!-- 서브이미지-->
-                <img id="item-info__img-1" class="item-detail__sub-img" src="/static/img/logo.png">
-                <img id="item-info__img-2" class="item-detail__sub-img" src="/static/img/logo.png">
-                <img id="item-info__img-3" class="item-detail__sub-img" src="/static/img/logo.png">
+                <img id="item-info__img-1" class="item-detail__sub-img" src="../../static/img/logo.png">
+                <img id="item-info__img-2" class="item-detail__sub-img" src="../../static/img/logo.png">
+                <img id="item-info__img-3" class="item-detail__sub-img" src="../../static/img/logo.png">
                 <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
             </div>
             <!--구매 버튼-->
-                <a href="/1~4/4.html" title="to-payment" id="order-btn" class="button btnFade btnDefaultblue">바로
+                <a href="../../1~4/4.html" title="to-payment" id="order-btn" class="button btnFade btnDefaultblue">바로
                     구매하기</a>
            
 
@@ -94,7 +94,7 @@
                 <!--js: 클릭 시 상세설명이 보이도록-->
                 <span><button id="descr-btn" class="button btnFade btnNavblue">상세 설명</button></span>
                 <!--js: 클릭 시 리뷰 요약이 보이도록.안되면 전체 리뷰 창으로 이동-->
-                <span><a href="/5~7/6.html" id="review-btn" class="button btnFade btnNavblue">리뷰</a></span>
+                <span><a href="../../5~7/6.html" id="review-btn" class="button btnFade btnNavblue">리뷰</a></span>
                 <!--내용-->
                 <div id="order__show-view-rate">
                     <!--리뷰내용--> <!--백엔드: 리뷰 내용 받아오기-->
