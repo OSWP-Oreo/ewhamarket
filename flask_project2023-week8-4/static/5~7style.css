@@ -94,7 +94,7 @@ label {
 #chooseFile {
   visibility: hidden;
 }
-/*페이지 6*/ 
+/*페이지 6*/
 .review-summary__box{
 padding-left: 10%;
 padding-right: 10%;
@@ -302,24 +302,8 @@ text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 }
 .rating-num{
 text-align: center;
-align-items: baseline;
-font-size: 24px;
+font-size: 30px;
 }
-.rating-container {
-  display: flex;
-  align-items: center;
-}
-
-.rating-star {
-  font-size: 40px;
-  cursor: default;
-  color: #ccc; /* 빈 별 색상 */
-}
-
-.rating-star.filled {
-  color: rgba(250, 208, 0, 0.99); /* 채워진 별 색상 */
-}
-
 
 /******************************************************************페이지7*************************************************************/
 .detail-review__page{
