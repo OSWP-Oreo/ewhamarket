@@ -14,7 +14,6 @@
 
 #regitem-container {
     display: grid;
-
 }
 
 .filter__flex-container {
@@ -61,6 +60,7 @@
 }
 
 #regitem {
+    
     display: grid;
     width: 60%;
     justify-items: stretch;
@@ -79,6 +79,14 @@
         "uploadImage input-uploadImage"
         "   submit         submit     ";
 }
+@media (min-width:973px) {
+    #regitem{
+        grid-template-columns: 70px 500px;
+    }
+    #regitem{
+        width:580px;
+    }
+  }
 /*1row*/
 #regitem-itemname {
     grid-area: itemname;
