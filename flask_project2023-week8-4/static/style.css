@@ -54,29 +54,38 @@ header {
 .navbar {
   background-color: #cfe2e4;
   text-align: center;
-  height: 60px;
+  height: 50px;
 }
 
 .nav-list {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
+    list-style: none;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
 }
+
+    .nav-item:hover {
+        background-color: #0081a7;
+    }
 
 .nav-item {
-  margin: 0 60px;
-  position: relative;
-  top: 20px;
+    margin: 0;
+    position: relative;
+    height: 100%;
+    width: 180px;
 }
 
-.nav-item a {
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
-}
+    .nav-item a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        height: 100%;
+        width: 100%;
+        line-height:50px;
+    }
 
 /*페이지 컨텐츠 제목*/
 .contents-title {
