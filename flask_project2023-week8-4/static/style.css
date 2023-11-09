@@ -81,6 +81,7 @@ header {
 #my-point{
   display: flex;
   justify-content: flex-end;
+  color: var(--red);
 }
 
 #my-point-container{
