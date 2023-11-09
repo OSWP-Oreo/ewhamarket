@@ -253,7 +253,7 @@ th {
 }
 
 #search-item input[type="search"] {
-    background-image: url(/static/img/search_icon.svg);
+    background-image: url(../../static/img/search_icon.svg);
     width: 70%;
     margin: 5pt;
 }

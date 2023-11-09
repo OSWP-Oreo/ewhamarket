@@ -422,6 +422,7 @@ font-size: 15px;
 }
 
 .detail-review-img{
-height: 80%;
-width: auto;
+  max-height: 400px;
+  height: auto;
+  width: auto;
 }
