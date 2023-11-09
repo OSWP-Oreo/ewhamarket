@@ -5,8 +5,7 @@
             <title>리뷰작성화면</title>
             <link href="../../static/style.css" type="text/css" rel="stylesheet">
             <link href="../../static/5~7style.css" rel="stylesheet">
-            <link href="/static/btn.css" type="text/css" rel="stylesheet">
-            <script src="/static/1~4main.js"></script>
+            <link href="../../static/btn.css" type="text/css" rel="stylesheet">
         </head>
         
         <body>
@@ -62,7 +61,6 @@
                         </div>
                     </div>
                   </div>
-                <!---------------->
                 
                 
                 <form>
@@ -73,9 +71,10 @@
                 
                 
                     <h3>상세 리뷰</h3>
-                    <input style="width: 100%;" type="text" id="title" name="title" placeholder="리뷰의 제목을 입력해주세요">
-                    <textarea style="width: 100%;" rows="7" id="title" name="title" maxlength="3000" 
-                    placeholder="상품에 대한 리뷰를 작성해주세요
+                    <input type="text" id="title" name="title" class="input-review-title" placeholder="리뷰의 제목을 입력해주세요">
+                    <textarea style="width: 100%;" rows="7" id="title" name="title" class="input-review-main" 
+                    placeholder=
+                    "상품에 대한 리뷰를 작성해주세요
 
 정확하고 중요한 정보인가요?
 체계적으로 정리되어 있나요?
@@ -85,20 +84,21 @@
                     <!--사진 첨부-->
                     <div class = "oneLine">
                         <h3>사진 첨부</h3><br>
-                        <p>(선택)</p><br>
-                    </div>                        
+                        <p>(선택) 0/5</p><br>
+                    </div>
                         <form method="post" enctype="multipart/form-data">
                             <div>
                                 <label for="chooseFile" class="file-button">
                                     add image<br>+
                                 </label>
                             </div>
+
                             <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
                         </form>
 
 
                     <!--제출 버튼-->
-                    <input type="submit" value="등록"> 
+                    <input type="submit" value="등록" class="button btnDefaultblue btnFade" id="submit"> 
                 </form>
             </main>            
     </body>
