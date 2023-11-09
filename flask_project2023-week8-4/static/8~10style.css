@@ -17,8 +17,8 @@
 
 .ranking-inner {
     font-size: 15px;
-    padding-left: 150px;
-    text-align: left;
+    padding: 0 20% 0 20%;
+    text-align: center;
 }
 
     .ranking-inner img {
