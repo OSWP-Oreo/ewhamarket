@@ -3,42 +3,24 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <link rel="stylesheet" href="../../static/style.css">
+    <link rel="stylesheet" href="../../static/8~10Style.css">
+    <link rel="stylesheet" href="../../static/btn.css">
 </head>
 
 <body>
-
-    <!--통일된 헤더-네비게이션바와 다른 부분 수정해서 넣어두었습니다.-->
-    <header>
-        <div class="header">
-            <!--logo-->
-            <div id="logo-container">
-                <a href="/index"><img id="logo" src="../../static/img/logo.png"></a>
-            </div>
-        </div>
-    </header>
-
-    <!--내비게이션-->
-    <nav class="navbar">
-        <ul class="nav-list">
-            <li class="nav-item"><a href="../../1~4/1">상품등록</a></li>
-            <li class="nav-item"><a href="../../1~4/2">상품보기</a></li>
-            <li class="nav-item"><a href="../../5~7/5">리뷰작성</a></li>
-            <li class="nav-item"><a href="ranking">랭킹</a></li>
-        </ul>
-    </nav>
+    {% include 'header-and-nav.html' %}
+    {% block section %}
+    {% with mesg = get_flashed_messages() %}
+    {% if mesg !=[] %}
+    <script>alert("{{ mesg[0] }}")</script>
+    {% endif %}
+    {% endwith %}
 
     <div class="main-header">
         <h1 class="main-header__title"> 로그인 </h1>
         <hr class="main-hr">
     </div>
-
-    {% extends "index.html" %}
-    {% block section %}
-    {% with mesg = get_flashed_messages() %}
-    {% if mesg !=[] %}
-    <script>alert("{{mesg[0]}}")</script>
-    {% end if %}
-
     <div class="outer">
         <div class="login-inner">
             <form action="/login_confirm" method="post">
@@ -58,8 +40,6 @@
 
     {% endblock section %}
 
-    <link rel="stylesheet" href="../../static/style.css">
-    <link rel="stylesheet" href="../../static/8~10Style.css">
-    <link rel="stylesheet" href="../../static/btn.css">
+
 </body>
 </html>
