@@ -31,9 +31,19 @@
         <h1 class="main-header__title"> 회원가입 </h1>
         <hr class="main-hr">
     </div>
+
     <link href="../../static/style.css" rel="stylesheet" />
+
+    {% extends "index.html" %}
+    {% block section %}
+    {% with mesg = get_flashed_messages() %}
+    {% if mesg !=[] %}
+    <script>alert("{{ mesg[0] }}")</script>
+    {% endif %}
+    {% endwith %}
+
     <div class="outer">
-        <form>
+        <form method="post" action="/signup_post">
             <div class="signup-inner">
                 <p class="warning-msg">*은 필수</p>
                 <table style="height: 300px;">
@@ -108,6 +118,7 @@
 
         </form>
     </div>
+    {% endblock section %}
 
     <link rel="stylesheet" href="../../static/style.css">
     <link rel="stylesheet" href="../../static/8~10Style.css">

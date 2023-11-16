@@ -32,9 +32,16 @@
         <hr class="main-hr">
     </div>
 
+    {% extends "index.html" %}
+    {% block section %}
+    {% with mesg = get_flashed_messages() %}
+    {% if mesg !=[] %}
+    <script>alert("{{mesg[0]}}")</script>
+    {% end if %}
+
     <div class="outer">
         <div class="login-inner">
-            <form>
+            <form action="/login_confirm" method="post">
                 <br><br><br>
                 <div class="submit-btn">
                     <input required id="input-ID" type="text" name="input-ID" placeholder="아이디를 입력하세요"><br><br>
@@ -48,6 +55,8 @@
             </form>
         </div>
     </div>
+
+    {% endblock section %}
 
     <link rel="stylesheet" href="../../static/style.css">
     <link rel="stylesheet" href="../../static/8~10Style.css">
