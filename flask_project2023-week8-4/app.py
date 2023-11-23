@@ -28,17 +28,17 @@ def view_order_confirmation():
     return render_template("1~4/4.html")
 
 # 5~7
-@application.route("/5~7/5")
+@application.route("/5~7/reg_reviews")
 def view_reg_review():
-    return render_template("5~7/5.html")
+    return render_template("5~7/reg_reviews.html")
 
-@application.route("/5~7/6")
+@application.route("/5~7/review")
 def view_reviews():
-    return render_template("5~7/6.html")
+    return render_template("5~7/review.html")
 
-@application.route("/5~7/7")
+@application.route("/5~7/detail")
 def view_review_detail():
-    return render_template("5~7/7.html")
+    return render_template("5~7/detail.html")
 
 
 # 8~10
