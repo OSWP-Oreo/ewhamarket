@@ -1,5 +1,6 @@
 <!DOCTYPE html>
     <html>
+        {% block section %}
         <head>
             <meta charset="UTF-8">
             <title>리뷰작성화면</title>
@@ -9,7 +10,7 @@
         </head>
         
         <body>
-            {% include 'header-and-nav.html' %}
+            {% extends "index.html" %}
             <main class="padding" id="min_width_600">
                 <div class="main-header">
                     <h1 class="main-header">리뷰 작성</h1> 
@@ -98,4 +99,5 @@
                     </form>
             </main>            
     </body>
+    {% endblock section %}
 </html>

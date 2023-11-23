@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    {% block section %}
     <head>
         <meta charset="UTF-8">
         <title>상품등록</title>
@@ -10,7 +11,7 @@
     <body>
         {% include 'header-and-nav.html' %}
 
-        <main class="padding">
+        <main class="padding" id="min_width_600">
             <!--페이지 정보-->
             <div class="main-header-left">
                 <div class="oneLine">
@@ -132,4 +133,5 @@
             
         </main>
     </body>
+    {% endblock section %}
 </html>
