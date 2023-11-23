@@ -13,7 +13,7 @@ class DBhandler:
         user_info={
             "id": data['id'],
             "pw":pw,
-            "equalpw":data['PWconfirm'],
+            "pw2":data['PWconfirm'],
             "email":data['email'],
             "hp":data['HP'],
             "college":data['dropdown1'],
@@ -48,6 +48,7 @@ class DBhandler:
             if value['nickname'] == name_string:
                 return False
         return True
+
     #유저 찾기
     def find_user(self, id_, pw_):
         users = self.db.child("user").get()
