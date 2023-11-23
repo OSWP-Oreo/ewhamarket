@@ -55,6 +55,7 @@ def register_user():
     data=request.form
     id=request.form['id']
     pw=request.form['pw']
+    pw2=request.form['PWconfirm']
     nname=request.form['nickname']
     pw_hash=hashlib.sha256(pw.encode('utf-8')).hexdigest()
     #아이디중복확인
@@ -74,14 +75,18 @@ def register_user():
         else:
             flash('이미 존재하는 닉네임입니다.')
             return render_template("8~10/signup.html")
-
-
-    if DB.insert_user(data,pw_hash):
-        flash("회원가입되었습니다.")
-        return render_template("8~10/login.html")
-    else:
-        flash("중복확인를 눌러주세요")
+    if pw!=pw2:
+        flash("비밀번호를 확인해주세요")
         return render_template("8~10/signup.html")
+    else:
+        if DB.insert_user(data,pw_hash):
+            flash("회원가입되었습니다.")
+            return render_template("8~10/login.html")
+        else:
+            flash("중복확인를 눌러주세요")
+            return render_template("8~10/signup.html")
+
+    
 
 # 로그인 하기
 @application.route("/login")
