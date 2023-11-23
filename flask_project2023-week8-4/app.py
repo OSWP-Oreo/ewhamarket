@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request 
+from database import DBhandler
 import sys
 application = Flask(__name__)
+
+DB = DBhandler()
  
 @application.route("/") 
 def hello():
