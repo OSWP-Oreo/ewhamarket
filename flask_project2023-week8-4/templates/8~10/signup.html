@@ -24,18 +24,19 @@
     </div>
 
     <div class="outer">
-        <form method="post" action="/signup_post">
+        <form method="post" action="/signup_post" enctype="multipart/form-data">
             <div class="signup-inner">
                 <p class="warning-msg">*은 필수</p>
                 <table style="height: 300px;">
                     <tr>
                         <th>*아이디</th>
-                        <td><input type="text" required id="ID" name="ID" placeholder="영문/숫자 조합" /></td>
-                        <td><button class="중복체크">중복확인</button></td>
+                        <td><input type="text" required id="id" name="id" placeholder="영문/숫자 조합" /></td>
+                        <td><button name="check_duplicate_id"class="중복체크">중복확인</button></td>
+                        </form>
                     </tr>
                     <tr>
                         <th>*비밀번호</th>
-                        <td><input type="password" required id="PW" name="PW" placeholder="영문/숫자 조합 8~16자" /></td>
+                        <td><input type="password" required id="pw" name="pw" placeholder="영문/숫자 조합 8~16자" /></td>
                     </tr>
                     <tr>
                         <th>*비밀번호 확인</th>
@@ -52,7 +53,7 @@
                     <tr>
                         <th>대학 / 학과</th>
                         <td>
-                            <select id="dropdown1" style="width:100%;">
+                            <select id="dropdown1" name="dropdown1" style="width:100%;">
                                 <option value="인문과학대학">인문과학대학</option>
                                 <option value="사회과학대학">사회과학대학</option>
                                 <option value="자연과학대학">자연과학대학</option>
@@ -70,7 +71,7 @@
                             </select>
                         </td>
                         <td>
-                            <select id="dropdown2" style="width:172px;">
+                            <select id="dropdown2" name="dropdown2" style="width:172px;">
                                 <option value="국어국문학과">국어국문학과</option>
                                 <option value="중어중문학과">중어중문학과</option>
                                 <option value="불어불문학과">불어불문학과</option>
@@ -85,16 +86,16 @@
                     <tr>
                         <th>*닉네임</th>
                         <td>
-                            <input type="text" required id="name" name="name" />
+                            <input type="text" required id="nickname" name="nickname" />
                         </td>
                         <td>
-                            <button class="중복체크">중복확인</button>
+                            <button name="check_duplicate_nickname" class="중복체크">중복확인</button>
                         </td>
                     </tr>
                 </table>
             </div><br><br>
             <div>
-                <button class="btnFade btnDefaultblue" id="signup-btn"><b>가입하기</b></button>
+                <input type="submit" class="btnFade btnDefaultblue" id="signup-btn" value="가입하기" ><b></b></button>
             </div>
 
         </form>
