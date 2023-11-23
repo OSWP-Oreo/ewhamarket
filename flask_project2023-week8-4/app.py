@@ -11,21 +11,21 @@ def comback_home():
     return render_template("index.html")
 
 # 1~4
-@application.route("/1~4/item_reg")
+@application.route("/1~4/1")
 def view_reg_items():
-    return render_template("1~4/item_reg.html")
+    return render_template("1~4/1.html")
 
-@application.route("/1~4/view_item")
+@application.route("/1~4/2")
 def view_items():
-    return render_template("1~4/view_item.html")
+    return render_template("1~4/2.html")
 
-@application.route("/1~4/item_detail")
+@application.route("/1~4/3")
 def view_item_detail():
-    return render_template("1~4/item_detail.html")
+    return render_template("1~4/3.html")
 
-@application.route("/1~4/order")
+@application.route("/1~4/4")
 def view_order_confirmation():
-    return render_template("1~4/order.html")
+    return render_template("1~4/4.html")
 
 # 5~7
 @application.route("/5~7/reg_reviews")
