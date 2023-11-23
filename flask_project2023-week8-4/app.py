@@ -36,9 +36,9 @@ def view_reg_review():
 def view_reviews():
     return render_template("5~7/review.html")
 
-@application.route("/5~7/detail")
+@application.route("/5~7/review_detail")
 def view_review_detail():
-    return render_template("5~7/detail.html")
+    return render_template("5~7/review_detail.html")
 
 
 # 8~10
