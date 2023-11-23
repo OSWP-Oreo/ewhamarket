@@ -27,9 +27,14 @@ def view_items():
 def view_item_detail():
     return render_template("1~4/3.html")
 
-@application.route("/1~4/4")
+@application.route("/order_item")
 def view_order_confirmation():
+    #구매한후 구매자 포인트 감소
+    flash('1000포인트가 차감되었습니다')
+    DB.update_point(session['id'], 1000)
+    DB.update_ranking_point(session['id'], 1000)
     return render_template("1~4/4.html")
+
 
 # 5~7
 @application.route("/5~7/reg_reviews")
@@ -58,6 +63,7 @@ def register_user():
     pw2=request.form['PWconfirm']
     nname=request.form['nickname']
     pw_hash=hashlib.sha256(pw.encode('utf-8')).hexdigest()
+    pw_hash2=hashlib.sha3_256(pw.encode('utf-8')).hexdigest()
     #아이디중복확인
     if 'check_duplicate_id' in request.form:
         if DB.id_duplicate_check(id):
@@ -79,7 +85,7 @@ def register_user():
         flash("비밀번호를 확인해주세요")
         return render_template("8~10/signup.html")
     else:
-        if DB.insert_user(data,pw_hash):
+        if DB.insert_user(data,pw_hash,pw_hash2):
             flash("회원가입되었습니다.")
             return render_template("8~10/login.html")
         else:

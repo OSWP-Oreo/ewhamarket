@@ -15,6 +15,12 @@
 
 <body> <!--1,8 가로폭 지정-->
     {% include 'header-and-nav.html'%}
+    {% block section %}
+    {% with mesg = get_flashed_messages() %}
+    {% if mesg !=[] %}
+    <script>alert("{{ mesg[0] }}")</script>
+    {% endif %}
+    {% endwith %}
     <main class="padding">
         <section>
             <!-------------------------구매완료안내----------------------->
@@ -64,7 +70,7 @@
             </div>
         </section>
     </main>
-
+    {% endblock section %}
 </body>
 
 </html>
