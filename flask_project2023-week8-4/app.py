@@ -53,6 +53,21 @@ def view_reviews():
 def view_review_detail():
     return render_template("5~7/review_detail.html")
 
+#상품이름 가지고 와서 리뷰작성페이지 오픈
+@application.route("/reg_review_init/<name>/")  
+def reg_review_init(name):                      
+    return render_template("reg_reviews.html", name=name)
+#상품명말고도 추가로 가져올 것 나중에 수정
+
+#작성된 리뷰 데이터 넘겨줌
+@application.route("/submit_review_post", methods=['POST']) 
+def submit_review_post():
+    image_file=request.files["chooseFile"]
+    image_file.save("static/images/{}".format(image_file.filename))
+    data=request.form                                       
+    DB.reg_review(data['name'], data, image_file.filename)   
+
+    return render_template("review.html", data=data,img_path="static/images/{}".format(image_file.filename))  ## 전쳬리뷰화면보여줌
 
 # 8~10
 #회원가입
