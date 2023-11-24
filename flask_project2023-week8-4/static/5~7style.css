@@ -27,14 +27,13 @@
   font-family: Inter;
   font-size: 30px;
   font-style: normal;
-  font-weight: 500;
   line-height: normal;
   letter-spacing: 0.72px;
-}
-#review-info__title{
   margin-top: 0px; 
-  margin-bottom: 15px;
+  margin-bottom: 0px;
+  border: none;
 }
+
 .review-info__text{
   color: #343434;
   font-family: Inter;
@@ -42,6 +41,9 @@
   font-style: normal;
   line-height: normal;
   display: flex;
+  border: none;
+  width:auto;
+  text-align: center;
 }
 /*그리드*/
 .grid-container-wrapper {
@@ -114,6 +116,10 @@ grid-area: right;
   text-align: center;
   text-align : center;
   padding-top: 50px;
+}
+#add-image{
+  font-size: 20px;
+  margin-top: 0%;
 }
 label {
   cursor: pointer;
