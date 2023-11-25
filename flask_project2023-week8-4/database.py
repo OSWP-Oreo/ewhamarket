@@ -87,6 +87,7 @@ class DBhandler:
     #리뷰 데이터베이스에 저장
     def reg_review(self, data, img_path):
         review_info ={
+            "name": data['name'],
             "title": data['title'],
             #"review": data['review'],
             "rate": data['reviewStar'],
@@ -94,21 +95,21 @@ class DBhandler:
             "img_path": img_path,
             "reviewer": session['id']
         }
-        self.db.child("review").child(data['name']).child(session['id']).set(review_info) 
+        name_id = data['name'] + '_' + session['id']
+        self.db.child("review").child(name_id).set(review_info)
         return True
     
     #상품별 리뷰 불러오기
     def get_reviews(self, target_name):
-        all_review = self.db.child("review").get()
+        all_review = self.db.child("review").get().val()
         target_reviews = {}
         
         for review in all_review.each():
-            name = review.key()
-            review_data = review.val()
+            name = all_review.child("name").get()
             if name == target_name:
-                target_reviews[name] = review_data
+                target_reviews[review.key()] = review.val()
     
-        return target_reviews.val()
+        return target_reviews
 
     #전체리뷰불러오기
     def get_all_reviews(self):
