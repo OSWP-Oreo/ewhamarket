@@ -45,10 +45,6 @@ def view_order_confirmation():
 def view_reg_review():
     return render_template("5~7/reg_reviews.html")
 
-@application.route("/5~7/review")
-def view_reviews():
-    return render_template("5~7/review.html")
-
 @application.route("/5~7/review_detail")
 def view_review_detail():
     return render_template("5~7/review_detail.html")
@@ -72,6 +68,33 @@ def reg_reviews():
     data=request.form
     DB.reg_review(data, image_file.filename)
     return redirect(url_for('view_all_review'))
+
+#전체리뷰화면
+@application.route("/5~7/review")     # html 필요
+def view_all_review():
+    page = request.args.get("page", 0, type=int)
+    per_page=6 # 한페이지에 리뷰 6개
+    per_row=1  # 1줄에 하나씩
+    row_count=int(per_page) #한페이지에 표시할 행 개수(6개)
+    start_idx=per_page*page #현재페이지에 보여줄 리뷰의 시작인덱스
+    end_idx=per_page*(page+1) #현재페이지에 보여줄 리뷰의 끝 인덱스
+    
+    data = DB.get_all_reviews()
+    #전체 리뷰의 개수 계산
+    item_counts = len(data)
+    #현재페이지에 보여줄 리뷰들만 읽어오기
+    data = dict(list(data.items())[start_idx:end_idx]) 
+    #현재페이지에서 실제로 보여지는 개수
+    tot_count = len(data)
+    for i in range(row_count): #행 개수만큼 반복(6번)
+        if (i == row_count-1): #마지막 행일 경우
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
+        else: #마지막 행이 아닌 경우
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
+    return render_template("/5-7/review.html", datas=data.items(), row1=locals()['data_0'].items(), row2=locals()['data_1'].items(),
+                           row3=locals()['data_2'].items(), row4=locals()['data_3'].items(),row5=locals()['data_4'].items(), row6=locals()['data_5'].items(),
+                           limit=per_page, page=page, page_count=int((item_counts/per_page)+1), total=item_counts)
+
 
 # 8~10
 
