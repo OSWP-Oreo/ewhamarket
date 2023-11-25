@@ -96,3 +96,21 @@ class DBhandler:
         }
         self.db.child("review").child(data['name']).child(session['id']).set(review_info) 
         return True
+    
+    #상품별 리뷰 불러오기
+    def get_reviews(self, target_name):
+        all_review = self.db.child("review").get()
+        target_reviews = {}
+        
+        for review in all_review.each():
+            name = review.key()
+            review_data = review.val()
+            if name == target_name:
+                target_reviews[name] = review_data
+    
+        return target_reviews.val()
+
+    #전체리뷰불러오기
+    def get_all_reviews(self):
+        reviews = self.db.child("review").get().val()
+        return reviews
