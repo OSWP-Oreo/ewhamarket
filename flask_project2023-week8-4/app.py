@@ -64,7 +64,6 @@ def reg_review_init(name):
     reviewer = session['id']
     return render_template("reg_reviews.html", reviewer=reviewer, name=name, subject=subject, professor=professor, subject_id=subject_id)
 
-
 #작성된 리뷰 데이터 넘겨줌
 @application.route("/reg_reviews", methods=['POST'])
 def reg_reviews():
