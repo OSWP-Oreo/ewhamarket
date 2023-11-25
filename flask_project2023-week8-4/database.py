@@ -83,3 +83,16 @@ class DBhandler:
             }
             self.db.child("user").child(user_id).update(point_info)
         return True
+    
+    #리뷰 데이터베이스에 저장
+    def reg_review(self, data, img_path):
+        review_info ={
+            "title": data['title'],
+            #"review": data['review'],
+            "rate": data['reviewStar'],
+            #"keyword": data['keyword'],
+            "img_path": img_path,
+            "reviewer": session['id']
+        }
+        self.db.child("review").child(data['name']).child(session['id']).set(review_info) 
+        return True
