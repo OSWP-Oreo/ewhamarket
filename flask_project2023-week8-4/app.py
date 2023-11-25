@@ -75,6 +75,7 @@ def reg_reviews():
     return redirect(url_for('view_all_review'))
 
 # 8~10
+
 #회원가입
 @application.route("/signup")
 def signup():
