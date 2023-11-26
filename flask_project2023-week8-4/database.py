@@ -85,17 +85,17 @@ class DBhandler:
         return True
     
     #리뷰 데이터베이스에 저장
-    def reg_review(self, data, img_path):
+    def reg_review(self, data, user_id, img_path):
         review_info ={
             "name": data['name'],
             "title": data['title'],
-            #"review": data['review'],
+            "review": data['review'],
             "rate": data['reviewStar'],
             #"keyword": data['keyword'],
             "img_path": img_path,
-            "reviewer": session['id']
+            "reviewer": user_id 
         }
-        name_id = data['name'] + '_' + session['id']
+        name_id = data['name'] + '_' + user_id
         self.db.child("review").child(name_id).set(review_info)
         return True
     
@@ -105,7 +105,7 @@ class DBhandler:
         target_reviews = {}
         
         for review in all_review.each():
-            name = all_review.child("name").get()
+            name = all_review.child("name").get().val()
             if name == target_name:
                 target_reviews[review.key()] = review.val()
     
@@ -115,3 +115,14 @@ class DBhandler:
     def get_all_reviews(self):
         reviews = self.db.child("review").get().val()
         return reviews
+    
+    #이름으로 리뷰불러오기
+    def get_item_byname(self, name):
+        reviews = self.db.child("review").get()
+        target_value=""
+        print("###########",name)
+        for res in reviews.each():
+            key_value = res.key()
+            if key_value == name:
+                target_value=res.val()
+        return target_value

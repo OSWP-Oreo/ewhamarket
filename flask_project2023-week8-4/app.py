@@ -45,9 +45,9 @@ def view_order_confirmation():
 def view_reg_review():
     return render_template("5~7/reg_reviews.html")
 
-@application.route("/5~7/review_detail")
-def view_review_detail():
-    return render_template("5~7/review_detail.html")
+#@application.route("/5~7/review_detail")
+#def view_review_detail():
+#   return render_template("5~7/review_detail.html")
 
 #상품이름 가지고 와서 리뷰작성페이지 오픈
 @application.route("/reg_review_init/<name>/")  
@@ -63,10 +63,15 @@ def reg_review_init(name):
 #작성된 리뷰 데이터 넘겨줌
 @application.route("/reg_reviews", methods=['POST'])
 def reg_reviews():
-    image_file=request.files["chooseFile"]
-    image_file.save("static/img/{}".format(image_file.filename))
     data=request.form
-    DB.reg_review(data, image_file.filename)
+    user_id = session.get('id')
+    image_file = request.files["chooseFile"]
+    if image_file:
+        image_file.save("static/img/{}".format(image_file.filename))
+        DB.reg_review(data, user_id, image_file.filename)
+    else:
+        # image_file이 없는 경우에는 사진 빼고 등록
+        DB.reg_review(data, user_id, None)
     return redirect(url_for('view_all_review'))
 
 #전체리뷰화면
@@ -91,9 +96,18 @@ def view_all_review():
             locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
         else: #마지막 행이 아닌 경우
             locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
-    return render_template("/5-7/review.html", datas=data.items(), row1=locals()['data_0'].items(), row2=locals()['data_1'].items(),
+    return render_template("/5~7/review.html", datas=data.items(), row1=locals()['data_0'].items(), row2=locals()['data_1'].items(),
                            row3=locals()['data_2'].items(), row4=locals()['data_3'].items(),row5=locals()['data_4'].items(), row6=locals()['data_5'].items(),
                            limit=per_page, page=page, page_count=int((item_counts/per_page)+1), total=item_counts)
+
+#싱세리뷰페이지
+@application.route("/view_review_detail/<name>/")
+def view_review_detail(name):
+    print("###name:",name)
+    data = DB.get_item_byname(str(name))
+    print("####data:",data)
+    return render_template("review_detail.html", name=name, data=data)
+
 
 
 # 8~10
