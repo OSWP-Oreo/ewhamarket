@@ -91,14 +91,47 @@ grid-area: right;
   color: #FFF;
 }
 
-.btn-unclicked{
+.keyword-btn{
   background-color: #ffffff;
   border-color: #00AFB9;
-  border-radius: 50px;
-  height: 40px;
+  border-radius: 40px;
   width: 90px;
+  height: 40px;
   color: #000000;
 }
+#radio-none{
+  display: none;
+}
+
+/* 스타일링을 위한 CSS */
+.keyword label {
+  background-color: #ffffff;
+  border: 2px solid #00AFB9;
+  border-radius: 40px;
+  width: 90px;
+  height: 40px;
+  color: #000000;
+  display: inline-block;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.keyword label:hover {
+  background-color: #00AFB9;
+  color: #ffffff;
+}
+
+/* 라디오 버튼이 체크되면 라벨에 스타일 적용 */
+.keyword input[type="radio"]:checked + label {
+  background-color: #00AFB9;
+  color: #ffffff;
+}
+
+
+
+
 
 .input-review-title ,.input-review-main{
   width: 100%;
