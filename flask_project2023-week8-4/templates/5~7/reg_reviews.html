@@ -12,7 +12,7 @@
         <body>
             {% include "index.html" %}
             <main class="padding" id="min_width_600">
-                <form class="mb-3" name="myform" id="myform" method="post" action="/reg_reviews" enctype="multipart/form-data">
+                <form class="mb-3" name="myform" method="post" action="/reg_reviews" enctype="multipart/form-data">
                     <div class="main-header">
                         <h1 class="main-header">리뷰 작성</h1> 
                         <div class="main-hr__padding"></div><br>
@@ -42,16 +42,16 @@
                             </div>
                         
                             <div class="box right">
-                                
-                                <fieldset>
-                                    <p id="selectedRating" class="rating-num">0.0</p>
-                                    <input type="radio" name="reviewStar" value="5" id="rate1"><label for="rate1">★</label>
-                                    <input type="radio" name="reviewStar" value="4" id="rate2"><label for="rate2">★</label>
-                                    <input type="radio" name="reviewStar" value="3" id="rate3"><label for="rate3">★</label>
-                                    <input type="radio" name="reviewStar" value="2" id="rate4"><label for="rate4">★</label>
-                                    <input type="radio" name="reviewStar" value="1" id="rate5"><label for="rate5">★</label>
-                                </fieldset>
-                            
+                                <div id="myform">
+                                    <fieldset>
+                                        <p id="selectedRating" class="rating-num">0.0</p>
+                                        <input type="radio" name="reviewStar" value="5" id="rate1"><label for="rate1">★</label>
+                                        <input type="radio" name="reviewStar" value="4" id="rate2"><label for="rate2">★</label>
+                                        <input type="radio" name="reviewStar" value="3" id="rate3"><label for="rate3">★</label>
+                                        <input type="radio" name="reviewStar" value="2" id="rate4"><label for="rate4">★</label>
+                                        <input type="radio" name="reviewStar" value="1" id="rate5"><label for="rate5">★</label>
+                                    </fieldset>
+                                </div>
                                 <script>
                                     const radioInputs = document.querySelectorAll('input[type="radio"]');
                                     const selectedRating = document.getElementById('selectedRating');
@@ -66,10 +66,37 @@
                         </div>
                     </div>
                     
-                    <h3>키워드</h3><!--버튼 클릭 시 바뀌게 만들기-->
-                    <button type="button" class="btn-clicked">자세한 설명</button>
-                    <button type="button" class="btn-unclicked">핵심 위주</button>
-                    <button type="button" class="btn-unclicked">문제 풀이</button><br><Br>
+                    <h3>키워드</h3><!--버튼 클릭 시 바뀌게 만들기
+                    <input type="button" class="keyword-btn" value="자세한 설명">
+                    <input type="button" class="keyword-btn" value="핵심 위주">
+                    <input type="button" class="keyword-btn" value="문제 풀이"><br><br>
+                    -->
+                    <div class="keyword">
+                        <label for="자세한설명">자세한 설명
+                            <input type="radio" name="keyword" id="자세한설명" >
+                        </label>
+                        <label for="핵심위주">핵심 위주
+                            <input type="radio" name="keyword" id="핵심위주">
+                        </label>
+                        <label for="문제풀이">문제 풀이
+                            <input type="radio" name="keyword" id="문제풀이">
+                        </label>
+                    </div>
+                    
+
+<!--
+                    <input type="radio" name="keyword" id="자세한설명" style="display: none;">
+                    <input type="radio" name="keyword" id="핵심위주"style="display: none;">
+                    <input type="radio" name="keyword" id="문제풀이"style="display: none;">
+                    <label for="자세한설명" class="keyword">자세한 설명</label>
+                    &nbsp;
+                    <label for="핵심위주">핵심 위주</label>
+                    &nbsp;
+                    <label for="문제풀이">문제 풀이</label>
+-->
+                    
+
+
                 
                 
                     <h3>상세 리뷰</h3>
@@ -82,19 +109,16 @@
                         <!--사진수에 따라서 숫자 올라가게 만들기-->
                         <p>(선택) 0/5</p><br>
                     </div>
-                        <form method="post" enctype="multipart/form-data">
-                            <div>
-                                <label for="chooseFile" class="file-button">
-                                    <p id="add-image">add image<br>+</p>
-                                </label>
-                            </div>
+                    <div>
+                        <label for="chooseFile" class="file-button">
+                            <p id="add-image">add image<br>+</p>
+                        </label>
+                    </div>
 
-                            <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
-                        </form>
+                    <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
 
-
-                        <!--제출 버튼-->
-                        <input type="submit" value="등록" class="button btnDefaultblue btnFade" id="submit"> 
+                <!--제출 버튼-->
+                <input type="submit" value="등록" class="button btnDefaultblue btnFade" id="submit"> 
                 </form>
             </main>            
         </body>
