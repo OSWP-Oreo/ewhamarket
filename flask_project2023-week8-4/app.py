@@ -43,22 +43,30 @@ def view_order_confirmation():
 # 5~7
 @application.route("/5~7/reg_reviews")
 def view_reg_review():
-    return render_template("5~7/reg_reviews.html")
+    if 'id' not in session or not session['id']:
+        flash('리뷰를 작성하려면 로그인을 해주세요.')
+        return redirect(url_for('login'))
+    else:
+        return render_template("5~7/reg_reviews.html")
 
 #@application.route("/5~7/review_detail")
 #def view_review_detail():
 #   return render_template("5~7/review_detail.html")
 
-#상품이름 가지고 와서 리뷰작성페이지 오픈
+#상품이름 가지고 와서 리뷰작성페이지
 @application.route("/reg_review_init/<name>/")  
 def reg_review_init(name):
-    info = DB.reference('item')
-    info_data = info.child(name).get()
-    professor = info_data.get("professor",None)    
-    subject = info_data.get("subject",None)       
-    subject_id = info_data.get("subject_id",None)
-    reviewer = session['id']
-    return render_template("reg_reviews.html", reviewer=reviewer, name=name, subject=subject, professor=professor, subject_id=subject_id)
+    if 'id' not in session or not session['id']:
+        flash('리뷰를 작성하려면 로그인을 해주세요.')
+        return redirect(url_for('login'))
+    else:
+        info = DB.reference('item')
+        info_data = info.child(name).get()
+        professor = info_data.get("professor",None)    
+        subject = info_data.get("subject",None)       
+        subject_id = info_data.get("subject_id",None)
+        reviewer = session['id']
+        return render_template("5~7/reg_reviews.html", reviewer=reviewer, name=name, subject=subject, professor=professor, subject_id=subject_id)
 
 #작성된 리뷰 데이터 넘겨줌
 @application.route("/reg_reviews", methods=['POST'])
@@ -99,6 +107,52 @@ def view_all_review():
     return render_template("/5~7/review.html", datas=data.items(), row1=locals()['data_0'].items(), row2=locals()['data_1'].items(),
                            row3=locals()['data_2'].items(), row4=locals()['data_3'].items(),row5=locals()['data_4'].items(), row6=locals()['data_5'].items(),
                            limit=per_page, page=page, page_count=int((item_counts/per_page)+1), total=item_counts)
+
+#상품별리뷰페이지
+@application.route("/review/<name>/")
+def view_review():
+    page = request.args.get("page", 0, type=int)
+    per_page=6 # 한페이지에 리뷰 6개
+    per_row=1  # 1줄에 하나씩
+    row_count=int(per_page) #한페이지에 표시할 행 개수(6개)
+    start_idx=per_page*page #현재페이지에 보여줄 리뷰의 시작인덱스
+    end_idx=per_page*(page+1) #현재페이지에 보여줄 리뷰의 끝 인덱스
+    data = DB.get_reviews(str(name))
+    
+    #전체 리뷰의 개수 계산
+    item_counts = len(data)
+    
+    #모든 리뷰의 별의 합을 구하고 리뷰 개수로 나누어 평균별점 계산
+    total_star = sum(int(data['rate']) for i in data.values())
+    average_star = total_star/item_counts
+    
+    #각 키워드에 개수 구해서 %계산
+    keyword1=0 
+    keyword2=0
+    keyword3=0
+    for i in data.values():
+        if i.get('keyword')=='자세한설명':
+            keyword1 =  keyword1+1
+        elif i.get('keyword')=='핵심위주':
+            keyword2 =  keyword2+1
+        elif i.get('keyword')=='문제풀이':
+            keyword3 =  keyword3+1
+    proportion_1 = keyword1/item_counts*100
+    proportion_2 = keyword2/item_counts*100
+    proportion_3 = keyword3/item_counts*100
+            
+    #현재 페이지에 보여줄 리뷰만 추출
+    data = dict(list(data.items())[start_idx:end_idx])
+
+    for i in range(row_count):
+        if (i == row_count-1): #마지막 row
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
+        else:
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
+    return render_template("review.html", datas=data. items(),row1=locals()['data_0'].items(), row2=locals()['data_1'].items(),
+                           row3=locals()['data_2'].items(), row4=locals()['data_3'].items(),row5=locals()['data_4'].items(), row6=locals()['data_5'].items(),
+                           limit=per_page, page=page, page_count=int((item_counts/per_page)+1), total=item_counts, average_star=average_star, proportion_1=proportion_1, proportion_2=proportion_2, proportion_3=proportion_3)
+
 
 #싱세리뷰페이지
 @application.route("/view_review_detail/<name>/")
