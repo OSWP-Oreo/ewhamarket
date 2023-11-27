@@ -120,18 +120,9 @@ grid-area: right;
 
 .keyword label:hover {
   background-color: #00AFB9;
-  color: #ffffff;
+  color: #000000;
+  opacity: 0.7;
 }
-
-/* 라디오 버튼이 체크되면 라벨에 스타일 적용 */
-.keyword input[type="radio"]:checked + label {
-  background-color: #00AFB9;
-  color: #ffffff;
-}
-
-
-
-
 
 .input-review-title ,.input-review-main{
   width: 100%;
