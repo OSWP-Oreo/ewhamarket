@@ -65,6 +65,10 @@ class DBhandler:
     def get_price(self, name):
         point=int(self.db.child("user").child(name).get().val()['price'])
         return point
+    #판매자 가져오기
+    def get_seller(self, name):
+        seller=self.db.child("user").child(name).get().val()['writer']
+        return seller
     
     #랭킹
     #포인트 가져오기
@@ -83,7 +87,18 @@ class DBhandler:
             }
             self.db.child("user").child(user_id).update(point_info)
         return True
-    #구매자 랭킹 포인트 증가
+    #판매자 포인트 증가
+    def update_point_2(self, user_id, point):
+        user_data = self.db.child("user").child(user_id).get().val()
+        if user_data is not None and 'point' in user_data:
+            b_point = int(user_data['point'])
+            a_point = b_point + point
+            point_info = {
+                "point": a_point
+            }
+            self.db.child("user").child(user_id).update(point_info)
+        return True
+    #구매자 판매자 랭킹 포인트 증가
     def update_ranking_point(self, user_id, point):
         user_data = self.db.child("user").child(user_id).get().val()
         if user_data is not None and 'point' in user_data:

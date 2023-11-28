@@ -71,11 +71,14 @@ def order():
 #구매하기 버튼 누르면
 @application.route("/order_item/<name>")
 def view_order_confirmation(name):
-    #구매한후 구매자 포인트 감소
+    
     flash('1000포인트가 차감되었습니다')
     point=DB.get_price(str(name))
-    DB.update_point(session['id'], point)
-    DB.update_ranking_point(session['id'], point)
+    seller=DB.get_seller(str(name))
+    DB.update_point(session['id'], point) #구매자 포인트 감소
+    DB.update_ranking_point(session['id'], point) #구매자 랭킹 포인트 증가
+    DB.update_point_2(seller,point) #판매자 포인트 증가
+    DB.update_ranking_point(seller,point) #판매자 랭킹 포인트 증가
     return render_template("1~4/order.html")
 
 
