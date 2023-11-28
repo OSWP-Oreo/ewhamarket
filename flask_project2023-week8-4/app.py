@@ -17,7 +17,44 @@ def comback_home():
 # 1~4
 @application.route("/1~4/item_reg")
 def view_reg_items():
-    return render_template("1~4/item_reg.html")
+    if 'id' not in session or not session['id']:
+            flash('상품을 등록하려면 로그인을 해주세요.')
+            return redirect(url_for('login'))
+    else:
+            return render_template("1~4/item_reg.html")
+
+# item_reg.html에서 입력한 값 get하기
+@application.route("/submit_item")
+def reg_item_submit():
+    item_name=request.args.get("item-name")
+    item_type=request.args.get("item-type")
+    price=request.args.get("price")
+
+    #print(item_name, item_type, price)
+
+
+# item_reg.html에서 입력한 값 db에 저장하고 결과 화면으로 넘겨주기
+@application.route("/submit_item_post", methods=['POST'])
+def reg_item_submit_post():
+
+    if 'id' not in session or not session['id']:
+        flash('리뷰를 작성하려면 로그인을 해주세요.')
+        return redirect(url_for('login'))
+    else:
+        item_file=request.files['item-upload']
+        item_file.save("static/items/{}".format(item_file.filename))
+        photo_file=request.files['photo-upload']
+        photo_file.save("static/photos/{}".format(photo_file.filename))
+
+        data=request.form
+        writer = session['id']
+    
+        DB.insert_item(data['item-name'], data, item_file.filename, photo_file.filename, writer)
+        print( 'after db insertion' )
+
+        return render_template("submit_item_result.html", data=data, item_path="static/items/{}".format(item_file.filename), photo_path="static/photos/{}".format(photo_file.filename))
+
+####
 
 @application.route("/1~4/view_item")
 def view_items():
@@ -238,12 +275,6 @@ def ranking():
 
 
     ################
-@application.route("/submit_item_post",methods=['POST'])
-def reg_item_submit_post():
-    image_file=request.files["file"]
-    image_file.save("static/images/{}".format(image_file.filename))
-    data = request.form
-    return render_template("submit_item_result.html", data=data, img_path="static/images/{}".format(image_file.filename))
 
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug = True)
