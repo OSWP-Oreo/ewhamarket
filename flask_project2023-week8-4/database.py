@@ -126,3 +126,27 @@ class DBhandler:
             if key_value == name:
                 target_value=res.val()
         return target_value
+    
+
+    #상품 정보 등록하기
+    def insert_item(self, name, data, item_path, photo_path, user_id):
+        item_info ={
+            "item-name": data['item-name'],
+            "item-type": data['item-type'],
+            "price": data['price'],
+            "course-type": data.get('course-type'),
+            "faculty": data.get('faculty'),
+            "major": data['major'],
+            "course-number": data['course-number'],
+            "professor": data['professor'],
+            "description": data['description'],
+            "tag": data['tag'],
+            "item_path": item_path,
+            "photo_path": photo_path,
+        }
+        user_and_item = user_id + '_' + data['item-name']
+        self.db.child("item").child(user_and_item).set(item_info)
+        print(data, item_path)
+        print(data, photo_path)
+        return True
+    

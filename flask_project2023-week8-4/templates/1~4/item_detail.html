@@ -19,6 +19,10 @@
     <!----2번 화면 item card 중복 요소 있음-->
     <main id="order-page">
         <div id="order-page-container">
+
+            <!--잘 받아와지나 확인-->
+            <p>{{data.item-name}}</p>
+
             <!-------------------대표상품이미지------------------>
             <!--가능하다면 js로
                     (1)이미지 개수에 따라 다르게 보이도록(없는 칸은 회색단색으로 표시
@@ -27,6 +31,7 @@
             <div><!--대표이미지main. 1,2,3 서브이미지 중 하나 확대. default는 img-1-->
                 <img class="item-detail__main-img" src="../../static/img/logo.png">
             </div>
+
             <div class="item-card__info"><!--아이템 정보-->
                 <div class="item-card__course-and-prof">
                     <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
