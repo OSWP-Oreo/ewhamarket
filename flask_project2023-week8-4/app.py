@@ -68,12 +68,14 @@ def view_item_detail():
 def order():
     return render_template("1~4/order.html")
 
-@application.route("/order_item")
-def view_order_confirmation():
+#구매하기 버튼 누르면
+@application.route("/order_item/<name>")
+def view_order_confirmation(name):
     #구매한후 구매자 포인트 감소
     flash('1000포인트가 차감되었습니다')
-    DB.update_point(session['id'], 1000)
-    DB.update_ranking_point(session['id'], 1000)
+    point=DB.get_price(str(name))
+    DB.update_point(session['id'], point)
+    DB.update_ranking_point(session['id'], point)
     return render_template("1~4/order.html")
 
 
@@ -268,9 +270,25 @@ def logout_user():
     session.clear()
     return redirect(url_for('hello')) #나중에 전체상품조회로 바꿀예정
     
+#랭킹
 @application.route("/ranking")
 def ranking():
-    return render_template("8~10/ranking.html")
+    per_page=int(10) 
+    per_row=int (1) 
+
+    data = DB.get_points()
+    item_counts = len(data)
+
+    locals()['data_{}'.format(0)] = dict(list(data.items())[0*per_row:])
+
+    return render_template(
+            "8~10/ranking.html",
+            datas=data.items(),
+            row=locals()['data_0'].items(),
+            limit=per_page,
+            page=1,
+            page_count=1,
+            total=item_counts)
 
 
 

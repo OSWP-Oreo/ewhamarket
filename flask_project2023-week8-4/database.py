@@ -54,12 +54,23 @@ class DBhandler:
     #유저 찾기
     def find_user(self, id_, pw_):
         users = self.db.child("user").get()
-        target_value=[]
         for res in users.each():
             value = res.val()
             if value['id'] == id_ and value['pw'] == pw_:
                 return True
         return False
+    
+    #구매하기
+    #가격 가져오기
+    def get_price(self, name):
+        point=int(self.db.child("user").child(name).get().val()['price'])
+        return point
+    
+    #랭킹
+    #포인트 가져오기
+    def get_points(self ):
+        items = self.db.child("user").get().val()
+        return items
     
     #구매자 포인트 감소
     def update_point(self, user_id, point):
