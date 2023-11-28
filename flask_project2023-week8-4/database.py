@@ -131,6 +131,7 @@ class DBhandler:
     #상품 정보 등록하기
     def insert_item(self, name, data, item_path, photo_path, user_id):
         item_info ={
+            "writer": user_id,
             "item-name": data['item-name'],
             "item-type": data['item-type'],
             "price": data['price'],

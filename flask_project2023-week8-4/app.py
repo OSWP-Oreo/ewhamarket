@@ -52,7 +52,7 @@ def reg_item_submit_post():
         DB.insert_item(data['item-name'], data, item_file.filename, photo_file.filename, writer)
         print( 'after db insertion' )
 
-        return render_template("submit_item_result.html", data=data, item_path="static/items/{}".format(item_file.filename), photo_path="static/photos/{}".format(photo_file.filename))
+        return render_template("1~4/item_detail.html", data=data, item_path="static/items/{}".format(item_file.filename), photo_path="static/photos/{}".format(photo_file.filename))
 
 ####
 
