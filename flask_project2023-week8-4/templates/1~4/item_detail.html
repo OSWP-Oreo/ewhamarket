@@ -28,22 +28,22 @@
             <!--추후 js 백엔드 연결 시 사진 삭제-->
             <div><!--대표이미지main. 1,2,3 서브이미지 중 하나 확대. default는 img-1-->
                 <img class="item-detail__main-img" src="{{photo_path}}"/>
-
-
             </div>
 
             <div class="item-card__info"><!--아이템 정보-->
                 <div class="item-card__course-and-prof">
+                    {{data['course_number']}} | {{data['professor']}} 교수님
                     <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
+                    <!--자료구조 20481 | 홍길동 교수님   인데..  교수님 안들어감--> 
                 </div>
 
                 <strong class="item-card__item-name" style="font-size: 30px;">
-                    {{data['item-name']}}
+                    {{data['item_name']}}
                     <!--제 6장 연결리스트1 정리-->
                 </strong><br>
                 <span class="item-card__seller">
                     <!--백엔드에서 등록된 판매자 이름 불러오기-->
-                    BY. {{data['writer']}}
+                    BY. {{data['writer']}}   <!-- 왜 이 부분 출력이 안 되지?-->
                     <!--이화인-->
                     <br><br></span>
 
@@ -68,11 +68,11 @@
                 </div><br>
                 <div class="item-card__type">
                     <!--item type; 백엔드에서받기 아래 텍스트는 예시-->
-                    <span>전공 / 교양</span> {{data['course-type']}}
+                    <span>전공 / 교양</span> {{data['course_type']}}
                     </div>
                 <div class="item-card__type">
                     <!--item type; 백엔드에서받기 아래 텍스트는 예시-->
-                    <span>Type</span> {{data['item-type']}}
+                    <span>Type</span> {{data['item_type']}}
                 </div>
                 <div class="item-card__type">
                     <!--item type; 백엔드에서받기 아래 텍스트는 예시-->

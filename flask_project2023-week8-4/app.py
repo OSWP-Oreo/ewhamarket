@@ -9,6 +9,7 @@ DB=DBhandler() #database.py에 들어가면 클래스있음 (DB. 이용)
 @application.route("/") 
 def hello():
     return render_template("index.html")
+    #return redirect(url_for('view_items'))
 
 @application.route("/index")
 def comback_home():
@@ -41,24 +42,41 @@ def reg_item_submit_post():
         flash('리뷰를 작성하려면 로그인을 해주세요.')
         return redirect(url_for('login'))
     else:
-        item_file=request.files['item-upload']
+        item_file=request.files['item_upload']
         item_file.save("static/items/{}".format(item_file.filename))
-        photo_file=request.files['photo-upload']
+        photo_file=request.files['photo_upload']
         photo_file.save("static/photos/{}".format(photo_file.filename))
 
         data=request.form
-        writer = session['id']
     
-        DB.insert_item(data['item-name'], data, item_file.filename, photo_file.filename, writer)
+        DB.insert_item(data['item_name'], data, item_file.filename, photo_file.filename, session['id'])
         print( 'after db insertion' )
 
         return render_template("1~4/item_detail.html", data=data, item_path="static/items/{}".format(item_file.filename), photo_path="static/photos/{}".format(photo_file.filename))
 
-####
-
+#### 맨 처음 화면이 이 view_items()함수로 옴.
 @application.route("/1~4/view_item")
 def view_items():
-    return render_template("1~4/view_item.html")
+    page = request.args.get("page", 0, type=int)
+    per_page=5 # item count to display per page
+    per_row=1 # item count to display per row
+    row_count=int(per_page/per_row)
+    start_idx=per_page*page
+    end_idx=per_page*(page+1)
+
+    data = DB.get_items()
+    item_counts = len(data)
+    data = dict(list(data.items())[start_idx:end_idx])
+    tot_count = len(data)
+
+    for i in range(row_count): #last row
+        if (i == row_count-1) and (tot_count%per_row != 0):
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
+        else: 
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
+
+    return render_template("1~4/view_item.html", datas=data.items(), row1=locals()['data_0'].items(), row2=locals()['data_1'].items(), limit=per_page, page=page, page_count=int((item_counts/per_page) +1), total = tot_count)
+
 
 @application.route("/1~4/item_detail")
 def view_item_detail():
