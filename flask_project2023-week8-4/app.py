@@ -48,11 +48,13 @@ def reg_item_submit_post():
         photo_file.save("static/photos/{}".format(photo_file.filename))
 
         data=request.form
+        writer = session['id']
     
         DB.insert_item(data['item_name'], data, item_file.filename, photo_file.filename, session['id'])
         print( 'after db insertion' )
 
         return render_template("1~4/item_detail.html", data=data, item_path="static/items/{}".format(item_file.filename), photo_path="static/photos/{}".format(photo_file.filename))
+
 
 #### 맨 처음 화면이 이 view_items()함수로 옴.
 @application.route("/1~4/view_item")
@@ -78,9 +80,15 @@ def view_items():
     return render_template("1~4/view_item.html", datas=data.items(), row1=locals()['data_0'].items(), row2=locals()['data_1'].items(), limit=per_page, page=page, page_count=int((item_counts/per_page) +1), total = tot_count)
 
 
-@application.route("/1~4/item_detail")
-def view_item_detail():
-    return render_template("1~4/item_detail.html")
+#전체 리스트에서 상품 클릭 시 세부정보 볼 수 있음
+@application.route("/1~4/view_item_detail/<item_name>/")
+def view_item_detail(item_name):
+    print("###name:", item_name)
+    data=DB.get_item_byname(str(item_name))
+    print("####data:",data)
+    return render_template("1~4/detail.html", item_name=item_name, data=data)
+
+
 
 @application.route("/1~4/order")
 def order():
@@ -219,7 +227,7 @@ def view_review():
 @application.route("/view_review_detail/<name>/")
 def view_review_detail(name):
     print("###name:",name)
-    data = DB.get_item_byname(str(name))
+    data = DB.get_review_byname(str(name))
     print("####data:",data)
     return render_template("review_detail.html", name=name, data=data)
 
