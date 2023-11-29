@@ -104,16 +104,17 @@ class DBhandler:
             self.db.child("user").child(user_id).update(point_info)
         return True
     
+    #리뷰
     #리뷰 데이터베이스에 저장
     def reg_review(self, data, user_id, img_path):
-        find_name = data['seller_id']+"_"+data['name']
+        find_name = data['seller_id']+"_"+data['name']  #find_name=판매자id_상품명
         dbname = self.db.child("item").get() #db에 저장되어 있는 판매자id_상품명 찾기.
         for res in dbname.each():
             key_value = res.key() #판매자id_상품명
             if key_value == find_name:
-                target_value=res.val() #내가 찾던 판매자id_상품명
+                target_value=res.val()  #내가 찾던 판매자id_상품명
         review_info ={
-            "name": data['name'], #상품명
+            "name": find_name, #상품명
             "title": data['title'],
             "review": data['review'],
             "rate": data['reviewStar'],
@@ -121,7 +122,7 @@ class DBhandler:
             "img_path": img_path,
             "reviewer": user_id
         }
-        name_id = target_value + '_' + user_id #판매자id_상품명_구매자id
+        name_id = find_name + '_' + user_id  #판매자id_상품명_구매자id
         self.db.child("review").child(name_id).set(review_info)
         return True
     
@@ -148,10 +149,19 @@ class DBhandler:
         target_value=""
         print("###########",name)
         for res in reviews.each():
-            key_value = res.key()
-            if key_value == name:
+            value = res.child("name").get().val()
+            if value == name:
                 target_value=res.val()
         return target_value
+    
+    #구매내역 불러오기
+    def get_purchase(self, user_id):
+        purchase = self.db.child("user_purchase").get().val() #각 유저의 구매내역
+
+        for id, purchase_items in purchase.items(): #각 리뷰에 대해 반복
+            if id == user_id:                       #key값이 사용자 id와 같으면 그 구매내역 반환
+                return purchase_items
+        return None
     
 
     #상품 정보 등록하기

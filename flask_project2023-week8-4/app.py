@@ -151,13 +151,36 @@ def view_order_confirmation(item_name):
 
 
 # 5~7
+# 리뷰작성 -> 구매내역페이지
 @application.route("/5~7/reg_reviews")
 def view_reg_review():
     if 'id' not in session or not session['id']:
         flash('리뷰를 작성하려면 로그인을 해주세요.')
         return redirect(url_for('login'))
     else:
-        return render_template("5~7/reg_reviews.html")
+        #return render_template("5~7/reg_reviews.html")
+        page = request.args.get("page", 0, type=int)
+        per_page=6
+        per_row=1
+        row_count=int(per_page)
+        start_idx=per_page*page
+        end_idx=per_page*(page+1)
+
+        user_id = session.get('id')
+        purchase = DB.get_purchase(user_id)        #구매내역 불러오기
+        #if purchase == None:
+            #구매내역이 없는 경우에는 어떻게?
+        item_counts = len(purchase)
+        purchase = dict(list(purchase.items())[start_idx:end_idx])
+        tot_count = len(purchase)
+        for i in range(row_count):
+            if (i == row_count-1):
+                locals()['data_{}'.format(i)] = dict(list(purchase.items())[i*per_row:])
+            else:
+                locals()['data_{}'.format(i)] = dict(list(purchase.items())[i*per_row:(i+1)*per_row])
+        return render_template("/5-7/구매내역페이지.html", purchase=purchase.items(), row1=locals()['data_0'].items(), row2=locals()['data_1'].items(),
+                           row3=locals()['data_2'].items(), row4=locals()['data_3'].items(),row5=locals()['data_4'].items(), row6=locals()['data_5'].items(),
+                           limit=per_page, page=page, page_count=int((item_counts/per_page)+1), total=item_counts)
 
 #@application.route("/5~7/review_detail")
 #def view_review_detail():
@@ -172,7 +195,6 @@ def reg_review_init(name):
     else:
         info = DB.reference('item')
         info_data = info.child(name).get()
-        #판매자정보추가
         item_name = info_data.get("item_name",None)
         professor = info_data.get("professor",None)
         subject = info_data.get("course_number",None)
@@ -225,14 +247,13 @@ def view_all_review():
 @application.route("/review/<name>/")
 def view_review(name):
     page = request.args.get("page", 0, type=int)
-    per_page=6 # 한페이지에 리뷰 6개
-    per_row=1  # 1줄에 하나씩
-    row_count=int(per_page) #한페이지에 표시할 행 개수(6개)
-    start_idx=per_page*page #현재페이지에 보여줄 리뷰의 시작인덱스
-    end_idx=per_page*(page+1) #현재페이지에 보여줄 리뷰의 끝 인덱스
+    per_page=6 
+    per_row=1 
+    row_count=int(per_page)
+    start_idx=per_page*page
+    end_idx=per_page*(page+1)
     data = DB.get_reviews(str(name))
     
-    #전체 리뷰의 개수 계산
     item_counts = len(data)
     
     #모든 리뷰의 별의 합을 구하고 리뷰 개수로 나누어 평균별점 계산
