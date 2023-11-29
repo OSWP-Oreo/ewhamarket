@@ -6,16 +6,75 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>상품세부화면</title>
+    <title>상품등록</title>
     <link href="/static/1~4style.css" type="text/css" rel="stylesheet">
     <link href="/static/style.css" type="text/css" rel="stylesheet">
     <link href="/static/btn.css" type="text/css" rel="stylesheet">
     <script src="/static/1~4main.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+    <script>
+        function showHeart() {
+        $.ajax({
+            type: 'GET',
+            url: '/show_heart/{{item_name}}/',
+            data: {},
+            success: function (response){
+                let my_heart = response['my_heart'];
+                if (my_heart['interested'] == 'Y')
+                {
+                    $("#heart").css("color","red");
+                    $("#heart").attr("onclick","unlike()");
+                }
+                else
+                {
+                    $("#heart").css("color","grey");
+                    $("#heart").attr("onclick","like()");
+                }
+                //alert("showheart!")
+                }
+            }); 
+        } 
+
+        function like() {
+            $.ajax({
+                type: 'POST',
+                url: '/like/{{name}}/',
+                data: {
+                    interested : "Y"
+                },
+                success: function (response) {
+                    alert(response['msg']);
+                    window.location.reload()
+                }
+            });
+        }
+        
+        function unlike() {
+            $.ajax({
+                type: 'POST',
+                url: '/unlike/{{name}}/',
+                data: {
+                    interested : "N"
+                },
+                success: function (response) {
+                    alert(response['msg']);
+                    window.location.reload()
+                }
+                });
+            }
+            
+        $(document).ready(function () {
+            showHeart();
+        });
+
+    </script>
+
+
 </head>
 
 <body>
-    {% include 'header-and-nav.html'%}
-
+    {% include 'header-and-nav.html' %}
     <!----------------------상품보기------------------------->
     <!----2번 화면 item card 중복 요소 있음-->
     <main id="order-page">
@@ -38,7 +97,7 @@
                 </div>
 
                 <strong class="item-card__item-name" style="font-size: 30px;">
-                    {{data['item_name']}}
+                    {{data['item_name']}} 
                     <!--제 6장 연결리스트1 정리-->
                 </strong><br>
                 <span class="item-card__seller">
@@ -92,8 +151,9 @@
             </div>
             <!--구매 버튼-->
                 <a href="/1~4/order" title="to-payment" id="order-btn" class="button btnFade btnDefaultblue">바로 구매하기</a>
+                <i class="fa fa-heart" id="heart"></i>
+       
            
-
             <div id="order__view-rate__container"><!-------------------------상세설명/리뷰--------------------->
                 <!----------------버튼 태그, js로 기능 구현, 백엔드 연결---------->
                 <!--js: 클릭 시 상세설명이 보이도록-->
