@@ -5,7 +5,7 @@ import sys
 application = Flask(__name__)
 application.config["SECRET_KEY"]= "thisisoreo"
 DB=DBhandler() #database.py에 들어가면 클래스있음 (DB. 이용)
- 
+
 @application.route("/") 
 def hello():
     return render_template("index.html")
