@@ -95,7 +95,7 @@ class DBhandler:
     #구매자 판매자 랭킹 포인트 증가
     def update_ranking_point(self, user_id, point):
         user_data = self.db.child("user").child(user_id).get().val()
-        if user_data is not None and 'point' in user_data:
+        if user_data is not None and 'rankingpoint' in user_data:
             b_point = int(user_data['rankingpoint'])
             a_point = b_point + point
             point_info = {
