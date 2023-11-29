@@ -117,25 +117,33 @@ def unlike(item_name):
     else:
         my_heart = DB.update_heart(session['id'],'N',item_name)
         return jsonify({'msg': '안좋아요 완료!'})
+####### likes ########
 
 
 @application.route("/1~4/order")
 def order():
     return render_template("1~4/order.html")
 
+
+
 #구매하기 버튼 누르면
-@application.route("/order_item/<name>")
-def view_order_confirmation(name):
-    
+@application.route("/1~4/order_item/<item_name>/")
+def view_order_confirmation(item_name):
     flash('1000포인트가 차감되었습니다')
-    point=DB.get_price(str(name))
-    seller=DB.get_seller(str(name))
+
+    point=DB.get_price(str(item_name))
+    seller=DB.get_seller(str(item_name))
+
     DB.update_point(session['id'], point) #구매자 포인트 감소
     DB.update_ranking_point(session['id'], point) #구매자 랭킹 포인트 증가
     DB.update_point_2(seller,point) #판매자 포인트 증가
     DB.update_ranking_point(seller,point) #판매자 랭킹 포인트 증가
+
+    data=DB.get_item_byname(str(item_name))
+
     session['user_point'] = DB.get_user_point(session['id'])
-    return render_template("1~4/order.html")
+
+    return render_template("1~4/order.html", data=data, item_name=item_name)
 
 
 # 5~7
