@@ -198,7 +198,23 @@ class DBhandler:
         point=int(self.db.child("user").child(name).get().val()['rankingpoint'])
         return point
     #랭킹
-    #포인트 가져오기
-    def get_points(self ):
+    #유저 전체 가져오기
+    def get_users(self ):
         items = self.db.child("user").get().val()
         return items
+    #유저 대학 별 정렬
+    def get_items_bycollege(self, cate):
+        items = self.db.child("user").get()
+        target_value=[]
+        target_key=[]
+        for res in items.each():
+            value = res.val()
+            key_value = res.key()
+            if value['college'] == cate:
+                target_value.append(value)
+                target_key.append(key_value)
+        print("######target_value",target_value)
+        new_dict={}
+        for k,v in zip(target_key,target_value):
+            new_dict[k]=v
+        return new_dict
