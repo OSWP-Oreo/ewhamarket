@@ -124,7 +124,7 @@ def view_reg_review():
 #   return render_template("5~7/review_detail.html")
 
 #상품이름 가지고 와서 리뷰작성페이지
-@application.route("/reg_review_init/<name>/")  
+@application.route("/reg_review_init/<name>/")
 def reg_review_init(name):
     if 'id' not in session or not session['id']:
         flash('리뷰를 작성하려면 로그인을 해주세요.')
@@ -132,11 +132,14 @@ def reg_review_init(name):
     else:
         info = DB.reference('item')
         info_data = info.child(name).get()
-        professor = info_data.get("professor",None)    
-        subject = info_data.get("subject",None)       
+        #판매자정보추가
+        item_name = info_data.get("item_name",None)
+        professor = info_data.get("professor",None)
+        subject = info_data.get("course_number",None)
         subject_id = info_data.get("subject_id",None)
+        writer = info_data.get("writer",None)
         reviewer = session['id']
-        return render_template("5~7/reg_reviews.html", reviewer=reviewer, name=name, subject=subject, professor=professor, subject_id=subject_id)
+        return render_template("5-7/reg_reviews.html", writer=writer, item_name = item_name, reviewer=reviewer, subject=subject, professor=professor, subject_id=subject_id)
 
 #작성된 리뷰 데이터 넘겨줌
 @application.route("/reg_reviews", methods=['POST'])
