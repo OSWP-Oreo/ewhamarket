@@ -39,7 +39,7 @@
         function like() {
             $.ajax({
                 type: 'POST',
-                url: '/like/{{name}}/',
+                url: '/like/{{item_name}}/',
                 data: {
                     interested : "Y"
                 },
@@ -53,7 +53,7 @@
         function unlike() {
             $.ajax({
                 type: 'POST',
-                url: '/unlike/{{name}}/',
+                url: '/unlike/{{item_name}}/',
                 data: {
                     interested : "N"
                 },
@@ -151,7 +151,7 @@
             </div>
             <!--구매 버튼-->
                 <a href="/1~4/order" title="to-payment" id="order-btn" class="button btnFade btnDefaultblue">바로 구매하기</a>
-                <i class="fa fa-heart" id="heart"></i>
+                <p><i class="fa fa-heart" id="heart"></i></p>
        
            
             <div id="order__view-rate__container"><!-------------------------상세설명/리뷰--------------------->
