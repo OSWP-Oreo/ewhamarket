@@ -150,26 +150,34 @@ class DBhandler:
 
     #상품 정보 등록하기
     def insert_item(self, name, data, item_path, photo_path, user_id):
-        item_info ={
-            "item-name": data['item-name'],
-            "item-type": data['item-type'],
+        item_info = {
+            "writer": user_id,
+            "item_name": data['item_name'],
+            "item_type": data['item_type'],
             "price": data['price'],
-            "course-type": data.get('course-type'),
+            "course_type": data.get('course_type'),
             "faculty": data.get('faculty'),
             "major": data['major'],
-            "course-number": data['course-number'],
+            "course_number": data['course_number'],
             "professor": data['professor'],
             "description": data['description'],
             "tag": data['tag'],
             "item_path": item_path,
             "photo_path": photo_path,
+            "writer": user_id
         }
-        user_and_item = user_id + '_' + data['item-name']
+        user_and_item = user_id + '_' + data['item_name']
         self.db.child("item").child(user_and_item).set(item_info)
         print(data, item_path)
         print(data, photo_path)
         return True
     
+    #상품 정보 불러오기
+    def get_items(self):
+        items = self.db.child("item").get().val()
+        return items
+
+
     #사용자 포인트 가져오기
     def get_user_point(self, name):
         point=int(self.db.child("user").child(name).get().val()['point'])

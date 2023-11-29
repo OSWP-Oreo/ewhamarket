@@ -15,13 +15,11 @@
 
 <body>
     {% include 'header-and-nav.html'%}
+
     <!----------------------상품보기------------------------->
     <!----2번 화면 item card 중복 요소 있음-->
     <main id="order-page">
         <div id="order-page-container">
-
-            <!--잘 받아와지나 확인-->
-            <p>{{data.item-name}}</p>
 
             <!-------------------대표상품이미지------------------>
             <!--가능하다면 js로
@@ -29,29 +27,31 @@
                     (2)이미지 클릭 시 그 이미지가 제일 큰 이미지창에 보이도록-->
             <!--추후 js 백엔드 연결 시 사진 삭제-->
             <div><!--대표이미지main. 1,2,3 서브이미지 중 하나 확대. default는 img-1-->
-                <img class="item-detail__main-img" src="../../static/img/logo.png">
+                <img class="item-detail__main-img" src="{{photo_path}}"/>
             </div>
 
             <div class="item-card__info"><!--아이템 정보-->
                 <div class="item-card__course-and-prof">
+                    {{data['course_number']}} | {{data['professor']}} 교수님
                     <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
-                    자료구조 20481 | 홍길동 교수님
+                    <!--자료구조 20481 | 홍길동 교수님   인데..  교수님 안들어감--> 
                 </div>
 
                 <strong class="item-card__item-name" style="font-size: 30px;">
-                    <!--백엔드에서 등록된 item-name 불러오기-->
-                    제 6장 연결리스트1 정리
+                    {{data['item_name']}}
+                    <!--제 6장 연결리스트1 정리-->
                 </strong><br>
                 <span class="item-card__seller">
                     <!--백엔드에서 등록된 판매자 이름 불러오기-->
-                    BY. 이화인
+                    BY. {{data['writer']}}   <!-- 왜 이 부분 출력이 안 되지?-->
+                    <!--이화인-->
                     <br><br></span>
 
                 <div class="price-rate-container">
                     <span class="item-card__price">
                         <img class="input-img" src="../../static/img/point.svg" style="margin-right: 5px;">
                         <!--가격 백엔드에서 불러오기-->
-                        1000
+                        {{data['price']}}
                     </span>
                     <span class="item-card__rate">
                         <span class="item-card__download" style="margin-right: 10px;">
@@ -68,25 +68,26 @@
                 </div><br>
                 <div class="item-card__type">
                     <!--item type; 백엔드에서받기 아래 텍스트는 예시-->
-                    <span>전공 / 교양</span> 전공
+                    <span>전공 / 교양</span> {{data['course_type']}}
                     </div>
                 <div class="item-card__type">
                     <!--item type; 백엔드에서받기 아래 텍스트는 예시-->
-                    <span>Type</span> 노트 정리
+                    <span>Type</span> {{data['item_type']}}
                 </div>
                 <div class="item-card__type">
                     <!--item type; 백엔드에서받기 아래 텍스트는 예시-->
-                    <span>단대 / 학과</span> 엘텍공과대학 / 컴퓨터공학과
+                    <span>단대 / 학과</span> {{data['faculty']}} / {{data['major']}}
                 </div><br>
                 <div class="item-card__tag">
                     <!--백엔드에서 불러오기-->
-                    #자료구조 #연결리스트
+                    #{{data['tag']}}   <!--태그 여러개 등록하는 것 추후 추가-->
                 </div>
             </div>
             <div class="item-detail__sub-img-container"><!-- 서브이미지-->
-                <img id="item-info__img-1" class="item-detail__sub-img" src="../../static/img/logo.png">
+                <!--<img id="item-info__img-1" class="item-detail__sub-img" src="{{photo_path}}">-->
                 <img id="item-info__img-2" class="item-detail__sub-img" src="../../static/img/logo.png">
                 <img id="item-info__img-3" class="item-detail__sub-img" src="../../static/img/logo.png">
+                <!--사진 여러개일때 여러개 보여주는 것 구현-->
                 <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
             </div>
             <!--구매 버튼-->
@@ -107,11 +108,7 @@
                     </div> -->
                     <!--상세설명 텍스트-->
                     <div id="descr-screen" class="screen">
-                        홍길동 교수님 자료구조 연결리스트 부분 정리 판매합니다.
-
-                        아이패드를 사용한 정리이고 PDF 형식입니다!
-                        저 작년에 자료구조 A+ 받았는데 홍길동 교수님 수업 점수 잘 받는 꿀팁
-                        들도 몇개 써놨어요! 도움 됐으면 합니다ㅎㅎㅎ
+                        {{data['description']}}
                         <!--백엔드: 상세 설명 받아오기-->
                     </div>
                 </div>
