@@ -2,6 +2,7 @@ from flask import Flask, render_template, request,flash,redirect,url_for,session
 from database import DBhandler
 import hashlib
 import sys
+import math
 application = Flask(__name__)
 application.config["SECRET_KEY"]= "thisisoreo"
 DB=DBhandler() #database.py에 들어가면 클래스있음 (DB. 이용)
@@ -179,7 +180,7 @@ def view_all_review():
 
 #상품별리뷰페이지
 @application.route("/review/<name>/")
-def view_review():
+def view_review(name):
     page = request.args.get("page", 0, type=int)
     per_page=6 # 한페이지에 리뷰 6개
     per_row=1  # 1줄에 하나씩
@@ -304,31 +305,49 @@ def logout_user():
 #랭킹
 @application.route("/ranking")
 def ranking():
+    page = request.args.get("page", 0, type=int)
     per_page=int(10) 
     per_row=int (1) 
+    college = request.args.get("category", "all")
+    row_count=int(per_page/per_row)
+    start_idx=per_page*page
+    end_idx=per_page*(page+1)
 
-    data = DB.get_points()
+    if college=="all":
+        data = DB.get_users() #전체상품조회 그대로
+    else:
+        data = DB.get_items_bycollege(college)
+    data = dict(sorted(data.items(), key=lambda x: x[1]['rankingpoint'], reverse=True))
     item_counts = len(data)
-
+    if item_counts<=per_page:
+        data = dict(list(data.items())[:item_counts])
+    else:
+        data = dict(list(data.items())[start_idx:end_idx])
+    tot_count = len(data)
+    for i in range(row_count): 
+        if (i == row_count-1) and (tot_count%per_row != 0):
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
+        else: 
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
+    
     if 'id' in session:
         user_id = session['id']  
         user_ranking_point=DB.get_user_ranking_point(user_id)
     else: 
         user_ranking_point=0
     
-
-    locals()['data_{}'.format(0)] = dict(list(data.items())[0*per_row:])
+    locals()['data_{}'.format(0)] = dict(list(data.items())[0:])
 
     return render_template(
             "8~10/ranking.html",
             datas=data.items(),
             row=locals()['data_0'].items(),
             limit=per_page,
-            page=1,
-            page_count=1,
+            page=page,
+            page_count=int(math.ceil(item_counts/per_page)), #import math 추가,
             total=item_counts,
+            college=college,
             user_rankingpoint=user_ranking_point)
-
 
 
     ################
