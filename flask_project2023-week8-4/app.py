@@ -79,6 +79,7 @@ def view_order_confirmation(name):
     DB.update_ranking_point(session['id'], point) #구매자 랭킹 포인트 증가
     DB.update_point_2(seller,point) #판매자 포인트 증가
     DB.update_ranking_point(seller,point) #판매자 랭킹 포인트 증가
+    session['user_point'] = DB.get_user_point(session['id'])
     return render_template("1~4/order.html")
 
 
@@ -262,6 +263,7 @@ def login_user():
     pw_hash = hashlib.sha256(pw.encode('utf-8')).hexdigest()
     if DB.find_user(id_,pw_hash):
         session['id']=id_
+        session['user_point'] = DB.get_user_point(session['id'])
         return redirect(url_for('hello')) #나중에 전체상품조회로 바꿀예정
     else:
         flash("Wrong ID or PW!")
@@ -282,6 +284,13 @@ def ranking():
     data = DB.get_points()
     item_counts = len(data)
 
+    if 'id' in session:
+        user_id = session['id']  
+        user_ranking_point=DB.get_user_ranking_point(user_id)
+    else: 
+        user_ranking_point=0
+    
+
     locals()['data_{}'.format(0)] = dict(list(data.items())[0*per_row:])
 
     return render_template(
@@ -291,7 +300,8 @@ def ranking():
             limit=per_page,
             page=1,
             page_count=1,
-            total=item_counts)
+            total=item_counts,
+            user_rankingpoint=user_ranking_point)
 
 
 
