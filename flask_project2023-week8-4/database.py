@@ -137,7 +137,7 @@ class DBhandler:
         return reviews
     
     #이름으로 리뷰불러오기
-    def get_item_byname(self, name):
+    def get_review_byname(self, name):
         reviews = self.db.child("review").get()
         target_value=""
         print("###########",name)
@@ -176,6 +176,17 @@ class DBhandler:
     def get_items(self):
         items = self.db.child("item").get().val()
         return items
+    
+    #상품 이름으로 상품 정보 가져오기
+    def get_item_byname(self, name):
+        items = self.db.child("item").get()
+        target_value=""
+        print("#############", name)
+        for res in items.each():
+            key_value = res.key()
+            if key_value == name:
+                target_value=res.val()
+        return target_value
 
 
     #사용자 포인트 가져오기

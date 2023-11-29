@@ -104,7 +104,7 @@
                 <a href="../../1~4/item_detail">
                     {% for key, value in datas %}
                     <li id="item-card1">
-                        <div class="item-card">
+                        <div class="item-card" onclick="location.href='/1~4/view_item_detail/{{key}}/';" style="cursor:pointer;">
                             <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
                             <img class="item-card__img" src="/static/photos/{{value.photo_path}}", width=140, height=200>
                             <div class="item-card__info">
