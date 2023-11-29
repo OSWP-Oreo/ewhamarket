@@ -150,7 +150,8 @@ class DBhandler:
 
     #상품 정보 등록하기
     def insert_item(self, name, data, item_path, photo_path, user_id):
-        item_info ={
+        item_info = {
+            "writer": user_id,
             "item_name": data['item_name'],
             "item_type": data['item_type'],
             "price": data['price'],
@@ -171,7 +172,12 @@ class DBhandler:
         print(data, photo_path)
         return True
     
-<<<<<<< HEAD
+    #상품 정보 불러오기
+    def get_items(self):
+        items = self.db.child("item").get().val()
+        return items
+
+
     #사용자 포인트 가져오기
     def get_user_point(self, name):
         point=int(self.db.child("user").child(name).get().val()['point'])
@@ -184,9 +190,4 @@ class DBhandler:
     #포인트 가져오기
     def get_points(self ):
         items = self.db.child("user").get().val()
-=======
-    #상품 정보 불러오기
-    def get_items(self):
-        items = self.db.child("item").get().val()
->>>>>>> 8152569c4e613155553e69515a9ba997f5cc5e53
         return items
