@@ -374,6 +374,11 @@ th {
     border: 1.5px solid var(--light-grey);
 }
 
+#view-item li {
+    list-style-type: none;
+}
+
+
 /*페이지네이션*/
 #view-item .pagination {
     list-style: none;
@@ -389,6 +394,17 @@ th {
 #view-item .pagination a {
     text-decoration: none;
     color: black;
+}
+
+#view-item .pagination a:hover {
+    background-color: #f1f1f1;
+    color: blue;
+    text-decoration: underline;
+}
+
+#view-item .current {
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 /********************3.html*************************/

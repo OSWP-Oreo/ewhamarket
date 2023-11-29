@@ -18,7 +18,7 @@
     <main>
         <div class="main-header main-header__flex-container">
             <h1 class="main-header__title">상품등록</h1>
-            <span>판매자 : {{ usrname }}</span>
+            <span>판매자 : {{ session['id'] }}</span>
         </div>
         <hr class="main-hr">
         <div>
@@ -28,7 +28,7 @@
                     <!----수정-->
                     <div id="regitem-itemname">상품 이름</div>
                     <div id="regitem-input-itemname">
-                        <input type="text" name="item-name" required>
+                        <input type="text" name="item_name" required>
                         <div style="padding-bottom: 3px;">{% include '1~4/regitem__type.html' %}</div>
                         <div class="warning-msg">본인의 순수한 창작물이 아닌 상품은 등록할 수 없습니다.</div>
                     </div>
@@ -39,7 +39,7 @@
                     <div id="regitem-courseinfo"> 강의 </div>
                     <div id="regitem-input-courseinfo1">
                         <!--전공/교양-->
-                        <select class="course-type" name="course-type">
+                        <select class="course-type" name="course_type">
                             <option value="" disabled selected>전공/교양</option>
                             <option value="major">전공</option>
                             <option value="libral">교양</option>
@@ -76,7 +76,7 @@
                     </div>
                     <div id="regitem-input-courseinfo2">
                         <!--과목명/학수번호-->
-                        <input class="course-number" class="input-with-icon" type="search" name="course-number"
+                        <input class="course-number" class="input-with-icon" type="search" name="course_number"
                             placeholder="과목명/학수번호" style="background-image: url(/static/img/search_icon.svg);">
                         <!--백엔드연동: 데이터베이스 내에서 검색하여 선택하게 함-->
                         <!-- 교수님 -->
@@ -96,13 +96,15 @@
 
                     <!-- 판매 상품 파일 등록 -->
                     <div id="regitem-uploadFile">상품등록</div>
-                    <input type="file" id="regitem-input-uploadFile" name="item-upload" placeholder="상품을 등록해주세요."
+                    <input type="file" id="regitem-input-uploadFile" name="item_upload" placeholder="상품을 등록해주세요."
                         required>
 
                     <!-- 사진 등록 -->
                     <div id="regitem-uploadImage">사진등록</div>
-                    <input type="file" id="regitem-input-uploadImage" class="file-input" name="photo-upload"
+                    <input type="file" id="regitem-input-uploadImage" class="file-input" name="photo_upload"
                         placeholder="처음으로 불러온 사진이 대표사진으로 설정됩니다.">
+
+                    <!-- 사진은 안 넣어도 넘겨지도록.. -->
                     <!-- 등록하기 버튼 -->
                     <input type="submit" value="등록하기" id="regitem-submit" class="button btnFade btnLightblue">
 

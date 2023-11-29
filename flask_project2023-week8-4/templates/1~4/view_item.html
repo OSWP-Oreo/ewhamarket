@@ -95,477 +95,84 @@
                     <span onClick="sortby_regdate()">등록순</span> |
                     <span onClick="sortby_popular()"> 인기순</span> |
                     <span onClick="sortby_lowprice()"> 낮은 가격순</span>
+                    <p> 현재까지 등록된 상품: {{total}} 개</p>
                 </div>
                 <!-----상품카드----->
-                <ul id="items">
-                    <!--에시. js&백엔드 연결 후 데이터 삭제-->
-                    <a href="../../1~4/item_detail">
-                        <li id="item-card1">
-                            <div class="item-card">
-                                <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
-                                <img class="item-card__img" src="../../static/img/logo.png">
-                                <div class="item-card__info">
-                                    <div class="item-card__course-and-prof">
-                                        <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
-                                        자료구조 20481 | 홍길동 교수님
-                                    </div>
-                                    <strong class="item-card__item-name">
-                                        <!--백엔드에서 등록된 item-name 불러오기-->
-                                        제 6장 연결리스트1 정리
-                                    </strong>
-                                    <span class="item-card__seller">
-                                        <!--백엔드에서 등록된 판매자 이름 불러오기-->
-                                        BY. 이화인
-                                        <br><br></span>
-                                    <div class="price-rate-container">
-                                        <span class="item-card__price">
-                                            <img class="input-img" src="../../static/img/point.svg"
-                                                style="margin-right: 5px;">
-                                            <!--가격 백엔드에서 불러오기-->
-                                            1000
-                                        </span>
-                                        <span class="item-card__rate">
-                                            <span class="item-card__download" style="margin-right: 10px;">
-                                                <img class="input-img" src="../../static/img/download.svg">
-                                                <!--다운로드/판매횟수 백엔드에서 불러오기-->
-                                                28
-                                            </span>
-                                            <span class="item-card__star">
-                                                <img class="input-img" src="../../static/img/star.svg">
-                                                <!--별점 백엔드에서 불러오기-->
-                                                4.8
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="item-card__tag">
-                                        <!--백엔드에서 불러오기-->
-                                        #자료구조 #연결리스트
-                                    </div>
-                                    <div class="item-card__review">
-                                        <!--추가: 리뷰화면으로 연결-->
-                                        <a href="" style="border: 1.5px solid var(--light-grey);">리뷰</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </a>
-                    <a href="../../1~4/item_detail">
-                        <li id="item-card2">
-                            <div class="item-card">
-                                <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
-                                <img class="item-card__img" src="../../static/img/logo.png">
-                                <div class="item-card__info">
-                                    <div class="item-card__course-and-prof">
-                                        <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
-                                        자료구조 20481 | 홍길동 교수님
-                                    </div>
-                                    <strong class="item-card__item-name">
-                                        <!--백엔드에서 등록된 item-name 불러오기-->
-                                        제 6장 연결리스트1 정리
-                                    </strong>
-                                    <span class="item-card__seller">
-                                        <!--백엔드에서 등록된 판매자 이름 불러오기-->
-                                        BY. 이화인
-                                        <br><br></span>
-                                    <div class="price-rate-container">
-                                        <span class="item-card__price">
-                                            <img class="input-img" src="../../static/img/point.svg"
-                                                style="margin-right: 5px;">
-                                            <!--가격 백엔드에서 불러오기-->
-                                            1000
-                                        </span>
-                                        <span class="item-card__rate">
-                                            <span class="item-card__download" style="margin-right: 10px;">
-                                                <img class="input-img" src="../../static/img/download.svg">
-                                                <!--다운로드/판매횟수 백엔드에서 불러오기-->
-                                                28
-                                            </span>
-                                            <span class="item-card__star">
-                                                <img class="input-img" src="../../static/img/star.svg">
-                                                <!--별점 백엔드에서 불러오기-->
-                                                4.8
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="item-card__tag">
-                                        <!--백엔드에서 불러오기-->
-                                        #자료구조 #연결리스트
-                                    </div>
-                                    <div class="item-card__review">
-                                        <!--추가: 리뷰화면으로 연결-->
-                                        <a href="" style="border: 1.5px solid var(--light-grey);">리뷰</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </a>
-                    <a href="../../1~4/item_detail">
-                        <li id="item-card3">
-                            <div class="item-card">
-                                <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
-                                <img class="item-card__img" src="../../static/img/logo.png">
-                                <div class="item-card__info">
-                                    <div class="item-card__course-and-prof">
-                                        <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
-                                        자료구조 20481 | 홍길동 교수님
-                                    </div>
-                                    <strong class="item-card__item-name">
-                                        <!--백엔드에서 등록된 item-name 불러오기-->
-                                        제 6장 연결리스트1 정리
-                                    </strong>
-                                    <span class="item-card__seller">
-                                        <!--백엔드에서 등록된 판매자 이름 불러오기-->
-                                        BY. 이화인
-                                        <br><br></span>
-                                    <div class="price-rate-container">
-                                        <span class="item-card__price">
-                                            <img class="input-img" src="../../static/img/point.svg"
-                                                style="margin-right: 5px;">
-                                            <!--가격 백엔드에서 불러오기-->
-                                            1000
-                                        </span>
-                                        <span class="item-card__rate">
-                                            <span class="item-card__download" style="margin-right: 10px;">
-                                                <img class="input-img" src="../../static/img/download.svg">
-                                                <!--다운로드/판매횟수 백엔드에서 불러오기-->
-                                                28
-                                            </span>
-                                            <span class="item-card__star">
-                                                <img class="input-img" src="../../static/img/star.svg">
-                                                <!--별점 백엔드에서 불러오기-->
-                                                4.8
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="item-card__tag">
-                                        <!--백엔드에서 불러오기-->
-                                        #자료구조 #연결리스트
-                                    </div>
-                                    <div class="item-card__review">
-                                        <!--추가: 리뷰화면으로 연결-->
-                                        <a href="" style="border: 1.5px solid var(--light-grey);">리뷰</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </a>
-                    <a href="../../1~4/item_detail">
-                        <li id="item-card4">
-                            <div class="item-card">
-                                <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
-                                <img class="item-card__img" src="../../static/img/logo.png">
-                                <div class="item-card__info">
-                                    <div class="item-card__course-and-prof">
-                                        <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
-                                        자료구조 20481 | 홍길동 교수님
-                                    </div>
-                                    <strong class="item-card__item-name">
-                                        <!--백엔드에서 등록된 item-name 불러오기-->
-                                        제 6장 연결리스트1 정리
-                                    </strong>
-                                    <span class="item-card__seller">
-                                        <!--백엔드에서 등록된 판매자 이름 불러오기-->
-                                        BY. 이화인
-                                        <br><br></span>
-                                    <div class="price-rate-container">
-                                        <span class="item-card__price">
-                                            <img class="input-img" src="../../static/img/point.svg"
-                                                style="margin-right: 5px;">
-                                            <!--가격 백엔드에서 불러오기-->
-                                            1000
-                                        </span>
-                                        <span class="item-card__rate">
-                                            <span class="item-card__download" style="margin-right: 10px;">
-                                                <img class="input-img" src="../../static/img/download.svg">
-                                                <!--다운로드/판매횟수 백엔드에서 불러오기-->
-                                                28
-                                            </span>
-                                            <span class="item-card__star">
-                                                <img class="input-img" src="../../static/img/star.svg">
-                                                <!--별점 백엔드에서 불러오기-->
-                                                4.8
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="item-card__tag">
-                                        <!--백엔드에서 불러오기-->
-                                        #자료구조 #연결리스트
-                                    </div>
-                                    <div class="item-card__review">
-                                        <!--추가: 리뷰화면으로 연결-->
-                                        <a href="" style="border: 1.5px solid var(--light-grey);">리뷰</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </a>
-                    <a href="../../1~4/item_detail">
-                        <li id="item-card5">
-                            <div class="item-card">
-                                <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
-                                <img class="item-card__img" src="../../static/img/logo.png">
-                                <div class="item-card__info">
-                                    <div class="item-card__course-and-prof">
-                                        <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
-                                        자료구조 20481 | 홍길동 교수님
-                                    </div>
-                                    <strong class="item-card__item-name">
-                                        <!--백엔드에서 등록된 item-name 불러오기-->
-                                        제 6장 연결리스트1 정리
-                                    </strong>
-                                    <span class="item-card__seller">
-                                        <!--백엔드에서 등록된 판매자 이름 불러오기-->
-                                        BY. 이화인
-                                        <br><br></span>
-                                    <div class="price-rate-container">
-                                        <span class="item-card__price">
-                                            <img class="input-img" src="../../static/img/point.svg"
-                                                style="margin-right: 5px;">
-                                            <!--가격 백엔드에서 불러오기-->
-                                            1000
-                                        </span>
-                                        <span class="item-card__rate">
-                                            <span class="item-card__download" style="margin-right: 10px;">
-                                                <img class="input-img" src="../../static/img/download.svg">
-                                                <!--다운로드/판매횟수 백엔드에서 불러오기-->
-                                                28
-                                            </span>
-                                            <span class="item-card__star">
-                                                <img class="input-img" src="../../static/img/star.svg">
-                                                <!--별점 백엔드에서 불러오기-->
-                                                4.8
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="item-card__tag">
-                                        <!--백엔드에서 불러오기-->
-                                        #자료구조 #연결리스트
-                                    </div>
-                                    <div class="item-card__review">
-                                        <!--추가: 리뷰화면으로 연결-->
-                                        <a href="" style="border: 1.5px solid var(--light-grey);">리뷰</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </a>
-                    <a href="../../1~4/item_detail">
-                        <li id="item-card6">
-                            <div class="item-card">
-                                <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
-                                <img class="item-card__img" src="../../static/img/logo.png">
-                                <div class="item-card__info">
-                                    <div class="item-card__course-and-prof">
-                                        <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
-                                        자료구조 20481 | 홍길동 교수님
-                                    </div>
-                                    <strong class="item-card__item-name">
-                                        <!--백엔드에서 등록된 item-name 불러오기-->
-                                        제 6장 연결리스트1 정리
-                                    </strong>
-                                    <span class="item-card__seller">
-                                        <!--백엔드에서 등록된 판매자 이름 불러오기-->
-                                        BY. 이화인
-                                        <br><br></span>
-                                    <div class="price-rate-container">
-                                        <span class="item-card__price">
-                                            <img class="input-img" src="../../static/img/point.svg"
-                                                style="margin-right: 5px;">
-                                            <!--가격 백엔드에서 불러오기-->
-                                            1000
-                                        </span>
-                                        <span class="item-card__rate">
-                                            <span class="item-card__download" style="margin-right: 10px;">
-                                                <img class="input-img" src="../../static/img/download.svg">
-                                                <!--다운로드/판매횟수 백엔드에서 불러오기-->
-                                                28
-                                            </span>
-                                            <span class="item-card__star">
-                                                <img class="input-img" src="../../static/img/star.svg">
-                                                <!--별점 백엔드에서 불러오기-->
-                                                4.8
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="item-card__tag">
-                                        <!--백엔드에서 불러오기-->
-                                        #자료구조 #연결리스트
-                                    </div>
-                                    <div class="item-card__review">
-                                        <!--추가: 리뷰화면으로 연결-->
-                                        <a href="" style="border: 1.5px solid var(--light-grey);">리뷰</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </a>
-                    <a href="../../1~4/item_detail">
-                        <li id="item-card7">
-                            <div class="item-card">
-                                <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
-                                <img class="item-card__img" src="../../static/img/logo.png">
-                                <div class="item-card__info">
-                                    <div class="item-card__course-and-prof">
-                                        <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
-                                        자료구조 20481 | 홍길동 교수님
-                                    </div>
-                                    <strong class="item-card__item-name">
-                                        <!--백엔드에서 등록된 item-name 불러오기-->
-                                        제 6장 연결리스트1 정리
-                                    </strong>
-                                    <span class="item-card__seller">
-                                        <!--백엔드에서 등록된 판매자 이름 불러오기-->
-                                        BY. 이화인
-                                        <br><br></span>
-                                    <div class="price-rate-container">
-                                        <span class="item-card__price">
-                                            <img class="input-img" src="../../static/img/point.svg"
-                                                style="margin-right: 5px;">
-                                            <!--가격 백엔드에서 불러오기-->
-                                            1000
-                                        </span>
-                                        <span class="item-card__rate">
-                                            <span class="item-card__download" style="margin-right: 10px;">
-                                                <img class="input-img" src="../../static/img/download.svg">
-                                                <!--다운로드/판매횟수 백엔드에서 불러오기-->
-                                                28
-                                            </span>
-                                            <span class="item-card__star">
-                                                <img class="input-img" src="../../static/img/star.svg">
-                                                <!--별점 백엔드에서 불러오기-->
-                                                4.8
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="item-card__tag">
-                                        <!--백엔드에서 불러오기-->
-                                        #자료구조 #연결리스트
-                                    </div>
-                                    <div class="item-card__review">
-                                        <!--추가: 리뷰화면으로 연결-->
-                                        <a href="" style="border: 1.5px solid var(--light-grey);">리뷰</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </a>
-                    <a href="../../1~4/item_detail">
-                        <li id="item-card8">
-                            <div class="item-card">
-                                <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
-                                <img class="item-card__img" src="../../static/img/logo.png">
-                                <div class="item-card__info">
-                                    <div class="item-card__course-and-prof">
-                                        <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
-                                        자료구조 20481 | 홍길동 교수님
-                                    </div>
-                                    <strong class="item-card__item-name">
-                                        <!--백엔드에서 등록된 item-name 불러오기-->
-                                        제 6장 연결리스트1 정리
-                                    </strong>
-                                    <span class="item-card__seller">
-                                        <!--백엔드에서 등록된 판매자 이름 불러오기-->
-                                        BY. 이화인
-                                        <br><br></span>
-                                    <div class="price-rate-container">
-                                        <span class="item-card__price">
-                                            <img class="input-img" src="../../static/img/point.svg"
-                                                style="margin-right: 5px;">
-                                            <!--가격 백엔드에서 불러오기-->
-                                            1000
-                                        </span>
-                                        <span class="item-card__rate">
-                                            <span class="item-card__download" style="margin-right: 10px;">
-                                                <img class="input-img" src="../../static/img/download.svg">
-                                                <!--다운로드/판매횟수 백엔드에서 불러오기-->
-                                                28
-                                            </span>
-                                            <span class="item-card__star">
-                                                <img class="input-img" src="../../static/img/star.svg">
-                                                <!--별점 백엔드에서 불러오기-->
-                                                4.8
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="item-card__tag">
-                                        <!--백엔드에서 불러오기-->
-                                        #자료구조 #연결리스트
-                                    </div>
-                                    <div class="item-card__review">
-                                        <!--추가: 리뷰화면으로 연결-->
-                                        <a href="" style="border: 1.5px solid var(--light-grey);">리뷰</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </a>
-                    <a href="../../1~4/item_detail">
-                        <li id="item-card9">
-                            <div class="item-card">
-                                <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
-                                <img class="item-card__img" src="../../static/img/logo.png">
-                                <div class="item-card__info">
-                                    <div class="item-card__course-and-prof">
-                                        <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
-                                        자료구조 20481 | 홍길동 교수님
-                                    </div>
-                                    <strong class="item-card__item-name">
-                                        <!--백엔드에서 등록된 item-name 불러오기-->
-                                        제 6장 연결리스트1 정리
-                                    </strong>
-                                    <span class="item-card__seller">
-                                        <!--백엔드에서 등록된 판매자 이름 불러오기-->
-                                        BY. 이화인
-                                        <br><br></span>
-                                    <div class="price-rate-container">
-                                        <span class="item-card__price">
-                                            <img class="input-img" src="../../static/img/point.svg"
-                                                style="margin-right: 5px;">
-                                            <!--가격 백엔드에서 불러오기-->
-                                            1000
-                                        </span>
-                                        <span class="item-card__rate">
-                                            <span class="item-card__download" style="margin-right: 10px;">
-                                                <img class="input-img" src="../../static/img/download.svg">
-                                                <!--다운로드/판매횟수 백엔드에서 불러오기-->
-                                                28
-                                            </span>
-                                            <span class="item-card__star">
-                                                <img class="input-img" src="../../static/img/star.svg">
-                                                <!--별점 백엔드에서 불러오기-->
-                                                4.8
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="item-card__tag">
-                                        <!--백엔드에서 불러오기-->
-                                        #자료구조 #연결리스트
-                                    </div>
-                                    <div class="item-card__review">
-                                        <!--추가: 리뷰화면으로 연결-->
-                                        <a href="" style="border: 1.5px solid var(--light-grey);">리뷰</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </a>
-                </ul>
+                
+                {% if total > 0 %}
 
-                <!-------------------------페이지네이션---------------------->
-                <!--클래스통일-->
-                <!--js로 페이지네이션 기능 구현, 현재 페이지는 굵은/색이다른 글씨-->
-                <ul class="pagination">
-                    <li><a href="#">
-                            << /a>
+                <a href="../../1~4/item_detail">
+                    {% for key, value in datas %}
+                    <li id="item-card1">
+                        <div class="item-card">
+                            <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
+                            <img class="item-card__img" src="/static/photos/{{value.photo_path}}", width=140, height=200>
+                            <div class="item-card__info">
+                                <div class="item-card__course-and-prof">
+                                    <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
+                                    {{value.course_number}} | {{value.professor}} 교수님
+                                </div>
+                                <strong class="item-card__item-name">
+                                    <!--백엔드에서 등록된 item-name 불러오기-->
+                                    {{value.item_name}}
+                                </strong>
+                                <span class="item-card__seller">
+                                    <!--백엔드에서 등록된 판매자 이름 불러오기-->
+                                    BY. {{value.writer}}
+                                    <br><br></span>
+                                <div class="price-rate-container">
+                                    <span class="item-card__price">
+                                        <img class="input-img" src="../../static/img/point.svg"
+                                            style="margin-right: 5px;">
+                                        <!--가격 백엔드에서 불러오기-->
+                                        {{value.price}}
+                                    </span>
+                                    <span class="item-card__rate">
+                                        <span class="item-card__download" style="margin-right: 10px;">
+                                            <img class="input-img" src="../../static/img/download.svg">
+                                            <!--다운로드/판매횟수 백엔드에서 불러오기-->
+                                            28
+                                        </span>
+                                        <span class="item-card__star">
+                                            <img class="input-img" src="../../static/img/star.svg">
+                                            <!--별점 백엔드에서 불러오기-->
+                                            4.8
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="item-card__tag">
+                                    <!--백엔드에서 불러오기-->
+                                    #{{value.tag}}
+                                </div>
+                                <div class="item-card__review">
+                                    <!--추가: 리뷰화면으로 연결-->
+                                    <a href="" style="border: 1.5px solid var(--light-grey);">리뷰</a>
+                                </div>
+                            </div>
+                        </div>
                     </li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">></a></li>
-                </ul>
+                    {% endfor %}
+                </a>
 
+                    <!-- 페이지네이션을 위한 코드 시작 -->
+                    <div class="page-wrap">
+                        <div class="pagination">
+                            <ul>
+                                <li>
+                                {% for i in range(page_count)%}
+                                    <a href="{{url_for('view_items', page=i)}}" color="black">{{i}}</a>
+                                {% endfor %} </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                {% else %}
+                <p>
+                    등록된 상품이 없습니다.
+                </p>
+
+                {% endif %}
+                
             </section>
         </div>
     </main>
