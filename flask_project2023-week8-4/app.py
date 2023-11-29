@@ -178,7 +178,7 @@ def reg_review_init(name):
         return render_template("5-7/reg_reviews.html", writer=writer, item_name = item_name, reviewer=reviewer, subject=subject, professor=professor, subject_id=subject_id)
 
 #작성된 리뷰 데이터 넘겨줌
-@application.route("/reg_reviews", methods=['POST'])
+@application.route("/5~7/reg_reviews", methods=['POST'])
 def reg_reviews():
     data=request.form
     user_id = session.get('id')
@@ -218,15 +218,15 @@ def view_all_review():
                            limit=per_page, page=page, page_count=int((item_counts/per_page)+1), total=item_counts)
 
 #상품별리뷰페이지
-@application.route("/review/<name>/")
-def view_review(name):
+@application.route("/5~7/review/<item_name>/")
+def view_review(item_name):
     page = request.args.get("page", 0, type=int)
     per_page=6 # 한페이지에 리뷰 6개
     per_row=1  # 1줄에 하나씩
     row_count=int(per_page) #한페이지에 표시할 행 개수(6개)
     start_idx=per_page*page #현재페이지에 보여줄 리뷰의 시작인덱스
     end_idx=per_page*(page+1) #현재페이지에 보여줄 리뷰의 끝 인덱스
-    data = DB.get_reviews(str(name))
+    data = DB.get_reviews(str(item_name))
     
     #전체 리뷰의 개수 계산
     item_counts = len(data)
