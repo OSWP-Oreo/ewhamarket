@@ -160,3 +160,12 @@ a, a:visited{
   font-size: 10px
 }
 
+/*좋아요 기능 */
+#heart {
+  color: grey; 
+  font-size: 50px;
+ }
+
+ #heart.red {
+  color: red;
+ }
