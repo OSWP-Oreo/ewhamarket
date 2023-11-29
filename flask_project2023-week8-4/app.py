@@ -178,7 +178,7 @@ def view_reg_review():
                 locals()['data_{}'.format(i)] = dict(list(purchase.items())[i*per_row:])
             else:
                 locals()['data_{}'.format(i)] = dict(list(purchase.items())[i*per_row:(i+1)*per_row])
-        return render_template("/5-7/구매내역페이지.html", purchase=purchase.items(), row1=locals()['data_0'].items(), row2=locals()['data_1'].items(),
+        return render_template("/5~7/구매내역페이지.html", purchase=purchase.items(), row1=locals()['data_0'].items(), row2=locals()['data_1'].items(),
                            row3=locals()['data_2'].items(), row4=locals()['data_3'].items(),row5=locals()['data_4'].items(), row6=locals()['data_5'].items(),
                            limit=per_page, page=page, page_count=int((item_counts/per_page)+1), total=item_counts)
 
@@ -201,7 +201,7 @@ def reg_review_init(name):
         subject_id = info_data.get("subject_id",None)
         writer = info_data.get("writer",None)
         reviewer = session['id']
-        return render_template("5-7/reg_reviews.html", writer=writer, item_name = item_name, reviewer=reviewer, subject=subject, professor=professor, subject_id=subject_id)
+        return render_template("5~7/reg_reviews.html", writer=writer, item_name = item_name, reviewer=reviewer, subject=subject, professor=professor, subject_id=subject_id)
 
 #작성된 리뷰 데이터 넘겨줌
 @application.route("/reg_reviews", methods=['POST'])
