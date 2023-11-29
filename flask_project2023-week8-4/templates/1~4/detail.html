@@ -10,6 +10,7 @@
     <link href="/static/1~4style.css" type="text/css" rel="stylesheet">
     <link href="/static/style.css" type="text/css" rel="stylesheet">
     <link href="/static/btn.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="/static/1~4main.js"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
@@ -144,22 +145,24 @@
             </div>
             <div class="item-detail__sub-img-container"><!-- 서브이미지-->
                 <!--<img id="item-info__img-1" class="item-detail__sub-img" src="{{photo_path}}">-->
+                <img id="item-info__img-1" class="item-detail__sub-img" src="/static/img/logo.png">
                 <img id="item-info__img-2" class="item-detail__sub-img" src="/static/img/logo.png">
                 <img id="item-info__img-3" class="item-detail__sub-img" src="/static/img/logo.png">
                 <!--사진 여러개일때 여러개 보여주는 것 구현-->
                 <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
             </div>
             <!--구매 버튼-->
-                <a href="/1~4/order" title="to-payment" id="order-btn" class="button btnFade btnDefaultblue">바로 구매하기</a>
-                <p><i class="fa fa-heart" id="heart"></i></p>
-       
+            <div>
+                <button onclick="location.href='/1~4/order/{{key}}/';" title="to-payment" id="order-btn" class="button btnFade btnDefaultblue">바로 구매하기</button>
+                <i class="fa fa-heart" id="heart"></i>
+            </div>
            
             <div id="order__view-rate__container"><!-------------------------상세설명/리뷰--------------------->
                 <!----------------버튼 태그, js로 기능 구현, 백엔드 연결---------->
                 <!--js: 클릭 시 상세설명이 보이도록-->
                 <span><button id="descr-btn" class="button btnFade btnNavblue">상세 설명</button></span>
                 <!--js: 클릭 시 리뷰 요약이 보이도록.안되면 전체 리뷰 창으로 이동-->
-                <span><a href="/5~7/review" id="review-btn" class="button btnFade btnNavblue">리뷰</a></span>
+                <span><button onclick="location.href='/5~7/review/{{key}}';" id="review-btn" class="button btnFade btnNavblue">리뷰</a></span>
                 <!--내용-->
                 <div id="order__show-view-rate">
                     <!--리뷰내용--> <!--백엔드: 리뷰 내용 받아오기-->

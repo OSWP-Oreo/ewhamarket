@@ -101,7 +101,7 @@
                 
                 {% if total > 0 %}
 
-                <a href="../../1~4/item_detail">
+                
                     {% for key, value in datas %}
                     <li id="item-card1">
                         <div class="item-card" onclick="location.href='/1~4/view_item_detail/{{key}}/';" style="cursor:pointer;">
@@ -124,7 +124,7 @@
                                     <span class="item-card__price">
                                         <img class="input-img" src="../../static/img/point.svg"
                                             style="margin-right: 5px;">
-                                        <!--가격 백엔드에서 불러오기-->
+                                        <!--가격 백엔드에서 불러오기--> <!--style 수정-->
                                         {{value.price}}
                                     </span>
                                     <span class="item-card__rate">
@@ -152,7 +152,7 @@
                         </div>
                     </li>
                     {% endfor %}
-                </a>
+                
 
                     <!-- 페이지네이션을 위한 코드 시작 -->
                     <div class="page-wrap">
