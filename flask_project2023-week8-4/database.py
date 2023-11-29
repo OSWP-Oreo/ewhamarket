@@ -63,18 +63,12 @@ class DBhandler:
     #구매하기
     #가격 가져오기
     def get_price(self, name):
-        point=int(self.db.child("user").child(name).get().val()['price'])
+        point=int(self.db.child("item").child(name).get().val()['price'])
         return point
     #판매자 가져오기
     def get_seller(self, name):
-        seller=self.db.child("user").child(name).get().val()['writer']
+        seller=self.db.child("item").child(name).get().val()['writer']
         return seller
-    
-    #랭킹
-    #포인트 가져오기
-    def get_points(self ):
-        items = self.db.child("user").get().val()
-        return items
     
     #구매자 포인트 감소
     def update_point(self, user_id, point):
@@ -176,3 +170,16 @@ class DBhandler:
         print(data, photo_path)
         return True
     
+    #사용자 포인트 가져오기
+    def get_user_point(self, name):
+        point=int(self.db.child("user").child(name).get().val()['point'])
+        return point
+    #사용자 랭킹포인트 가져오기
+    def get_user_ranking_point(self, name):
+        point=int(self.db.child("user").child(name).get().val()['rankingpoint'])
+        return point
+    #랭킹
+    #포인트 가져오기
+    def get_points(self ):
+        items = self.db.child("user").get().val()
+        return items
