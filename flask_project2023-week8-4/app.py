@@ -90,6 +90,34 @@ def view_item_detail(item_name):
     return render_template("1~4/detail.html", item_name=item_name, data=data)
 
 
+#좋아요 관련 기능
+@application.route('/show_heart/<item_name>/', methods=['GET'])
+def show_heart(item_name):
+    if 'id' not in session or not session['id']:
+        flash('상품을 찜하려면 로그인을 해주세요.')
+        return redirect(url_for('login'))
+    else:
+        my_heart = DB.get_heart_byname(session['id'],item_name)
+        return jsonify({'my_heart': my_heart})
+ 
+@application.route('/like/<item_name>/', methods=['POST'])
+def like(item_name):
+    if 'id' not in session or not session['id']:
+        flash('상품을 찜하려면 로그인을 해주세요.')
+        return redirect(url_for('login'))
+    else:
+        my_heart = DB.update_heart(session['id'],'Y',item_name)
+        return jsonify({'msg': '좋아요 완료!'})
+
+@application.route('/unlike/<item_name>/', methods=['POST'])
+def unlike(item_name):
+    if 'id' not in session or not session['id']:
+        flash('상품을 찜하려면 로그인을 해주세요.')
+        return redirect(url_for('login'))
+    else:
+        my_heart = DB.update_heart(session['id'],'N',item_name)
+        return jsonify({'msg': '안좋아요 완료!'})
+
 
 @application.route("/1~4/order")
 def order():
