@@ -106,16 +106,22 @@ class DBhandler:
     
     #리뷰 데이터베이스에 저장
     def reg_review(self, data, user_id, img_path):
+        find_name = data['seller_id']+"_"+data['name']
+        dbname = self.db.child("item").get() #db에 저장되어 있는 판매자id_상품명 찾기.
+        for res in dbname.each():
+            key_value = res.key() #판매자id_상품명
+            if key_value == find_name:
+                target_value=res.val() #내가 찾던 판매자id_상품명
         review_info ={
-            "name": data['name'],
+            "name": data['name'], #상품명
             "title": data['title'],
             "review": data['review'],
             "rate": data['reviewStar'],
             "keyword": data['keyword'],
             "img_path": img_path,
-            "reviewer": user_id 
+            "reviewer": user_id
         }
-        name_id = data['name'] + '_' + user_id
+        name_id = target_value + '_' + user_id #판매자id_상품명_구매자id
         self.db.child("review").child(name_id).set(review_info)
         return True
     
