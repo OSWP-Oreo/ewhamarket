@@ -140,7 +140,7 @@ class DBhandler:
     
 
     #상품별 리뷰 카테고리별로 불러오기(대학별 정렬)
-    def get_items_bycategory(self,target_name, cate):
+    def get_reviews_bycategory(self,target_name, cate):
         all_review = self.db.child("review").get().val() #전체리뷰
         target_reviews = {}
 
@@ -169,9 +169,9 @@ class DBhandler:
     
 
     #전체리뷰불러오기
-    def get_all_reviews(self):
-        reviews = self.db.child("review").get().val()
-        return reviews
+    # def get_all_reviews(self):
+    #     reviews = self.db.child("review").get().val()
+    #     return reviews
     
     #이름으로 리뷰불러오기(상세리뷰화면)
     def get_review_byname(self, name):
