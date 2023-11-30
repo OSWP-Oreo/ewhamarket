@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -11,13 +11,7 @@
 <body>
 
     {% extends "index.html" %}
-    <!--11주차 교수님 제공 코드 복붙-->
     {% block section %}
-    {% with mesg = get_flashed_messages() %}
-    {% if mesg !=[] %}
-    <script>alert("{{ mesg[0] }}")</script>
-    {% endif %}
-    {% endwith %}
     <div class="main-header">
         <h1 class="main-header__title"> 회원가입 </h1>
         <hr class="main-hr">
@@ -41,6 +35,8 @@
                     <tr>
                         <th>*비밀번호 확인</th>
                         <td><input type="password" required id="PWconfirm" name="PWconfirm" /></td>
+                        <td><button name="check_duplicate_pw" class="중복체크" onclick="pwcheck()">비밀번호확인</button></td>
+                        <td><p class="warning-msg" id="pwcheck_msg"></p></td>
                     </tr>
                     <tr>
                         <th>*이메일 주소</th>
@@ -99,57 +95,39 @@
 
         </form>
     </div>
+    
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {% if 'check_duplicate_id' in request.form %}
+                    <script>
+                        function IDcheck() {
+                            var enteredId = document.getElementById('id').value;
+                            var idMsgElement = document.querySelector('#idcheck_msg');
+                            idMsgElement.textContent = "{{ message }}";
+                        }
+                    </script>
+                {% elif 'check_duplicate_nickname' in request.form %}
+                <script>
+                    function nicknamecheck() {
+                        var enteredNickname = document.getElementById('nickname').value;
+                        var nicknameMsgElement = document.getElementById('#nickname_msg');
+                        nicknameMsgElement.textContent = "{{ message }}";
+                    }
+                </script>
+                {% elif pw != pw2 %}
+                <script>
+                    function pwcheck() {
+                        var enteredNickname = document.getElementById('PWconfirm').value;
+                        var pwMsgElement = document.getElementById('#pwcheck_msg');
+                        pwMsgElement.textContent = "{{ message }}";
+                    }
+                </script>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
     {% endblock section %}
-
-    <script>
-        function IDcheck() {
-            var enteredId = document.getElementById('id').value;
-            var warningMsgElement = document.querySelector('#idcheck_msg');
-
-            if (enteredId.trim() === '') {
-                warningMsgElement.textContent = '아이디를 입력하세요.';
-            } else {
-                // 중복 확인 함수 (임의의 함수, 실제로는 서버와 통신하여 확인해야 함)
-                var idDuplicate = isIdDuplicate(enteredId);
-
-                if (idDuplicate) { //true
-                    warningMsgElement.textContent = '이미 사용중인 아이디입니다.';
-                } else { //false
-                    warningMsgElement.textContent = '사용 가능한 아이디입니다.';
-                }
-            }
-        }
-
-        // 임의의 중복 확인 함수 (실제로는 서버와 통신하여 확인해야 함)
-       function isIdDuplicate(id) {
-
-            return true; //리턴값 true/false 백에서 받아옴
-        } 
-
-        function nicknamecheck() {
-            var enteredNickname = document.getElementById('nickname').value;
-            var nicknameMsgElement = document.getElementById('nickname_msg');
-
-            if (enteredNickname.trim() === '') {
-                nicknameMsgElement.textContent = '닉네임을 입력하세요.';
-            } else {
-                // 중복 확인 함수 (임의의 함수, 실제로는 서버와 통신하여 확인해야 함)
-                var isDuplicateNickname = isNicknameDuplicate(enteredNickname);
-
-                if (isDuplicateNickname) {
-                    nicknameMsgElement.textContent = '이미 사용중인 닉네임입니다.';
-                } else {
-                    nicknameMsgElement.textContent = '사용 가능한 닉네임입니다.';
-                }
-            }
-        }
-
-        // 임의의 중복 확인 함수 (실제로는 서버와 통신하여 확인해야 함)
-        function isNicknameDuplicate(nickname) {
-
-            return true; //리턴값 true/false 백에서 받아옴
-        }
-    </script>
-
 </body>
 </html>
