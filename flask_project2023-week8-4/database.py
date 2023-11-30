@@ -22,7 +22,7 @@ class DBhandler:
             "point":30000,
             "rankingpoint":0
         }
-        if self.id_duplicate_check(str(data['id'])) and self.nickname_duplicate_check(str(data['nickname'])):
+        if self.id_duplicate_check(str(data['id'])) and self.nickname_duplicate_check(str(data['nickname'])and (pw==pw2)):
             self.db.child("user").child(data['id']).set(user_info)
             print(data)
             return True
