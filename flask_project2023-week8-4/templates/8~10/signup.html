@@ -96,35 +96,22 @@
         </form>
     </div>
     
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                {% if 'check_duplicate_id' in request.form %}
-                    <script>
-                        function IDcheck() {
-                            var enteredId = document.getElementById('id').value;
-                            var idMsgElement = document.querySelector('#idcheck_msg');
-                            idMsgElement.textContent = "{{ message }}";
-                        }
-                    </script>
-                {% elif 'check_duplicate_nickname' in request.form %}
+    {% with mesg = get_flashed_messages() %}
+        {% if mesg !=[]%}
                 <script>
+                    function IDcheck() {
+                        var idMsgElement = document.getElementById("idcheck_msg");
+                        idMsgElement.innerHTML = "{{ mesg[0] }}";
+                    }
                     function nicknamecheck() {
-                        var enteredNickname = document.getElementById('nickname').value;
-                        var nicknameMsgElement = document.getElementById('#nickname_msg');
-                        nicknameMsgElement.textContent = "{{ message }}";
+                        var nicknameMsgElement = document.getElementById("nickname_msg");
+                        nicknameMsgElement.innerHTML = "{{ mesg[1] }}";
                     }
-                </script>
-                {% elif pw != pw2 %}
-                <script>
                     function pwcheck() {
-                        var enteredNickname = document.getElementById('PWconfirm').value;
-                        var pwMsgElement = document.getElementById('#pwcheck_msg');
-                        pwMsgElement.textContent = "{{ message }}";
+                        var pwMsgElement = document.getElementById("pwcheck_msg");
+                        pwMsgElement.innerHTML = "{{ mesg[2] }}";
                     }
                 </script>
-                {% endif %}
-            {% endfor %}
         {% endif %}
     {% endwith %}
 

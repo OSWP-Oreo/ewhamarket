@@ -8,7 +8,7 @@
 <body>
 
     {% include 'header-and-nav.html'%}
-
+    {% block section %}
     <div class="main-header">
         <h1 class="main-header__title"> 이화여자대학교 월간 랭킹 </h1>
         <hr class="main-hr">
@@ -38,6 +38,11 @@
         <!--랭킹 순위 별 프로필, 포인트 불러오기 백엔드 연동 필요: 유저네임, 유저프로필(img),  포인트(range의 value) 값 넣기-->
         <div class="ranking-inner">
             <p class="warning-msg">*총 거래 포인트(판매포인트+구매포인트)를 기준으로 한 상위 10명입니다.</p>
+            {% if session['id'] %}           
+            <p>{{session['id']}}님의 랭킹포인트는 {{ user_rankingpoint }}p입니다.</p>  
+            {% else%}
+            <p>랭킹포인트 확인을 위해 로그인을 해주세요.</p>
+            {% endif %}
             <table style="margin:auto;">
                 <tr>
                     <td>1</td>
@@ -176,5 +181,6 @@
 
     <link rel="stylesheet" href="../../static/style.css">
     <link rel="stylesheet" href="../../static/8~10Style.css">
+    {% endblock section %}
 </body>
 </html>
