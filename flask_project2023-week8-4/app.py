@@ -247,12 +247,18 @@ def view_all_review():
 @application.route("/review/<name>/")
 def view_review(name):
     page = request.args.get("page", 0, type=int)
+    category = request.args.get("category", "all")
     per_page=6 
     per_row=1 
     row_count=int(per_page)
     start_idx=per_page*page
     end_idx=per_page*(page+1)
-    data = DB.get_reviews(str(name))
+    #data = DB.get_reviews(str(name))
+    if category=="all":
+        data = DB.get_reviews(str(name)) #read the table
+    else:
+        data = DB.get_reviews_bycategory(str(name),category)
+    data = dict(sorted(data.items(), key=lambda x: x[0], reverse=False))
     
     item_counts = len(data)
     
@@ -276,7 +282,11 @@ def view_review(name):
     proportion_3 = keyword3/item_counts*100
             
     #현재 페이지에 보여줄 리뷰만 추출
-    data = dict(list(data.items())[start_idx:end_idx])
+    #data = dict(list(data.items())[start_idx:end_idx])
+    if item_counts<=per_page:
+        data = dict(list(data.items())[:item_counts])
+    else:
+        data = dict(list(data.items())[start_idx:end_idx])
 
     for i in range(row_count):
         if (i == row_count-1): #마지막 row
@@ -285,7 +295,7 @@ def view_review(name):
             locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
     return render_template("review.html", datas=data. items(),row1=locals()['data_0'].items(), row2=locals()['data_1'].items(),
                            row3=locals()['data_2'].items(), row4=locals()['data_3'].items(),row5=locals()['data_4'].items(), row6=locals()['data_5'].items(),
-                           limit=per_page, page=page, page_count=int((item_counts/per_page)+1), total=item_counts, average_star=average_star, proportion_1=proportion_1, proportion_2=proportion_2, proportion_3=proportion_3)
+                           limit=per_page, page=page, page_count=int(math.ceil(item_counts/per_page)), total=item_counts, category=category, average_star=average_star, proportion_1=proportion_1, proportion_2=proportion_2, proportion_3=proportion_3)
 
 
 #싱세리뷰페이지
