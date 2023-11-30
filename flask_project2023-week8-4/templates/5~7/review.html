@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-    
     <head>
         <meta charset="UTF-8">
         <title>상품등록</title>
@@ -110,30 +109,66 @@
             <div class="main-hr__padding" style="background-color: #BCBCBC;"></div>
             <!--리뷰 보기-->
             <article style="padding-inline-start: 5%; padding-inline-end: 5%;">
-                
-
-                <!--
-                {% include '5~7/individual_review.html' %}
-                <div class="main-hr__padding" style="background-color: #BCBCBC;"></div>
-                {% include '5~7/individual_review.html' %}
-                <div class="main-hr__padding" style="background-color: #BCBCBC;"></div>
-                {% include '5~7/individual_review.html' %}
-                <div class="main-hr__padding" style="background-color: #BCBCBC;"></div>
-                {% include '5~7/individual_review.html' %}
-                <div class="main-hr__padding" style="background-color: #BCBCBC;"></div>
-                {% include '5~7/individual_review.html' %}
-                -->
+<!------------------------------------------------리뷰 시작----------------------------------------------->
+                {% if total > 0 %}
+                    {%for key, value in datas%}
+                        <div class="container">
+                            <div class="container">
+                                <div>
+                                    <div class="rowcontainer">
+                                        <!--백: 리뷰 제목 불러오기-->
+                                        <div class="review-title">{{ value.title }}</div>
+                                        <!--백: 리뷰 작성 날짜 불러오기-->
+                                    </div>
+                                    <div class="rowcontainer" id="profile-rowcontainer">
+                                        <!--프로필 사진-->
+                                        <div class="review-profile"><img src="../../static/img/profile.jpg" width=100% height=100% alt="상품 예시 사진입니다"></div>
+                                        <!--백: 작성자 아이디 앞 3글자만 보이게 불러오기-->
+                                        <div class="review-id">{{ value.reviewer }}</div>
+                                        <!--백: 작성자 전공 불러오기-->
+                                        <div class="review-major">{{ value.reviewer_major }}</div>
+                                        <div class="review-hr"></div>
+                                        <!--백: 별점 불러오기-->
+                                        <div>
+                                            <fieldset style="border:none ; padding: 0%; margin: 0%;" >
+                                                <div class="rating-container">
+                                                    <!--<div class="rating-star" id="review-rate" data-rating="5">★</div>-->
+                                                    {% for star in range(1, 6) %}
+                                                        {% if star <= value.rate %}
+                                                            <div class="rating-star" id="review-rate" data-rating="{{ star }}">★</div>
+                                                        {% else %}
+                                                            <div class="rating-star" id="review-rate" data-rating="{{ star }}">☆</div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="rowcontainer">
+                                        <div class="review-main">
+                                            <!--백: 리뷰 불러오기-->
+                                            {{ value.review }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container" style="justify-content: flex-end;">
+                                <!--백: 작성자 등록 대표 사진 불러오기-->
+                                <img src="{{ value.img_path }}" class="review-img" alt="리뷰사진입니다">
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <ul class="pagination">
+                        <li><a href="">&lt;</a></li>
+                        <li>
+                            {% for i in range(page_count)%}
+                                <a href="{{url_for('view_all_review', page=i)}}">{{i}}</a>
+                            {% endfor %}<!--여기 for(view_list~)라고 해야 하는지 view all review가 되어야 하는지 궁금-->
+                        </li>
+                        <li><a href="">&gt;</a></li>
+                    </ul>
+                {% endif %}
             </article>
-            <!--페이지 선택 창-->
-            <ul class="pagination">
-                <li><a href="">&lt;</a></li>
-                <li><a href="">1</a></li>
-                <li><a href="">2</a></li>
-                <li><a href="">3</a></li>
-                <li><a href="">4</a></li>
-                <li><a href="">5</a></li>
-                <li><a href="">&gt;</a></li>
-            </ul>
             
         </main>
         {% endblock section %}
