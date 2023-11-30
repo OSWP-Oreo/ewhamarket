@@ -323,33 +323,58 @@ def register_user():
     nname=request.form['nickname']
     pw_hash=hashlib.sha256(pw.encode('utf-8')).hexdigest()
     pw_hash2=hashlib.sha3_256(pw.encode('utf-8')).hexdigest()
+    session['id_'] = id
+    session['pw']=pw
+    session['nickname']=nname
+    session['email']=request.form['email']
+    session['HP']=request.form['HP']
+    session['college']=request.form['dropdown1']
+    session['major']=request.form['dropdown2']
     #아이디중복확인
     if 'check_duplicate_id' in request.form:
         if DB.id_duplicate_check(id):
             flash('사용할 수 있는 아이디입니다.')
-            return render_template("8~10/signup.html")
+            return render_template("8~10/signup.html",
+            id=session.get('id_', ''),pw=session.get('pw',''),nickname=session.get('nickname',''),hp=session.get('HP',''),
+            email=session.get('email',''),college=session.get('college',''),major=session.get('major',''))
         else:
             flash('이미 존재하는 아이디입니다.')
-            return render_template("8~10/signup.html")
+            return render_template("8~10/signup.html",
+            id=session.get('id_', ''),pw=session.get('pw',''),nickname=session.get('nickname',''),hp=session.get('HP',''),
+            email=session.get('email',''),college=session.get('college',''),major=session.get('major',''))
 
     #닉네임중복확인
     if 'check_duplicate_nickname' in request.form:
         if DB.nickname_duplicate_check(nname):
             flash('사용할 수 있는 닉네임입니다.')
-            return render_template("8~10/signup.html")
+            return render_template("8~10/signup.html",
+            id=session.get('id_', ''),pw=session.get('pw',''),nickname=session.get('nickname',''),hp=session.get('HP',''),
+            email=session.get('email',''),college=session.get('college',''),major=session.get('major',''))
         else:
             flash('이미 존재하는 닉네임입니다.')
-            return render_template("8~10/signup.html")
-    if pw!=pw2:
-        flash("비밀번호를 확인해주세요")
-        return render_template("8~10/signup.html")
+            return render_template("8~10/signup.html",
+            id=session.get('id_', ''),pw=session.get('pw',''),nickname=session.get('nickname',''),hp=session.get('HP',''),
+            email=session.get('email',''),college=session.get('college',''),major=session.get('major',''))
+    if 'check_same_pw' in request.form:
+        if pw!=pw2:
+            flash("비밀번호가 불일치합니다")
+            return render_template("8~10/signup.html",
+                id=session.get('id_', ''),nickname=session.get('nickname',''),hp=session.get('HP',''),
+                email=session.get('email',''),college=session.get('college',''),major=session.get('major',''))
+        else: 
+            flash("비밀번호가 일치합니다")
+            return render_template("8~10/signup.html",
+                id=session.get('id_', ''),pw=session.get('pw',''),nickname=session.get('nickname',''),hp=session.get('HP',''),
+                email=session.get('email',''),college=session.get('college',''),major=session.get('major',''))
+    
+    if DB.insert_user(data,pw_hash,pw_hash2):
+        flash("회원가입되었습니다.")
+        return render_template("8~10/login.html")
     else:
-        if DB.insert_user(data,pw_hash,pw_hash2):
-            flash("회원가입되었습니다.")
-            return render_template("8~10/login.html")
-        else:
-            flash("중복확인를 눌러주세요")
-            return render_template("8~10/signup.html")
+        flash("입력된 정보를 다시 확인해주세요")
+        return render_template("8~10/signup.html",
+        id=session.get('id_', ''),pw=session.get('pw',''),nickname=session.get('nickname',''),hp=session.get('HP',''),
+        email=session.get('email',''),college=session.get('college',''),major=session.get('major',''))
 
     
 
