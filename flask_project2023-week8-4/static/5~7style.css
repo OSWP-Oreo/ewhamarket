@@ -32,6 +32,7 @@
   margin-top: 0px; 
   margin-bottom: 0px;
   border: none;
+  width: 100%;
 }
 
 .review-info__text{
@@ -51,10 +52,10 @@ border: 1px solid #C6C4C4; /* 원하는 보더 스타일 및 색상 설정 */
 padding: 10px; /* 원하는 패딩 설정 */
 border-radius: 5px;
 display: inline-block; /* 보더를 컨테이너 주변에 감싸기 위해 인라인 블록 요소로 설정 */
-width: auto;
 width: 100%;
 box-sizing: border-box;
 }
+
 .grid-container {
 display: grid;
 grid-template-columns: 1fr 2fr 270px;
@@ -67,10 +68,23 @@ justify-items: center;
 box-sizing: border-box;
 }
 
+.mypage-container{
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-areas: "left middle";
+  height: 150px;
+  width: 100%;
+  gap: 15px;
+  align-items: center;
+  justify-items: center;
+  box-sizing: border-box;
+}
 .box.left {
 grid-area: left;
 }
-
+#mypage-box-middle{
+  justify-self: left;
+}
 .box.middle {
 grid-area: middle;
 }
