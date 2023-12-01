@@ -120,9 +120,9 @@ def unlike(item_name):
 ####### likes ########
 
 
-@application.route("/1~4/order")
-def order():
-    return render_template("1~4/order.html")
+@application.route("/1~4/order_item")
+def order_item():
+    return render_template("1~4/order_item.html")
 
 
 
@@ -147,7 +147,7 @@ def view_order_confirmation(item_name):
         data=DB.get_item_byname(str(item_name))
         session['user_point'] = DB.get_user_point(session['id'])
 
-    return render_template("1~4/order.html", data=data, item_name=item_name)
+    return render_template("1~4/order_item.html", data=data, item_name=item_name)
 
 
 # 5~7

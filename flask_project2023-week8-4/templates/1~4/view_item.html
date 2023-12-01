@@ -14,7 +14,8 @@
 </head>
 
 <body> <!--1,8 가로폭 지정-->
-    {% include 'header-and-nav.html' %}
+    {% extends 'index.html' %}
+        {% block section %}
     <main class="padding">
         <!-------------------------페이지 제목----------------------->
         <div class="main-header">
@@ -176,7 +177,7 @@
             </section>
         </div>
     </main>
-
+    {% endblock section %}
 </body>
 
 </html>
