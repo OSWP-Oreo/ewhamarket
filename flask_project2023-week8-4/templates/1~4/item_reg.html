@@ -14,7 +14,8 @@
 </head>
 
 <body>
-    {% include 'header-and-nav.html' %}
+    {% extends 'index.html' %}
+        {% block section %}
     <main>
         <div class="main-header main-header__flex-container">
             <h1 class="main-header__title">상품등록</h1>
@@ -112,6 +113,7 @@
             </div>
         </div>
     </main>
+    {% endblock section %}
 </body>
 
 </html>

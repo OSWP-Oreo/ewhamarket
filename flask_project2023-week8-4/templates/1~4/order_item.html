@@ -14,7 +14,7 @@
 </head>
 
 <body> <!--1,8 가로폭 지정-->
-    {% include 'header-and-nav.html'%}
+    {% extends 'header-and-nav.html'%}
     {% block section %}
     {% with mesg = get_flashed_messages() %}
     {% if mesg !=[] %}
