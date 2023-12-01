@@ -54,8 +54,8 @@
                         <th>대학 / 학과</th>
                         <td>
                             <select id="dropdown1" name="dropdown1"  style="width:100%;" onchange="updateDropdown2()">
-                                <option value="인문과학대학"{% if college == '인문과학대학' %}selected{% endif %}>인문과학대학</option>
-                                <option value="사회과학대학"{% if college == '사회과학대학' %}selected{% endif %}>사회과학대학</option>
+                                <option value="인문과학대학">인문과학대학</option>
+                                <option value="사회과학대학">사회과학대학</option>
                                 <option value="자연과학대학">자연과학대학</option>
                                 <option value="엘텍공과대학">엘텍공과대학</option>
                                 <option value="음악대학">음악대학</option>
@@ -72,7 +72,14 @@
                         </td>
                         <td>
                             <select id="dropdown2" name="dropdown2" style="width:172px;">
-                                <!-- options will be dynamically updated using JavaScript -->
+                                <option value="국어국문학과">국어국문학과</option>
+                                <option value="중어중문학과">중어중문학과</option>
+                                <option value="불어불문학과">불어불문학과</option>
+                                <option value="독어독문학과">독어독문학과</option>
+                                <option value="사학과">사학과</option>
+                                <option value="철학과">철학과</option>
+                                <option value="기독교학과">기독교학과</option>
+                                <option value="영어영문학부">영어영문학부</option>
                             </select>
                         </td>
                     </tr>
