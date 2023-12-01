@@ -12,15 +12,15 @@
 
     {% extends "index.html" %}
     {% block section %}
+    {% with mesg = get_flashed_messages() %}
+    {% if mesg !=[]%}
+    <script>alert("{{ mesg[0] }}")</script>
+    {% endif %}
+    {% endwith %}
     <div class="main-header">
         <h1 class="main-header__title"> 회원가입 </h1>
         <hr class="main-hr">
     </div>
-    {% with mesg = get_flashed_messages() %}
-    {% if mesg !=[]%}
-    {{ mesg[0] }}
-    {% endif %}
-    {% endwith %}
     <div class="outer">
         <form method="post" action="/signup_post" enctype="multipart/form-data">
             <div class="signup-inner">
@@ -40,7 +40,7 @@
                         <th>*비밀번호 확인</th>
                         <td><input type="password" required id="PWconfirm" name="PWconfirm" /></td>
                         <td><button name="check_same_pw" class="중복체크" onclick="pwcheck()">비밀번호확인</button></td>
-                        <td><p class="warning-msg" id="pwcheck_msg"></p></td>
+                        <td><p class="warning-msg" id="pwcheck_msg">비밀번호 확인을 해주세요</p></td>
                     </tr>
                     <tr>
                         <th>*이메일 주소</th>
@@ -100,7 +100,7 @@
         </form>
     </div>
     
-    <!-- {% with mesg = get_flashed_messages() %}
+    <!--{% with mesg = get_flashed_messages() %}
         {% if mesg !=[]%}
                 <script>
                     function IDcheck() {
@@ -117,7 +117,7 @@
                     }
                 </script>
         {% endif %}
-    {% endwith %} -->
+    {% endwith %}-->
 
     {% endblock section %}
 </body>
