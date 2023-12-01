@@ -307,6 +307,10 @@ def view_review_detail(name):
     return render_template("review_detail.html", name=name, data=data)
 
 
+#마이페이지 html작업을 위해서 임시로 만들어놓음   
+@application.route("/5~7/mypage")
+def mypage():
+    return render_template("5~7/mypage.html")
 
 # 8~10
 

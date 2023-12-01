@@ -3,6 +3,7 @@
     <head>
         <link href="../../static/5~7style.css" type="text/css" rel="stylesheet">
         <link href="../../static/style.css" type="text/css" rel="stylesheet">
+        <link href="../../static/btn.css" type="text/css" rel="stylesheet">
         <meta charset="UTF-8">
         <title>My Page</title>
     </head>
@@ -41,14 +42,14 @@
                                     <img src="../../static/img/logo.png" width="25px" height="25px">
                                     <input type="text" name="seller_id" id="seller_id" class="review-info__text" value="{{value.writer}}" style="text-align: left;">
                                 </div>
-                                <button>리뷰작성하기</button>
+                                <div class="review-info__text" id="justify-right">
+                                   <button class="button btnDefaultblue btnFade" id="reg-review-button" onclick="location.href='';" style="cursor:pointer;">리뷰작성하기</button>                                
+                                </div>
                             </form>
                     <!--{% endfor %}-->
                         </div>
                        
                 </div>
-
-
             </main>
         {% endblock section %}
     </body>

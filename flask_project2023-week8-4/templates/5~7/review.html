@@ -15,7 +15,7 @@
             <div class="main-header-left">
                 <div class="oneLine">
                     <h1 class="main-header">리뷰</h1>
-                    <p>(92)</p><!--추가: 리뷰 숫자 받아와서 숫자 작성하는것-->
+                    <p>{{total}}</p><!--리뷰 숫지-->
                 </div>
                     <hr class="main-hr__padding">     
             </div> 
@@ -24,45 +24,45 @@
             <div class ="review-summary__box">
                 <!--좌측 별점-->
                 <div class="box left">
-                    <!---->
-                    <form class="mb-3" name="rate" id="rate" method="post">
-                        <fieldset style="border: none;">
-                            <p id="selectedRating" class="rating-num" style="margin-bottom: 5px; margin-top: 0%;">0.0</p>
-                            <div class="rating-container">
-                                <div class="rating-star" data-rating="5">★</div>
-                                <div class="rating-star" data-rating="4">★</div>
-                                <div class="rating-star" data-rating="3">★</div>
-                                <div class="rating-star" data-rating="2">★</div>
-                                <div class="rating-star" data-rating="1">★</div>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>    
+                    <p class="rating-num">평균 별점</p>
+                    <p class="rating-num">{{average_star}}</p>
+                </div>
+                
+                
                 
                 <!--우측 키워드와 그래프-->
                 <div class="box middle">
                     <div>
-                        <p><!--추가: 숫자-->00%의 구매자가 <!--속성 중 하나--> <span style="color: #0081a7; font-size: large;">"자세한 설명"</span> 이라고 생각해요 </p>
-                        <table><!--바 추가해야 함-->
+                        <p><!--몇 퍼센트-->
+                            {% if proportion_1 >= proportion_ && proportion_1 >= proportion_3 %}
+                                <span>{{proportion_1}}</span>
+                            {% elif proportion_2 >= proportion_1 && proportion_2 >= proportion_3 %}
+                                <span>{{proportion_2}}</span>
+                            {% else proportion_3 >= proportion_1 && proportion_3 >= proportion_2 %}
+                                <span>{{proportion_3}}</span>
+                            {% endif %}
+                            
+                            의 구매자가 <span style="color: #0081a7; font-size: large;">"자세한 설명"</span> 이라고 생각해요 </p>
+                        <table>
                             <tr>
                                 <td>자세한 설명</td>
                                 <td>
-                                    <progress class="progress-bar" value="64" max="100"></progress>
-                                    <label class="progress-label">64%</label>
+                                    <progress class="progress-bar" value="{{proportion_1}}" max="100"></progress>
+                                    <label class="progress-label">{{proportion_1}}</label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>핵심 위주</td>
                                 <td>
-                                    <progress class="progress-bar" value="19" max="100"></progress>
-                                    <label class="progress-label">19%</label>
+                                    <progress class="progress-bar" value="{{proportion_2}}" max="100"></progress>
+                                    <label class="progress-label">{{proportion_2}}</label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>문제 풀이</td>
                                 <td>
-                                    <progress class="progress-bar" value="3" max="100"></progress>
-                                    <label class="progress-label">3%</label>
+                                    <progress class="progress-bar" value="{{proportion_3}}" max="100"></progress>
+                                    <label class="progress-label">{{proportion_3}}</label>
                                 </td>
                             </tr>
                         </table>

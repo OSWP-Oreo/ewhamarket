@@ -48,26 +48,38 @@
 }
 /*그리드*/
 .grid-container-wrapper {
-border: 1px solid #C6C4C4; /* 원하는 보더 스타일 및 색상 설정 */
-padding: 10px; /* 원하는 패딩 설정 */
-border-radius: 5px;
-display: inline-block; /* 보더를 컨테이너 주변에 감싸기 위해 인라인 블록 요소로 설정 */
-width: 100%;
-box-sizing: border-box;
+  border: 1px solid #C6C4C4; /* 원하는 보더 스타일 및 색상 설정 */
+  padding: 10px; /* 원하는 패딩 설정 */
+  border-radius: 5px;
+  display: inline-block; /* 보더를 컨테이너 주변에 감싸기 위해 인라인 블록 요소로 설정 */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .grid-container {
-display: grid;
-grid-template-columns: 1fr 2fr 270px;
-grid-template-areas: "left middle right";
-height: 200px;
-width: 100%;
-gap: 15px;
-align-items: center;
-justify-items: center;
-box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 2fr 270px;
+  grid-template-areas: "left middle right";
+  height: 200px;
+  width: 100%;
+  gap: 15px;
+  align-items: center;
+  justify-items: center;
+  box-sizing: border-box;
 }
 
+.box.left {
+grid-area: left;
+}
+.box.middle {
+  grid-area: middle;
+}
+
+.box.right {
+  grid-area: right;
+}
+
+/**mypage**/
 .mypage-container{
   display: grid;
   grid-template-columns: 1fr 5fr;
@@ -79,18 +91,12 @@ box-sizing: border-box;
   justify-items: center;
   box-sizing: border-box;
 }
-.box.left {
-grid-area: left;
-}
-#mypage-box-middle{
-  justify-self: left;
-}
-.box.middle {
-grid-area: middle;
-}
 
-.box.right {
-grid-area: right;
+#reg-review-button{
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  width: 150px;
 }
 
 .oneLine h3, .oneLine p, .oneLine h1 {
@@ -131,6 +137,10 @@ grid-area: right;
   cursor: pointer;
   margin-bottom: 5px;
 }
+#justify-right{
+  justify-content: right;
+}
+
 
 .keyword label:hover {
   background-color: #00AFB9;
@@ -318,17 +328,6 @@ padding-top: 5px;
 padding-bottom: 5px;
 font-size: 15px;
 }
-.review-recommend-button{
-width: 80px;
-height: 30px;
-display: flex;
-align-items: center;
-justify-content: center;
-border-radius: 30px;
-border: 0.5px solid #ADADAD;
-background: rgba(247, 247, 247, 0.50);
-padding-bottom: 0px;
-}
 
 .review-hr-bottom{
 width: 100%;
@@ -372,9 +371,7 @@ width: auto;
   text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 }
 .rating-num{
-  margin-bottom: 5px;
   text-align: center;
-  align-items: baseline;
   font-size: 24px;
 }
 .rating-container {
@@ -461,17 +458,6 @@ font-size: 15px;
   height: 30px;
   font-size: 12px;
   margin-bottom: 0px;
-}
-.detail-review-recommend-button{
-  width: 80px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 30px;
-  border: 0.5px solid #ADADAD;
-  background: rgba(247, 247, 247, 0.50);
-  padding-bottom: 0px;
 }
 
 .detail-review-img{
