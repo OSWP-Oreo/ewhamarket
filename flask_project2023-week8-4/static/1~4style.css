@@ -234,8 +234,8 @@ th {
 
 .course-type,
 .course-number,
-#reg-course-faculty,
-#reg-course-major,
+.course-faculty,
+.course-major
 #regitem__professor,
 #search-item__department {
     width: 48%;
@@ -563,7 +563,9 @@ th {
 /*2.html item card 상품사진*/
 .item-card__img {
     max-height: 100pt;
+    max-width: 100pt;
     height: auto;
     width: auto;
     border: 1px var(--light-grey) solid;
+    align-self: center;
 }

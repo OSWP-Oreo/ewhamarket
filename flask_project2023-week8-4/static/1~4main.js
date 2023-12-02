@@ -1,4 +1,7 @@
-/* 1.html */
+//'학과' 동적 범위 변경
+
+
+/* reg_item.html */
 function addCommas(input) {
     // Remove existing commas and non-numeric characters
     input.value = input.value.replace(/[^0-9]/g, '');
@@ -7,34 +10,9 @@ function addCommas(input) {
 }
 
 
-/* 2.html */
-//'학과' 동적 범위 변경
-//아래는 코드 예시 - 이를 기반으로 변경할 것
-function updateDepartments() {
-    const facultySelect = document.getElementById('faculty');
-    const departmentSelect = document.getElementById('department');
-    departmentSelect.innerHTML = ''; // 기존 옵션 초기화
+/* view_item.html */
 
-    const faculty = facultySelect.value;
 
-    if (faculty === 'engineering') {
-        addDepartmentOption(departmentSelect, 'computer', '컴퓨터공학');
-        addDepartmentOption(departmentSelect, 'mechanical', '기계공학');
-    } else if (faculty === 'science') {
-        addDepartmentOption(departmentSelect, 'physics', '물리학');
-        addDepartmentOption(departmentSelect, 'chemistry', '화학');
-    } else if (faculty === 'business') {
-        addDepartmentOption(departmentSelect, 'accounting', '회계학');
-        addDepartmentOption(departmentSelect, 'marketing', '마케팅');
-    }
-}
-
-function addDepartmentOption(select, value, text) {
-    const option = document.createElement('option');
-    option.value = value;
-    option.text = text;
-    select.appendChild(option);
-}
 
 // 초기 설정
 updateDepartments();

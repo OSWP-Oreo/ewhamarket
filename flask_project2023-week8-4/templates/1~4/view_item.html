@@ -37,7 +37,7 @@
                     <option value="libral">교양</option>
                 </select>
                 <!--단과대-->
-                <select class="course-faculty" name="faculty" style="width:18%;">
+                <select class="course-faculty" name="faculty" style="width:18%;" onchange="updateCoureMajor">
                     <option value="" disabled selected>단과대</option>
                     <option value="인문과학대학">인문과학대학</option>
                     <option value="사회과학대학">사회과학대학</option>
@@ -100,14 +100,12 @@
                 </div>
                 <!-----상품카드----->
                 
-                {% if total > 0 %}
-
-                
+                {% if total > 0 %}                
                     {% for key, value in datas %}
-                    <li id="item-card1">
+                    <li>
                         <div class="item-card" onclick="location.href='/1~4/view_item_detail/{{key}}/';" style="cursor:pointer;">
                             <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
-                            <img class="item-card__img" src="/static/photos/{{value.photo_path}}", width=140, height=200>
+                            <img class="item-card__img" src="/static/photos/{{value.photo_path}}">
                             <div class="item-card__info">
                                 <div class="item-card__course-and-prof">
                                     <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
@@ -153,8 +151,6 @@
                         </div>
                     </li>
                     {% endfor %}
-                
-
                     <!-- 페이지네이션을 위한 코드 시작 -->
                     <div class="page-wrap">
                         <div class="pagination">
@@ -166,7 +162,6 @@
                             </ul>
                         </div>
                     </div>
-
                 {% else %}
                 <p>
                     등록된 상품이 없습니다.
