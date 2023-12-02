@@ -43,7 +43,7 @@
             {% else%}
             <p>랭킹포인트 확인을 위해 로그인을 해주세요.</p>
             {% endif %}
-            <table style="margin:auto;">
+            <!--<table style="margin:auto;">
                 <tr>
                     <td>1</td>
                     <td><img src="../../static/img/profile.jpg"></td>
@@ -154,12 +154,29 @@
                     </td>
                     <td>200000</td>
                 </tr>
+            </table>-->
+
+            <!--동적으로 랭킹을 가져오는 코드-->
+            <table style="margin:auto;">
+                {% for rank, user_data in datas %}
+                    <tr>
+                        <td>{{ rank }}</td>
+                        <td><img src="{{ user_data['profile_image'] }}"></td>
+                        <td>{{ user_data['username'] }}</td>
+                        <td>
+                            <div class="bar-container">
+                                <div class="bar" id="bar{{ rank }}"></div>
+                            </div>
+                        </td>
+                        <td>{{ user_data['rankingpoint'] }}</td>
+                    </tr>
+                {% endfor %}
             </table>
         </div>
 
     </div>
 
-    <script>
+    <!--<script>
         function setBarWidth(barId, value) {
             const bar = document.getElementById(barId);
             const width = (value / 1000000) * 100; // 범위를 백분율로 변환
@@ -177,7 +194,20 @@
         setBarWidth('bar8', 300000);
         setBarWidth('bar9', 280000);
         setBarWidth('bar10', 200000);
+    </script>-->
+    
+    {% for rank, user_data in datas %}
+    <script>
+        // 동적으로 막대그래프의 값 설정      
+            setBarWidth('bar{{ rank }}', {{ user_data['rankingpoint'] }});       
+    
+        function setBarWidth(barId, value) {
+            const bar = document.getElementById(barId);
+            const width = (value / 1000000) * 100; // 범위를 백분율로 변환
+            bar.style.width = width + '%';
+        }
     </script>
+    {% endfor %}
 
     <link rel="stylesheet" href="../../static/style.css">
     <link rel="stylesheet" href="../../static/8~10Style.css">
