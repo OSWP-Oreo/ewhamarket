@@ -12,9 +12,6 @@
     gap: 10px;
 }
 
-#regitem-container {
-    display: grid;
-}
 
 .filter__flex-container {
     display: flex;
@@ -64,15 +61,15 @@
     display: grid;
     width: 60%;
     justify-items: stretch;
+    justify-content: space-between;
     /* <hr> width와 맞춤 */
-    grid-template-rows: 68px repeat(3, 26px) 78px repeat(4, 26px);
+    grid-template-rows: 68px 26px 55px 78px repeat(4, 26px);
     grid-template-columns: 70px 1fr;
     grid-gap: 26px 10px;
     grid-template-areas:
         "itemname      input-itemname "
         "  price         input-price  "
-        "courseinfo  input-courseinfo1"
-        "    .       input-courseinfo2"
+        "courseinfo  input-courseinfo"
         "description input-description"
         "    tag          input-tag   "
         "uploadFile  input-uploadFile"
@@ -108,11 +105,12 @@
 }
 
 /*row5*/
-#regitem-courseinfo{
+#regitem-courseinfo-name{
     grid-area: courseinfo;
 }
 #regitem-input-courseinfo1{
-    grid-area: input-courseinfo1;
+    grid-area: input-courseinfo;
+    margin-bottom: 5px;
     display: flex;
     align-items: center;
     justify-content: 1 1 1;
@@ -120,16 +118,20 @@
 
 /*row6*/
 #regitem-input-courseinfo2{
-    grid-area: input-courseinfo2;
+    grid-area: input-courseinfo;
+}
+
+#regitem-input-courseinfo2 input{
+    height: 20px; width: 47%;
 }
 
 /*row7*/
 #regitem-description{
     grid-area: description;
-    
 }
 #regitem-input-description{
     grid-area: input-description;
+    resize:none;
     height: 80px;
 }
 
@@ -204,7 +206,7 @@
 /*******************1.html************************/
 /*페이지 제목 '상품등록'*/
 /*인풋창*/
-input {
+input, textarea, select {
     width: 100%;
     height: 20px;
     border-width: 1px;
@@ -231,9 +233,9 @@ th {
 }
 
 .course-type,
-.course-faculty,
 .course-number,
-.course-major,
+#reg-course-faculty,
+#reg-course-major,
 #regitem__professor,
 #search-item__department {
     width: 48%;
