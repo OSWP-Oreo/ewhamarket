@@ -112,7 +112,7 @@
 <!------------------------------------------------리뷰 시작----------------------------------------------->
                 {% if total > 0 %}
                     {%for key, value in datas%}
-                        <div class="container">
+                        <div class="container" id="review">
                             <div class="container">
                                 <div>
                                     <div class="rowcontainer">
@@ -167,6 +167,81 @@
                         </li>
                         <li><a href="">&gt;</a></li>
                     </ul>
+
+                    <!--디테일리뷰-->
+                    <div id="modalWrap">
+                        <div class="detail-review-wrapper">
+                            <span id="closeBtn">&times;</span>
+                            <div class="detail-review-container">
+                                <h2 style="grid-area: header;">상세리뷰</h2>
+                                <div class="main-hr__padding" style="grid-area: hr;"></div>
+                                <div style="grid-area: title; padding-left: 5px;">
+                                        <!--백: 리뷰 제목 불러오기-->
+                                        <div class="detail-review-title">{{ value.title }}</div>
+                                </div>
+                                <div style="grid-area: class; padding-left: 5px;">
+                                    <div class="review-product">
+                                        {{ value.name }}
+                                    </div>
+                                </div>
+                                <div style="grid-area: reviewer; padding-left: 5px;">
+                                    <div class="rowcontainer">
+                                        <div class="detail-review-profile">
+                                            <img src="../../static/img/profile.jpg" width="100%" height="100%" alt="상품 예시 사진입니다"></div>
+                                        <!--백: 작성자 아이디 앞 3글자만 보이게 불러오기-->
+                                        <div class="detail-review-id">{{ value.reviewer }}</div>
+                                        <!--작성자 전공-->
+                                        <div class="detail-review-major">({{ value.reviewer_major }})</div>
+                                    </div>
+                                </div>
+                                <div style="grid-area: rating;">
+                                    <form class="mb-3" name="detail-review-rate" id="detail-review-rate" method="post">
+                                        <fieldset style="border: none;">
+                                            <div class="rating-container">
+                                                <div class="rating-star" data-rating="5">★</div>
+                                                <div class="rating-star" data-rating="4">★</div>
+                                                <div class="rating-star" data-rating="3">★</div>
+                                                <div class="rating-star" data-rating="2">★</div>
+                                                <div class="rating-star" data-rating="1">★</div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                                <div style="grid-area: tag; padding-left: 5px;">
+                                    <button type="button" class="btn-clicked" id="detail-review-tag-button">자세한 설명</button>
+                                </div>
+                                <div style="grid-area: main; padding-left: 5px;">
+                                    <div class="detail-review-main">
+                                        <!--백: 리뷰 불러오기-->
+                                        {{ value.review }}
+                                    </div>
+                                </div>
+                                
+                                <div style="grid-area: picture; place-self: center;">
+                                    <!--백: 작성자 등록 대표 사진 불러오기-->
+                                    <img src="{{ value.img_path }}" class="detail-review-img" alt="상품예시사진입니다">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        const btn = document.getElementById('review');
+                        const modal = document.getElementById('modalWrap');
+                        const closeBtn = document.getElementById('closeBtn');
+                    
+                        btn.onclick = function() {
+                            modal.style.display = 'block';
+                        }
+                        closeBtn.onclick = function() {
+                            modal.style.display = 'none';
+                        }
+                    
+                        window.onclick = function(event) {
+                            if (event.target == modal) {
+                                modal.style.display = "none";
+                            }
+                        } 
+                    </script>
                 {% endif %}
             </article>
             

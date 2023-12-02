@@ -6,9 +6,15 @@
         <meta charset="UTF-8">
     </head>
 
+<div id="btnWrap">
+    <button typ="button" id="popupBtn">모달 팝업 띄우기</button>
+</div>
+
+<div id="modalWrap">
     <div class="detail-review-wrapper">
+        <span id="closeBtn">&times;</span>
         <div class="detail-review-container">
-            <h1 style="grid-area: header;">상세리뷰</h1>
+            <h2 style="grid-area: header;">상세리뷰</h2>
             <div class="main-hr__padding" style="grid-area: hr;"></div>
             <div style="grid-area: title; padding-left: 5px;">
                     <!--백: 리뷰 제목 불러오기-->
@@ -59,4 +65,24 @@
             </div>
         </div>
     </div>
+</div>
+<script>
+    const btn = document.getElementById('popupBtn');
+    const modal = document.getElementById('modalWrap');
+    const closeBtn = document.getElementById('closeBtn');
+
+    btn.onclick = function() {
+        modal.style.display = 'block';
+    }
+    closeBtn.onclick = function() {
+        modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    } 
+</script>
+
 </html>

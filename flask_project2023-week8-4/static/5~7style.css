@@ -408,15 +408,38 @@ width: auto;
     "recommend .";
 }
 .detail-review-wrapper{
-display: inline-block;
-width: 70%;
-height:auto;
-border-radius: 50px;
-background: #ffffff;
-padding: 40px;
-box-sizing: border-box;
+  display: inline-block;
+  width: 70%;
+  min-width: 600px;
+  height:auto;
+  border-radius: 50px;
+  background: #ffffff;
+  padding: 40px;
+  box-sizing: border-box;
+  position: fixed;
+  margin-left: 15%;
+  margin-bottom: 100px;
 }
 
+#modalWrap {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  display: none;
+}
+#closeBtn {
+  float:right;
+  font-weight: bold;
+  color: #b5b5b5;
+  font-size:40px;
+  cursor: pointer;
+}
 .detail-review-title{
 font-size: 23px;
 align-items: flex-end;
