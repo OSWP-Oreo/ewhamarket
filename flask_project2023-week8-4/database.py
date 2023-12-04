@@ -210,12 +210,12 @@ class DBhandler:
             "tag": data['tag'],
             "item_path": item_path,
             "photo_path": photo_path,
-            "writer": user_id
         }
         user_and_item = user_id + '_' + data['item_name']
-        self.db.child("item").child(user_and_item).set(item_info)
+        self.db.child("item").child(user_and_item).push(item_info)
         print(data, item_path)
-        print(data, photo_path)
+        for path in photo_path:
+            print("사진 경로:", path)
         return True
     
     #상품 정보 불러오기
