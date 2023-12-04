@@ -14,7 +14,7 @@
 </head>
 
 <body> <!--1,8 가로폭 지정-->
-    {% extends 'header-and-nav.html'%}
+    {% extends 'index.html'%}
     {% block section %}
     {% with mesg = get_flashed_messages() %}
     {% if mesg !=[] %}
@@ -36,11 +36,11 @@
                 <div class="flex-container1" style="margin-top: 30pt;">
                     <div class="flex-container2">
                         <span class="orderInfo-header">과목</span>
-                        <span class="orderInfo-data">{{data['course_number']}}</span> <!--백엔드-->
+                        <span class="orderInfo-data">{{data.course_number}}</span> <!--백엔드-->
                     </div>
                     <div class="flex-container2">
                         <span class="orderInfo-header">상품유형</span>
-                        <span class="orderInfo-data">{{data['course_type']}}</span> <!--백엔드-->
+                        <span class="orderInfo-data">{{data.course_type}}</span> <!--백엔드-->
                     </div>
                     <div class="flex-container2">
                         <span class="orderInfo-header">페이지수</span>
@@ -59,7 +59,7 @@
                 <div class="flex-container3">
                     <!--다운링크로 이동-->
                     <span><a href="/static/items/{{data['item_path']}}" download title="download" class="button btnFade btnDefaultblue">전자책 다운로드</a></span>
-                    <span><a href="/1~4/item_reg" title="create-review" class="button btnFade btnBorderDefaultblue">리뷰
+                    <span><a href="/5~7/reg_reviews" title="create-review" class="button btnFade btnBorderDefaultblue">리뷰
                             작성하기(+100포인트)</a></span>
                 </div>
                 <div id="order_warning-msg">
