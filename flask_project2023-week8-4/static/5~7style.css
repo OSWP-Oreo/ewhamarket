@@ -91,7 +91,10 @@ grid-area: left;
   justify-items: center;
   box-sizing: border-box;
 }
-
+#mypage-box-middle{
+  width: 90%;
+  margin-left: 15px;
+}
 #reg-review-button{
   border: none;
   border-radius: 5px;
