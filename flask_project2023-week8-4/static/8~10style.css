@@ -110,12 +110,10 @@
     width: 110px;
     border-color: #00afb9;
     border-radius: 10px;
+    transition: all 0.3s ease; /* 변경 효과를 주기 위한 transition 속성 추가 */
 }
-    .btn10:hover {
-        background-color: #00afb9;
-        color: white;
-    }
-#btn10-active {
+
+.btn10:hover, .btn10-active {
     width: 110px;
     color: white;
     background-color: #00afb9;
