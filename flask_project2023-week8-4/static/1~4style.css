@@ -420,6 +420,11 @@ th {
     margin: 50px 0 50px 0;
 }
 
+#item-detail__main-img__container{
+    justify-self: center;
+    align-self: center;
+}
+
 .item-detail__sub-img-container {
     display: flex;
     justify-content: space-between;
@@ -432,8 +437,9 @@ th {
 /*3.html 큰 상품사진*/
 .item-detail__main-img {
     max-height: 278px;
-    height: 250px;
-    width: 250px;
+    max-width: 278px;
+    height: auto;
+    width: auto;
     object-fit: contain;
     border: 1px var(--light-grey) solid;
 }
