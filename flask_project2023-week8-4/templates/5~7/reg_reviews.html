@@ -26,21 +26,21 @@
                                 <img src="{{value.photo_path}}" width="100%"style="max-height: 180px; min-width: 90px;" alt="상품 예시 사진입니다">
                                 {% endfor %}
                             </div>
-                                <div class="box middle">
-                                    <!--상품  이름-->
-                                    <input type="text" name="name" id="name" class="review-info__title" value="{{item_name}}"><br><br>
+                            <div class="box middle">
+                                <!--상품  이름-->
+                                <input type="text" name="name" id="name" class="review-info__title" value="{{item_name}}"><br><br>
+                                <div class="review-info__text">
+                                    <!--subject 과목명-->
                                     <div class="review-info__text">
-                                        <!--subject 과목명-->
-                                        <div class="review-info__text">
-                                            {{subject_id}} | {{subject}} | {{professor}} 교수님
-                                        </div>
-                                        
+                                        {{subject_id}} | {{subject}} | {{professor}} 교수님
+                                    </div>
+                                    
                                     <div class="review-info__text">
                                         <img src="../../static/img/logo.png" width="25px" height="25px">
                                         <input type="text" name="seller_id" id="seller_id" class="review-info__text" value="{{writer}}" style="text-align: left;">
                                     </div>
                                 </div>
-                        
+                            </div>
                             <div class="box right">
                                 <div id="myform">
                                     <fieldset>
