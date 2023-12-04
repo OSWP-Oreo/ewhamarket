@@ -432,8 +432,8 @@ th {
 /*3.html 큰 상품사진*/
 .item-detail__main-img {
     max-height: 278px;
-    height: auto;
-    width: auto;
+    height: 250px;
+    width: 250px;
     object-fit: contain;
     border: 1px var(--light-grey) solid;
 }
@@ -441,8 +441,8 @@ th {
 /*3.html 작은 상품사진*/
 .item-detail__sub-img {
     max-height: 85px;
-    height: auto;
-    width: auto;
+    height: 80px;
+    width: 80px;
     border: 1px var(--light-grey) solid;
 }
 

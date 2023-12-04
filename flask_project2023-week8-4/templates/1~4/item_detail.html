@@ -28,7 +28,7 @@
                     (2)이미지 클릭 시 그 이미지가 제일 큰 이미지창에 보이도록-->
             <!--추후 js 백엔드 연결 시 사진 삭제-->
             <div><!--대표이미지main. 1,2,3 서브이미지 중 하나 확대. default는 img-1-->
-                <img class="item-detail__main-img" src="{{photo_path}}"/>
+                <img class="item-detail__main-img" src="{{photo_paths[0]}}"/>
             </div>
 
             <div class="item-card__info"><!--아이템 정보-->
@@ -84,13 +84,24 @@
                     #{{data['tag']}}   <!--태그 여러개 등록하는 것 추후 추가-->
                 </div>
             </div>
+
             <div class="item-detail__sub-img-container"><!-- 서브이미지-->
-                <!--<img id="item-info__img-1" class="item-detail__sub-img" src="{{photo_path}}">-->
-                <img id="item-info__img-2" class="item-detail__sub-img" src="../../static/img/logo.png">
-                <img id="item-info__img-3" class="item-detail__sub-img" src="../../static/img/logo.png">
-                <!--사진 여러개일때 여러개 보여주는 것 구현-->
-                <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
+                {% if photo_paths|length >= 3 %}
+                    <img id="item-info__img-2" class="item-detail__sub-img" src="{{ photo_paths[1] }}">
+                    <img id="item-info__img-3" class="item-detail__sub-img" src="{{ photo_paths[2] }}">
+                {% elif photo_paths|length == 2 %}
+                    <img id="item-info__img-2" class="item-detail__sub-img" src="{{ photo_paths[1] }}">
+                    <img id="item-info__img-3" class="item-detail__sub-img" src="/static/img/logo.png">
+                {% elif photo_paths|length == 1 %}
+                    <img id="item-info__img-2" class="item-detail__sub-img" src="/static/img/logo.png">
+                    <img id="item-info__img-3" class="item-detail__sub-img" src="/static/img/logo.png">
+                {% else %}
+                    <img id="item-info__img-2" class="item-detail__sub-img" src="/static/img/logo.png">
+                    <img id="item-info__img-3" class="item-detail__sub-img" src="/static/img/logo.png">
+                {% endif %}
             </div>
+
+        
             <!--구매 버튼-->
                 <a href="../../1~4/order" title="to-payment" id="order-btn" class="button btnFade btnDefaultblue">바로 구매하기</a>
                 <!-- <i class="fa fa-heart" id="heart"></i>  -->

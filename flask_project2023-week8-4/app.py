@@ -45,16 +45,21 @@ def reg_item_submit_post():
     else:
         item_file=request.files['item_upload']
         item_file.save("static/items/{}".format(item_file.filename))
-        photo_file=request.files['photo_upload']
-        photo_file.save("static/photos/{}".format(photo_file.filename))
-
+        photo_file=request.files.getlist("photo_upload[]")
         data=request.form
         writer = session['id']
+
+        print( 'before db insertion' )
+        
+        for f in photo_file:
+            f.save('static/photos/' + f.filename)
+
+        DB.insert_item(data['item_name'], data, item_file.filename, [f.filename for f in photo_file], session['id'])
     
-        DB.insert_item(data['item_name'], data, item_file.filename, photo_file.filename, session['id'])
         print( 'after db insertion' )
 
-        return render_template("1~4/item_detail.html", data=data, item_path="static/items/{}".format(item_file.filename), photo_path="static/photos/{}".format(photo_file.filename))
+        return render_template("1~4/item_detail.html", data=data, item_path="static/items/{}".format(item_file.filename), photo_paths=["static/photos/{}".format(f.filename) for f in photo_file])
+
 
 
 #### 맨 처음 화면이 이 view_items()함수로 옴.
