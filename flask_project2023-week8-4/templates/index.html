@@ -15,7 +15,7 @@
             <div class="header">
                 <!--logo-->
                 <div id="logo-container">
-                    <a href="\index"><img id="logo" src="../../static/img/logo.png"></a>
+                    <a href="\index"><img id="logo" src="/static/img/logo.png"></a>
                 </div>
                 <!--프로필, 사용자이름, 로그아웃-->
                 <div id="loggedin-account">
@@ -24,12 +24,12 @@
                     <div id="my-point-container">
                         <div>
                         {% if session['id'] %}
-                        <img src="../../static/img/profile.jpg">
+                        <img src="/static/img/profile.jpg">
                         <!--<a href="">이화인</a> | <a href="../8~10/login">로그아웃</a></div>-->
                        <a href="">{{session['id']}} </a> | <a href="/logout"> logout</a>
                         <div id="my-point">
                             <a href="../../8~10/ranking"> {{ user_rankingpoint }} </a>  
-                            <img class="input-img" style="max-width: 15px; padding-left: 5px;" src="../../static/img/point.svg">
+                            <img class="input-img" style="max-width: 15px; padding-left: 5px;" src="/static/img/point.svg">
                         </div>
                         {% else%}
                         <a href="/login">login</a>
