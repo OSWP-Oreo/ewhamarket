@@ -87,7 +87,7 @@
                     (1)이미지 개수에 따라 다르게 보이도록(없는 칸은 회색단색으로 표시
                     (2)이미지 클릭 시 그 이미지가 제일 큰 이미지창에 보이도록-->
             <!--추후 js 백엔드 연결 시 사진 삭제-->
-            <div><!--대표이미지main. 1,2,3 서브이미지 중 하나 확대. default는 img-1-->
+            <div id="item-detail__main-img__container"><!--대표이미지main. 1,2,3 서브이미지 중 하나 확대. default는 img-1-->
                 <img class="item-detail__main-img" src="/static/photos/{{data.photo_path}}"/>
             </div>
 
@@ -141,7 +141,7 @@
                 </div><br>
                 <div class="item-card__tag">
                     <!--백엔드에서 불러오기-->
-                    #{{data['tag']}}   <!--태그 여러개 등록하는 것 추후 추가-->
+                    {{data['tag']}}   <!--태그 여러개 등록하는 것 추후 추가-->
                 </div>
             </div>
             <div class="item-detail__sub-img-container"><!-- 서브이미지-->
