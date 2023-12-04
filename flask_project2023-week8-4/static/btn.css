@@ -62,3 +62,9 @@ a.button {
     background: var(--default-blue);
     color: #fff;
 }
+
+.item-card__review button:hover{
+    border-color: var(--nav-blue);
+    background: var(--nav-blue);
+    color:black;
+}

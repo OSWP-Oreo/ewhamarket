@@ -367,14 +367,21 @@ th {
     text-align: right;
 }
 
-.item-card__review a {
+.item-card__review button {
     text-decoration: none;
-    color: var(--default-blue);
+    background-color: white;
+    color: var(--deep-grey);
     font-weight: bold;
+    height: 30px;
+    width: 40px;
     padding: 2px;
-    border-radius: 5px;
+    border-radius: 4px;
     border: 1.5px solid var(--light-grey);
+    
+    grid-column-start: 2;
+    grid-column-end: 3;
 }
+
 
 #view-item li {
     list-style-type: none;

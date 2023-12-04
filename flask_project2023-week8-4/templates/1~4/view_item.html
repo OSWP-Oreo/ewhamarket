@@ -216,11 +216,11 @@
                                 <div class="item-card__tag">
                                     <!--백엔드에서 불러오기-->
                                     {{value.tag}}
-                                </div>
-                                <div class="item-card__review">
+                                </div>                                
+                            </div>
+                            <div class="item-card__review">
                                     <!--추가: 리뷰화면으로 연결-->
-                                    <a href="" style="border: 1.5px solid var(--light-grey);">리뷰</a>
-                                </div>
+                                    <button onclick="location.href='/review/{{key}}/';" class="">리뷰</button>
                             </div>
                         </div>
                     </li>
