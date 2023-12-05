@@ -28,8 +28,8 @@ def view_reg_items():
 # item_reg.html에서 입력한 값 get하기
 @application.route("/submit_item")
 def reg_item_submit():
-    item_name=request.args.get("item-name")
-    item_type=request.args.get("item-type")
+    item_name=request.args.get("item_name")
+    item_type=request.args.get("item_type")
     price=request.args.get("price")
 
     #print(item_name, item_type, price)

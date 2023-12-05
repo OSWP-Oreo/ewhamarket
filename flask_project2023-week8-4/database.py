@@ -62,8 +62,11 @@ class DBhandler:
     
     #구매하기
     #가격 가져오기
-    def get_price(self, name):
-        point=int(self.db.child("item").child(name).get().val()['price'])
+    def get_price(self, item_name):
+
+        data = self.db.child("item").child(item_name).get().val()
+        print("Data from database:", data)
+        point=int(self.db.child("item").child(item_name).get().val()['price'])
         return point
     #판매자 가져오기
     def get_seller(self, name):
@@ -195,7 +198,7 @@ class DBhandler:
     
 
     #상품 정보 등록하기
-    def insert_item(self, name, data, item_path, photo_path, user_id):
+    def insert_item(self, item_name, data, item_path, photo_path, user_id):
         item_info = {
             "writer": user_id,
             "item_name": data['item_name'],
@@ -212,7 +215,7 @@ class DBhandler:
             "photo_path": photo_path,
         }
         user_and_item = user_id + '_' + data['item_name']
-        self.db.child("item").child(user_and_item).push(item_info)
+        self.db.child("item").child(user_and_item).set(item_info)
         print(data, item_path)
         for path in photo_path:
             print("사진 경로:", path)
