@@ -97,7 +97,7 @@
             <hr class="main-hr__padding">
         </div>
         <!-------------------------상품검색-------------------------->
-        <section id="search-item">
+        <form id="search-item" action="/search_item" method="get">
             <!---------------과목/학수번호검색--------------->
             <!--과목명/학수번호-->
             <input class="course-number" class="input-with-icon" type="search" name="course-number"
@@ -138,8 +138,9 @@
                 <span id="search-item__type">
                     {% include '1~4/regitem__type.html' %}
                 </span>
+                <button type="submit" value="검색" class="button btnFade btnLightblue">검색</button>
             </div>
-        </section>
+        </form>
         <!-------------------------본컨텐츠-------------------------->
         <div id="grid-item">
             <!----------------------------필터---------------------------->
@@ -147,7 +148,8 @@
                 <!--제목-->
                 <div class="filter__flex-container">
                     <p class="filter__flex-item">필터</p>
-                    <input class="filter__flex-item" id="filter-reset-butn" type="reset" value="초기화">
+                    <input class="filter__flex-item" id="filter-reset-butn" type="reset" value="초기화" >
+                
                 </div>
                 <hr style="color: #f7f7f7;">
                 <form id="filter-body">
@@ -157,11 +159,12 @@
                     <!--판매자-->
                     <label for="filter-body__seller">판매자</label><br>
                     <input id="filter-body__seller" type="text" name="filter-body__seller"><br><br>
-                </form>
-                <!--백엔드연결--> <!--적용하기-->
                 <div><!--submit-->
                     <input type="submit" value="적용하기" id="filter-submit" class="button btnFade btnLightblue">
                 </div>
+            </form>
+                <!--백엔드연결--> <!--적용하기-->
+                
             </aside>
             <!-------------------------상품보기-------------------------->
             <section id="view-item">
