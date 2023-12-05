@@ -178,8 +178,8 @@ def view_reg_review():
         end_idx=per_page*(page+1)
 
         user_id = session.get('id')
-        purchase = DB.get_purchase(user_id)        #구매내역 불러오기
-        if purchase == None:                       #구매내역 
+        purchase = DB.get_purchase_history(user_id)        #구매내역 불러오기
+        if purchase == None:                               #구매내역 
             none = "Y"
             return render_template("/5~7/mypage.html",none=none)
         else:
@@ -260,7 +260,7 @@ def reg_reviews():
 def view_review(name):
     page = request.args.get("page", 0, type=int)
     category = request.args.get("category", "all")
-    per_page=6 
+    per_page=5 
     per_row=1 
     row_count=int(per_page)
     start_idx=per_page*page
@@ -306,7 +306,7 @@ def view_review(name):
         else:
             locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
     return render_template("review.html", datas=data. items(),row1=locals()['data_0'].items(), row2=locals()['data_1'].items(),
-                           row3=locals()['data_2'].items(), row4=locals()['data_3'].items(),row5=locals()['data_4'].items(), row6=locals()['data_5'].items(),
+                           row3=locals()['data_2'].items(), row4=locals()['data_3'].items(),row5=locals()['data_4'].items(),
                            limit=per_page, page=page, page_count=int(math.ceil(item_counts/per_page)), total=item_counts, category=category, average_star=average_star, proportion_1=proportion_1, proportion_2=proportion_2, proportion_3=proportion_3)
 
 

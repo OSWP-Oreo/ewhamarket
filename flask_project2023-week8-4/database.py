@@ -207,14 +207,6 @@ class DBhandler:
                 target_value=res.val()
         return target_value
     
-    #구매내역 불러오기
-    def get_purchase(self, user_id):
-        purchase = self.db.child("user_purchase_history").get().val() #각 유저의 구매내역
-
-        for id, purchase_items in purchase.items(): #각 리뷰에 대해 반복
-            if id == user_id:                       #key값이 사용자 id와 같으면 그 구매내역 반환
-                return purchase_items
-        return None
     
     #사용자별 구매내역 저장하기
     def insert_purchase_history(self, item_name, user_id):
