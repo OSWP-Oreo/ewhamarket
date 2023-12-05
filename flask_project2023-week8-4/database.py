@@ -42,6 +42,7 @@ class DBhandler:
                 if value['id'] == id_string:
                     return False
             return True
+        
     # 회원가입 시 닉네임 중복확인
     def nickname_duplicate_check(self, name_string):
         users = self.db.child("user").get()
@@ -65,7 +66,6 @@ class DBhandler:
     def get_price(self, item_name):
 
         data = self.db.child("item").child(item_name).get().val()
-        print("Data from database:", data)
         point=int(self.db.child("item").child(item_name).get().val()['price'])
         return point
     #판매자 가져오기
@@ -73,6 +73,24 @@ class DBhandler:
         seller=self.db.child("item").child(name).get().val()['writer']
         return seller
     
+    #판매자 이메일 가져오기
+    def get_seller_email(self, item_name):
+        # "item" child에서 "name"에 해당하는 데이터의 "writer" 값을 가져오기
+        writer = self.db.child("item").child(item_name).get().val().get('writer')
+        if writer:
+            # "user" child에서 "id"가 "writer"와 일치하는 데이터 찾기
+            user_data = self.db.child("user").child(writer).get().val()
+            if user_data:
+                # 찾은 사용자의 정보에서 "email" 값을 반환
+                email = user_data.get('email')
+                return email
+        # 찾지 못한 경우 None 반환
+        return None
+
+
+
+
+
     #구매자 포인트 감소
     def update_point(self, user_id, point):
         user_data = self.db.child("user").child(user_id).get().val()

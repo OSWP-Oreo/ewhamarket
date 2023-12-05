@@ -146,13 +146,14 @@ def view_order_confirmation(item_name):
         DB.update_ranking_point(session['id'], point) #구매자 랭킹 포인트 증가
         DB.update_point_2(seller,point) #판매자 포인트 증가
         DB.update_ranking_point(seller,point) #판매자 랭킹 포인트 증가
+        seller_email = DB.get_seller_email(item_name)
 
         flash('포인트가 차감되었습니다')
 
         data=DB.get_item_byname(str(item_name))
         session['user_point'] = DB.get_user_point(session['id'])
 
-    return render_template("1~4/order_item.html", data=data, item_name=item_name)
+    return render_template("1~4/order_item.html", data=data, item_name=item_name, seller_email=seller_email)
 
 
 # 5~7
