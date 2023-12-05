@@ -242,6 +242,7 @@ class DBhandler:
             "course_type": data.get('course_type'),
             "faculty": data.get('faculty'),
             "major": data['major'],
+            "course_name": data['course_name'],
             "course_number": data['course_number'],
             "professor": data['professor'],
             "description": data['description'],
