@@ -100,8 +100,10 @@
         <form id="search-item" action="/search_item" method="get">
             <!---------------과목/학수번호검색--------------->
             <!--과목명/학수번호-->
-            <input class="course-number" class="input-with-icon" type="search" name="course-number"
-                placeholder="과목명/학수번호">
+            <input class="course-name" class="input-with-icon" type="search" name="course-name"
+                placeholder="과목명">
+                <input class="course-number" class="input-with-icon" type="search" name="course-number"
+                placeholder="학수번호">
             <!--백엔드연동: 데이터베이스 내에서 검색하여 선택하게 함-->
             <div>
                 <!--전공/교양-->
@@ -186,7 +188,7 @@
                             <div class="item-card__info">
                                 <div class="item-card__course-and-prof">
                                     <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
-                                    {{value.course_number}} | {{value.professor}} 교수님
+                                    {{value.course_number}} {{value.course_name}} | {{value.professor}} 교수님
                                 </div>
                                 <strong class="item-card__item-name">
                                     <!--백엔드에서 등록된 item-name 불러오기-->
