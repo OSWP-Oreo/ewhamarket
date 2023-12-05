@@ -1,5 +1,7 @@
 import pyrebase
 import json 
+import time
+
 class DBhandler:
     def __init__(self ):
         with open('./authentication/firebase_auth.json') as f:
@@ -214,6 +216,21 @@ class DBhandler:
                 return purchase_items
         return None
     
+    #사용자별 구매내역 저장하기
+    def insert_purchase_history(self, item_name, user_id):
+
+        timestamp = int(time.time())
+
+        purchase_info = {
+            "item_name": item_name,
+            "timestamp": timestamp
+        }
+        self.db.child("user_purchase_history").child(user_id).set(purchase_info)
+        return True
+    
+    #사용자별 구매내역 가져오기
+    def get_purchase_history(self, user_id):
+        return self.db.child("user_purchase").child(user_id).get().val()
 
     #상품 정보 등록하기
     def insert_item(self, item_name, data, item_path, photo_path, user_id):

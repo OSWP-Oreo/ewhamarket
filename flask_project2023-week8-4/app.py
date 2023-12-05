@@ -138,18 +138,19 @@ def view_order_confirmation(item_name):
     point=DB.get_price(str(item_name))
     seller=DB.get_seller(str(item_name))
 
-
-
     if 'id' not in session or not session['id']:
         flash('구매하시려면 로그인을 해주세요.')
         return redirect(url_for('login'))
     else:
 
         download_count = DB.increase_download_count(item_name) #다운로드 횟수 증가
+
         DB.update_point(session['id'], point) #구매자 포인트 감소
         DB.update_ranking_point(session['id'], point) #구매자 랭킹 포인트 증가
         DB.update_point_2(seller,point) #판매자 포인트 증가
         DB.update_ranking_point(seller,point) #판매자 랭킹 포인트 증가
+        
+        DB.insert_purchase_history(item_name, session['id'])
         seller_email = DB.get_seller_email(item_name)
 
         flash('포인트가 차감되었습니다')
