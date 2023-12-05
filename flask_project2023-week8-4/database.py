@@ -209,7 +209,7 @@ class DBhandler:
     
     #구매내역 불러오기
     def get_purchase(self, user_id):
-        purchase = self.db.child("user_purchase").get().val() #각 유저의 구매내역
+        purchase = self.db.child("user_purchase_history").get().val() #각 유저의 구매내역
 
         for id, purchase_items in purchase.items(): #각 리뷰에 대해 반복
             if id == user_id:                       #key값이 사용자 id와 같으면 그 구매내역 반환
