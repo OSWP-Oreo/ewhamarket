@@ -231,6 +231,7 @@ class DBhandler:
             "tag": data['tag'],
             "item_path": item_path,
             "photo_path": photo_path,
+            "download_count": 0
         }
         user_and_item = user_id + '_' + data['item_name']
         self.db.child("item").child(user_and_item).set(item_info)
@@ -277,6 +278,24 @@ class DBhandler:
         }
         self.db.child("heart").child(user_id).child(item).set(heart_info)
         return True
+
+    #구매 버튼 누를 때마다 download 횟수 하나씩 늘려 저장
+    def increase_download_count(self, item_name):
+        # 현재 download_count 값을 가져옴
+        current_count = self.db.child("item").child(item_name).child("download_count").get().val()
+
+        # 현재 download_count 값을 1 증가시켜 업데이트
+        new_count = current_count + 1
+        self.db.child("item").child(item_name).update({"download_count": new_count})
+
+        return new_count
+
+    #현재 download 횟수 가져옴
+    def get_download_count(self, item_name):
+        # 현재 download_count 값을 가져와 반환
+        return self.db.child("item").child(item_name).child("download_count").get().val()
+
+
 
 
     #사용자 포인트 가져오기
