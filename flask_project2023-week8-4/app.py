@@ -184,15 +184,15 @@ def view_reg_review():
             return render_template("/5~7/mypage.html",none=none)
         else:
             none = "N"
-        item_counts = len(purchase)
-        purchase = dict(list(purchase.items())[start_idx:end_idx])
-        tot_count = len(purchase)
-        for i in range(row_count):
-            if (i == row_count-1):
-                locals()['data_{}'.format(i)] = dict(list(purchase.items())[i*per_row:])
-            else:
-                locals()['data_{}'.format(i)] = dict(list(purchase.items())[i*per_row:(i+1)*per_row])
-        return render_template("/5~7/mypage.html",none=none, purchase=purchase.items(), row1=locals()['data_0'].items(), row2=locals()['data_1'].items(),
+            item_counts = len(purchase)
+            purchase = dict(list(purchase.items())[start_idx:end_idx])
+            tot_count = len(purchase)
+            for i in range(row_count):
+                if (i == row_count-1):
+                    locals()['data_{}'.format(i)] = dict(list(purchase.items())[i*per_row:])
+                else:
+                    locals()['data_{}'.format(i)] = dict(list(purchase.items())[i*per_row:(i+1)*per_row])
+            return render_template("/5~7/mypage.html",none=none, purchase=purchase.items(), row1=locals()['data_0'].items(), row2=locals()['data_1'].items(),
                            row3=locals()['data_2'].items(), row4=locals()['data_3'].items(),row5=locals()['data_4'].items(), row6=locals()['data_5'].items(),
                            limit=per_page, page=page, page_count=int((item_counts/per_page)+1), total=item_counts)
 
