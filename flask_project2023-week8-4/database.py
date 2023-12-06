@@ -1,6 +1,7 @@
 import pyrebase
 import json 
 import time
+from datetime import datetime
 
 class DBhandler:
     def __init__(self ):
@@ -228,6 +229,8 @@ class DBhandler:
     def insert_item(self, item_name, data, item_path, photo_path, user_id):
 
         timestamp = int(time.time())
+        datetime_obj = datetime.utcfromtimestamp(timestamp)
+        formatted_date = datetime_obj.strftime('%Y년 %m월 %d일 %H시 %M분 %S초')
 
         item_info = {
             "writer": user_id,
@@ -245,7 +248,7 @@ class DBhandler:
             "item_path": item_path,
             "photo_path": photo_path,
             "download_count": 0,
-            "timestamp": timestamp
+            "timestamp": formatted_date
         }
         user_and_item = user_id + '_' + data['item_name']
         self.db.child("item").child(user_and_item).set(item_info)
