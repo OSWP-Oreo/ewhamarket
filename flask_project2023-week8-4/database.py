@@ -265,7 +265,7 @@ class DBhandler:
     #상품 이름으로 상품 정보 가져오기
     def get_item_byname(self, name):
         items = self.db.child("item").get()
-        target_value=""
+        target_value={}
         print("#############", name)
         for res in items.each():
             key_value = res.key()

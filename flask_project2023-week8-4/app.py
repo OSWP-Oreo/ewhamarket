@@ -265,6 +265,15 @@ def view_reg_review():
         else:
             item_counts = len(purchase)
             purchase = dict(list(purchase.items())[start_idx:end_idx])
+            
+            keys = purchase.keys() #해당 key=상품이름
+            for key in keys:
+                item_info = DB.get_item_byname(key)
+                purchase[key]["item_name"]=item_info.get("item_name")
+                purchase[key]["writer"]=item_info.get("writer")
+                purchase[key]["photo_path"]=item_info.get("photo_path")
+
+            purchase = dict(list(purchase.items())[start_idx:end_idx])
             tot_count = len(purchase)
             for i in range(row_count):
                 if (i == row_count-1):
