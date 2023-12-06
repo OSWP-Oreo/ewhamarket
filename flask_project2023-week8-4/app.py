@@ -65,15 +65,15 @@ def reg_item_submit_post():
 #### 맨 처음 화면이 이 view_items()함수로 옴.
 @application.route("/1~4/view_item")
 def view_items():
-    page = request.args.get("page", 0, type=int)
-    per_page=5 # item count to display per page
-    per_row=1 # item count to display per row
-    major =request.args.get("major","")
-    coursetype =request.args.get("course-type","")
+    page = request.args.get("page", 1, type=int)  # 페이지 1부터 시작하도록 수정
+    per_page = 5  # 페이지당 표시되는 아이템 수
+    per_row = 1  # 행당 표시되는 아이템 수
+    major = request.args.get("major", "")
+    coursetype = request.args.get("course-type", "")
 
-    row_count=int(per_page/per_row)
-    start_idx=per_page*page
-    end_idx=per_page*(page+1)
+    row_count = int(per_page / per_row)
+    start_idx = per_page * (page - 1)
+    end_idx = per_page * page
 
     if major == "" and coursetype == "":
         data = DB.get_items()  # 모든 아이템 조회
@@ -83,20 +83,17 @@ def view_items():
         data = DB.get_items_bycoursetype(coursetype)
     else:
         data = DB.get_items_bymajor_coursetype(major, coursetype)
-    
-    data = DB.get_items()
+
     item_counts = len(data)
     data = dict(sorted(data.items(), key=lambda x: x[0], reverse=False))
     tot_count = len(data)
 
-    for i in range(row_count): #last row
-        if (i == row_count-1) and (tot_count%per_row != 0):
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
-        else: 
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
+    sliced_data = dict(list(data.items())[start_idx:end_idx])
 
-    return render_template("1~4/view_item.html", datas=data.items(), row1=locals()['data_0'].items(), row2=locals()['data_1'].items(), 
-                           limit=per_page, page=page, page_count=int((item_counts/per_page) +1), total = item_counts,major=major)
+    rows = [dict(list(sliced_data.items())[i * per_row:(i + 1) * per_row]) for i in range(row_count)]
+
+    return render_template("1~4/view_item.html", datas=sliced_data.items(), rows=rows,
+                           limit=per_page, page=page, page_count=int((item_counts / per_page) + 1), total=item_counts, major=major)
 
 
 #전체 리스트에서 상품 클릭 시 세부정보 볼 수 있음
