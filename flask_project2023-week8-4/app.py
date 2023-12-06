@@ -191,8 +191,9 @@ def view_reg_review():
         end_idx=per_page*(page+1)
 
         purchase = DB.get_purchase_history(session['id'])         #구매내역 불러오기
-        if purchase == None:                               #구매내역 
-            return render_template("/5~7/mypage.html",total=(int)0)
+        if purchase is None:
+            count=0
+            return render_template("/5~7/mypage.html", total=count)
         else:
             item_counts = len(purchase)
             purchase = dict(list(purchase.items())[start_idx:end_idx])
@@ -202,7 +203,7 @@ def view_reg_review():
                     locals()['data_{}'.format(i)] = dict(list(purchase.items())[i*per_row:])
                 else:
                     locals()['data_{}'.format(i)] = dict(list(purchase.items())[i*per_row:(i+1)*per_row])
-            return render_template("/5~7/mypage.html",none=none, purchase=purchase.items(), row1=locals()['data_0'].items(), row2=locals()['data_1'].items(),
+            return render_template("/5~7/mypage.html", purchase=purchase.items(), row1=locals()['data_0'].items(), row2=locals()['data_1'].items(),
                            row3=locals()['data_2'].items(), row4=locals()['data_3'].items(),row5=locals()['data_4'].items(), row6=locals()['data_5'].items(),
                            limit=per_page, page=page, page_count=int((item_counts/per_page)+1), total=item_counts)
 
