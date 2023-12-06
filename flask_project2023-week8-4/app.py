@@ -273,7 +273,6 @@ def view_reg_review():
                 purchase[key]["writer"]=item_info.get("writer")
                 purchase[key]["photo_path"]=item_info.get("photo_path")
 
-            purchase = dict(list(purchase.items())[start_idx:end_idx])
             tot_count = len(purchase)
             for i in range(row_count):
                 if (i == row_count-1):
