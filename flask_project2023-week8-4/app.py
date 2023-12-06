@@ -105,6 +105,60 @@ def view_items():
     return render_template("1~4/view_item.html", datas=sliced_data.items(), rows=rows,
                            limit=per_page, page=page, page_count=int((item_counts / per_page) + 1), total=item_counts,
                              major=major,coursetype=coursetype,itemtype=itemtype)
+#00순으로 정렬
+@application.route("/view_item",methods=['POST'])
+def view_items_sorting():
+    page = request.args.get("page", 1, type=int)  # 페이지 1부터 시작하도록 수정
+    per_page = 5  # 페이지당 표시되는 아이템 수
+    per_row = 1  # 행당 표시되는 아이템 수
+    major =request.args.get("major","")
+    coursetype =request.args.get("coursetype","all")
+    itemtype = request.args.get("itemtype","")
+
+    row_count = int(per_page / per_row)
+    start_idx = per_page * (page - 1)
+    end_idx = per_page * page
+
+    if major == "" and coursetype == "all" and itemtype == "":
+        data = DB.get_items()  
+    elif major != "" and coursetype == "all" and itemtype == "":
+        data = DB.get_items_bymajor(major)
+    elif major == "" and coursetype != "all" and itemtype == "":
+        data = DB.get_items_bycoursetype(coursetype)
+    elif major == "" and coursetype == "all" and itemtype != "":
+        data = DB.get_items_byitemtype(itemtype) 
+    elif major != "" and coursetype != "all" and itemtype == "":
+        data = DB.get_items_bymajor_coursetype(major, coursetype)
+    elif major != "" and coursetype == "all" and itemtype != "":
+        data = DB.get_items_bymajor_itemtype(major, itemtype)  
+    elif major == "" and coursetype != "all" and itemtype != "":
+        data = DB.get_items_bycoursetype_itemtype(coursetype, itemtype) 
+    else:
+        data = DB.get_items_bymajor_coursetype_itemtype(major, coursetype, itemtype) 
+
+
+    print("들어옴");
+    if 'popularsort' in request.form:
+        print("인기순정렬함")
+        data = dict(sorted(data.items(), key=lambda x: int(x[1]['download_count']), reverse=True))
+    elif 'pointsort' in request.form:
+        print("포인트순정렬함")
+        data = dict(sorted(data.items(), key=lambda x: int(x[1]['price']), reverse=False))
+    else:
+        data = dict(sorted(data.items(), key=lambda x: x[0], reverse=False))
+
+    item_counts = len(data)
+
+    tot_count = len(data)
+
+    sliced_data = dict(list(data.items())[start_idx:end_idx])
+
+    rows = [dict(list(sliced_data.items())[i * per_row:(i + 1) * per_row]) for i in range(row_count)]
+
+    return render_template("1~4/view_item.html", datas=sliced_data.items(), rows=rows,
+                           limit=per_page, page=page, page_count=int((item_counts / per_page) + 1), total=item_counts,
+                             major=major,coursetype=coursetype,itemtype=itemtype)
+
 
 
 #전체 리스트에서 상품 클릭 시 세부정보 볼 수 있음
