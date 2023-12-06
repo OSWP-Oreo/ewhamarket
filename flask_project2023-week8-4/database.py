@@ -322,7 +322,7 @@ class DBhandler:
         items = self.db.child("user").get().val()
         return items
     #유저 대학 별 정렬
-    def get_items_bycollege(self, cate):
+    def get_users_bycollege(self, cate):
         items = self.db.child("user").get()
         target_value=[]
         target_key=[]
@@ -361,7 +361,7 @@ class DBhandler:
         for res in items.each():
             value = res.val()
             key_value = res.key()
-            if value['coursetype'] == coursetype:
+            if value['course_type'] == coursetype:
                 target_value.append(value)
                 target_key.append(key_value)
         print("######target_value",target_value)
@@ -369,7 +369,23 @@ class DBhandler:
         for k,v in zip(target_key,target_value):
             new_dict[k]=v
         return new_dict
-    #아이템 타입/전공 별 정렬
+    #아이템타입 별 정렬
+    def get_items_byitemtype(self, coursetype):
+        items = self.db.child("item").get()
+        target_value=[]
+        target_key=[]
+        for res in items.each():
+            value = res.val()
+            key_value = res.key()
+            if value['item_type'] == coursetype:
+                target_value.append(value)
+                target_key.append(key_value)
+        print("######target_value",target_value)
+        new_dict={}
+        for k,v in zip(target_key,target_value):
+            new_dict[k]=v
+        return new_dict
+    #수업타입/전공 별 정렬
     def get_items_bymajor_coursetype(self, major, course_type):
         items = self.db.child("item").get()
         target_value = []
@@ -377,7 +393,53 @@ class DBhandler:
         for res in items.each():
             value = res.val()
             key_value = res.key()
-            if value['major'] == major and value['coursetype'] == course_type:
+            if value['major'] == major and value['course_type'] == course_type:
+                target_value.append(value)
+                target_key.append(key_value)
+        new_dict = {}
+        for k, v in zip(target_key, target_value):
+            new_dict[k] = v
+        return new_dict
+    #아이템타입/전공 별 정렬
+    def get_items_bymajor_item(self, major, item_type):
+        items = self.db.child("item").get()
+        target_value = []
+        target_key = []
+        for res in items.each():
+            value = res.val()
+            key_value = res.key()
+            if value['major'] == major and value['item_type'] == item_type:
+                target_value.append(value)
+                target_key.append(key_value)
+        new_dict = {}
+        for k, v in zip(target_key, target_value):
+            new_dict[k] = v
+        return new_dict
+    #아이템타입/수업타입 별 정렬
+    def get_items_bycoursetype_itemtype(self, coursetype, item_type):
+        items = self.db.child("item").get()
+        target_value = []
+        target_key = []
+        for res in items.each():
+            value = res.val()
+            key_value = res.key()
+            if value['course_type'] == coursetype and value['item_type'] == item_type:
+                target_value.append(value)
+                target_key.append(key_value)
+        new_dict = {}
+        for k, v in zip(target_key, target_value):
+            new_dict[k] = v
+        return new_dict
+    
+    #아이템타입/수업타입/전공 별 정렬
+    def get_items_bymajor_coursetype_itemtype(self, major, coursetype, itemtype):
+        items = self.db.child("item").get()
+        target_value = []
+        target_key = []
+        for res in items.each():
+            value = res.val()
+            key_value = res.key()
+            if value['course_type'] == coursetype and value['item_type'] == itemtype and value['major']==major:
                 target_value.append(value)
                 target_key.append(key_value)
         new_dict = {}

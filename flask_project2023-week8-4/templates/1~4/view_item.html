@@ -107,10 +107,15 @@
             <!--백엔드연동: 데이터베이스 내에서 검색하여 선택하게 함-->
             <div>
                 <!--전공/교양-->
-                <select class="course-type" name="course-type" style="width:18%;">
-                    <option value="" disabled selected>전공/교양</option>
-                    <option value="major">전공</option>
-                    <option value="libral">교양</option>
+                <script>
+                    $(document).ready(function () {
+                    $('#coursetype option:contains("{{coursetype}}")').prop("selected", true);
+                    });
+                    </script>
+                <select id="coursetype" name="coursetype" onchange="location=this.value" style="width:18%;">
+                    <option value="{{url_for('view_items', page=i, coursetype='all')}}" disabled selected>전공/교양</option>
+                    <option value="{{url_for('view_items', page=i, coursetype='major')}}">전공</option>
+                    <option value="{{url_for('view_items', page=i, coursetype='libral')}}">교양</option>
                 </select>
                 <!--단과대-->
                 <select id="search-course-faculty" class="course-faculty" name="faculty" style="width:18%;" onchange="updateCourseMajor()">
