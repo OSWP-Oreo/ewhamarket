@@ -3,6 +3,8 @@ from database import DBhandler
 import hashlib
 import sys
 import math
+import re
+
 application = Flask(__name__)
 application.config["SECRET_KEY"]= "thisisoreo"
 DB=DBhandler() #database.py에 들어가면 클래스있음 (DB. 이용)
@@ -137,13 +139,17 @@ def view_items_sorting():
         data = DB.get_items_bymajor_coursetype_itemtype(major, coursetype, itemtype) 
 
 
-    print("들어옴");
+    print("들어옴")
     if 'popularsort' in request.form:
         print("인기순정렬함")
         data = dict(sorted(data.items(), key=lambda x: int(x[1]['download_count']), reverse=True))
     elif 'pointsort' in request.form:
         print("포인트순정렬함")
         data = dict(sorted(data.items(), key=lambda x: int(x[1]['price']), reverse=False))
+    elif 'timesort' in request.form:
+        print("시간순정렬함")
+        data = dict(sorted(data.items(), key=lambda x: int(re.sub(r'\D', '', x[1]['timestamp'])), reverse=True))
+
     else:
         data = dict(sorted(data.items(), key=lambda x: x[0], reverse=False))
 
