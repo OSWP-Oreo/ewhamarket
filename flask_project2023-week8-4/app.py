@@ -190,13 +190,10 @@ def view_reg_review():
         start_idx=per_page*page
         end_idx=per_page*(page+1)
 
-        user_id = session.get('id')
-        purchase = DB.get_purchase_history(user_id)        #구매내역 불러오기
+        purchase = DB.get_purchase_history(session['id'])         #구매내역 불러오기
         if purchase == None:                               #구매내역 
-            none = "Y"
-            return render_template("/5~7/mypage.html",none=none)
+            return render_template("/5~7/mypage.html",total=(int)0)
         else:
-            none = "N"
             item_counts = len(purchase)
             purchase = dict(list(purchase.items())[start_idx:end_idx])
             tot_count = len(purchase)
