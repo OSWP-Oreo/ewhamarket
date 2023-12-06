@@ -226,6 +226,9 @@ class DBhandler:
 
     #상품 정보 등록하기
     def insert_item(self, item_name, data, item_path, photo_path, user_id):
+
+        timestamp = int(time.time())
+
         item_info = {
             "writer": user_id,
             "item_name": data['item_name'],
@@ -241,7 +244,8 @@ class DBhandler:
             "tag": data['tag'],
             "item_path": item_path,
             "photo_path": photo_path,
-            "download_count": 0
+            "download_count": 0,
+            "timestamp": timestamp
         }
         user_and_item = user_id + '_' + data['item_name']
         self.db.child("item").child(user_and_item).set(item_info)
