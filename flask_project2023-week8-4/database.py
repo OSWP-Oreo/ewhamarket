@@ -48,7 +48,11 @@ class DBhandler:
         
     # 회원가입 시 닉네임 중복확인
     def nickname_duplicate_check(self, name_string):
+
         users = self.db.child("user").get()
+        if users is None or users.val() is None:
+            return True
+
         for res in users.each():
             value = res.val()
             if value['nickname'] == name_string:
@@ -218,7 +222,7 @@ class DBhandler:
             "item_name": item_name,
             "timestamp": timestamp
         }
-        self.db.child("user_purchase_history").child(user_id).set(purchase_info)
+        self.db.child("user_purchase_history").child(user_id).child(item_name).set(purchase_info)
         return True
     
     #사용자별 구매내역 가져오기
