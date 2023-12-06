@@ -335,7 +335,14 @@ def view_review_detail(name):
 #마이페이지 html작업을 위해서 임시로 만들어놓음   
 @application.route("/5~7/mypage")
 def mypage():
-    return render_template("5~7/mypage.html")
+    if 'id' not in session or not session['id']:
+        flash('마이페이지에 접근하려면 로그인을 해주세요.')
+        return redirect(url_for('login'))
+    else:
+        datas = DB.get_purchase_history(session['id'])
+        print(datas)
+    
+        return render_template("5~7/mypage.html", datas=datas)
 
 # 8~10
 
