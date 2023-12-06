@@ -68,13 +68,25 @@ def view_items():
     page = request.args.get("page", 0, type=int)
     per_page=5 # item count to display per page
     per_row=1 # item count to display per row
+    major =request.args.get("major","")
+    coursetype =request.args.get("course-type","")
+
     row_count=int(per_page/per_row)
     start_idx=per_page*page
     end_idx=per_page*(page+1)
 
+    if major == "" and coursetype == "":
+        data = DB.get_items()  # 모든 아이템 조회
+    elif major != "" and coursetype == "":
+        data = DB.get_items_bymajor(major)
+    elif major == "" and coursetype != "":
+        data = DB.get_items_bycoursetype(coursetype)
+    else:
+        data = DB.get_items_bymajor_coursetype(major, coursetype)
+    
     data = DB.get_items()
     item_counts = len(data)
-    data = dict(list(data.items())[start_idx:end_idx])
+    data = dict(sorted(data.items(), key=lambda x: x[0], reverse=False))
     tot_count = len(data)
 
     for i in range(row_count): #last row
@@ -83,7 +95,8 @@ def view_items():
         else: 
             locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
 
-    return render_template("1~4/view_item.html", datas=data.items(), row1=locals()['data_0'].items(), row2=locals()['data_1'].items(), limit=per_page, page=page, page_count=int((item_counts/per_page) +1), total = item_counts)
+    return render_template("1~4/view_item.html", datas=data.items(), row1=locals()['data_0'].items(), row2=locals()['data_1'].items(), 
+                           limit=per_page, page=page, page_count=int((item_counts/per_page) +1), total = item_counts,major=major)
 
 
 #전체 리스트에서 상품 클릭 시 세부정보 볼 수 있음
