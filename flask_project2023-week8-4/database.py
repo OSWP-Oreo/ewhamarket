@@ -222,7 +222,7 @@ class DBhandler:
     
     #사용자별 구매내역 가져오기
     def get_purchase_history(self, user_id):
-        return self.db.child("user_purchase").child(user_id).get().val()
+        return self.db.child("user_purchase_history").child(user_id).get().val()
 
     #상품 정보 등록하기
     def insert_item(self, item_name, data, item_path, photo_path, user_id):
