@@ -205,13 +205,22 @@ def search_item_route():
         print("Search Result:", result)
         print("Total Items:", item_counts)
 
-        rows = [dict(list(sliced_data.items())[i * per_row:(i + 1) * per_row]) for i in range(row_count)]
+        if isinstance(sliced_data, list):
+            # Handle the case where sliced_data is a list
+            rows = [dict(item) for item in sliced_data]
+        else:
+            # Assume sliced_data is a dictionary
+            rows = [dict(list(sliced_data.items())[i * per_row:(i + 1) * per_row]) for i in range(row_count)]
 
+        print(result)
         return render_template("1~4/view_item.html", result=result, query=query, rows=rows,
                                limit=per_page, page=page, page_count=int((item_counts / per_page) + 1), total=item_counts)
 
     except Exception as e:
         return jsonify({"error": str(e)})
+
+
+
 
 
 
