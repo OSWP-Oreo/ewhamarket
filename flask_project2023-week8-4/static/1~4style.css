@@ -458,6 +458,17 @@ th {
     width: 80px;
     border: 1px var(--light-grey) solid;
 }
+/*구매버튼, 좋아요 정렬 및 하트 크기*/
+/*#order-action-container{
+    display: flex;
+}*/
+.fa-2x{
+    font-size:40px !important;
+};
+#heart{
+    justify-self: end;
+    align-self: center;
+}
 
 /*****상세설명, 리뷰*****/
 #order__view-rate__container {
