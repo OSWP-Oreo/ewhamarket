@@ -7,13 +7,24 @@
             <link href="../../static/style.css" type="text/css" rel="stylesheet">
             <link href="../../static/5~7style.css" rel="stylesheet">
             <link href="../../static/btn.css" type="text/css" rel="stylesheet">
+            <script>
+                function redirectToMyPage() {
+                    // Perform any additional form validation if needed
+                    
+                    // Redirect to mypage
+                    window.location.href = "/5~7/reg_reviews";
+                    
+                    return false;
+                }
+            </script>
+            
         </head>
         
         <body>
             {% extends "index.html" %}
             {% block section %}
             <main class="padding" id="min_width_600">
-                <form class="mb-3" name="myform" method="post" action="/reg_reviews" enctype="multipart/form-data">
+                <form class="mb-3" name="myform" method="post" action="/reg_reviews" enctype="multipart/form-data" onsubmit="return redirectToMyPage()">
                     <div class="main-header">
                         <h1 class="main-header">리뷰 작성</h1> 
                         <div class="main-hr__padding"></div><br>
@@ -125,6 +136,7 @@
 
                 <!--제출 버튼-->
                 <input type="submit" value="등록" class="button btnDefaultblue btnFade" id="submit"> 
+
                 </form>
             </main>
             {% endblock section %}
