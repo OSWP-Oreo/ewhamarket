@@ -8,8 +8,12 @@
             <link href="../../static/5~7style.css" rel="stylesheet">
             <link href="../../static/btn.css" type="text/css" rel="stylesheet">
             <script>
-                function redirectToMyPage() {
-                    // Perform any additional form validation if needed
+                // 이 함수는 submit 버튼이 클릭될 때 호출됩니다.
+                function submitForm() {
+                    // 여기에서 필요한 유효성 검사 등을 수행할 수 있습니다.
+                    
+                    // 폼을 서버로 제출합니다.
+                    document.forms["myform"].submit();
                     
                     // Redirect to mypage
                     window.location.href = "/5~7/reg_reviews";
@@ -17,14 +21,13 @@
                     return false;
                 }
             </script>
-            
         </head>
         
         <body>
             {% extends "index.html" %}
             {% block section %}
             <main class="padding" id="min_width_600">
-                <form class="mb-3" name="myform" method="post" action="/reg_reviews" enctype="multipart/form-data" onsubmit="return redirectToMyPage()">
+                <form class="mb-3" name="myform" method="post" action="/reg_reviews" enctype="multipart/form-data" onclick="submitForm()">
                     <div class="main-header">
                         <h1 class="main-header">리뷰 작성</h1> 
                         <div class="main-hr__padding"></div><br>
@@ -136,7 +139,6 @@
 
                 <!--제출 버튼-->
                 <input type="submit" value="등록" class="button btnDefaultblue btnFade" id="submit"> 
-
                 </form>
             </main>
             {% endblock section %}
