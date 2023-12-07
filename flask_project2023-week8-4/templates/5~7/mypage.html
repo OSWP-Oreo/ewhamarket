@@ -57,7 +57,7 @@
                         <ul class="pagination">
                             <li><a href="">&lt;</a></li>
                             <li>
-                                {% for i in range(page_count)%}
+                                {% for i in range(page_count)+1 %}
                                     <a href="{{url_for('view_reg_review', page=i)}}">{{i}}</a>
                                 {% endfor %}<!--여기 for(view_list~)라고 해야 하는지 view all review가 되어야 하는지 궁금-->
                             </li>
