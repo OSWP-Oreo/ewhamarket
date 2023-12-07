@@ -64,7 +64,7 @@
             <table style="margin:auto;">
                 {% for rank, user_data in datas %}
                     <tr>
-                        <td> <!--순위 받아오기--> </td>
+                        <td> <!--순위 받아오기-->{{ rank }} </td>
                         <td><img src="/static/img/profile.jpg"></td>
                         <td>{{ user_data['username'] }}</td>
                         <td>
