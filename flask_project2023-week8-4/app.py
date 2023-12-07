@@ -426,25 +426,22 @@ def reg_reviews():
 @application.route("/review/<name>/")
 def view_review(name):
     page = request.args.get("page", 0, type=int)
-    category = request.args.get("category", "all")
+    major = request.args.get("major", "학과전체")
+    sorting = request.args.get("organize", "추천순")
+
     per_page=5 
     per_row=1 
     row_count=int(per_page)
     start_idx=per_page*page
     end_idx=per_page*(page+1)
-    #data = DB.get_reviews(str(name))
-    if category=="all":
-        data = DB.get_reviews(str(name)) #read the table
-    else:
-        data = DB.get_reviews_bycategory(str(name),category)
-    data = dict(sorted(data.items(), key=lambda x: x[0], reverse=False))
-    
+
+    data = DB.get_reviews(str(name))
     item_counts = len(data)
-    
+
     #모든 리뷰의 별의 합을 구하고 리뷰 개수로 나누어 평균별점 계산
     total_star = sum(int(data['rate']) for i in data.values())
     average_star = total_star/item_counts
-    
+
     #각 키워드에 개수 구해서 %계산
     keyword1=0 
     keyword2=0
@@ -459,6 +456,20 @@ def view_review(name):
     proportion_1 = keyword1/item_counts*100
     proportion_2 = keyword2/item_counts*100
     proportion_3 = keyword3/item_counts*100
+    #대학별정렬
+    if major == "학과전체":
+        data = DB.get_reviews(str(name))
+    else:
+        data = DB.get_reviews_bycategory(str(name),major)
+    #--순 정렬
+    if sorting == "최신순":
+        data = dict(sorted(data.items(), key=lambda x: int(re.sub(r'\D', '', x[1]['timestamp'])), reverse=True))
+    elif sorting == "추천순":  #리뷰길이로 결정
+        data = dict(sorted(data.items(), key=lambda x: len(x[1]['review']), reverse=True))
+    elif sorting == "높은별점순":
+        data = dict(sorted(data.items(), key=lambda x: int(x[1]['rate']), reverse=True))
+    elif sorting == "낮은별점순":
+        data = dict(sorted(data.items(), key=lambda x: int(x[1]['rate']), reverse=False))
             
     #현재 페이지에 보여줄 리뷰만 추출
     #data = dict(list(data.items())[start_idx:end_idx])
@@ -468,13 +479,13 @@ def view_review(name):
         data = dict(list(data.items())[start_idx:end_idx])
 
     for i in range(row_count):
-        if (i == row_count-1): #마지막 row
+        if (i == row_count-1):
             locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
         else:
             locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
     return render_template("review.html", datas=data. items(),row1=locals()['data_0'].items(), row2=locals()['data_1'].items(),
                            row3=locals()['data_2'].items(), row4=locals()['data_3'].items(),row5=locals()['data_4'].items(),
-                           limit=per_page, page=page, page_count=int(math.ceil(item_counts/per_page)), total=item_counts, category=category, average_star=average_star, proportion_1=proportion_1, proportion_2=proportion_2, proportion_3=proportion_3)
+                           limit=per_page, page=page, page_count=int(math.ceil(item_counts/per_page)), total=item_counts, average_star=average_star, proportion_1=proportion_1, proportion_2=proportion_2, proportion_3=proportion_3)
 
 
 #싱세리뷰페이지
