@@ -139,6 +139,7 @@ class DBhandler:
         dbname = self.db.child("user").child(user_id).get() #db에 저장되어 있는 판매자id_상품명 찾기.
         college = dbname.val().get("college") #리뷰작성하는 유저의 대학 가지고옴 
         major = dbname.val().get("major")
+        timestamp = int(time.time())
         review_info ={
             "name": find_name, #판매자id_상품명
             "title": data['title'],
@@ -148,7 +149,8 @@ class DBhandler:
             "img_path": img_path,
             "reviewer": user_id,
             "reviewer_college": college,
-            "reviewer_major": major
+            "reviewer_major": major,
+            "timestamp": timestamp
         }
         name_id = find_name + '_' + user_id #판매자id_상품명_구매자id
         self.db.child("review").child(name_id).set(review_info)

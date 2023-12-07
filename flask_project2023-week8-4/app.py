@@ -367,10 +367,11 @@ def reg_review_init(name):
         info = DB.get_item_byname(name)
         item_name = info.get("item_name",None)
         professor = info.get("professor",None)
-        subject = info.get("course_number",None)
+        subject_num = info.get("course_number",None)
+        subject = info.get("course_name",None)
         writer = info.get("writer",None)
         reviewer = session['id']
-        return render_template("5~7/reg_reviews.html", writer=writer, item_name = item_name, reviewer=reviewer, professor=professor,subject=subject)
+        return render_template("5~7/reg_reviews.html", writer=writer, item_name = item_name, reviewer=reviewer, professor=professor,subject=subject, subject_num=subject_num)
 
 #작성된 리뷰 데이터 넘겨줌
 @application.route("/reg_reviews", methods=['POST'])
