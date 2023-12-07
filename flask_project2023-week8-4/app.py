@@ -394,7 +394,7 @@ def reg_reviews():
     else:
         # image_file이 없는 경우에는 사진 빼고 등록
         DB.reg_review(data, user_id, None)
-    return redirect(url_for('view_all_review'))
+    return redirect(url_for('view_reg_review'))
 
 #전체리뷰화면
 # @application.route("/5~7/review")     # html 필요
