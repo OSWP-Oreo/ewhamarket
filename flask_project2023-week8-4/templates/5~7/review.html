@@ -32,62 +32,50 @@
                 
                 <!--우측 키워드와 그래프-->
                 <div class="box middle">
-                    <div>
-                        <p><!--몇 퍼센트-->
-                        {% if proportion_1 >= proportion_2 and proportion_1 >= proportion_3 %}
-                            <span>{{ proportion_1 }}</span>
-                        {% elif proportion_2 >= proportion_1 and proportion_2 >= proportion_3 %}
-                            <span>{{ proportion_2 }}</span>
-                        {% else %}
-                            <span>{{ proportion_3 }}</span>
-                        {% endif %}
- 
-                            의 구매자가 <span style="color: #0081a7; font-size: large;">
+                    <div class="review-summary-grid">
+                        <div style="grid-area: text;">
+                            <p><!--몇 퍼센트-->
                             {% if proportion_1 >= proportion_2 and proportion_1 >= proportion_3 %}
-                                "자세한 설명"
+                                <span>{{ proportion_1 }}</span>
                             {% elif proportion_2 >= proportion_1 and proportion_2 >= proportion_3 %}
-                                "핵심 위주"
+                                <span>{{ proportion_2 }}</span>
                             {% else %}
-                                "문제풀이"
+                                <span>{{ proportion_3 }}</span>
                             {% endif %}
+    
+                            %의 구매자가 <span style="color: #0081a7; font-size: large;">
+                                {% if proportion_1 >= proportion_2 and proportion_1 >= proportion_3 %}
+                                    "자세한 설명"
+                                {% elif proportion_2 >= proportion_1 and proportion_2 >= proportion_3 %}
+                                    "핵심 위주"
+                                {% else %}
+                                    "문제풀이"
+                                {% endif %}
                             </span>라고 생각해요 </p>
-                        <table>
-                            <tr>
-                                <td>자세한 설명</td>
-                                <td>
-                                    <progress class="progress-bar" value="{{proportion_1}}" max="100"></progress>
-                                    <label class="progress-label">{{proportion_1}}</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>핵심 위주</td>
-                                <td>
-                                    <progress class="progress-bar" value="{{proportion_2}}" max="100"></progress>
-                                    <label class="progress-label">{{proportion_2}}</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>문제 풀이</td>
-                                <td>
-                                    <progress class="progress-bar" value="{{proportion_3}}" max="100"></progress>
-                                    <label class="progress-label">{{proportion_3}}</label>
-                                </td>
-                            </tr>
-                        </table>
+                        </div>
+                        <div style="grid-area: keyword1;">자세한 설명</div>
+                        <div style="grid-area: keyword2;">핵심 위주</div>
+                        <div style="grid-area: keyword3;">문제 풀이</div>
+                        <div style="grid-area: bar1;"><progress class="progress-bar" value="{{proportion_1}}" max="100"></progress></div>
+                        <div style="grid-area: bar2;"><progress class="progress-bar" value="{{proportion_2}}" max="100"></progress></div>
+                        <div style="grid-area: bar3;"><progress class="progress-bar" value="{{proportion_3}}" max="100"></progress></div>
+                        <div style="grid-area: num1;">{{proportion_1}}%</div>
+                        <div style="grid-area: num2;">{{proportion_2}}%</div>
+                        <div style="grid-area: num3;">{{proportion_3}}%</div>
 
                     </div>
                 </div>
             </div>
             <!--전체 리뷰-->
             <!--선-->
-            <div class="main-hr__padding" style="background-color: #BCBCBC;"></div>
+            <div class="main-hr__padding" style="background-color: #BCBCBC;margin-top: 10px;margin-bottom: 10px;"></div>
             <!--리뷰 보기-->
             <article style="padding-inline-start: 5%; padding-inline-end: 5%;">
 <!------------------------------------------------리뷰 시작----------------------------------------------->
                 {% if total > 0 %}
                     {%for key, value in datas%}
-                        <div class="container" id="review">
-                            <div class="container">
+                        <div class="review-grid-container" id="review{{ loop.index }}">
+                            <div class="container" style="grid-area: review;">
                                 <div>
                                     <div class="rowcontainer">
                                         <!--백: 리뷰 제목 불러오기-->
@@ -109,7 +97,7 @@
                                                     <!--<div class="rating-star" id="review-rate" data-rating="5">★</div>-->
                                                     {% for star in range(1, 6) %}
                                                         {% if star|int <= value.rate|int %}
-                                                            <div class="rating-star" id="review-rate" data-rating="{{ star }}">★</div>
+                                                            <div class="rating-star" id="review-rate-filled" data-rating="{{ star }}">★</div>
                                                         {% else %}
                                                             <div class="rating-star" id="review-rate" data-rating="{{ star }}">☆</div>
                                                         {% endif %}
@@ -126,15 +114,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="container" style="justify-content: flex-end;">
+                            <div class="container" style="grid-area: img; justify-content: right;">
                                 <!--백: 작성자 등록 대표 사진 불러오기-->
                                 <img src="{{ value.img_path }}" class="review-img" alt="리뷰사진입니다">
                             </div>
                         </div>
-
-                        <div id="modalWrap">
+<!-----------------------------------------------------------모달--------------------------------------------------------->
+                        <div id="modalWrap{{ loop.index }}">
                             <div class="detail-review-wrapper">
-                                <span id="closeBtn">&times;</span>
+                                <span id="closeBtn{{ loop.index }}">&times;</span>
                                 <div class="detail-review-container">
                                     <h2 style="grid-area: header;">상세리뷰</h2>
                                     <div class="main-hr__padding" style="grid-area: hr;"></div>
@@ -158,20 +146,20 @@
                                         </div>
                                     </div>
                                     <div style="grid-area: rating;">
-                                        <form class="mb-3" name="detail-review-rate" id="detail-review-rate" method="post">
-                                            <fieldset style="border: none;">
-                                                <div class="rating-container">
-                                                    <div class="rating-star" data-rating="5">★</div>
-                                                    <div class="rating-star" data-rating="4">★</div>
-                                                    <div class="rating-star" data-rating="3">★</div>
-                                                    <div class="rating-star" data-rating="2">★</div>
-                                                    <div class="rating-star" data-rating="1">★</div>
-                                                </div>
-                                            </fieldset>
-                                        </form>
+                                        <div class="rating-container">
+                                        {% for star in range(1, 6) %}
+                                            {% if star|int <= value.rate|int %}
+                                                <div class="rating-star" id="review-rate-filled" data-rating="{{ star }}">★</div>
+                                            {% else %}
+                                                <div class="rating-star" id="review-rate" data-rating="{{ star }}">☆</div>
+                                            {% endif %}
+                                        {% endfor %}
+                                        </div>
                                     </div>
                                     <div style="grid-area: tag; padding-left: 5px;">
-                                        <button type="button" class="btn-clicked" id="detail-review-tag-button">자세한 설명</button>
+                                        <button type="button" class="btn-clicked" id="detail-review-tag-button">
+                                            {{value.keyword}}
+                                        </button>
                                     </div>
                                     <div style="grid-area: main; padding-left: 5px;">
                                         <div class="detail-review-main">
@@ -188,23 +176,29 @@
                             </div>
                         </div>
                         <script>
-                            const btn = document.getElementById('review');
-                            const modal = document.getElementById('modalWrap');
-                            const closeBtn = document.getElementById('closeBtn');
-                        
-                            btn.onclick = function() {
-                                modal.style.display = 'block';
+                            const btn{{ loop.index }} = document.getElementById('review{{ loop.index }}');
+                            const modal{{ loop.index }} = document.getElementById('modalWrap{{ loop.index }}');
+                            const closeBtn{{ loop.index }} = document.getElementById('closeBtn{{ loop.index }}');
+                            
+                            
+                            btn{{ loop.index }}.onclick = function() {
+                                modal{{ loop.index }}.style.display = 'block';
+                                document.body.style.overflow = 'hidden';
                             }
-                            closeBtn.onclick = function() {
-                                modal.style.display = 'none';
+                            closeBtn{{ loop.index }}.onclick = function() {
+                                modal{{ loop.index }}.style.display = 'none';
+                                document.body.style.overflow = 'auto';
                             }
                         
                             window.onclick = function(event) {
-                                if (event.target == modal) {
-                                    modal.style.display = "none";
+                                if (event.target == modal{{ loop.index }}) {
+                                    modal{{ loop.index }}.style.display = "none";
+                                    document.body.style.overflow = 'auto';
                                 }
                             } 
                         </script>
+                        <div class="main-hr__padding" style="background-color: #BCBCBC; height: 0.5px;"></div>
+
                     {% endfor %}
 
                     <ul class="pagination">
