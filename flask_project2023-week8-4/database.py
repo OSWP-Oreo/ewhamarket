@@ -161,10 +161,10 @@ class DBhandler:
         all_review = self.db.child("review").get().val()
         target_reviews = {}
         
-        for review in all_review.each():
-            name = all_review.child("name").get().val()
+        for review_key, review_value in all_review.items():
+            name  = review_value.get("name")
             if name == target_name:
-                target_reviews[review.key()] = review.val()
+                target_reviews[review_key] = review_value
     
         return target_reviews
     

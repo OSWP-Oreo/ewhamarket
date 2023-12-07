@@ -439,7 +439,7 @@ def view_review(name):
     item_counts = len(data)
 
     #모든 리뷰의 별의 합을 구하고 리뷰 개수로 나누어 평균별점 계산
-    total_star = sum(int(data['rate']) for i in data.values())
+    total_star = sum(int(i.get('rate', 0)) for i in data.values())
     average_star = total_star/item_counts
 
     #각 키워드에 개수 구해서 %계산
