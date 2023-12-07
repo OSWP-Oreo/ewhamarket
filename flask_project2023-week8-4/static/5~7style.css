@@ -1,6 +1,6 @@
 /*리뷰 페이지*/
 #min_width_600{
-  min-width: 600px;
+  min-width: 650px;
 }
 .review-info__box{
   border-radius: 5px;
@@ -266,12 +266,14 @@ width: auto;
 white-space: nowrap;
 }
 .progress-bar {
-appearance: none;
-height: 6px;
-width: 200px; /* 프로그레스 바의 전체 너비 설정 (원하는 크기로 조정) */
-background: rgba(255, 255, 255, 0); /* 빈 공간의 배경 색상 설정 */
-border-radius: 5px; /* 프로그레스 바의 둥근 테두리 설정 */
-overflow: hidden;
+  appearance: none;
+  height: 6px;
+  width: 200px; /* 프로그레스 바의 전체 너비 설정 (원하는 크기로 조정) */
+  background: rgba(255, 255, 255, 0); /* 빈 공간의 배경 색상 설정 */
+  border-radius: 5px; /* 프로그레스 바의 둥근 테두리 설정 */
+  overflow: hidden;
+  color: #00AFB9;
+  margin-bottom: 5px;
 }
 
 .progress-bar::-webkit-progress-bar {
@@ -279,7 +281,7 @@ background: rgba(255, 255, 255, 0); /* 빈 공간의 배경 색상 설정 (동�
 }
 
 .progress-bar::-webkit-progress-value {
-background: #676767; /* 진행 바의 배경 색상 설정 */
+background:#00AFB9; /* 진행 바의 배경 색상 설정 */
 border-radius: 5px; /* 진행 바의 둥근 테두리 설정 (동일하게 설정) */
 }
 
@@ -288,6 +290,15 @@ border-radius: 5px; /* 진행 바의 둥근 테두리 설정 (동일하게 설�
 /*********************review.html 의 css****************************/
 
 /*행 block*/
+.review-grid-container{
+  display: grid;
+  grid-template-columns:3fr 1fr;
+  grid-template-areas:
+  "review img"
+}
+.review-grid-container:hover {
+  cursor: pointer; /* 또는 원하는 커서 스타일로 변경하세요 (예: cursor: pointer;) */
+}
 .container{
 background-color: null;
 display: flex;
@@ -310,6 +321,12 @@ gap: 7px;
 #review-rate{
   font-size: 20px;
 }
+#review-rate-filled{
+  font-size: 20px;
+  color: rgba(250, 208, 0, 0.99);
+
+}
+
 .review-title{
 font-size: 21px;
 align-items: flex-end
@@ -401,12 +418,22 @@ width: auto;
 }
 
 
-/******************************************************************페이지7*************************************************************/
+/******************************************************************리뷰 전체 보기 페이지*************************************************************/
+.review-summary-grid{
+  display: grid;
+  grid-template-columns:1fr 2fr 1fr;
+  row-gap: 5px;
+  grid-template-areas: 
+  "text text text"
+  "keyword1 bar1 num1"
+  "keyword2 bar2 num2"
+  "keyword3 bar3 num3";
+}
 .detail-review-container{
   display: grid;
   grid-template-columns:1fr 1fr;
   grid-template-rows: repeat(8,minmax(10px, auto));
-  row-gap: 2px;
+  row-gap: 5px;
   grid-template-areas: 
     "header header"
     "hr hr"
@@ -423,6 +450,7 @@ width: auto;
   width: 70%;
   min-width: 600px;
   height:auto;
+  min-height: 70%;
   border-radius: 50px;
   background: #ffffff;
   padding: 40px;
@@ -430,9 +458,11 @@ width: auto;
   position: fixed;
   margin-left: 15%;
   margin-bottom: 100px;
+
+  position: relative;
 }
 
-#modalWrap {
+[id^="modalWrap"] {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */
@@ -444,7 +474,7 @@ width: auto;
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   display: none;
 }
-#closeBtn {
+[id^="closeBtn"] {
   float:right;
   font-weight: bold;
   color: #b5b5b5;
