@@ -42,6 +42,7 @@
   line-height: normal;
   border: none;
   width:auto;
+  display: flex;
 }
 /*그리드*/
 .grid-container-wrapper {
@@ -51,6 +52,10 @@
   display: inline-block; /* 보더를 컨테이너 주변에 감싸기 위해 인라인 블록 요소로 설정 */
   width: 100%;
   box-sizing: border-box;
+}
+#grid-container-wrapper-margin{
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .grid-container {
@@ -95,8 +100,14 @@ grid-area: left;
 #reg-review-button{
   border: none;
   border-radius: 5px;
-  height: 40px;
-  width: 150px;
+  height: 50px;
+  width: 200px;
+  font-size: normal;
+  font-weight: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
 }
 
 .oneLine h3, .oneLine p, .oneLine h1 {
