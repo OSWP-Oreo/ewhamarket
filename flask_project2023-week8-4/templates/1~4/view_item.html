@@ -15,6 +15,7 @@
         function updateCourseMajor() {
             var course_faculty = document.getElementById("search-course-faculty");
             var course_major = document.getElementById("search-item__department");
+            //var course_type = document.getElementByID("coursetype");
         
             // Clear existing options
             course_major.innerHTML = '';
@@ -100,9 +101,9 @@
         <form id="search-item" action="/search_item" method="get">
             <!---------------과목/학수번호검색--------------->
             <!--과목명/학수번호-->
-            <input class="course-name" class="input-with-icon" type="search" name="course-name"
+            <input class="course-name" class="input-with-icon" type="search" name="course_name"
                 placeholder="과목명">
-                <input class="course-number" class="input-with-icon" type="search" name="course-number"
+                <input class="course-number" class="input-with-icon" type="search" name="course_number"
                 placeholder="학수번호">
             <!--백엔드연동: 데이터베이스 내에서 검색하여 선택하게 함-->
             <div>
@@ -112,7 +113,7 @@
                     $('#coursetype option:contains("{{coursetype}}")').prop("selected", true);
                     });
                     </script>
-                <select id="coursetype" name="coursetype" onchange="location=this.value" style="width:18%;">
+                <select id="coursetype" name="coursetype" style="width:18%;">
                     <option value="{{url_for('view_items', page=i, coursetype='all')}}" disabled selected>전공/교양</option>
                     <option value="{{url_for('view_items', page=i, coursetype='major')}}">전공</option>
                     <option value="{{url_for('view_items', page=i, coursetype='libral')}}">교양</option>
