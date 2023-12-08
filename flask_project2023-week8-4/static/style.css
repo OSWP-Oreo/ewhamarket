@@ -135,8 +135,12 @@ a, a:visited{
 .main-header-left {
   text-align: left;
   font-size: 40px;
+  
 }
-
+.main-header__title{
+  margin-top:20px;
+  margin-bottom: 0px;
+}
 .main-hr {
   background: #00afb9;
   height: 1px;
