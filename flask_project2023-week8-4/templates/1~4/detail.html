@@ -90,25 +90,23 @@
                 
                 <!--<img id="item-info__img-1" class="item-detail__sub-img" src="{{photo_path}}">-->
                 <!--첫 번째 작은 사진-->
-                {% if data.photo_path[1] %}
+                {% if photo_paths|length >= 3 %}
                 <img id="item-info__img-1" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[1]}}"/>
+                <img id="item-info__img-2" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[2]}}"/>
+                <img id="item-info__img-3" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[3]}}"/>
+                {% elif photo_path|length = 2 %}
+                <img id="item-info__img-1" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[1]}}"/>
+                <img id="item-info__img-2" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[2]}}"/>
+                <img id="item-info__img-3" class="item-detail__sub-img" src="/static/img/logo.png"/>
+                {% elif photo_path|length = 1 %}
+                <img id="item-info__img-1" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[1]}}"/>
+                <img id="item-info__img-2" class="item-detail__sub-img" src="/static/img/logo.png"/>
+                <img id="item-info__img-3" class="item-detail__sub-img" src="/static/img/logo.png"/>
                 {% else %}
                 <img id="item-info__img-1" class="item-detail__sub-img" src="/static/img/logo.png"/>
-                {% endif %}
-                <!--두 번째 작은 사진-->
-                {% if data.photo_path[2] %}
-                <img id="item-info__img-2" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[2]}}"/>
-                {% else %}
                 <img id="item-info__img-2" class="item-detail__sub-img" src="/static/img/logo.png"/>
-                {% endif %}
-                <!--세 번째 작은 사진-->
-                {% if data.photo_path[3] %}
-                <img id="item-info__img-3" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[3]}}"/>
-                {% else %}
                 <img id="item-info__img-3" class="item-detail__sub-img" src="/static/img/logo.png"/>
                 {% endif %}
-                <!--사진 여러개일때 여러개 보여주는 것 구현-->
-                <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
             </div>
             <!--구매 버튼-->
             <div id="order-action-container">
