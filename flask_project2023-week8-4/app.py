@@ -11,8 +11,8 @@ DB=DBhandler() #database.py에 들어가면 클래스있음 (DB. 이용)
 
 @application.route("/") 
 def hello():
-    return render_template("index.html")
-    #return redirect(url_for('view_items'))
+    #return render_template("index.html")
+    return redirect(url_for('view_items'))
 
 @application.route("/index")
 def comback_home():
