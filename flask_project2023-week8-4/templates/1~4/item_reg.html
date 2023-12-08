@@ -89,13 +89,14 @@
 <body>
     {% extends 'index.html' %}
         {% block section %}
-    <main>
-        <div class="main-header main-header__flex-container">
+    <main class="padding">
+        <div id="regitem-container">
+        <div class="main-header-left main-header__flex-container">
             <h1 class="main-header__title">상품등록</h1>
             <span>판매자 : {{ session['id'] }}</span>
         </div>
         <hr class="main-hr">
-        <div id="regitem-container">
+        
             <!-- 입력 폼 시작 백엔드 연동, js 부분 임시로 채움; 실제 수행 시 수정-->
             <form id="regitem" action="/submit_item_post" method="post" enctype="multipart/form-data">
                 <!----수정-->

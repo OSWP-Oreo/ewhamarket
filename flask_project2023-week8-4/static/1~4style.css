@@ -7,11 +7,14 @@
 /****************flex/grid layout**********************/
 .main-header__flex-container {
     display: flex;
-    justify-content: center;
     align-items: baseline;
+    justify-content: space-between;
     gap: 10px;
 }
-
+#regitem-container .main-header__flex-container span{
+    font-size: 17px;
+    color: var(--font-grey);
+}
 
 .filter__flex-container {
     display: flex;
@@ -54,7 +57,9 @@
 /*1.html*/
 #regitem-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    place-items:center;
+    place-content: center;
 }
 
 #regitem {
@@ -81,9 +86,10 @@
     #regitem{
         grid-template-columns: 70px 500px;
     }
-    #regitem{
+    #regitem, #regitem-container .main-hr, #regitem-container .main-header__flex-container{
         width:580px;
     }
+
   }
 /*1row*/
 #regitem-itemname {
