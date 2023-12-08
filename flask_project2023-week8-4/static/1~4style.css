@@ -63,7 +63,7 @@
     justify-items: stretch;
     justify-content: space-between;
     /* <hr> width와 맞춤 */
-    grid-template-rows: 68px 26px 55px 78px repeat(4, 26px);
+    grid-template-rows: 68px 26px 55px 78px repeat(4, minmax(26px,auto));
     grid-template-columns: 70px 1fr;
     grid-gap: 26px 10px;
     grid-template-areas:
@@ -158,13 +158,51 @@
 #regitem-input-uploadImage{
     grid-area: input-uploadImage;
 }
-#regitem-input-uploadFile, #regitem-input-uploadImage{
+.file-container .upload-name{
+    display: inline-block;
+    height:30px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 60%;
+    color: #999999;
+}
+.file-container label{
+    display: inline-block;
+    padding: 2.5px 20px;
+    color: #fff;
+    vertical-align: middle;
+    text-align: center;
+    background-color: #999999;
+    cursor: pointer;
+    border-radius: 2px;
+    height: 25px;
+    width: 100px;
+    margin-left: 10px;
+}
+
+.file-container input[type="file"]{
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+/*#regitem-input-uploadFile, #regitem-input-uploadImage{
     color: var(--deep-grey);
     height: 25px;
     border: 1px solid var(--light-grey);
-    padding: 6px 12px;
+    padding: 6px 0px 12px;
     cursor: pointer;
+}*/
+.file, .file::before, .file::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
+
 
 /*item in flex*/
 /*2.html*/

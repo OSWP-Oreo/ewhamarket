@@ -192,7 +192,7 @@
                         {% if loop.index <= limit %}
                         <div class="item-card" onclick="location.href='/1~4/view_item_detail/{{key}}/';" style="cursor:pointer;">
                             <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
-                            <img class="item-card__img" src="/static/photos/{{value.photo_path}}">
+                            <img class="item-card__img" src="/static/photos/{{value.photo_path[0]}}">
                             <div class="item-card__info">
                                 <div class="item-card__course-and-prof">
                                     <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
