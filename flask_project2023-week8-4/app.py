@@ -60,7 +60,7 @@ def reg_item_submit_post():
     
         print( 'after db insertion' )
 
-        return render_template("1~4/item_detail.html", data=data, item_path="static/items/{}".format(item_file.filename), photo_paths=["static/photos/{}".format(f.filename) for f in photo_file])
+        return render_template("1~4/check_regitem.html", data=data, item_path="static/items/{}".format(item_file.filename), photo_paths=["static/photos/{}".format(f.filename) for f in photo_file])
 
 
 

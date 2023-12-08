@@ -94,11 +94,11 @@
                 <img id="item-info__img-1" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[1]}}"/>
                 <img id="item-info__img-2" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[2]}}"/>
                 <img id="item-info__img-3" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[3]}}"/>
-                {% elif photo_path|length = 2 %}
+                {% elif photo_path|length == 2 %}
                 <img id="item-info__img-1" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[1]}}"/>
                 <img id="item-info__img-2" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[2]}}"/>
                 <img id="item-info__img-3" class="item-detail__sub-img" src="/static/img/logo.png"/>
-                {% elif photo_path|length = 1 %}
+                {% elif photo_path|length == 1 %}
                 <img id="item-info__img-1" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[1]}}"/>
                 <img id="item-info__img-2" class="item-detail__sub-img" src="/static/img/logo.png"/>
                 <img id="item-info__img-3" class="item-detail__sub-img" src="/static/img/logo.png"/>

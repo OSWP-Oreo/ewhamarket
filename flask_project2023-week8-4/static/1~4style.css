@@ -358,6 +358,10 @@ th {
     grid-template-columns: 120pt 1fr;
 }
 
+.item-card__name{
+    font-size: 30px;
+    font-weight: 800px;
+}
 .item-card__course-and-prof {
     font-size: 10pt;
     color: var(--font-grey);
@@ -376,8 +380,9 @@ th {
     border-radius: 3px;
 }
 
-.item-card__item-name {
-    font-size: 15pt;
+#view-item .item-card__item-name {
+    font-size: 20pt;
+    font-weight: 500;
 }
 
 .item-card__seller {
@@ -386,6 +391,7 @@ th {
 }
 
 .item-card__price {
+    display: flex;
     color: red;
     flex-basis: 50%;
 }
@@ -473,10 +479,6 @@ th {
 .item-detail__sub-img-container {
     display: flex;
     justify-content: space-between;
-}
-
-.item-card__price {
-    font-size: 20px;
 }
 
 /*3.html 큰 상품사진*/
