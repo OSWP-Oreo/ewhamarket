@@ -617,8 +617,9 @@ th {
     cursor: pointer;
 }
 
-#order-action-container.button {
+/*#order-action-container.button {
     height: 40px;
+    width: 20%;
     line-height: 2.5;
     place-self: center;
 
@@ -633,7 +634,7 @@ th {
     text-align: center;
     line-height: 50px;
     transition: all 0.2s;
-}
+}*/
 
 /*#order-btn {
     width: 80%;
