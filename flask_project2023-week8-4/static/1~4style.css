@@ -23,6 +23,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-bottom: 10px;
 }
 
 .flex-container1 {
@@ -339,22 +340,30 @@ th {
     font-size: 10pt;
     margin-top: 10pt;
 }
-
 /**************************item card***************************/
 #items {
     list-style: none;
 }
 
 .item-card {
-    border: 1px var(--medium-grey) solid;
+    border: 1px var(--lightest-grey) solid;
     border-radius: 10px;
     box-shadow: 2px 2px 2px var(--light-grey);
     padding: 15pt;
     margin: 10pt;
     display: grid;
     grid-template-columns: 120pt 1fr;
+    grid-template-rows: minmax(90pt,auto) 25pt;
+    grid-template-areas: 
+        "photo   info"
+        "photo   reviewbtn";
 }
-
+.item-card__info{
+    grid-area: info;
+}
+.item-card__title{
+    padding-bottom: 5px;
+}
 .item-card__name{
     font-size: 30px;
     font-weight: 800px;
@@ -406,6 +415,7 @@ th {
 
 .item-card__review {
     text-align: right;
+    grid-area: reviewbtn;
 }
 
 .item-card__review button {
@@ -659,4 +669,5 @@ th {
     width: auto;
     border: 1px var(--light-grey) solid;
     align-self: center;
+    grid-area: photo;
 }

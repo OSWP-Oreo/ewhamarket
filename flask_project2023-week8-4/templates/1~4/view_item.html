@@ -176,14 +176,14 @@
                                     <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
                                     {{value.course_number}} {{value.course_name}} | {{value.professor}} 교수님
                                 </div>
-                                <span class="item-card__item-name">
+                                <div class="item-card__title"><span class="item-card__item-name">
                                     <!--백엔드에서 등록된 item-name 불러오기-->
                                     {{value.item_name}}
                                 </span>
                                 <span class="item-card__seller">
                                     <!--백엔드에서 등록된 판매자 이름 불러오기-->
                                     BY. {{value.writer}}
-                                    <br><br></span>
+                                </span> </div>
                                 <div class="price-rate-container">
                                     <span class="item-card__price">
                                         <img class="input-img" src="../../static/img/point.svg"
@@ -211,7 +211,7 @@
                             </div>
                             <div class="item-card__review">
                                     <!--추가: 리뷰화면으로 연결-->
-                                    <button onclick="location.href='/review/{{key}}/';" class="">리뷰</button>
+                                    <button onclick="location.href='/review/{{key}}/';" class="">리뷰</button> href="/review/{{data['writer']}}_{{item_name}}/"
                             </div>
                         </div>
                         {% endif %}
