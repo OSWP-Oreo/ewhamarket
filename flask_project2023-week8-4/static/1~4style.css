@@ -352,7 +352,7 @@ th {
     padding: 15pt;
     margin: 10pt;
     display: grid;
-    grid-template-columns: 120pt 1fr;
+    grid-template-columns: minmax(120pt,200pt) 1fr;
     grid-template-rows: minmax(90pt,auto) 25pt;
     grid-template-areas: 
         "photo   info"
@@ -360,6 +360,7 @@ th {
 }
 .item-card__info{
     grid-area: info;
+    padding-left: 20px;
 }
 .item-card__title{
     padding-bottom: 5px;
@@ -663,8 +664,8 @@ th {
 
 /*2.html item card 상품사진*/
 .item-card__img {
-    max-height: 100pt;
-    max-width: 100pt;
+    max-height: 110pt;
+    max-width: 200pt;
     height: auto;
     width: auto;
     border: 1px var(--light-grey) solid;
