@@ -206,12 +206,18 @@
                                 </div>
                                 <div class="item-card__tag">
                                     <!--백엔드에서 불러오기-->
-                                    {{value.tag}}
+                                    {% for tag in value.tag.split() %}
+                                        {% if tag.startswith('#') %}
+                                         {{tag}}
+                                         {% else %}
+                                         {{'#' + tag}}
+                                        {%endif%}
+                                    {% endfor %}
                                 </div>                                
                             </div>
                             <div class="item-card__review">
                                     <!--추가: 리뷰화면으로 연결-->
-                                    <button onclick="location.href='/review/{{key}}/';" class="">리뷰</button> href="/review/{{data['writer']}}_{{item_name}}/"
+                                    <button onclick="location.href='/review/{{key}}/';" class="">리뷰</button>
                             </div>
                         </div>
                         {% endif %}
