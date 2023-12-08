@@ -307,10 +307,7 @@ th {
 }
 
 /*그리드*/
-#grid-item {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-}
+
 
 /*필터*/
 .filter__flex-container p {
