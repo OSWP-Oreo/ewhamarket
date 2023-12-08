@@ -20,31 +20,45 @@
   /* 브라우저&디바이스 환경에 따른 font 파일 위치 정의 */
   src: url('/static/Inter-font.ttf') format('truetype');
 }
-
+@font-face{
+  font-family: 'JalnanGothic';
+  font-style: 'normal';
+  font-weight: 200;
+  src: url('/static/JalnanGothicTTF.ttf') format('truetype');
+}
+@font-face{
+  font-family: 'cafeMoya';
+  font-style: 'normal';
+  src: url('/static/Cafe24Moyamoya-Face-v1.0.ttf') format('truetype');
+}
 /*****************헤더 & 내비게이션*****************/
+
 header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin: 0px;
-  padding: 15px;
-  padding-top: 20px;
+  /*padding: 15px 40px 5px 40px;*/
+  padding-left: 40px;
+  padding-right: 40px;
+  border-bottom: 1px solid var(--lightest-grey);
+  box-shadow: 2px 2px 2px var(--light-grey);
 }
-
-#logo-container {
+/*logo-container {
   flex: 1;
   text-align: center;
-}
+}*/
 
 #logo {
   height: 80px;
 }
 
 #loggedin-account {
-  flex: 1;
-  text-align: right;
+  /*flex: 1;
   position: absolute;
   right: 15px;
-  top: 50px;
+  top: 50px;*/
+  text-align: right;
+  align-self: center;
   font-size: 15px;
 }
 
@@ -56,36 +70,56 @@ header {
 
 /*navigation*/
 .navbar {
-  background-color: #cfe2e4;
-  text-align: center;
-  height: 60px;
+  height: 74px;
+  width: 700px;
 }
 
 .nav-list {
+  align-items: stretch;
   list-style: none;
   padding: 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   margin: 0;
   padding: 0;
 }
 
+.nav-item:hover{
+  background-color: var(--deep-blue);
+  color: #fff;
+}
+
 .nav-item {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  font-weight: 100;
+  /*
   margin: 0 60px;
   position: relative;
   top: 20px;
+  */
+  transition: all 0.2s;
+  flex-grow: 1;
+  display:flex;
+  align-items:center;
+  justify-content: center;
 }
-
+/*
 .nav-item a {
   text-decoration: none;
   color: black;
-  font-weight: bold;
-}
+  font-size: 20px;
+  font-weight: 100;
+}*/
 
 #my-point{
   display: flex;
   justify-content: flex-end;
   color: var(--red);
+}
+#my-point-container .grey, #my-point a{
+  color: var(--deep-grey);
 }
 
 #my-point-container{
@@ -94,6 +128,7 @@ header {
   align-items: flex-end;
   width: 200px;
 }
+
 
 
 /*페이지 컨텐츠 제목*/
@@ -143,6 +178,7 @@ a, a:visited{
 .main-header__title{
   margin-top:20px;
   margin-bottom: 0px;
+  font-family: JalnanGothic;
 }
 .main-hr {
   background: var(--default-blue);
