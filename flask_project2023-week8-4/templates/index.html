@@ -1,69 +1,73 @@
-<!DOCTYPE html>  
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Home</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-        <script src="{{ url_for('static', filename='main.js') }}" defer></script>
-        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    </head>
-    <body>
 
-        <!--header and nav 긁-->
-        <header>
-            <div class="header">
-                <!--logo-->
-                <div id="logo-container">
-                    <a href="\index"><img id="logo" src="/static/img/logo.png"></a>
-                </div>
-                <!--프로필, 사용자이름, 로그아웃-->
-                <div id="loggedin-account">
-                    <!--이미지 추가-->
-                    <!--마이페이지:이화인클릭 / 로그인화면:로그아웃클릭-->
-                    <div id="my-point-container">
-                        <div>
-                        {% if session['id'] %}
-                        <img src="/static/img/profile.jpg">
-                        <!--<a href="">이화인</a> | <a href="../8~10/login">로그아웃</a></div>-->
-                       <a href="">{{session['id']}} </a> | <a href="/logout"> logout</a>
-                        <div id="my-point">
-                            <a href="../../8~10/ranking"> {{ session['user_point'] }} </a>  
-                            <img class="input-img" style="max-width: 15px; padding-left: 5px;" src="/static/img/point.svg">
-                        </div>
-                        {% else%}
-                        <a href="/login">login</a>
-                        {% endif %}
-                    </div>
-        
-                </div>
-            </div>
-        </header>
-        
-        <!--내비게이션-->
-        <nav class="navbar" id="min_width_600">
-            <ul class="nav-list">
-                <!--11주차 강의 내용 추가: 시작
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+
+    <!--header and nav 긁-->
+    <header>
+            <!--logo-->
+            <span id="logo-container">
+                <p style="font-family: 'cafeMoya'; font-size: 60px; margin: 0;">808.</p>
+                <!--<a href="\index"><img id="logo" src="/static/img/logo.png"></a> -->
+            </span>
+            <!--내비게이션-->
+                <ul class="navbar nav-list">
+                    <!--11주차 강의 내용 추가: 시작
                 {% if session['id'] %}
                 <li><a href="/logout"><b>{{session['id']}}님 반갑습니다!</b> logout</a></li>
                 {% else%}
                 <li><a href="/login"></a></li>
                 {% endif %}
                 11주차 강의 내용 추가: 끝-->
-                <li class="nav-item"><a href="\1~4\item_reg">상품등록</a></li>
-                <li class="nav-item"><a href="\1~4\view_item">상품보기</a></li>
-                <li class="nav-item"><a href="\5~7\reg_reviews">리뷰작성</a></li>
-                <li class="nav-item"><a href="\ranking">랭킹</a></li>
-            </ul>
-        </nav>
-        <!--끝-->
-    
-        <section>
-            <!-- navigation bar와 같은 페이지의 중복 부분을 cpy하지 않고 서브 페이지에서 모두 동일하게 사용하도록 하는 코드 -->
-            {% block section %}
+                    <li class="nav-item" onclick="location.href='/1~4/item_reg';" style="cursor:pointer;">상품등록</li>
+                    <li class="nav-item" onclick="location.href='/1~4/view_item';" style="cursor:pointer;">상품보기</li>
+                    <li class="nav-item" onclick="location.href='/5~7/reg_reviews';" style="cursor:pointer;">리뷰작성</li>
+                    <li class="nav-item" onclick="location.href='/ranking';" style="cursor:pointer;">랭킹</li>
+                </ul>
+            
+            <!--프로필, 사용자이름, 로그아웃-->
+            <div id="loggedin-account">
+                <!--이미지 추가-->
+                <!--마이페이지:이화인클릭 / 로그인화면:로그아웃클릭-->
+                <div id="my-point-container">
+                    <div>
+                        {% if session['id'] %}
+                        <img src="/static/img/profile.jpg">
+                        <!--<a href="">이화인</a> | <a href="../8~10/login">로그아웃</a></div>-->
+                        <a href="">{{session['id']}} </a> <span class="grey">|</span> <a href="/logout"> logout</a>
+                        <div id="my-point">
+                            <a href="../../8~10/ranking"> {{ session['user_point'] }} </a>
+                            <img class="input-img" style="max-width: 15px; padding-left: 5px;"
+                                src="/static/img/point.svg">
+                        </div>
+                        {% else%}
+                        <a href="/login">login</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        
+    </header>
 
-            {% endblock section %}
-        </section>
 
-    </body>
+    <!--끝-->
+
+    <section>
+        <!-- navigation bar와 같은 페이지의 중복 부분을 cpy하지 않고 서브 페이지에서 모두 동일하게 사용하도록 하는 코드 -->
+        {% block section %}
+
+        {% endblock section %}
+    </section>
+
+</body>
+
 </html>
