@@ -131,8 +131,9 @@ a, a:visited{
 }
 
 /*페이지 제목왼쪽 정렬: main-header-left*/
-.main-heade-left {
+.main-header-left {
   text-align: left;
+  font-size: 40px;
 }
 
 .main-hr {
