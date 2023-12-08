@@ -145,7 +145,7 @@
                         <!--과목명/학수번호-->
                         <input type="text" class="course-name" class="input-with-icon" name="course_name"
                             placeholder="정식 과목명을 띄어쓰기 없이 입력해주세요" ">
-                        <input type="text" class="course-number" class="input-with-icon" name="course_number"
+                        <input type="number" class="course-number" class="input-with-icon" name="course_number"
                             placeholder="학수번호(분반을 제외하고 입력해주세요)">
                         
                         <!-- 교수님 -->
@@ -170,8 +170,8 @@
 
                 <!-- 사진 등록 -->
                 <div id="regitem-uploadImage">사진등록</div>
-                <input type="file" id="regitem-input-uploadImage" class="file-input" name="photo_upload[]", multiple="multiple",
-                    placeholder="처음으로 불러온 사진이 대표사진으로 설정됩니다.">
+                <input type="file" accept="image/*" id="regitem-input-uploadImage" class="file-input" name="photo_upload[]", multiple="multiple",
+                    placeholder="업로드할 사진을 한 번에 업로드해주세요. 처음으로 불러온 사진이 대표사진으로 설정됩니다. ">
 
                 <!-- 사진은 안 넣어도 넘겨지도록.. -->
                 <!-- 등록하기 버튼 -->
