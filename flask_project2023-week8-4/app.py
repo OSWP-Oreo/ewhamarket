@@ -320,7 +320,7 @@ def view_order_confirmation(item_name):
 @application.route("/5~7/reg_reviews")
 def view_reg_review():
     if 'id' not in session or not session['id']:
-        flash('리뷰를 작성하려면 로그인을 해주세요.')
+        flash('나의 구매내역을 보려면 로그인해 주세요.')
         return redirect(url_for('login'))
     else:
         #return render_template("5~7/reg_reviews.html")
