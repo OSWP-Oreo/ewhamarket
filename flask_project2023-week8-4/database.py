@@ -317,6 +317,18 @@ class DBhandler:
         return self.db.child("item").child(item_name).child("download_count").get().val()
 
 
+    #리뷰 등록할 때마다 review 횟수 하나씩 늘려서 저장
+    def increase_review_count(self, item_name):
+        print(item_name)
+        current_count = self.db.child("item").child(item_name).child("review_count").get().val()
+        print(current_count)
+
+        new_count = current_count + 1
+        self.db.child("item").child(item_name).update({"review_count": new_count})
+        
+    #저장된 review 개수 불러오기
+    def get_review_count(self, item_name):
+        return self.db.child("item").child(item_name).child("review_count").get().val()
 
 
     #사용자 포인트 가져오기
