@@ -307,19 +307,6 @@ th {
     height: 15px;
 }
 
-/*
-.course-type,
-.course-number,
-.course-faculty,
-.course-major
-#regitem__professor,*/
-#search-item__department {
-    width: 48%;
-    height: 25px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: var(--light-grey);
-}
 
 /*****************************2.html*********************************/
 /*검색창*/
@@ -381,6 +368,7 @@ th {
     grid-area: field2;
 }
 #search-filter select{
+    height:25px;
     width: 33%;
     border-radius: 5px;
 }
