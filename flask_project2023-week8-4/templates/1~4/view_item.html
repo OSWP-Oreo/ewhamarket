@@ -102,10 +102,9 @@
             <!---------------과목/학수번호검색--------------->
             <!--과목명/학수번호-->
             <input class="course-name" class="input-with-icon" type="search" name="course_name"
-                placeholder="과목명">
-                <input class="course-number" class="input-with-icon" type="search" name="course_number"
-                placeholder="학수번호">
-            <!--백엔드연동: 데이터베이스 내에서 검색하여 선택하게 함-->
+                placeholder="과목명 (정식 과목명을 띄어쓰기 없이 입력해주세요)">
+                <button type="submit" value="검색" class="button btnFade btnLightblue">검색</button>
+        </form>
             <div>
                 <!--전공/교양-->
                 <script>
@@ -146,9 +145,8 @@
                 <span id="search-item__type">
                     {% include '1~4/regitem__type.html' %}
                 </span>
-                <button type="submit" value="검색" class="button btnFade btnLightblue">검색</button>
             </div>
-        </form>
+        
         <!-------------------------본컨텐츠-------------------------->
         <div>
             <!-------------------------상품보기-------------------------->
