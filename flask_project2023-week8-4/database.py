@@ -233,6 +233,7 @@ class DBhandler:
         timestamp = int(time.time())
         datetime_obj = datetime.utcfromtimestamp(timestamp)
         formatted_date = datetime_obj.strftime('%Y년 %m월 %d일 %H시 %M분 %S초')
+        key_name = user_id + '_' + item_name
 
         item_info = {
             "writer": user_id,
@@ -252,7 +253,8 @@ class DBhandler:
             "download_count": 0,
             "timestamp": formatted_date,
             "average_star": 0,
-            "review_count": 0
+            "review_count": 0,
+            "key_name": key_name
         }
         user_and_item = user_id + '_' + data['item_name']
         self.db.child("item").child(user_and_item).set(item_info)
