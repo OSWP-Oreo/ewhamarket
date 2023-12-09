@@ -277,6 +277,26 @@ class DBhandler:
                 target_value=res.val()
         return target_value
     
+    #강의 이름으로 상품 정보 가져오기
+    def get_item_by_coursename(self, course_name):
+        items = self.db.child("item").get()
+        target_value=[]
+        target_key=[]
+        for res in items.each():
+            value=res.val()
+            key_value = res.key()
+            if value['course_name'] == course_name:
+                target_value.append(value)
+                target_key.append(key_value)
+        
+        print("######target_value", target_value)
+        new_dict={}
+
+        for k,v in zip(target_key, target_value):
+                new_dict[k]=v
+
+        return new_dict
+
 
     #heart 정보 가져오기
     def get_heart_byname(self, uid, name):
