@@ -120,3 +120,7 @@
     border-color: var(--default-blue);
     border-radius: 10px;
 }
+
+.signup-inner th {
+    font-weight: normal;
+}

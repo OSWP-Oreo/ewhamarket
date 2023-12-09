@@ -1,4 +1,3 @@
-User
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,13 +60,12 @@ User
             <p>랭킹포인트 확인을 위해 로그인을 해주세요.</p>
             {% endif %}
 
-            <!--동적으로 랭킹을 가져오는 코드-->
             <table>
                 {% for rank, user_data in datas %}
                     <tr>
                         <td> {{ loop.index }} </td>
-                        <td><img src="/static/img/profile.jpg"></td>
-                        <td>{{ user_data['username'] }}</td>
+                        <td><img styl="width:100%;" src="/static/img/profile.jpg"></td>
+                        <td> {{ user_data['username'] }} </td>
                         <td>
                             <div class="bar-container">
                                 <div class="bar" id="bar{{ rank }}"></div>
