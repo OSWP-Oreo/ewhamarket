@@ -17,12 +17,13 @@
     <script>alert("{{ mesg[0] }}")</script>
     {% endif %}
     {% endwith %}
-    <div class="main-header">
-        <h1 class="main-header__title"> 회원가입 </h1>
-        <hr class="main-hr">
+    <div class="main-header-left padding">
+        <div class="main-header__title"> 회원가입 </div>
+        <hr class="main-hr__padding">
     </div>
     <div class="outer">
         <form method="post" action="/signup_post" enctype="multipart/form-data">
+
             <div class="signup-inner">
                 <p class="warning-msg">*은 필수</p>
                 <table style="height: 300px;">
@@ -175,26 +176,6 @@
     document.getElementById("dropdown2").addEventListener("change", updateSessionData);
 
     </script>
-
-
-    <!--{% with mesg = get_flashed_messages() %}
-        {% if mesg !=[]%}
-                <script>
-                    function IDcheck() {
-                        var idMsgElement = document.getElementById("idcheck_msg");
-                        idMsgElement.innerHTML = "{{ mesg[0] }}";
-                    }
-                    function nicknamecheck() {
-                        var nicknameMsgElement = document.getElementById("nickname_msg");
-                        nicknameMsgElement.innerHTML = "{{ mesg[1] }}";
-                    }
-                    function pwcheck() {
-                        var pwMsgElement = document.getElementById("pwcheck_msg");
-                        pwMsgElement.innerHTML = "{{ mesg[2] }}";
-                    }
-                </script>
-        {% endif %}
-    {% endwith %}-->
 
     {% endblock section %}
 </body>
