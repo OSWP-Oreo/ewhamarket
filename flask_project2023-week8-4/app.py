@@ -334,8 +334,8 @@ def view_reg_review():
         per_page=6
         per_row=1
         row_count=int(per_page)
-        start_idx=per_page*page
-        end_idx=per_page*(page+1)
+        start_idx=per_page*(page-1)
+        end_idx=per_page*page
 
         purchase = DB.get_purchase_history(session['id'])         #구매내역 불러오기
         if purchase is None:
@@ -439,8 +439,8 @@ def view_review(name):
     per_page=5 
     per_row=1 
     row_count=int(per_page)
-    start_idx=per_page*page
-    end_idx=per_page*(page+1)
+    start_idx=per_page*(page-1)
+    end_idx=per_page*page
 
     data = DB.get_reviews(str(name))
     item_counts = len(data)
