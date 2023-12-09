@@ -343,7 +343,15 @@ class DBhandler:
             if review_data.get("name") == target_name:
                 total_rate += int(review_data.get("rate", 0))
                 count += 1
-        return total_rate, count
+        return total_rate
+    
+    #리뷰 등록될 때마다 average_star 값 업데이트하기
+    def update_average_star(self, item_name, average_star):
+        self.db.child("review").child(item_name).update({"average_star": average_star})
+
+    #average_star 값 반환하기
+    def get_average_star(self, item_name):
+        return self.db.child("review").child(item_name).child("average_star").get().val()
 
     #사용자 포인트 가져오기
     def get_user_point(self, name):

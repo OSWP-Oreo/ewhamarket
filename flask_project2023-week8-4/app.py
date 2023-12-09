@@ -248,9 +248,10 @@ def view_item_detail(item_name):
     data=DB.get_item_byname(str(item_name))
     print("####data:",data)
 
-    total_rate, count = DB.get_reviews_sum(item_name)
-    average_star = total_rate/count
-    print(average_star)
+    # total_rate, count = DB.get_reviews_sum(item_name)
+    # average_star = total_rate/count
+    # print(average_star)
+    average_star = DB.get_average_star(item_name)
 
     return render_template("1~4/detail.html", item_name=item_name, data=data, average_star=average_star)
 
@@ -387,12 +388,25 @@ def reg_review_init(name):
 def reg_reviews():
     data=request.form
     user_id = session.get('id')
+
+    #####
+    rate = int(request.form.get("reviewStar"))
     writer = request.form.get("writer")
     item_name = request.form.get("item_name")
     reg_item_name = writer + "_" + item_name
+    #########
+
     DB.increase_review_count(reg_item_name)
     current_review_count = DB.get_review_count(reg_item_name)
     print(current_review_count)
+
+    total_rate= DB.get_reviews_sum(reg_item_name)
+    print(total_rate)
+    
+    average_star = (total_rate + rate) /current_review_count
+    average_star_rounded = round(average_star, 2)
+    print(average_star_rounded)
+    DB.update_average_star(reg_item_name, average_star_rounded)
 
     image_file = request.files["chooseFile"]
     if image_file:
