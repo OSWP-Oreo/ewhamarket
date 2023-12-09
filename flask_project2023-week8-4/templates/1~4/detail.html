@@ -13,7 +13,61 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="/static/1~4main.js"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-
+    <script>
+        function showHeart() {
+            $.ajax({
+                type: 'GET',
+                url: '/show_heart/{{item_name}}/',
+                data: {},
+                success: function (response){
+                    let my_heart = response['my_heart'];
+                    if (my_heart['interested'] == 'Y')
+                    {
+                        $("#heart").css("color","red");
+                        $("#heart").attr("onclick","unlike()");
+                    }
+                    else
+                    {
+                        $("#heart").css("color","grey");
+                        $("#heart").attr("onclick","like()");
+                    }
+                    //alert("showheart!")
+                    }
+                }); 
+            } 
+        
+            function like() {
+                $.ajax({
+                    type: 'POST',
+                    url: '/like/{{item_name}}/',
+                    data: {
+                        interested : "Y"
+                    },
+                    success: function (response) {
+                        alert(response['msg']);
+                        window.location.reload()
+                    }
+                });
+            }
+            
+            function unlike() {
+                $.ajax({
+                    type: 'POST',
+                    url: '/unlike/{{item_name}}/',
+                    data: {
+                        interested : "N"
+                    },
+                    success: function (response) {
+                        alert(response['msg']);
+                        window.location.reload()
+                    }
+                    });
+                }
+                
+            $(document).ready(function () {
+                showHeart();
+            });
+    </script>
 </head>
 
 <body>
