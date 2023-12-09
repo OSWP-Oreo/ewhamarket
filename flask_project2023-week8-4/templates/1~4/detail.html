@@ -69,18 +69,21 @@
                         </span>
                     </span>
                 </div><br>
-                <div class="item-card__type">
-                    <!--item type; 백엔드에서받기 아래 텍스트는 예시-->
-                    <div>전공 / 교양</div> {{data['course_type']}}
+                <div id="item-card__type-container">
+                    <div class="item-card__type">
+                        <!--item type; 백엔드에서받기 아래 텍스트는 예시-->
+                        <div>전공 / 교양</div> {{data['course_type']}}
+                        </div>
+                    <div class="item-card__type">
+                        <!--item type; 백엔드에서받기 아래 텍스트는 예시-->
+                        <div>분류</div> {{data['item_type']}}
                     </div>
-                <div class="item-card__type">
-                    <!--item type; 백엔드에서받기 아래 텍스트는 예시-->
-                    <div>분류</div> {{data['item_type']}}
+                    <div class="item-card__type">
+                        <!--item type; 백엔드에서받기 아래 텍스트는 예시-->
+                        <div>단대 / 학과</div> {{data['faculty']}} / {{data['major']}}
+                    </div>
                 </div>
-                <div class="item-card__type">
-                    <!--item type; 백엔드에서받기 아래 텍스트는 예시-->
-                    <div>단대 / 학과</div> {{data['faculty']}} / {{data['major']}}
-                </div><br>
+
                 <div class="item-card__tag">
                     <!--백엔드에서 불러오기-->
                     {{data['tag']}}   <!--태그 여러개 등록하는 것 추후 추가-->
@@ -111,8 +114,8 @@
             <!--구매 버튼-->
             <div id="order-action-container">
                 <span>
-                    <a href="/reg_review_init/{{data['writer']}}_{{data['item_name']}}/" id="detail-reg-review-btn" class="button btnFade btnNavblue">리뷰 작성</a>
-                <a href="/review/{{data['writer']}}_{{data['item_name']}}/" id="detail-view-review-btn" class="button btnFade btnNavblue">리뷰 보기</a>
+                    <a href="/reg_review_init/{{data['writer']}}_{{data['item_name']}}/" id="detail-reg-review-btn" class="button btnFade btnBorderDefaultblue">리뷰 작성</a>
+                <a href="/review/{{data['writer']}}_{{data['item_name']}}/" id="detail-view-review-btn" class="button btnFade btnBorderDefaultblue">리뷰 보기</a>
                 </span>
                 <span style="display: flex; align-items:center;">
                     <a href="/1~4/order_item/{{item_name}}/" title="to-payment" id="order-btn" class="button btnFade btnDefaultblue">바로 구매</a>

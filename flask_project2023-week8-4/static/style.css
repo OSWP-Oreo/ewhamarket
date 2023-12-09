@@ -1,10 +1,11 @@
 :root {
   --red: #f07167;
 
-  --deep-blue: #00324E;
-  --default-blue: #0081a7;
+  --default-blue: #00324E;
+  --hr-blue: #0081a7; /*이전 default-blue*/
   --light-blue: #00afb9;  /*delete*/
   --nav-blue: #cfe2e4;
+  --bg-blue: #EBEFF1;
 
   --lightest-grey: #e9e9e9;
   --light-grey: #d9d9d9;
@@ -85,7 +86,7 @@ header {
 }
 
 .nav-item:hover{
-  background-color: var(--deep-blue);
+  background-color: var(--default-blue);
   color: #fff;
 }
 
@@ -172,8 +173,7 @@ a, a:visited{
 /*페이지 제목왼쪽 정렬: main-header-left*/
 .main-header-left {
   text-align: left;
-  font-size: 40px;
-  
+  font-size: 30px;
 }
 .main-header__title{
   margin-top:20px;
@@ -181,13 +181,13 @@ a, a:visited{
   font-family: JalnanGothic;
 }
 .main-hr {
-  background: var(--default-blue);
+  background: var(--hr-blue);
   height: 1px;
   width: 60%;
   border: 0;
 }
 .main-hr__padding {
-  background: var(--default-blue);
+  background: var(--hr-blue);
   height: 1px;
   width: 100%;
   border: 0;
@@ -205,12 +205,11 @@ a, a:visited{
   font-size: 10px
 }
 
-/*좋아요 기능 */
-#heart {
-  color: grey; 
-  font-size: 50px;
- }
-
- #heart.red {
-  color: red;
- }
+#heart{
+  justify-self: end;
+  align-self: center;
+  color: var(--medium-grey);
+}
+#heart.red {
+  color: var(--red);
+}
