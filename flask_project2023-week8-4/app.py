@@ -146,7 +146,6 @@ def view_items_sorting():
     elif 'timesort' in request.form:
         print("시간순정렬함")
         data = dict(sorted(data.items(), key=lambda x: int(re.sub(r'\D', '', x[1]['timestamp'])), reverse=True))
-
     else:
         data = dict(sorted(data.items(), key=lambda x: x[0], reverse=False))
 
@@ -164,50 +163,29 @@ def view_items_sorting():
 def search_item_route():
     try:
         page = request.args.get("page", 1, type=int)
+        course_name = request.args.get("course_name")
         per_page = 5
         per_row = 1
         row_count = int(per_page / per_row)
         start_idx = per_page * (page - 1)
         end_idx = per_page * page
 
-        query_parameters = request.args.to_dict(flat=False)
-        print("Query Parameters:", query_parameters)
+        data = DB.get_item_by_coursename(course_name)
+        data = dict(sorted(data.items(), key=lambda x:x[0], reverse=False))
+        print(data)
 
-        query = {}
+        item_counts = len(data)
+        tot_count = len(data)
+        sliced_data = dict(list(data.items())[start_idx:end_idx])
+        rows = [dict(list(sliced_data.items())[i * per_row:(i + 1) * per_row]) for i in range(row_count)]
 
-        coursetype_values = query_parameters.get('coursetype', [''])
-        coursetype_value = coursetype_values[0].split('=')[-1].split('&')[0] if coursetype_values else ''
-        query['course_type'] = coursetype_value
-        print(coursetype_value)
-        print(query['course_type'])
+        major =request.args.get("major","")
+        coursetype =request.args.get("coursetype","all")
+        itemtype = request.args.get("itemtype","")
 
-        for key, values in query_parameters.items():
-            if values and len(values) > 0 and key != 'coursetype':
-                query[key] = values[0].replace('\n', ' ')
-
-        result, item_counts = search_item(query)
-
-        if isinstance(result, list):
-            # Handle the case where result is a list
-            sliced_data = result[start_idx:end_idx]
-        else:
-            # Assume result is a dictionary
-            sliced_data = dict(list(result.items())[start_idx:end_idx])
-
-        print("Query:", query)
-        print("Search Result:", result)
-        print("Total Items:", item_counts)
-
-        if isinstance(sliced_data, list):
-            # Handle the case where sliced_data is a list
-            rows = [dict(item) for item in sliced_data]
-        else:
-            # Assume sliced_data is a dictionary
-            rows = [dict(list(sliced_data.items())[i * per_row:(i + 1) * per_row]) for i in range(row_count)]
-
-        print(result)
-        return render_template("1~4/view_item.html", result=result, query=query, rows=rows,
-                               limit=per_page, page=page, page_count=int((item_counts / per_page) + 1), total=item_counts)
+        return render_template("1~4/view_item.html", datas=data.items(), rows=rows,
+                           limit=per_page, page=page, page_count=int((item_counts / per_page) + 1), total=item_counts,
+                             major=major,coursetype=coursetype,itemtype=itemtype, course_name=course_name)
 
     except Exception as e:
         return jsonify({"error": str(e)})
