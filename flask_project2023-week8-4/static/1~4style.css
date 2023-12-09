@@ -445,9 +445,10 @@ th {
     justify-content: flex-end;
 }
 
-.item-card__download{
-    padding-right: 30px;
+.item-card__star img{
+    padding-left: 2rem;
 }
+
 .item-card__download, .item-card__star{
     display: flex;
     flex-basis: 50%;
