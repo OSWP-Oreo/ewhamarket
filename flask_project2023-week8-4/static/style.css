@@ -35,15 +35,18 @@
 /*****************헤더 & 내비게이션*****************/
 
 header {
+  /*헤더가 스크롤해도 계속 위에 있도록*/
   position:sticky;
   top:0;
+  z-index: 9999; /*항상 맨 위에 있는 요소이도록 큰 값 지정. 이 값이 큰 것이 맨 위로 간다.*/
+
   display: flex;
   justify-content: space-between;
   margin: 0px;
   /*padding: 15px 40px 5px 40px;*/
   padding-left: 40px;
   padding-right: 40px;
-  background-color: #fff;
+  background-color: #fff; opacity: 90%;
   border-bottom: 1px solid var(--lightest-grey);
   box-shadow: 2px 2px 2px var(--light-grey);
 }
