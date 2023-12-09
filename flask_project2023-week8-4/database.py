@@ -94,10 +94,6 @@ class DBhandler:
         # 찾지 못한 경우 None 반환
         return None
 
-
-
-
-
     #구매자 포인트 감소
     def update_point(self, user_id, point):
         user_data = self.db.child("user").child(user_id).get().val()
@@ -254,7 +250,9 @@ class DBhandler:
             "item_path": item_path,
             "photo_path": photo_path,
             "download_count": 0,
-            "timestamp": formatted_date
+            "timestamp": formatted_date,
+            "average_star": 0,
+            "review_count": 0
         }
         user_and_item = user_id + '_' + data['item_name']
         self.db.child("item").child(user_and_item).set(item_info)
