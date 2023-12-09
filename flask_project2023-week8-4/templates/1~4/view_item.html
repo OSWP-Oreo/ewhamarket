@@ -10,7 +10,7 @@
     <link href="../../static/1~4style.css" type="text/css" rel="stylesheet">
     <link href="../../static/style.css" type="text/css" rel="stylesheet">
     <link href="../../static/btn.css" type="text/css" rel="stylesheet">
-    <script src="../../static/1~4main.js"></script>
+    <script src="../../static/main.js"></script>
     <script>
         function updateCourseMajor() {
             var course_faculty = document.getElementById("search-course-faculty");
@@ -98,27 +98,30 @@
             <hr class="main-hr__padding">
         </div>
         <!-------------------------상품검색-------------------------->
-        <form id="search-item" action="/search_item" method="get">
-            <!---------------과목/학수번호검색--------------->
-            <!--과목명/학수번호-->
-            <input class="course-name" class="input-with-icon" type="search" name="course_name"
-                placeholder="과목명 (정식 과목명을 띄어쓰기 없이 입력해주세요)">
-                <button type="submit" value="검색" class="button btnFade btnLightblue">검색</button>
-        </form>
-            <div>
+        <div id="search-box">
+            <div id="guide1">검색하기</div>
+            <form id="search-item" action="/search_item" method="get">
+                <!---------------과목/학수번호검색--------------->
+                <!--과목명/학수번호-->
+                <input class="course-name" type="search" name="course_name"
+                    placeholder="과목명으로 검색하기 (정식 과목명을 띄어쓰기 없이 입력해주세요)">
+                    <button type="submit" value="검색" class="button btnFade btnDefaultblue">검색</button>
+            </form>
+            <div id="guide2">카테고리별로 보기</div>
+            <div id="search-filter">
                 <!--전공/교양-->
                 <script>
                     $(document).ready(function () {
-                    $('#coursetype option:contains("{{coursetype}}")').prop("selected", true);
-                    });
-                    </script>
-                <select id="coursetype" name="coursetype" style="width:18%;">
+                        $('#coursetype option:contains("{{coursetype}}")').prop("selected", true);
+                        });
+                </script>
+                <select id="coursetype" name="coursetype" class="course-type">
                     <option value="{{url_for('view_items', page=i, coursetype='all')}}" disabled selected>전공/교양</option>
                     <option value="{{url_for('view_items', page=i, coursetype='major')}}">전공</option>
                     <option value="{{url_for('view_items', page=i, coursetype='libral')}}">교양</option>
                 </select>
                 <!--단과대-->
-                <select id="search-course-faculty" class="course-faculty" name="faculty" style="width:18%;" onchange="updateCourseMajor()">
+                <select id="search-course-faculty" class="course-faculty" name="faculty" onchange="updateCourseMajor()">
                     <option value="" disabled selected>단과대</option>
                     <option value="인문과학대학">인문과학대학</option>
                     <option value="사회과학대학">사회과학대학</option>
@@ -136,17 +139,18 @@
                     <option value="호크마교양대학">호크마교양대학</option>
                 </select>
                 <!--학과-->
-                <select id="search-item__department" name="department" style="width:18%;">
+                <select id="search-item__department" name="department">
                     <option value="" disabled selected>학과</option>
                     <!-- 옵션은 JavaScript로 동적으로 추가 -->
                     <!-- '단과대'의 입력에 따라 '학과'의 입력 가능 범위를 동적으로 변경-->
                 </select>
                 <!--타입-->
-                <span id="search-item__type">
-                    {% include '1~4/regitem__type.html' %}
-                </span>
+                
             </div>
-        
+            <div id="search-item__type">
+                {% include '1~4/regitem__type.html' %}
+            </div>
+        </div>
         <!-------------------------본컨텐츠-------------------------->
         <div>
             <!-------------------------상품보기-------------------------->
@@ -154,9 +158,9 @@
                 <!------정렬------->
                 <div class="sorting"> <!--js-->
                     <form method="post" action="/view_item" enctype="multipart/form-data">
-                        <button type="submit"name="timesort"> 최신등록순</button> 
-                        <button type="submit"name="popularsort"> 인기순</button> |
-                        <button type="submit" name="pointsort"> 낮은 가격순</button>
+                        <button type="submit"name="timesort" class="sortingbtn"> 최신등록순</button> 
+                        <button type="submit"name="popularsort" class="sortingbtn"> 인기순</button> |
+                        <button type="submit" name="pointsort" class="sortingbtn"> 낮은 가격순</button>
                     </form>
                     <p> 현재까지 등록된 상품: {{total}} 개</p>
                 </div>
@@ -168,7 +172,7 @@
                         {% if loop.index <= limit %}
                         <div class="item-card" onclick="location.href='/1~4/view_item_detail/{{key}}/';" style="cursor:pointer;">
                             <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
-                            <img class="item-card__img" src="/static/photos/{{value.photo_path[0]}}">
+                            <div id="item-card__img-container"><img class="item-card__img" src="/static/photos/{{value.photo_path[0]}}"></div>
                             <div class="item-card__info">
                                 <div class="item-card__course-and-prof">
                                     <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
@@ -191,14 +195,17 @@
                                     </span>
                                     <span class="item-card__rate">
                                         <span class="item-card__download" style="margin-right: 10px;">
-                                            <img class="input-img" src="../../static/img/download.svg">
+                                            <img class="input-img" src="../../static/img/download.svg" style="padding-right: 30px;">
                                             <!--다운로드/판매횟수 백엔드에서 불러오기-->
                                             {{value.download_count}}
                                         </span>
                                         <span class="item-card__star">
                                             <img class="input-img" src="../../static/img/star.svg">
                                             <!--별점 백엔드에서 불러오기-->
-                                            {{value.average_star}}
+                                            {%if value.download_count and value.average_star%} {{value.average_star}}
+                                            {%elif value.download_count%} NEW!
+                                            {%else%} 0
+                                            {%endif%}
                                         </span>
                                     </span>
                                 </div>
@@ -215,7 +222,7 @@
                             </div>
                             <div class="item-card__review">
                                     <!--추가: 리뷰화면으로 연결: 백에서 data['write']등의 값을 받아와서 넣기-->
-                                    <button onclick="location.href='/review/{{key}}/';" class="">리뷰</button>
+                                    <button onclick="itemcardReviewBtn('/review/{{key}}/')" class="btnFade btnBorderLightgrey">리뷰</button>
                             </div>
                         </div>
                         {% endif %}

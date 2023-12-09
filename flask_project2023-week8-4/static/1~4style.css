@@ -42,7 +42,7 @@
     flex-direction: column;
     place-items:center;
     place-content: center;
-    padding-bottom: 100px;
+    padding-bottom: 10%;
 }
 
 #regitem {
@@ -271,25 +271,76 @@ th {
 
 /*****************************2.html*********************************/
 /*검색창*/
-#search-item {
-    background-color: #f4f4f4;
+#search-box {
+    background-color: #f5f5f5;
     border-radius: 5px;
     padding: 10pt;
     text-align: center;
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    grid-template-rows: 35px 35px 25px;
+    grid-template-areas: 
+        "guide1  field1   ."
+        "guide2  field2   ."
+        "guide2  field3   .";
+}
+#guide1{
+    grid-area: guide1;
+    align-self: center;
+    color: var(--font-grey);
+    font-size: 0.8rem;
+}
+#search-item{
+    grid-area: field1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#search-item .course-name{
+    width: 100%;
+    height: 25px;
+    border-radius: 5px;
 }
 
-#search-item input[type="search"] {
-    background-image: url(../../static/img/search_icon.svg);
-    width: 70%;
-    margin: 5pt;
+#search-item button {
+    margin-left: 10px;
+    width: 60px;
+    height: 25px;
+    border: 1px solid var(--default-blue);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
 }
-
-#search-item div {
-    margin-bottom: 5pt;
+#search-item button:hover{
+    border: #fff;
+    background-color: var(--medium-grey);
+}
+#guide2{
+    grid-area: guide2;
+    align-self: center;
+    justify-self: center;
+    color: var(--font-grey);
+    font-size: 0.8rem;
+}
+#search-filter{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-area: field2;
+}
+#search-filter select{
+    width: 33%;
 }
 
 #search-item__type {
+    grid-area: field3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 10pt;
+}
+#search-item__type input{
+    margin-left: 20px;
 }
 
 /*정렬*/
@@ -297,6 +348,18 @@ th {
     text-align: right;
     font-size: 10pt;
     margin-top: 10pt;
+    color: var(--font-grey);
+}
+#view-item .sortingbtn{
+    border: 1px solid var(--light-grey);
+    background-color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+#view-item .sortingbtn:hover{
+    background-color: var(--light-grey);
 }
 /**************************item card***************************/
 #items {
@@ -310,7 +373,7 @@ th {
     padding: 15pt;
     margin: 10pt;
     display: grid;
-    grid-template-columns: minmax(120pt,200pt) 1fr;
+    grid-template-columns: minmax(120pt,200pt) 1fr ;
     grid-template-rows: minmax(90pt,auto) 25pt;
     grid-template-areas: 
         "photo   info"
@@ -318,10 +381,10 @@ th {
 }
 #view-item .item-card__info{
     grid-area: info;
-    padding-left: 20px;
+    padding-left: 10px;
 }
 .item-card__title{
-    padding-bottom: 5px;
+    padding-bottom: 10px;
 }
 .item-card__name{
     font-size: 30px;
@@ -351,8 +414,8 @@ th {
 }
 
 #view-item .item-card__item-name {
-    font-size: 20pt;
-    font-weight: 500;
+    font-size: 23pt;
+    font-weight: 600;
 }
 
 .item-card__seller {
@@ -382,6 +445,9 @@ th {
     justify-content: flex-end;
 }
 
+.item-card__download{
+    padding-right: 30px;
+}
 .item-card__download, .item-card__star{
     display: flex;
     flex-basis: 50%;
@@ -400,18 +466,12 @@ th {
 }
 
 .item-card__review button {
-    text-decoration: none;
-    background-color: white;
-    color: var(--deep-grey);
     font-weight: bold;
     height: 30px;
-    width: 40px;
+    width: 100px;
     padding: 2px;
-    border-radius: 4px;
+    border-radius: 5px;
     border: 1.5px solid var(--light-grey);
-    
-    grid-column-start: 2;
-    grid-column-end: 3;
 }
 
 
@@ -446,6 +506,18 @@ th {
 #view-item .current {
     font-weight: bold;
     text-decoration: underline;
+}
+
+/********************check_reg.html**********************/
+#btnto-viewitem, #btnto-regitem, #btnto-mypage{
+    width: 33%;
+    margin: 5px;
+}
+#btnto-regitem{
+    color:#fff;
+}
+#btnto-regitem:hover{
+    color:black;
 }
 
 /********************3 detail.html*************************/
@@ -495,6 +567,7 @@ th {
     grid-area: item-info;
     padding: 20px;
     border-radius: 5px;
+    /*background-color: var(--bg-blue);*/
 }
 /*3 detail.html 작은 상품사진*/
 .item-detail__sub-img-container {
@@ -514,6 +587,7 @@ th {
 #item-card__type-container{
     display: flex;
     justify-items: start;
+    padding-bottom: 10px;
 }
 
 /*구매버튼, 좋아요 정렬 및 하트 크기*/
@@ -534,11 +608,12 @@ th {
         display: none;
     }
 }
-#order-action-container{
+#check_regitem-action, #order-action-container{
     grid-area:action-btn;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-left: 20px;
 }
 #order-btn
 .fa-2x{
@@ -665,6 +740,16 @@ th {
     height: auto;
 }
 
+#item-card__img-container{
+    grid-area: photo;
+    margin-right: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /*2.html item card 상품사진*/
 .item-card__img {
     max-height: 110pt;
@@ -672,6 +757,5 @@ th {
     height: auto;
     width: auto;
     border: 1px var(--light-grey) solid;
-    align-self: center;
-    grid-area: photo;
+    
 }
