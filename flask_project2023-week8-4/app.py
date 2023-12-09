@@ -387,6 +387,13 @@ def reg_review_init(name):
 def reg_reviews():
     data=request.form
     user_id = session.get('id')
+    writer = request.form.get("writer")
+    item_name = request.form.get("item_name")
+    reg_item_name = writer + "_" + item_name
+    DB.increase_review_count(reg_item_name)
+    current_review_count = DB.get_review_count(reg_item_name)
+    print(current_review_count)
+
     image_file = request.files["chooseFile"]
     if image_file:
         image_file.save("static/img/{}".format(image_file.filename))
