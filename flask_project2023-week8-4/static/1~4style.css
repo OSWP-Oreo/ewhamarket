@@ -214,9 +214,9 @@
 
 .orderInfo-header {
     width: 100pt;
-    font-weight: 600;
+    font-weight:400;
     font-size: 12pt;
-    color: var(--light-blue);
+    color: var(--default-blue);
     text-align: left;
 
 }
