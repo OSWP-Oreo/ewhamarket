@@ -221,11 +221,6 @@ def search_item_route():
 
 
 
-
-
-
-
-
 def search_item(query):
     items = DB.get_items()
 
@@ -252,7 +247,12 @@ def view_item_detail(item_name):
     print("###name:", item_name)
     data=DB.get_item_byname(str(item_name))
     print("####data:",data)
-    return render_template("1~4/detail.html", item_name=item_name, data=data)
+
+    total_rate, count = DB.get_reviews_sum(item_name)
+    average_star = total_rate/count
+    print(average_star)
+
+    return render_template("1~4/detail.html", item_name=item_name, data=data, average_star=average_star)
 
 
 #좋아요 관련 기능

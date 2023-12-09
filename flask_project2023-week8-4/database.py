@@ -331,6 +331,20 @@ class DBhandler:
         return self.db.child("item").child(item_name).child("review_count").get().val()
 
 
+    #주어진 target_name(상품명)과 일치하는 리뷰의 별점 총합 계산하기
+    def get_reviews_sum(self, target_name):
+        reviews = self.db.child("review").get()
+        total_rate = 0
+        count = 0
+        for review_data in reviews.each():
+            review_data = review_data.val()  # `.each()`로 가져온 데이터는 `.val()` 메서드로 추출
+
+            # 각 리뷰의 name이 목표하는 name과 일치하는지 확인
+            if review_data.get("name") == target_name:
+                total_rate += int(review_data.get("rate", 0))
+                count += 1
+        return total_rate, count
+
     #사용자 포인트 가져오기
     def get_user_point(self, name):
         point=int(self.db.child("user").child(name).get().val()['point'])
