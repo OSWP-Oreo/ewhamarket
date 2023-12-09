@@ -46,7 +46,7 @@ header {
   /*padding: 15px 40px 5px 40px;*/
   padding-left: 40px;
   padding-right: 40px;
-  background-color: #fff; opacity: 90%;
+  background-color: rgba(255,255,255,0.9); backdrop-filter: blur(4px); /*opacity:투명도, backdrop-filter:블러효과*/
   border-bottom: 1px solid var(--lightest-grey);
   box-shadow: 2px 2px 2px var(--light-grey);
 }
