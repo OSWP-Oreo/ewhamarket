@@ -347,7 +347,7 @@ class DBhandler:
     
     #리뷰 등록될 때마다 average_star 값 업데이트하기
     def update_average_star(self, item_name, average_star):
-        self.db.child("review").child(item_name).update({"average_star": average_star})
+        self.db.child("item").child(item_name).update({"average_star": average_star})
 
     #average_star 값 반환하기
     def get_average_star(self, item_name):
