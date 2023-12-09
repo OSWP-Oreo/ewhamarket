@@ -115,13 +115,13 @@
                         $('#coursetype option:contains("{{coursetype}}")').prop("selected", true);
                         });
                 </script>
-                <select id="coursetype" name="coursetype" class="course-type">
+                <select id="coursetype" name="coursetype" class="course-type" onchange="location=this.value">
                     <option value="{{url_for('view_items', page=i, coursetype='all')}}" disabled selected>전공/교양</option>
-                    <option value="{{url_for('view_items', page=i, coursetype='major')}}">전공</option>
-                    <option value="{{url_for('view_items', page=i, coursetype='libral')}}">교양</option>
+                    <option value="{{url_for('view_items', page=i, coursetype='전공')}}">전공</option>
+                    <option value="{{url_for('view_items', page=i, coursetype='교양')}}">교양</option>
                 </select>
                 <!--단과대-->
-                <select id="search-course-faculty" class="course-faculty" name="faculty" onchange="updateCourseMajor()">
+                <select id="search-course-faculty" class="course-faculty" name="faculty" onchange="updateCourseMajor(); location=this.value;">
                     <option value="" disabled selected>단과대</option>
                     <option value="인문과학대학">인문과학대학</option>
                     <option value="사회과학대학">사회과학대학</option>
@@ -139,7 +139,7 @@
                     <option value="호크마교양대학">호크마교양대학</option>
                 </select>
                 <!--학과-->
-                <select id="search-item__department" name="department">
+                <select id="search-item__department" name="department" onchange="location=this.value">
                     <option value="" disabled selected>학과</option>
                     <!-- 옵션은 JavaScript로 동적으로 추가 -->
                     <!-- '단과대'의 입력에 따라 '학과'의 입력 가능 범위를 동적으로 변경-->
