@@ -11,9 +11,9 @@
         {% extends 'index.html' %}
         {% block section %}
             <main class="padding" id="min_width_600">
-                <div class="main-header">
-                    <h1 class="main-header">My Page</h1> 
-                    <div class="main-hr__padding"></div><br>
+                <div class="main-header-left">
+                    <div class="main-header__title">My Page</div> 
+                    <hr class="main-hr__padding"></hr>
                 </div>
                 {% if total == 0 %}
                     <div>
@@ -28,7 +28,7 @@
                                 
                                     <div class="box left">
                                         <!--상품 사진-->
-                                        <img src="{{value.photo_path}}" width="100%"style="max-height: 130px; min-width: 90px;" alt="상품 예시 사진입니다">
+                                        <img src="../../static/photos/{{ value.photo_path }}" width="100%"style="max-height: 130px; min-width: 90px;" alt="상품 예시 사진입니다">
                                     </div>
 
                                     <div class="box middle" id="mypage-box-middle">
