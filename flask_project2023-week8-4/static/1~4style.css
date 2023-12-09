@@ -330,6 +330,7 @@ th {
 }
 #search-filter select{
     width: 33%;
+    border-radius: 5px;
 }
 
 #search-item__type {
