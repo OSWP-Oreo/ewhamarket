@@ -31,44 +31,62 @@ a.button {
     background: var(--default-blue);
     border: 1px solid var(--default-blue);
     color: #FFF;
+    transition: all 0.2s;
 }
 
 .btnBorderDefaultblue {
     border: 1px solid var(--default-blue);
     color: black;
+    transition: all 0.2s;
+}
+
+.btnLightgrey {
+    border: 1px solid var(--light-grey);
+    background-color: var(--light-grey);
+    color: black;
+    transition: all 0.2s;
+}
+
+.btnBorderLightgrey{
+    background-color: white;
+    color: var(--font-grey);
+    border: 1px solid var(--light-grey);
+    transition: all 0.2s;
 }
 
 .btnNavblue {
     border: 1px solid var(--nav-blue);
     background-color: var(--nav-blue);
     color: black;
+    transition: all 0.2s;
 }
 
 .btnLightblue{
     background: var(--light-blue);
     color: #fff;
     border: 0;
+    transition: all 0.2s;
 }
 
 /* FADE */
 /*장바구니 및 바로 구매 호버 효과*/
 .btnFade.btnDefaultblue:hover {
-    background-color: var(--light-grey);
-    border: 1px solid  var(--light-grey);
+    background-color: var(--nav-blue);
+    border: 1px solid  var(--nav-blue);
     color:black;
-    
 }
 .btnFade.btnBorderDefaultblue:hover{
     border-color: var(--light-grey);
     background: var(--light-grey);
 }
+
 .btnFade.btnLightblue:hover{
     background: var(--default-blue);
     color: #fff;
 }
 
 .item-card__review button:hover{
-    border-color: var(--nav-blue);
-    background: var(--nav-blue);
-    color:black;
+    border-color: var(--default-blue);
+    background: var(--default-blue);
+    color:#fff;
 }
