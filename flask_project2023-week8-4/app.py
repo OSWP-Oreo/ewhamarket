@@ -330,7 +330,7 @@ def view_reg_review():
         return redirect(url_for('login'))
     else:
         #return render_template("5~7/reg_reviews.html")
-        page = request.args.get("page", 0, type=int)
+        page = request.args.get("page", 1, type=int)
         per_page=6
         per_row=1
         row_count=int(per_page)
@@ -432,7 +432,7 @@ def reg_reviews():
 #상품별리뷰페이지
 @application.route("/review/<name>/")
 def view_review(name):
-    page = request.args.get("page", 0, type=int)
+    page = request.args.get("page", 1, type=int)
     major = request.args.get("major", "학과전체")
     sorting = request.args.get("organize", "추천순")
 
