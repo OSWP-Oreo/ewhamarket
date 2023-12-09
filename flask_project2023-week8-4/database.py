@@ -351,7 +351,7 @@ class DBhandler:
 
     #average_star 값 반환하기
     def get_average_star(self, item_name):
-        return self.db.child("review").child(item_name).child("average_star").get().val()
+        return self.db.child("item").child(item_name).child("average_star").get().val()
 
     #사용자 포인트 가져오기
     def get_user_point(self, name):

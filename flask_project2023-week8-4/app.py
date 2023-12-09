@@ -97,13 +97,9 @@ def view_items():
 
     data = dict(sorted(data.items(), key=lambda x: x[0], reverse=False))
     item_counts = len(data)
-
     tot_count = len(data)
-
     sliced_data = dict(list(data.items())[start_idx:end_idx])
-
     rows = [dict(list(sliced_data.items())[i * per_row:(i + 1) * per_row]) for i in range(row_count)]
-
     return render_template("1~4/view_item.html", datas=sliced_data.items(), rows=rows,
                            limit=per_page, page=page, page_count=int((item_counts / per_page) + 1), total=item_counts,
                              major=major,coursetype=coursetype,itemtype=itemtype)
@@ -155,11 +151,8 @@ def view_items_sorting():
         data = dict(sorted(data.items(), key=lambda x: x[0], reverse=False))
 
     item_counts = len(data)
-
     tot_count = len(data)
-
     sliced_data = dict(list(data.items())[start_idx:end_idx])
-
     rows = [dict(list(sliced_data.items())[i * per_row:(i + 1) * per_row]) for i in range(row_count)]
 
     return render_template("1~4/view_item.html", datas=sliced_data.items(), rows=rows,
