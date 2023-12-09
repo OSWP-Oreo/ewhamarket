@@ -467,9 +467,9 @@ def view_review(name):
             keyword2 =  keyword2+1
         elif i.get('keyword')=='문제풀이':
             keyword3 =  keyword3+1
-    proportion_1 = keyword1/item_counts*100
-    proportion_2 = keyword2/item_counts*100
-    proportion_3 = keyword3/item_counts*100
+    proportion_1 = round(keyword1/item_counts*100,1)
+    proportion_2 = round(keyword2/item_counts*100,1)
+    proportion_3 = round(keyword3/item_counts*100,1)
     #대학별정렬
     if major == "학과전체":
         data = DB.get_reviews(str(name))
