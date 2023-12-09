@@ -1,3 +1,4 @@
+User
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +12,9 @@
 
     {% extends "index.html" %}
     {% block section %}
-    <div class="main-header">
-        <h1 class="main-header__title"> 이화여자대학교 월간 랭킹 </h1>
-        <hr class="main-hr">
+    <div class="main-header-left padding">
+        <div class="main-header__title"> 이화여자대학교 월간 포인트 랭킹 </div>
+        <hr class="main-hr__padding">
     </div>
 
     <div class="outer">
@@ -53,7 +54,7 @@
 
         <!--랭킹 순위 별 프로필, 포인트 불러오기 백엔드 연동 필요: 유저네임, 유저프로필(img),  포인트(range의 value) 값 넣기-->
         <div class="ranking-inner">
-            <p class="warning-msg">*총 거래 포인트(판매포인트+구매포인트)를 기준으로 한 상위 10명입니다.</p>
+            <p class="warning-msg">*총 거래 포인트(판매포인트+구매포인트)를 기준으로 한 순위입니다.</p>
             {% if session['id'] %}           
             <p>{{session['id']}}님의 랭킹포인트는 {{ user_rankingpoint }}p입니다.</p>  
             {% else%}
@@ -61,10 +62,10 @@
             {% endif %}
 
             <!--동적으로 랭킹을 가져오는 코드-->
-            <table style="margin:auto;">
+            <table>
                 {% for rank, user_data in datas %}
                     <tr>
-                        <td> <!--순위 받아오기-->{{ rank }} </td>
+                        <td> {{ loop.index }} </td>
                         <td><img src="/static/img/profile.jpg"></td>
                         <td>{{ user_data['username'] }}</td>
                         <td>
@@ -78,6 +79,18 @@
             </table>
         </div>
 
+    </div>
+
+<!--페이지네이션-->
+    <div class="page-wrap">
+        <div class="pagination">
+            <ul>
+                <li>
+                {% for i in range(1, page_count + 1) %}
+                    <a href="{{url_for('ranking', page=i)}}" color="black">{{i}}</a>
+                {% endfor %} </li>
+            </ul>
+        </div>
     </div>
 
 <!--버튼 hover, active 속성 변경 js 추가-->
