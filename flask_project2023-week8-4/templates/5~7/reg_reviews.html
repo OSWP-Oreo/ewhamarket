@@ -28,9 +28,9 @@
             {% block section %}
             <main class="padding" id="min_width_600">
                 <form class="mb-3" name="myform" method="post" action="/reg_reviews" enctype="multipart/form-data" onclick="submitForm()">
-                    <div class="main-header">
-                        <h1 class="main-header">리뷰 작성</h1> 
-                        <div class="main-hr__padding"></div><br>
+                    <div class="main-header-left">
+                        <div class="main-header__title">리뷰 작성</div>
+                        <hr class="main-hr__padding"></hr>
                     </div>
                     <!---------------->
                     <div class="grid-container-wrapper">
@@ -95,10 +95,10 @@
                         </label>
                         &nbsp;
                         <label for="핵심위주">핵심 위주
-                            <input type="radio" name="keyword" id="핵심위주" value="핵심 위주" style="display: none;">
+                            <input type="radio" name="keyword" id="핵심위주" value="핵심위주" style="display: none;">
                         </label>&nbsp;
                         <label for="문제풀이">문제 풀이
-                            <input type="radio" name="keyword" id="문제풀이" value="문제 풀이" style="display: none;">
+                            <input type="radio" name="keyword" id="문제풀이" value="문제풀이" style="display: none;">
                         </label>
                     </div>
 
@@ -138,7 +138,8 @@
                         </label>
                     </div>
 
-                    <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+                    <input type="file" accept="image/*" id="chooseFile" class="file-input" name="chooseFile", placeholder="사진을 업로드 해 주세요. ">
+
 
                 <!--제출 버튼-->
                 <input type="submit" value="등록" class="button btnDefaultblue btnFade" id="submit"> 
