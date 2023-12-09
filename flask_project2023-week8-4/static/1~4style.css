@@ -1,5 +1,6 @@
 /****************flex/grid layout**********************/
 .main-header__flex-container {
+    width: 600px;
     display: flex;
     align-items: baseline;
     justify-content: space-between;
@@ -46,24 +47,50 @@
 }
 
 #regitem {
+    padding-right:0;
+    padding-left:0;
+    margin-right:0;
+    margin-left:0;
     display: grid;
     width: 60%;
     justify-items: stretch;
     justify-content: space-between;
     /* <hr> width와 맞춤 */
-    grid-template-rows: 68px 26px 55px 78px repeat(4, minmax(26px,auto));
-    grid-template-columns: 70px 1fr;
-    grid-gap: 26px 10px;
+    grid-template-rows: minmax(68px,auto) 10px 26px 10px repeat(3, 26px) repeat(11, minmax(10px,auto));
+    grid-template-columns: 70px 500px;
+    grid-column-gap: 26px;
+    grid-row-gap: 5px;
     grid-template-areas:
         "itemname      input-itemname "
+        "     .              .        "
         "  price         input-price  "
+        "     .              .        "
         "courseinfo  input-courseinfo"
+        "courseinfo  input-courseName"
+        "courseinfo  input-courseId-prof"
+        "     .              .        "
         "description input-description"
+        "     .              .        "
         "    tag          input-tag   "
+        "     .              .        "
         "uploadFile  input-uploadFile"
+        "     .              .        "
         "uploadImage input-uploadImage"
+        "     .              .        "
+        "     .              .        "
         "   submit         submit     ";
 }
+
+
+#regitem input, textarea{
+    border-radius: 4px;
+}
+
+.fullwidth-input{
+    width: 500px;
+}
+
+/*
 @media (min-width:973px) {
     #regitem{
         grid-template-columns: 70px 500px;
@@ -72,14 +99,18 @@
         width:580px;
     }
 
-}
+}*/
+
 /*1row*/
 #regitem-itemname {
     grid-area: itemname;
 }
 #regitem-input-itemname {
-    grid-area: input-itemname;
-    
+    grid-area: input-itemname;   
+}
+#reg-course-name{
+    height:22px;
+    width: 500px;
 }
 #regitem-input-itemname input{
     margin-bottom: 5px;
@@ -97,22 +128,36 @@
 #regitem-courseinfo-name{
     grid-area: courseinfo;
 }
-#regitem-input-courseinfo1{
+
+/*교양/전공, 단과대, 학과*/
+#regitem-courseinfo1{ 
     grid-area: input-courseinfo;
-    margin-bottom: 5px;
     display: flex;
-    align-items: center;
-    justify-content: 1 1 1;
+    justify-content: space-between;
 }
 
-/*row6*/
-#regitem-input-courseinfo2{
-    grid-area: input-courseinfo;
+/*과목명*/
+#reg-course-name{
+    grid-area: input-courseName;
+}
+/*학수번호, 교수님*/
+#regitem-courseinfo2{
+    grid-area: input-courseId-prof;
+    display: flex;
+    justify-content: space-between;
+}
+/*아이템flexbox에서의 크기 지정*/
+#reg-course-type,#reg-course-faculty,#reg-course-major,
+#reg-course-number, #regitem__professor{
+    flex-grow:1;
+}
+/*flexbox 내에서 요소 간의 간격*/
+#reg-course-type,#reg-course-faculty,
+#reg-course-number{
+    margin-right: 4px;
 }
 
-#regitem-input-courseinfo2 input{
-    height: 20px; width: 47%;
-}
+
 
 /*row7*/
 #regitem-description{
@@ -130,6 +175,7 @@
 }
 #regitem-input-tag{
     grid-area: input-tag;
+    height: 22px;
 }
 
 /*row12*/
@@ -138,6 +184,7 @@
 }
 #regitem-input-uploadFile{
     grid-area: input-uploadFile;
+    border:none;
 }
 
 /*row13*/
@@ -146,7 +193,11 @@
 }
 #regitem-input-uploadImage{
     grid-area: input-uploadImage;
+    border:none;
 }
+
+
+
 .file-container .upload-name{
     display: inline-block;
     height:30px;
@@ -170,7 +221,7 @@
     margin-left: 10px;
 }
 
-.file-container input[type="file"]{
+/*.file-container input[type="file"]{
     position: absolute;
     width: 0;
     height: 0;
@@ -179,7 +230,7 @@
     border: 0;
 }
 
-/*#regitem-input-uploadFile, #regitem-input-uploadImage{
+#regitem-input-uploadFile, #regitem-input-uploadImage{
     color: var(--deep-grey);
     height: 25px;
     border: 1px solid var(--light-grey);
@@ -231,8 +282,8 @@
 /*페이지 제목 '상품등록'*/
 /*인풋창*/
 input, textarea, select {
-    width: 100%;
-    height: 20px;
+    /*width: 100%;
+    height: 20px;*/
     border-width: 1px;
     border-style: solid;
     border-color: var(--light-grey);
@@ -256,11 +307,12 @@ th {
     height: 15px;
 }
 
+/*
 .course-type,
 .course-number,
 .course-faculty,
 .course-major
-#regitem__professor,
+#regitem__professor,*/
 #search-item__department {
     width: 48%;
     height: 25px;
@@ -340,7 +392,7 @@ th {
     justify-content: center;
     font-size: 10pt;
 }
-#search-item__type input{
+.item-type, #search-item__type input{
     margin-left: 20px;
 }
 
