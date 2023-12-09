@@ -194,18 +194,19 @@
                                         {{value.price}}
                                     </span>
                                     <span class="item-card__rate">
-                                        <span class="item-card__download" style="margin-right: 10px;">
-                                            <img class="input-img" src="../../static/img/download.svg" style="padding-right: 30px;">
+                                        <span class="item-card__download">
+                                            <img class="input-img" src="../../static/img/download.svg">
                                             <!--다운로드/판매횟수 백엔드에서 불러오기-->
                                             {{value.download_count}}
                                         </span>
                                         <span class="item-card__star">
                                             <img class="input-img" src="../../static/img/star.svg">
                                             <!--별점 백엔드에서 불러오기-->
-                                            {%if value.download_count and value.average_star%} {{value.average_star}}
-                                            {%elif value.download_count%} NEW!
+                                            <span style="width:46px; text-align: left;">
+                                            {%if value.average_star %} {{value.average_star}}
+                                            {%elif not value.download_count %} NEW!
                                             {%else%} 0
-                                            {%endif%}
+                                            {%endif%}</span>
                                         </span>
                                     </span>
                                 </div>

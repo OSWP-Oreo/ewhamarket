@@ -212,7 +212,6 @@ a, a:visited{
 #heart{
   justify-self: end;
   align-self: center;
-  color: var(--medium-grey);
 }
 #heart.red {
   color: var(--red);

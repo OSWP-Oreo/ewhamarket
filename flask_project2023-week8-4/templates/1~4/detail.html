@@ -19,60 +19,58 @@
                 type: 'GET',
                 url: '/show_heart/{{item_name}}/',
                 data: {},
-                success: function (response){
+                success: function (response) {
                     let my_heart = response['my_heart'];
-                    if (my_heart['interested'] == 'Y')
-                    {
-                        $("#heart").css("color","red");
-                        $("#heart").attr("onclick","unlike()");
+                    if (my_heart['interested'] == 'Y') {
+                        $("#heart").css("color", "red");
+                        $("#heart").attr("onclick", "unlike()");
                     }
-                    else
-                    {
-                        $("#heart").css("color","grey");
-                        $("#heart").attr("onclick","like()");
+                    else {
+                        $("#heart").css("color", "grey");
+                        $("#heart").attr("onclick", "like()");
                     }
                     //alert("showheart!")
-                    }
-                }); 
-            } 
-        
-            function like() {
-                $.ajax({
-                    type: 'POST',
-                    url: '/like/{{item_name}}/',
-                    data: {
-                        interested : "Y"
-                    },
-                    success: function (response) {
-                        alert(response['msg']);
-                        window.location.reload()
-                    }
-                });
-            }
-            
-            function unlike() {
-                $.ajax({
-                    type: 'POST',
-                    url: '/unlike/{{item_name}}/',
-                    data: {
-                        interested : "N"
-                    },
-                    success: function (response) {
-                        alert(response['msg']);
-                        window.location.reload()
-                    }
-                    });
                 }
-                
-            $(document).ready(function () {
-                showHeart();
             });
+        }
+
+        function like() {
+            $.ajax({
+                type: 'POST',
+                url: '/like/{{item_name}}/',
+                data: {
+                    interested: "Y"
+                },
+                success: function (response) {
+                    alert(response['msg']);
+                    window.location.reload()
+                }
+            });
+        }
+
+        function unlike() {
+            $.ajax({
+                type: 'POST',
+                url: '/unlike/{{item_name}}/',
+                data: {
+                    interested: "N"
+                },
+                success: function (response) {
+                    alert(response['msg']);
+                    window.location.reload()
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            showHeart();
+        });
     </script>
 </head>
 
 <body>
     {% extends 'index.html' %}
-        {% block section %}
+    {% block section %}
     <!----------------------상품보기------------------------->
     <!----2번 화면 item card 중복 요소 있음-->
     <main id="order-page">
@@ -83,24 +81,26 @@
                     (1)이미지 개수에 따라 다르게 보이도록(없는 칸은 회색단색으로 표시
                     (2)이미지 클릭 시 그 이미지가 제일 큰 이미지창에 보이도록-->
             <!--추후 js 백엔드 연결 시 사진 삭제-->
-            <div id="main-img__box"><div id="item-detail__main-img__container"><!--대표이미지main. 1,2,3 서브이미지 중 하나 확대. default는 img-1-->
-                <img class="item-detail__main-img" src="/static/photos/{{data.photo_path[0]}}"/>
-            </div></div>
+            <div id="main-img__box">
+                <div id="item-detail__main-img__container"><!--대표이미지main. 1,2,3 서브이미지 중 하나 확대. default는 img-1-->
+                    <img class="item-detail__main-img" src="/static/photos/{{data.photo_path[0]}}" />
+                </div>
+            </div>
 
             <div class="item-card__info"><!--아이템 정보-->
                 <div class="item-card__course-and-prof">
                     {{data['course_number']}} | {{data['professor']}} 교수님
                     <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
-                    <!--자료구조 20481 | 홍길동 교수님   인데..  교수님 안들어감--> 
+                    <!--자료구조 20481 | 홍길동 교수님   인데..  교수님 안들어감-->
                 </div>
 
                 <strong class="item-card__item-name" style="font-size: 30px;">
-                    {{data['item_name']}} 
+                    {{data['item_name']}}
                     <!--제 6장 연결리스트1 정리-->
                 </strong><br>
                 <span class="item-card__seller">
                     <!--백엔드에서 등록된 판매자 이름 불러오기-->
-                    BY. {{data['writer']}}   <!-- 왜 이 부분 출력이 안 되지?-->
+                    BY. {{data['writer']}} <!-- 왜 이 부분 출력이 안 되지?-->
                     <!--이화인-->
                     <br><br></span>
 
@@ -119,7 +119,10 @@
                         <span class="item-card__star">
                             <img class="input-img" src="/static/img/star.svg">
                             <!--별점 백엔드에서 불러오기-->
-                            {{average_star}}
+                            {%if average_star %} {{average_star}}
+                            {%elif not data['download_count'] %} NEW!
+                            {%else%} 0
+                            {%endif%}
                         </span>
                     </span>
                 </div><br>
@@ -127,7 +130,7 @@
                     <div class="item-card__type">
                         <!--item type; 백엔드에서받기 아래 텍스트는 예시-->
                         <div>전공 / 교양</div> {{data['course_type']}}
-                        </div>
+                    </div>
                     <div class="item-card__type">
                         <!--item type; 백엔드에서받기 아래 텍스트는 예시-->
                         <div>분류</div> {{data['item_type']}}
@@ -140,48 +143,51 @@
 
                 <div class="item-card__tag">
                     <!--백엔드에서 불러오기-->
-                    {{data['tag']}}   <!--태그 여러개 등록하는 것 추후 추가-->
+                    {{data['tag']}} <!--태그 여러개 등록하는 것 추후 추가-->
                 </div>
             </div>
             <div class="item-detail__sub-img-container"><!-- 서브이미지-->
-                
+
                 <!--<img id="item-info__img-1" class="item-detail__sub-img" src="{{photo_path}}">-->
                 <!--첫 번째 작은 사진-->
                 {% if photo_paths|length >= 3 %}
-                <img id="item-info__img-1" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[1]}}"/>
-                <img id="item-info__img-2" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[2]}}"/>
-                <img id="item-info__img-3" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[3]}}"/>
+                <img id="item-info__img-1" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[1]}}" />
+                <img id="item-info__img-2" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[2]}}" />
+                <img id="item-info__img-3" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[3]}}" />
                 {% elif photo_path|length == 2 %}
-                <img id="item-info__img-1" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[1]}}"/>
-                <img id="item-info__img-2" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[2]}}"/>
-                <img id="item-info__img-3" class="item-detail__sub-img" src="/static/img/emptyimg.png"/>
+                <img id="item-info__img-1" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[1]}}" />
+                <img id="item-info__img-2" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[2]}}" />
+                <img id="item-info__img-3" class="item-detail__sub-img" src="/static/img/emptyimg.png" />
                 {% elif photo_path|length == 1 %}
-                <img id="item-info__img-1" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[1]}}"/>
-                <img id="item-info__img-2" class="item-detail__sub-img" src="/static/img/emptyimg.png"/>
-                <img id="item-info__img-3" class="item-detail__sub-img" src="/static/img/emptyimg.png"/>
+                <img id="item-info__img-1" class="item-detail__sub-img" src="/static/photos/{{data.photo_path[1]}}" />
+                <img id="item-info__img-2" class="item-detail__sub-img" src="/static/img/emptyimg.png" />
+                <img id="item-info__img-3" class="item-detail__sub-img" src="/static/img/emptyimg.png" />
                 {% else %}
-                <img id="item-info__img-1" class="item-detail__sub-img" src="/static/img/emptyimg.png"/>
-                <img id="item-info__img-2" class="item-detail__sub-img" src="/static/img/emptyimg.png"/>
-                <img id="item-info__img-3" class="item-detail__sub-img" src="/static/img/emptyimg.png"/>
+                <img id="item-info__img-1" class="item-detail__sub-img" src="/static/img/emptyimg.png" />
+                <img id="item-info__img-2" class="item-detail__sub-img" src="/static/img/emptyimg.png" />
+                <img id="item-info__img-3" class="item-detail__sub-img" src="/static/img/emptyimg.png" />
                 {% endif %}
             </div>
             <!--구매 버튼-->
             <div id="order-action-container">
                 <span>
-                    <a href="/reg_review_init/{{data['writer']}}_{{data['item_name']}}/" id="detail-reg-review-btn" class="button btnFade btnBorderDefaultblue">리뷰 작성</a>
-                <a href="/review/{{data['writer']}}_{{data['item_name']}}/" id="detail-view-review-btn" class="button btnFade btnBorderDefaultblue">리뷰 보기</a>
+                    <a href="/reg_review_init/{{data['writer']}}_{{data['item_name']}}/" id="detail-reg-review-btn"
+                        class="button btnFade btnBorderDefaultblue">리뷰 작성</a>
+                    <a href="/review/{{data['writer']}}_{{data['item_name']}}/" id="detail-view-review-btn"
+                        class="button btnFade btnBorderDefaultblue">리뷰 보기</a>
                 </span>
                 <span style="display: flex; align-items:center;">
-                    <a href="/1~4/order_item/{{item_name}}/" title="to-payment" id="order-btn" class="button btnFade btnDefaultblue">바로 구매</a>
+                    <a href="/1~4/order_item/{{item_name}}/" title="to-payment" id="order-btn"
+                        class="button btnFade btnDefaultblue">바로 구매</a>
                     <i class="fa fa-heart fa-2x" id="heart" style="
-                    color: var(--medium-grey);" ></i>
+                    color: var(--medium-grey);"></i>
                 </span>
             </div>
-           <!-------------------------상세설명/리뷰--------------------->
+            <!-------------------------상세설명/리뷰--------------------->
             <div id="detail__descr__container">
                 <!--섹션 타이틀-->
                 <div id="descr-title">상세 설명</div>
-                    <!--상세설명 텍스트-->
+                <!--상세설명 텍스트-->
                 <div id="descr-box">
                     <div id="descr-screen">
                         {{data['description']}}
@@ -194,4 +200,3 @@
 </body>
 
 </html>
-
