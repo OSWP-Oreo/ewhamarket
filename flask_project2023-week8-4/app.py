@@ -430,14 +430,11 @@ def view_review(name):
     data = DB.get_reviews(str(name))
     item_counts = len(data)
 
-    #모든 리뷰의 별의 합을 구하고 리뷰 개수로 나누어 평균별점 계산
-    total_star = sum(int(i.get('rate', 0)) for i in data.values())
-    average_star = total_star/item_counts
-
     #각 키워드에 개수 구해서 %계산
     keyword1=0 
     keyword2=0
     keyword3=0
+    
     for i in data.values():
         if i.get('keyword')=='자세한설명':
             keyword1 =  keyword1+1
@@ -445,9 +442,20 @@ def view_review(name):
             keyword2 =  keyword2+1
         elif i.get('keyword')=='문제풀이':
             keyword3 =  keyword3+1
-    proportion_1 = round(keyword1/item_counts*100,1)
-    proportion_2 = round(keyword2/item_counts*100,1)
-    proportion_3 = round(keyword3/item_counts*100,1)
+
+    #모든 리뷰의 별의 합을 구하고 리뷰 개수로 나누어 평균별점 계산
+    if(item_counts != 0):
+        total_star = sum(int(i.get('rate', 0)) for i in data.values())
+        average_star = total_star/item_counts
+        proportion_1 = round(keyword1/item_counts*100,1)
+        proportion_2 = round(keyword2/item_counts*100,1)
+        proportion_3 = round(keyword3/item_counts*100,1)
+    else:
+        average_star = 0
+        proportion_1 = 0
+        proportion_2 = 0
+        proportion_3 = 0
+
     #대학별정렬
     if major == "학과전체":
         data = DB.get_reviews(str(name))
