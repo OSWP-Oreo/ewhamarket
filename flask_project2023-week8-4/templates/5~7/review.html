@@ -79,6 +79,7 @@
                         $('#major option:contains("{{major}}")').prop("selected", true);
                     });
                 </script>
+                <form method="post" action="/review/{{name}}/" enctype="multipart/form-data">
                     <label for = "major"></label>
                     <select id ="major" name="major" onchange="location=this.value">
                         <option value="{{ url_for('view_review', name=name, page=i, major='학과전체') }}" selected>대학전체</option>
@@ -96,21 +97,24 @@
                         <option value="{{url_for('view_review', name=name, page=i, major='약학대학')}}">약학대학</option>
                         <option value="{{url_for('view_review', name=name, page=i, major='스크랜튼대학')}}">스크랜튼대학</option>
                         <option value="{{url_for('view_review', name=name, page=i, major='호크마교양대학')}}">호크마교양대학</option>
-                    </select>
+                    </select> 
 
-                    <label for = "organize"></label>
+
+                </form>                    
+                <script>
+                        $(document).ready(function(){
+                        $('#sorting option:contains("{{sorting}}")').prop("selected", true);
+                    });
+                </script>
                     <!--드랍다운 정렬 선택-->
-                    <select id="organize">
-                        <option value="{{url_for('view_review', name=name, page=i, major='신산업융합대학')}}">최신순</option>
-                        <option value="별점높은순">높은별점</option>
-                        <option value="낮은별점순">낮은별점</option>
+                <form method="post" action="/review/{{name}}/" enctype="multipart/form-data">
+                    <select id="sorting" name="sorting" onchange="location=this.value">
+                        <option value="{{url_for('view_review', name=name, page=i, sorting='최신순')}}">최신 리뷰</option>
+                        <option value="{{url_for('view_review', name=name, page=i, sorting='추천순')}}">자세한 리뷰</option>
+                        <option value="{{url_for('view_review', name=name, page=i, sorting='높은별점순')}}">높은 별점</option>
+                        <option value="{{url_for('view_review', name=name, page=i, sorting='낮은별점순')}}">낮은 별점</option>
                     </select>
-
-                    <form method="post" action="/view_item" enctype="multipart/form-data">
-                        <button type="submit"name="timesort" class="sortingbtn"> 최신등록순</button> 
-                        <button type="submit"name="popularsort" class="sortingbtn"> 인기순</button> |
-                        <button type="submit" name="pointsort" class="sortingbtn"> 낮은 가격순</button>
-                    </form>
+                </form>
             </div>
             <!--선-->
             <div class="main-hr__padding" style="background-color: #BCBCBC;margin-top: 10px;margin-bottom: 10px;"></div>
