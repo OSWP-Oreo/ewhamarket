@@ -1,12 +1,11 @@
 /****************flex/grid layout**********************/
 .main-header__flex-container {
-    width: 600px;
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     gap: 10px;
 }
-#regitem-container .main-header__flex-container span{
+.main-header__flex-container span{
     font-size: 17px;
     color: var(--font-grey);
 }
@@ -40,9 +39,7 @@
 /********************1 item_reg.html**********************/
 #regitem-container {
     display: flex;
-    flex-direction: column;
-    place-items:center;
-    place-content: center;
+    justify-content:center;
     padding-bottom: 10%;
 }
 
@@ -52,12 +49,11 @@
     margin-right:0;
     margin-left:0;
     display: grid;
-    width: 60%;
     justify-items: stretch;
     justify-content: space-between;
     /* <hr> width와 맞춤 */
     grid-template-rows: minmax(68px,auto) 10px 26px 10px repeat(3, 26px) repeat(11, minmax(10px,auto));
-    grid-template-columns: 70px 500px;
+    grid-template-columns: 70px 1fr;
     grid-column-gap: 26px;
     grid-row-gap: 5px;
     grid-template-areas:
@@ -89,17 +85,6 @@
 .fullwidth-input{
     width: 500px;
 }
-
-/*
-@media (min-width:973px) {
-    #regitem{
-        grid-template-columns: 70px 500px;
-    }
-    #regitem, #regitem-container .main-hr, #regitem-container .main-header__flex-container{
-        width:580px;
-    }
-
-}*/
 
 /*1row*/
 #regitem-itemname {
