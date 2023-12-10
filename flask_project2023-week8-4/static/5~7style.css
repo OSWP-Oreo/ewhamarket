@@ -114,7 +114,7 @@ grid-area: left;
   display: inline;
 }
 .btn-clicked{
-  background-color: #00AFB9;
+  background-color: var(--default-blue);
   border: none;
   border-radius: 50px;
   height: 40px;
@@ -137,7 +137,7 @@ grid-area: left;
 /* 스타일링을 위한 CSS */
 .keyword label {
   background-color: #ffffff;
-  border: 2px solid #00AFB9;
+  border: 2px solid var(--default-blue);
   border-radius: 40px;
   width: 90px;
   height: 40px;
@@ -154,9 +154,9 @@ grid-area: left;
 
 
 .keyword label:hover {
-  background-color: #00AFB9;
+  background-color: #00324E;
   color: #000000;
-  opacity: 0.7;
+  opacity: 0.4;
 }
 
 .input-review-title ,.input-review-main{
@@ -168,18 +168,12 @@ grid-area: left;
   box-sizing: border-box;
   resize: none;
 }
-.file-button {
-  display:inline-block;
-  height: 80px;
-  width: 100px;
-  background-color: #d9d9d9;
-  text-align: center;
-  text-align : center;
-  padding-top: 50px;
+#chooseFile{
+  border-color: black;
+  width: 100%;
 }
 #add-image{
-  font-size: 20px;
-  margin-top: 0%;
+  border: #4E4E4E;
 }
 label {
   cursor: pointer;
@@ -195,10 +189,7 @@ label {
     box-sizing: border-box;
 }
 
-/* 기존 input 숨기기 */
-#chooseFile {
-  visibility: hidden;
-}
+
 /*페이지 6*/ 
 .review-summary__box{
 padding-left: 10%;
@@ -273,7 +264,7 @@ white-space: nowrap;
   background: rgba(255, 255, 255, 0); /* 빈 공간의 배경 색상 설정 */
   border-radius: 5px; /* 프로그레스 바의 둥근 테두리 설정 */
   overflow: hidden;
-  color: #00AFB9;
+  color: var(--default-blue);
   margin-bottom: 5px;
 }
 
@@ -282,7 +273,7 @@ background: rgba(255, 255, 255, 0); /* 빈 공간의 배경 색상 설정 (동�
 }
 
 .progress-bar::-webkit-progress-value {
-background:#00AFB9; /* 진행 바의 배경 색상 설정 */
+background:var(--default-blue); /* 진행 바의 배경 색상 설정 */
 border-radius: 5px; /* 진행 바의 둥근 테두리 설정 (동일하게 설정) */
 }
 
@@ -440,7 +431,7 @@ width: auto;
 .detail-review-container{
   display: grid;
   grid-template-columns:1fr 1fr;
-  grid-template-rows: repeat(8,minmax(10px, auto));
+  grid-template-rows: repeat(4,minmax(10px, auto)) 30px 20px 30px auto 1px;
   row-gap: 5px;
   grid-template-areas: 
     "header header"

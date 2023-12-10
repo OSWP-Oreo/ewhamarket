@@ -80,14 +80,14 @@ document.addEventListener('DOMContentLoaded', function () {
                                     <!--subject 과목명-->
                                     <div class="review-info__text">
                                         {{subject_num}} | {{subject}} | {{professor}} 교수님
-                                    </div>
-                                    
-                                    <div class="review-info__text" style="display: flex;">
-                                        <img src="../../static/img/logo.png" width="25px" height="25px">&nbsp
-                                        <input type="text" name="seller_id" id="seller_id" class="review-info__text" value="{{writer}}" style="display: none;">
-                                        <span style="justify-self: center;">{{writer}}</span>
-                                    </div>
+                                    </div>                                   
+                                </div><br>
+                                <div class="review-info__text" style="display: flex;">
+                                    <img src="../../static/img/logo.png" width="25px" height="25px">&nbsp
+                                    <input type="text" name="seller_id" id="seller_id" class="review-info__text" value="{{writer}}" style="display: none;">
+                                    <span style="justify-self: center;">{{writer}}</span>
                                 </div>
+
                             </div>
                             <div class="box right">
                                 <div id="myform">
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         
                             // 선택된 라벨에 스타일 적용
                             const selectedLabel = document.querySelector(`label[for="${radioButton.id}"]`);
-                            selectedLabel.style.backgroundColor = '#00AFB9';
+                            selectedLabel.style.backgroundColor = '#00324E';
                             selectedLabel.style.color = '#ffffff';
                             });
                         });
@@ -161,21 +161,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     <!--글자수 카운트 만들기-->
                     <!--사진 첨부-->
                     <div class = "oneLine">
-                        <h3>사진 첨부</h3><br>
+                        <h3>사진 첨부(선택)</h3><br>
                         <!--사진수에 따라서 숫자 올라가게 만들기-->
-                        <p>(선택) 0/5</p><br>
                     </div>
                     <div>
-                        <label for="chooseFile" class="file-button">
-                            <p id="add-image">add image<br>+</p>
-                        </label>
                     </div>
-
-                    <input type="file" accept="image/*" id="chooseFile" class="file-input" name="chooseFile", placeholder="사진을 업로드 해 주세요. ">
-
-
-                <!--제출 버튼-->
-                <input type="submit" value="등록" class="button btnDefaultblue btnFade" id="submit"> 
+                    <input type="file" accept="image/*" id="chooseFile" class="file-input" name="chooseFile" , placeholder="업로드할 사진을 선택해주세요.">
+                    <input type="submit" value="등록" class="button btnDefaultblue btnFade" id="submit"> 
                 </form>
             </main>
             {% endblock section %}
