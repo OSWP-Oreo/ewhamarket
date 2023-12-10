@@ -351,12 +351,19 @@ border-width:0;
 background-color:#BCBCBC;
 }
 
-.review-main{
-text-align: justify;
-padding-top: 5px;
-padding-bottom: 5px;
-font-size: 15px;
+.review-main {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: justify;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 15px;
+  word-wrap: break-word;
 }
+
 
 .review-hr-bottom{
 width: 100%;
@@ -508,12 +515,15 @@ border: 2px solid #00AFB9;
 color: #000000;
 background-color: #ffffff;
 }
-.detail-review-main{
-text-align: justify;
-padding-top: 20px;
-padding-bottom: 20px;
-font-size: 15px;
+.detail-review-main {
+  text-align: justify;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 15px;
+  max-height: 11em;
+  overflow-y: auto;
 }
+
 #detail-review-rate{
   font-size: 12px;
   margin-bottom: 0px;
@@ -529,4 +539,8 @@ font-size: 15px;
   max-height: 400px;
   height: auto;
   width: auto;
+}
+
+li {
+  list-style-type: none;
 }

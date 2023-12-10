@@ -201,16 +201,16 @@
                         <div class="main-hr__padding" style="background-color: #BCBCBC; height: 0.5px;"></div>
 
                     {% endfor %}
-
-                    <ul class="pagination">
-                        <li><a href="">&lt;</a></li>
-                        <li>
-                            {% for i in range(page_count)%}
-                                <a href="{{url_for('view_review', name=key ,page=i)}}">{{i}}</a>
-                            {% endfor %}
-                        </li>
-                        <li><a href="">&gt;</a></li>
-                    </ul>
+                    <div class="page-wrap">
+                        <div class="pagination">
+                            <ul>
+                                <li>
+                                {% for i in range(1, page_count + 1) %}  <!-- 페이지 번호 1부터 시작하도록 수정 -->
+                                    <a href="{{url_for('view_review', name=key, page=i)}}" color="black">{{i}}</a>
+                                {% endfor %} </li>
+                            </ul>
+                        </div>
+                    </div>
                 {% endif %}
             </article>
             
