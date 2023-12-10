@@ -607,6 +607,7 @@ def logout_user():
 #랭킹
 @application.route("/ranking")
 def ranking():
+
     page = request.args.get("page", 0, type=int)
     per_page=int(10) 
     per_row=int (1) 
@@ -640,6 +641,8 @@ def ranking():
     
     locals()['data_{}'.format(0)] = dict(list(data.items())[0:])
 
+    max_ranking_point = max(data['rankingpoint'] for data in data.values())
+    print("이거"+ str(max_ranking_point));
     return render_template(
             "8~10/ranking.html",
             datas=data.items(),
@@ -649,7 +652,8 @@ def ranking():
             page_count=int(math.ceil(item_counts/per_page)), #import math 추가,
             total=item_counts,
             college=college,
-            user_rankingpoint=user_ranking_point)
+            user_rankingpoint=user_ranking_point,
+            max=max_ranking_point)
 
 
     ################
