@@ -464,7 +464,7 @@ def view_review(name):
         data = DB.get_reviews_bycategory(str(name),major)
     #--순 정렬
     if sorting == "최신순":
-        data = dict(sorted(data.items(), key=lambda x: int(re.sub(r'\D', '', x[1]['timestamp'])), reverse=True))
+        data = dict(sorted(data.items(), key=lambda x: int(x[1]['timestamp']), reverse=True))
     elif sorting == "추천순":  #리뷰길이로 결정
         data = dict(sorted(data.items(), key=lambda x: len(x[1]['review']), reverse=True))
     elif sorting == "높은별점순":
