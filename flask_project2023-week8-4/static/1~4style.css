@@ -455,8 +455,9 @@ th {
 }
 
 #view-item .item-card__item-name {
+    font-family: 'suite';
     font-size: 23pt;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .item-card__seller {
