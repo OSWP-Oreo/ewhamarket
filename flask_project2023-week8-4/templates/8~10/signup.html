@@ -74,9 +74,8 @@
                         </td>
                         <td>
                             <select id="dropdown2" name="dropdown2" value="{{dropdown2}}" style="width:172px;">
-                                <option >---학과---</option>
+                                <option>---학과---</option>
                                 <option>대학을 선택해주세요.</option>
-                               
                             </select>
                         </td>
                     </tr>
@@ -107,6 +106,8 @@
     
         // 대학 선택되면 해당 단과대 학과 보여주기
         var selectedCollege = dropdown1.value;
+        var options = [];
+
         if (selectedCollege === '---대학---') {
             var options = ['---학과---', '대학을 선택해주세요.'];
         } else if (selectedCollege === '인문과학대학') {
@@ -153,11 +154,17 @@
     
         //dropdown2에 option 배열 append
         for (var i = 0; i < options.length; i++) {
-            var option = document.createElement("option");
-            option.value = {{Dropdown2}};
-            option.text = options[i];
-            dropdown2.appendChild(option);
-        }
+        var option = document.createElement("option");
+        option.value = options[i];
+        option.text = options[i];
+        option.selected = options[i].selected;
+        dropdown2.appendChild(option);
+    }
+
+    // major 값이 있을 경우 선택
+    if (major) {
+        dropdown2.value = major;
+    }
 
         updateSessionData();
     }
