@@ -74,7 +74,7 @@
                         </td>
                         <td>
                             <select id="dropdown2" name="dropdown2" value="{{dropdown2}}" style="width:172px;">
-                                <option>---학과---</option>
+                                <option >---학과---</option>
                                 <option>대학을 선택해주세요.</option>
                                
                             </select>
@@ -154,7 +154,7 @@
         //dropdown2에 option 배열 append
         for (var i = 0; i < options.length; i++) {
             var option = document.createElement("option");
-            option.value = {{dropdown2}};
+            option.value = {{Dropdown2}};
             option.text = options[i];
             dropdown2.appendChild(option);
         }
