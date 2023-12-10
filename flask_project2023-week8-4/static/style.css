@@ -63,21 +63,34 @@ header {
   height: 80px;
 }
 
-#loggedin-account {
-  /*flex: 1;
-  position: absolute;
-  right: 15px;
-  top: 50px;*/
-  text-align: right;
+#nav-account {
   align-self: center;
   font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-wrap: nowrap;
 }
 
-#loggedin-account img {
-  display: inline-block;
-  vertical-align: middle;
-  width: 30px;
+#nav-account__user{
+  display: flex;
+  align-items: center;
 }
+#nav-account__user img {
+  display: inline-block;
+  width: 30px;
+  padding-right: 5px;
+}
+
+#my-point{
+  display: flex;
+  justify-content: flex-end;
+  color: var(--red);
+}
+#my-point-container .grey, #my-point a{
+  color: var(--deep-grey);
+}
+
 
 /*navigation*/
 .navbar {
@@ -124,22 +137,6 @@ header {
   font-size: 20px;
   font-weight: 100;
 }*/
-
-#my-point{
-  display: flex;
-  justify-content: flex-end;
-  color: var(--red);
-}
-#my-point-container .grey, #my-point a{
-  color: var(--deep-grey);
-}
-
-#my-point-container{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  width: 200px;
-}
 
 /*페이지 컨텐츠 제목: 지금은 안 씀*/
 /*.contents-title {
