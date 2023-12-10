@@ -145,7 +145,7 @@
 
     function setBarWidth(barId, value) {
         const bar = document.getElementById(barId);
-        const width = (value / 1000000) * 100;
+        const width = (value / {{max}}) * 100;
         bar.style.width = width + '%';
     }
 </script>
