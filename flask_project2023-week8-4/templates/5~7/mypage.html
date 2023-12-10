@@ -38,11 +38,11 @@
                                                 {{ value.item_name }} 
                                             </div>
                                                 
-                                            <div class="review-info__text" style="margin-top: 15px;">
-                                                <img src="../../static/img/logo.png" width="25px" height="25px">
+                                            <div class="review-info__text" style="margin-top: 15px; align-items: center;">
+                                                <img src="../../static/img/profile.jpg" width="25px" height="25px">
                                                 &nbsp
                                                 <input type="text" name="seller_id" id="seller_id" class="review-info__text" value="{{ value.writer}}" style="display: none;">
-                                                <span style="justify-self: center;">{{ value.writer }}</span>
+                                                <span style="justify-self:baseline;">BY. {{ value.writer }}</span>
                                             </div>
                                             <div class="review-info__text" id="justify-right">
                                                 <a class="button btnDefaultblue btnFade" id="reg-review-button" style="cursor:pointer;" href="/reg_review_init/{{key}}/">리뷰작성하기</a></span>
