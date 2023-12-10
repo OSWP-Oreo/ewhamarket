@@ -170,19 +170,20 @@ class DBhandler:
         all_review = self.db.child("review").get().val() #전체리뷰
         target_reviews = {}
 
-        for review in all_review.each():                  #각 리뷰에 대해 반복
-            name = review.child("name").get().val()       #각 리뷰에 name value 추출
+        for review_key, review_value in all_review.items():
+            name  = review_value.get("name")
             if name == target_name:
-                target_reviews[review.key()] = review.val() #target_reviews = 특정 상품에 대한 리뷰들
-                
-        reviews = target_reviews.get()
-        target_value=[]
-        target_key=[]
-        for res in reviews.each():
-            value = res.val()
-            key_value = res.key()
-            
-            if value['reviewer_college'] == cate:
+                target_reviews[review_key] = review_value  #target_reviews = 특정 상품에 대한 리뷰들
+
+        reviews = list(target_reviews.values())  # 딕셔너리의 값들을 리스트로 변환
+
+        target_value = []
+        target_key = []
+
+        for res in reviews:
+            value = res
+            key_value = review_key  # 루프에서 얻은 review_key를 사용
+            if value.get('reviewer_college') == cate:
                 target_value.append(value)
                 target_key.append(key_value)
         print("######target_value",target_value)
