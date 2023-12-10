@@ -19,18 +19,22 @@
   font-style: 'normal'; /* font 스타일 정의 (기울임, 일반) */
   font-weight: 400; /* font 굵기 정의 */
   /* 브라우저&디바이스 환경에 따른 font 파일 위치 정의 */
-  src: url('/static/Inter-font.ttf') format('truetype');
+  src: url('/static/font/Inter-font.ttf') format('truetype');
 }
 @font-face{
   font-family: 'JalnanGothic';
   font-style: 'normal';
   font-weight: 200;
-  src: url('/static/JalnanGothicTTF.ttf') format('truetype');
+  src: url('/static/font/JalnanGothicTTF.ttf') format('truetype');
 }
 @font-face{
   font-family: 'cafeMoya';
   font-style: 'normal';
-  src: url('/static/Cafe24Moyamoya-Face-v1.0.ttf') format('truetype');
+  src: url('/static/font/Cafe24Moyamoya-Face-v1.0.ttf') format('truetype');
+}
+@font-face{
+  font-family: 'suite';
+  src: url('/static/font/SUITE-Variable.ttf') format('truetype');
 }
 /*****************헤더 & 내비게이션*****************/
 
@@ -137,16 +141,15 @@ header {
   width: 200px;
 }
 
-
-
-/*페이지 컨텐츠 제목*/
-.contents-title {
+/*페이지 컨텐츠 제목: 지금은 안 씀*/
+/*.contents-title {
+  font-family: 'suite';
   display: inline;
   padding-left: 40%;
   padding-bottom: 5px;
   border-bottom: solid black 1pt;
 }
-
+*/
 /*body*/
 body {
   font-family: Inter;
@@ -185,7 +188,8 @@ a, a:visited{
 .main-header__title{
   margin-top:20px;
   margin-bottom: 0px;
-  font-family: JalnanGothic;
+  font-family: 'suite';
+  font-weight:500;
 }
 .main-hr {
   background: var(--hr-blue);
