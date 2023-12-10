@@ -14,7 +14,7 @@
             <!--페이지 정보-->
             <div class="main-header-left">
                 <div class="oneLine" style="height: 50px;">
-                    <div class="main-header__title">리뷰 - <span style="font-size: small;"></span></div>&nbsp;
+                    <div class="main-header__title">리뷰<span style="font-size: small;"></span></div>&nbsp;
                     <span style="font-size:medium;">({{total}})</span><!--리뷰 숫자-->
                 </div>
                     <hr class="main-hr__padding">
@@ -43,7 +43,7 @@
                                 <span>{{ proportion_3 }}</span>
                             {% endif %}
     
-                            %의 구매자가 <span style="color: #0081a7; font-size: large;">
+                            %의 구매자가 <span style="color: var(--default-blue); font-size: large;">
                                 {% if proportion_1 >= proportion_2 and proportion_1 >= proportion_3 %}
                                     "자세한 설명"
                                 {% elif proportion_2 >= proportion_1 and proportion_2 >= proportion_3 %}
@@ -67,7 +67,50 @@
                 </div>
             </div>
             
-            <!--전체 리뷰-->
+            <!--sorting-->
+            <div class="inLine">
+                <h3>
+                전체 리뷰
+                </h3>
+                <!--드롭다운 학과별 리뷰 선택-->
+                <script>
+                    $(document).ready(function(){
+                        $('#major option:contains("{{major}}")').prop("selected", true);
+                    });
+                </script>
+                    <label for = "major"></label>
+                    <select id ="major" name="major" onchange="location=this.value">
+                        <option value="{{ url_for('view_review', name=name, page=i, major='학과전체') }}" selected>대학전체</option>
+                        <option value="{{url_for('view_review', name=name, page=i, major='인문과학대학')}}">인문과학대학</option>
+                        <option value="{{url_for('view_review', name=name, page=i, major='사회과학대학')}}">사회과학대학</option>
+                        <option value="{{url_for('view_review', name=name, page=i, major='자연과학대학')}}">자연과학대학</option>
+                        <option value="{{url_for('view_review', name=name, page=i, major='엘텍공과대학')}}">엘텍공과대학</option>
+                        <option value="{{url_for('view_review', name=name, page=i, major='음악대학')}}">음악대학</option>
+                        <option value="{{url_for('view_review', name=name, page=i, major='조형예술대학')}}">조형예술대학</option>
+                        <option value="{{url_for('view_review', name=name, page=i, major='사범대학')}}">사범대학</option>
+                        <option value="{{url_for('view_review', name=name, page=i, major='경영대학')}}">경영대학</option>
+                        <option value="{{url_for('view_review', name=name, page=i, major='신산업융합대학')}}">신산업융합대학</option>
+                        <option value="{{url_for('view_review', name=name, page=i, major='의과대학')}}">의과대학</option>
+                        <option value="{{url_for('view_review', name=name, page=i, major='간호대학')}}">간호대학</option>
+                        <option value="{{url_for('view_review', name=name, page=i, major='약학대학')}}">약학대학</option>
+                        <option value="{{url_for('view_review', name=name, page=i, major='스크랜튼대학')}}">스크랜튼대학</option>
+                        <option value="{{url_for('view_review', name=name, page=i, major='호크마교양대학')}}">호크마교양대학</option>
+                    </select>
+
+                    <label for = "organize"></label>
+                    <!--드랍다운 정렬 선택-->
+                    <select id="organize">
+                        <option value="{{url_for('view_review', name=name, page=i, major='신산업융합대학')}}">최신순</option>
+                        <option value="별점높은순">높은별점</option>
+                        <option value="낮은별점순">낮은별점</option>
+                    </select>
+
+                    <form method="post" action="/view_item" enctype="multipart/form-data">
+                        <button type="submit"name="timesort" class="sortingbtn"> 최신등록순</button> 
+                        <button type="submit"name="popularsort" class="sortingbtn"> 인기순</button> |
+                        <button type="submit" name="pointsort" class="sortingbtn"> 낮은 가격순</button>
+                    </form>
+            </div>
             <!--선-->
             <div class="main-hr__padding" style="background-color: #BCBCBC;margin-top: 10px;margin-bottom: 10px;"></div>
             <!--리뷰 보기-->
@@ -85,7 +128,7 @@
                                     </div>
                                     <div class="rowcontainer" id="profile-rowcontainer">
                                         <!--프로필 사진-->
-                                        <div class="review-profile"><img src="../../static/img/profile.jpg" width=100% height=100% alt="상품 예시 사진입니다"></div>
+                                        <div class="review-profile"><img src="../../static/img/profile.jpg" width=100% height=100% alt=""></div>
                                         <!--백: 작성자 아이디 앞 3글자만 보이게 불러오기-->
                                         <div class="review-id">{{ value.reviewer }}</div>
                                         <!--백: 작성자 전공 불러오기-->
@@ -117,7 +160,7 @@
                             </div>
                             <div class="container" style="grid-area: img; justify-content: right;">
                                 <!--백: 작성자 등록 대표 사진 불러오기-->
-                                <img src="{{ value.img_path }}" class="review-img" alt="리뷰사진입니다">
+                                <img src="../../static/photos/{{ value.img_path }}" class="review-img" alt="리뷰 사진이 없습니다">
                             </div>
                         </div>
 <!-----------------------------------------------------------모달--------------------------------------------------------->
@@ -171,7 +214,7 @@
                                     
                                     <div style="grid-area: picture; place-self: center;">
                                         <!--백: 작성자 등록 대표 사진 불러오기-->
-                                        <img src="{{ value.img_path }}" class="detail-review-img" alt="상품예시사진입니다">
+                                        <img src="../../static/photos/{{ value.img_path }}" class="detail-review-img" alt="상품예시사진입니다">
                                     </div>
                                 </div>
                             </div>
