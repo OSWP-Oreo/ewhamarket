@@ -420,7 +420,7 @@ def reg_reviews():
 def view_review(name):
     page = request.args.get("page", 1, type=int)
     major = request.args.get("major", "학과전체")
-    sorting = request.args.get("organize", "추천순")
+    sorting = request.args.get("sorting", "추천순")
 
     per_page=5 
     per_row=1 
