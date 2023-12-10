@@ -59,6 +59,7 @@ header {
   text-align: center;
 }*/
 
+/***********내비게이션 바 계정 정보***********/
 #logo {
   height: 80px;
 }
@@ -71,17 +72,17 @@ header {
   align-items: flex-end;
   flex-wrap: nowrap;
 }
-
-#nav-account__user{
+/*포인트 위쪽, 로그인/사인업 & 닉네임|로그아웃 */
+.nav-account__user{
   display: flex;
   align-items: center;
 }
-#nav-account__user img {
+.nav-account__user img {
   display: inline-block;
   width: 30px;
   padding-right: 5px;
 }
-
+/*내비게이션포인트*/
 #my-point{
   display: flex;
   justify-content: flex-end;
@@ -95,7 +96,7 @@ header {
 /*navigation*/
 .navbar {
   height: 74px;
-  width: 700px;
+  /* width: 700px; */
 }
 
 .nav-list {
