@@ -486,7 +486,7 @@ def view_review(name):
             locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
     return render_template("/5~7/review.html", datas=data. items(),row1=locals()['data_0'].items(), row2=locals()['data_1'].items(),
                            row3=locals()['data_2'].items(), row4=locals()['data_3'].items(),row5=locals()['data_4'].items(),
-                           limit=per_page, page=page, page_count=int(math.ceil(item_counts/per_page)), total=item_counts, average_star=average_star, proportion_1=proportion_1, proportion_2=proportion_2, proportion_3=proportion_3)
+                           limit=per_page, page=page, page_count=int(math.ceil(item_counts/per_page)), total=item_counts, average_star=average_star, proportion_1=proportion_1, proportion_2=proportion_2, proportion_3=proportion_3, name=name)
 
 
 #싱세리뷰페이지
