@@ -100,21 +100,37 @@
                     </select> 
 
 
-                </form>                    
+                </form>
+                                    
                 <script>
-                        $(document).ready(function(){
-                        $('#sorting option:contains("{{sorting}}")').prop("selected", true);
+                    $(document).ready(function(){
+                        // localStorage에서 저장된 값을 가져옴
+                        var selectedSorting = localStorage.getItem('selectedSorting');
+                        
+                        // 만약 저장된 값이 있으면 해당 값으로 셀렉트를 선택
+                        if (selectedSorting) {
+                            $('#sorting').val(selectedSorting);
+                        }
+                
+                        // 셀렉트 값이 변경될 때마다 localStorage에 저장
+                        $('#sorting').change(function() {
+                            localStorage.setItem('selectedSorting', $(this).val());
+                            // 페이지를 선택된 값으로 리로드
+                            location.href = $(this).val();
+                        });
                     });
                 </script>
-                    <!--드랍다운 정렬 선택-->
+                
+                <!-- 드랍다운 정렬 선택 -->
                 <form method="post" action="/review/{{name}}/" enctype="multipart/form-data">
-                    <select id="sorting" name="sorting" onchange="location=this.value">
-                        <option value="{{url_for('view_review', name=name, page=i, sorting='최신순')}}">최신 리뷰</option>
+                    <select id="sorting" name="sorting">
+                        <option value="{{url_for('view_review', name=name, page=i, sorting='최신순')}}" selected>최신순</option>
                         <option value="{{url_for('view_review', name=name, page=i, sorting='추천순')}}">자세한 리뷰</option>
                         <option value="{{url_for('view_review', name=name, page=i, sorting='높은별점순')}}">높은 별점</option>
                         <option value="{{url_for('view_review', name=name, page=i, sorting='낮은별점순')}}">낮은 별점</option>
                     </select>
                 </form>
+                
             </div>
             <!--선-->
             <div class="main-hr__padding" style="background-color: #BCBCBC;margin-top: 10px;margin-bottom: 10px;"></div>
@@ -219,7 +235,7 @@
                                     
                                     <div style="grid-area: picture; place-self: center;">
                                         <!--백: 작성자 등록 대표 사진 불러오기-->
-                                        <img src="../../static/photos/{{ value.img_path }}" class="detail-review-img" alt="상품예시사진입니다">
+                                        <img src="../../static/photos/{{ value.img_path }}" class="detail-review-img" alt="리뷰 사진이 없습니다">
                                     </div>
                                 </div>
                             </div>

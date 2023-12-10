@@ -231,18 +231,20 @@ display: flex;
 align-items:baseline; /* 수직 정렬을 아래로 설정 */
 }
 .inLine {
-display: flex;
-align-items: flex-end; /* 수직 정렬을 아래로 설정 */
+  display: flex;
+  align-items: flex-end;
 }
-.inLine h1, h2{
-display: flex;
+
+.inLine h3 {
+  margin-right: auto; /* 기존 margin 설정을 이용하여 왼쪽에 정렬 */
+  margin-bottom: 0px;
 }
 
 .inLine form {
-display: flex;
-justify-content: flex-end; /* 오른쪽 정렬을 설정 */
-width: 100%; /* 전체 폭을 사용하도록 설정 */
+  margin-left: auto; /* 기존 margin 설정을 이용하여 오른쪽에 정렬 */
+  margin-left: 0px;
 }
+
 
 .inLine label, .inLine select {
 margin-right: 10px; /* 드롭다운 메뉴 사이의 간격 설정 */
