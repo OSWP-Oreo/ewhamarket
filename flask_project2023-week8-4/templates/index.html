@@ -38,7 +38,7 @@
         <!--마이페이지:이화인클릭 / 로그인화면:로그아웃클릭-->
         <div id="nav-account">
                 {% if session['id'] %}
-                <div id="nav-account__user">
+                <div class="nav-account__user">
                     <img src="/static/img/profile.jpg">
                     <!--<a href="">이화인</a> | <a href="../8~10/login">로그아웃</a></div>-->
                     <a href="">{{session['id']}} </a> <span class="grey" style="padding: 0px 5px;"> | </span> <a href="/logout"> logout</a>
@@ -48,7 +48,9 @@
                         <img class="input-img" style="max-width: 15px; padding-left: 5px;" src="/static/img/point.svg">
                     </div>
                 {% else%}
-                <a href="/login">login</a> <span class="grey">|</span> <a href="/signup"> signup</a>
+                <div class="nav-account__user">
+                <a href="/login">login</a> <span class="grey" style="padding: 0px 5px;">|</span> <a href="/signup"> signup</a>
+                </div>
                 {% endif %}
             
         </div>
