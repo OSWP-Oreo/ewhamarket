@@ -247,8 +247,12 @@
 
 .flex-container1 div {
     font-size: 15pt;
+    
 }
-
+#ordered-item{
+    border-radius: 5px;
+    padding: 5px;
+}
 #order_warning-msg {
     max-width: 413px;
     word-wrap: break-word;
