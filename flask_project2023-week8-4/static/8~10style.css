@@ -91,7 +91,7 @@
 
 .bar {
     height: 100%;
-    background-color: #0081a7;
+    background-color: var(--default-blue);
     width: 0;
     position: absolute;
     transition: width 1s;
@@ -108,16 +108,25 @@
 /*10번화면 대학 선택 버튼*/
 .btn10 {
     width: 110px;
-    border-color: var(--default-blue);
+    border: none;
+    /*border-color: var(--default-blue);*/
     border-radius: 10px;
     transition: all 0.3s ease; /* 변경 효과를 주기 위한 transition 속성 추가 */
 }
 
-.btn10:hover, .btn10-active {
+.btn10:hover {
+    width: 110px;
+    color: white;
+    background-color: var(--deep-grey);
+    border:none;
+    border-radius: 10px;
+}
+
+.btn10-active {
     width: 110px;
     color: white;
     background-color: var(--default-blue);
-    border-color: var(--default-blue);
+    border:none;
     border-radius: 10px;
 }
 
