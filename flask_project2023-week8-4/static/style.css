@@ -53,6 +53,8 @@ header {
   background-color: rgba(255,255,255,0.9); backdrop-filter: blur(4px); /*opacity:투명도, backdrop-filter:블러효과-일부브라우저에서 작동 안 함*/
   border-bottom: 1px solid var(--lightest-grey);
   box-shadow: 2px 2px 2px var(--light-grey);
+  width: auto;
+  min-width: 820px;
 }
 /*logo-container {
   flex: 1;
