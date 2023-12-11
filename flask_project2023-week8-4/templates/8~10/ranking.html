@@ -60,7 +60,7 @@
             <p>랭킹포인트 확인을 위해 로그인을 해주세요.</p>
             {% endif %}
 
-            <table style="width: auto;">
+            <table style="width:100%; margin: 0 auto;">
                 {% for rank, user_data in datas %}
                     <tr>
                         <td> {{ loop.index }} </td>
@@ -79,7 +79,7 @@
 
     </div>
 
-<!--페이지네이션-->
+<!--페이지네이션
     <div class="page-wrap">
         <div class="pagination">
             <ul>
@@ -89,7 +89,7 @@
                 {% endfor %} </li>
             </ul>
         </div>
-    </div>
+    </div>-->
 
 <!--버튼 hover, active 속성 변경 js 추가-->
 <!--js 유지하기 위해 브라우저 local storage에 저장하는 코드 포함-->
@@ -145,8 +145,10 @@
 
     function setBarWidth(barId, value) {
         const bar = document.getElementById(barId);
-        const width = (value / {{max}}) * 100;
-        bar.style.width = width + '%';
+        {% if max is defined %}
+            const width = (value / {{ max }}) * 100;
+            bar.style.width = width + '%';
+        {% endif %}
     }
 </script>
 {% endfor %}
