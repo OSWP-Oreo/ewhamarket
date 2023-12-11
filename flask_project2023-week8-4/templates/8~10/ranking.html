@@ -5,184 +5,153 @@
     <title></title>
     <link rel="stylesheet" href="../../static/style.css">
     <link rel="stylesheet" href="../../static/8~10Style.css">
-    <link rel="stylesheet" href="../../static/btn.css">
 </head>
 
 <body>
 
     {% extends "index.html" %}
     {% block section %}
-    {% with mesg = get_flashed_messages() %}
-    {% if mesg !=[]%}
-    <script>alert("{{ mesg[0] }}")</script>
-    {% endif %}
-    {% endwith %}
     <div class="main-header-left padding">
-        <div class="main-header__title"> 회원가입 </div>
+        <div class="main-header__title"> 이화여자대학교 월간 포인트 랭킹 </div>
         <hr class="main-hr__padding">
     </div>
+
     <div class="outer">
-        <form method="post" action="/signup_post" enctype="multipart/form-data">
+        <div class="signup-inner">
+           <!-- 13주차 교수님 코드 <br>
+            <select id="college" name="college" onchange="location=this.value">
+                <option value="{{url_for('ranking', page=i, college='all')}}">전체</option>
+                <option value="{{url_for('ranking', page=i, college='인문과학대학')}}">인문과학대학</option>
+                <option value="{{url_for('ranking', page=i, college='사회과학대학')}}">사회과학대학</option>
+                <option value="{{url_for('ranking', page=i, college='자연과학대학')}}">자연과학대학</option>
+                
+            </select>
+        </div><br>-->
 
-            <div class="ranking-inner">
-                <p class="warning-msg">*은 필수</p>
-                <table style="height: 300px;">
-                    <tr>
-                        <th>*아이디</th>
-                        <td><input type="text" required id="id" name="id" value="{{id}}" /></td>
-                        <td><button name="check_duplicate_id" class="중복체크" onclick="IDcheck()">중복확인</button></td>
-                        <td><p class="warning-msg" id="idcheck_msg">아이디 중복확인을 해주세요</p></td>
-                    </tr>
-                    <tr>
-                        <th>*비밀번호</th>
-                        <td><input type="password" required id="pw" name="pw" value="{{pw}}"/></td>
-                    </tr>
-                    <tr>
-                        <th>*비밀번호 확인</th>
-                        <td><input type="password" required id="PWconfirm" name="PWconfirm" value="{{pw2}}"/></td>
-                        <td><button name="check_same_pw" class="중복체크" onclick="pwcheck()">비밀번호확인</button></td>
-                        <td><p class="warning-msg" id="pwcheck_msg">비밀번호 확인을 해주세요</p></td>
-                    </tr>
-                    <tr>
-                        <th>*이메일 주소</th>
-                        <td><input type="email" required id="email" name="email" value="{{email}}"/></td>
-                    </tr>
-                    <tr>
-                        <th>전화번호</th>
-                        <td><input type="tel" id="HP" name="HP" value="{{hp}}" /></td>
-                    </tr>
-                    <tr>
-                        <th>대학 / 학과</th>
-                        <td>
-                            <select id="dropdown1" name="dropdown1" value="{{dropdown1}}" style="width:100%;" onchange="updateDropdown2()">
-                                <option>---대학---</option>
-                                <option {% if college == '인문과학대학' %}selected{% endif %}>인문과학대학</option>
-                                <option {% if college == '사회과학대학' %}selected{% endif %}>사회과학대학</option>
-                                <option {% if college == '자연과학대학' %}selected{% endif %}>자연과학대학</option>
-                                <option {% if college == '엘텍광과대학' %}selected{% endif %}>엘텍공과대학</option>
-                                <option {% if college == '음악대학' %}selected{% endif %}>음악대학</option>
-                                <option {% if college == '조형예술대학' %}selected{% endif %}>조형예술대학</option>
-                                <option {% if college == '사범대학' %}selected{% endif %}>사범대학</option>
-                                <option {% if college == '경영대학' %}selected{% endif %}>경영대학</option>
-                                <option {% if college == '신산업융합대학' %}selected{% endif %}>신산업융합대학</option>
-                                <option {% if college == '의과대학' %}selected{% endif %}>의과대학</option>
-                                <option {% if college == '간호대학' %}selected{% endif %}>간호대학</option>
-                                <option {% if college == '약학대학' %}selected{% endif %}>약학대학</option>
-                                <option {% if college == '스크랜튼대학' %}selected{% endif %}>스크랜튼대학</option>
-                                <option {% if college == '호크마교양대학' %}selected{% endif %}>호크마교양대학</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select id="dropdown2" name="dropdown2" value="{{dropdown2}}" style="width:172px;">
-                                <option>---학과---</option>
-                                <option>대학을 선택해주세요.</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>*닉네임</th>
-                        <td>
-                            <input type="text" required id="nickname" name="nickname" value="{{nickname}}" />
-                        </td>                     
-                        <td><button name="check_duplicate_nickname" class="중복체크" onclick="nicknamecheck()">중복확인</button></td>
-                        <td><p class="warning-msg" id="nickname_msg">닉네임 중복확인을 해주세요</p></td>                     
-                    </tr>
-                </table>
-            </div><br><br>
-            <div>
-                <input type="submit" class="btnFade btnDefaultblue" id="signup-btn" value="가입하기"><b></b>
-            </div>
+        <!--btn-->
+        <br>
+        <div class="padding">
+            <button class="btn10" onclick="location.href='{{url_for('ranking', page=i, college='all')}}'">전체</button>
+            <button class="btn10" onclick="location.href='{{url_for('ranking', page=i, college='인문과학대학')}}'">인문과학대학</button>
+            <button class="btn10" onclick="location.href='{{url_for('ranking', page=i, college='사회과학대학')}}'">사회과학대학</button>
+            <button class="btn10" onclick="location.href='{{url_for('ranking', page=i, college='자연과학대학')}}'">자연과학대학</button>
+            <button class="btn10" onclick="location.href='{{url_for('ranking', page=i, college='엘텍공과대학')}}'">엘텍공과대학</button>
+            <button class="btn10" onclick="location.href='{{url_for('ranking', page=i, college='음악대학')}}'">음악대학</button>
+            <button class="btn10" onclick="location.href='{{url_for('ranking', page=i, college='조형예술대학')}}'">조형예술대학</button>
+            <button class="btn10" onclick="location.href='{{url_for('ranking', page=i, college='사범대학')}}'">사범대학</button>
+            <button class="btn10" onclick="location.href='{{url_for('ranking', page=i, college='경영대학')}}'">경영대학</button>
+            <button class="btn10" onclick="location.href='{{url_for('ranking', page=i, college='신산업융합대학')}}'">신산업융합대학</button>
+            <button class="btn10" onclick="location.href='{{url_for('ranking', page=i, college='의과대학')}}'">의과대학</button>
+            <button class="btn10" onclick="location.href='{{url_for('ranking', page=i, college='간호대학')}}'">간호대학</button>
+            <button class="btn10" onclick="location.href='{{url_for('ranking', page=i, college='약학대학')}}'">약학대학</button>
+            <button class="btn10" onclick="location.href='{{url_for('ranking', page=i, college='스크랜튼대학')}}'">스크랜튼대학</button>
+            <button class="btn10" onclick="location.href='{{url_for('ranking', page=i, college='인공지능대학')}}'">인공지능대학</button>
+            <button class="btn10" onclick="location.href='{{url_for('ranking', page=i, college='호크마교양대학')}}'">호크마교양대학</button> 
+        </div>
+        <br>
 
-        </form>
+
+        <!--랭킹 순위 별 프로필, 포인트 불러오기 백엔드 연동 필요: 유저네임, 유저프로필(img),  포인트(range의 value) 값 넣기-->
+        <div class="ranking-inner">
+            <p class="warning-msg">*총 거래 포인트(판매포인트+구매포인트)를 기준으로 한 순위입니다.</p>
+            {% if session['id'] %}           
+            <p>{{session['id']}}님의 랭킹포인트는 {{ user_rankingpoint }}p입니다.</p>  
+            {% else%}
+            <p>랭킹포인트 확인을 위해 로그인을 해주세요.</p>
+            {% endif %}
+
+            <table style="width:100%; margin: 0 auto;">
+                {% for rank, user_data in datas %}
+                    <tr>
+                        <td> {{ loop.index }} </td>
+                        <td><img src="/static/img/profile.jpg"></td>
+                        <td> {{ user_data['nickname'] }} </td>
+                        <td>
+                            <div class="bar-container">
+                                <div class="bar" id="bar{{ rank }}"></div>
+                            </div>
+                        </td>
+                        <td>{{ user_data['rankingpoint'] }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
     </div>
-    
+
+<!--페이지네이션
+    <div class="page-wrap">
+        <div class="pagination">
+            <ul>
+                <li>
+                {% for i in range(1, page_count + 1) %}
+                    <a href="{{url_for('ranking', page=i)}}" color="black">{{i}}</a>
+                {% endfor %} </li>
+            </ul>
+        </div>
+    </div>-->
+
+<!--버튼 hover, active 속성 변경 js 추가-->
+<!--js 유지하기 위해 브라우저 local storage에 저장하는 코드 포함-->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var buttons = document.querySelectorAll('.btn10');
+
+        // 눌러진 버튼 local storage set
+        var activeButtonIndex = localStorage.getItem('activeButtonIndex');
+        if (activeButtonIndex !== null) {
+            buttons[activeButtonIndex].classList.add('btn10-active');
+        }
+
+        // click
+        buttons.forEach(function (button, index) {
+            button.addEventListener('click', function () {
+                buttons.forEach(function (btn) {
+                    btn.classList.remove('btn10-active');
+                });
+                button.classList.add('btn10-active');
+
+                // 눌러진 버튼의 인덱스 local storage에 저장
+                localStorage.setItem('activeButtonIndex', index);
+            });
+
+
+            // hover
+            button.addEventListener('mouseover', function () {
+                button.classList.add('btn10-hover');
+            });
+
+            button.addEventListener('mouseout', function () {
+                button.classList.remove('btn10-hover');
+            });
+        });
+    });
+</script>
+
+
     <script>
-    function updateDropdown2() {
-        var dropdown1 = document.getElementById("dropdown1");
-        var dropdown2 = document.getElementById("dropdown2");
-    
-        // 드롭다운2에 기존에 있던 option들 clear
-        dropdown2.innerHTML = '';
-    
-        // 대학 선택되면 해당 단과대 학과 보여주기
-        var selectedCollege = dropdown1.value;
-        var options = [];
-
-        if (selectedCollege === '---대학---') {
-            var options = ['---학과---', '대학을 선택해주세요.'];
-        } else if (selectedCollege === '인문과학대학') {
-            var options = ['국어국문학과', '중어중문학과', '불어불문학과', '독어독문학과', '사학과', '철학과', '기독교학과', '영어영문학부'];
-        } else if (selectedCollege === '사회과학대학') {
-            var options = ['정치외교학과', '행정학과', '경제학과', '문헌정보학과', '사회학과', '사회복지학과', '심리학과', '소비자학과', '커뮤니케이션·미디어학부'];
-        }
-        else if (selectedCollege === '자연과학대학') {
-            var options = ['수학과', '통계학과', '물리학과', '화학·나노과학전공', '생명과학전공'];
-        }
-        else if (selectedCollege === '엘텍공과대학') {
-            var options = ['컴퓨터공학전공', '사이버보안전공', '전자전기공학전공', '식품공학전공', '화학신소재공학전공', '건축학전공', '건축도시시스템전공', '환경공학전공', '기후·에너지시스템공학전공', '휴먼기계바이오공학부'];
-        }
-        else if (selectedCollege === '음악대학') {
-            var options = ['건반악기과', '관현악기과', '성악과', '작곡과', '한국음악과', '무용과'];
-        }
-        else if (selectedCollege === '조형예술대학') {
-            var options = ['동양화전공', '서양화전공', '조소전공', '도자예술전공', '디자인학부', '섬유예술전공', '패션디자인전공'];
-        }
-        else if (selectedCollege === '사범대학') {
-            var options = ['교육학과', '유아교육과', '초등교육과', '교육공학과', '특수교육과', '영어교육과', '사회교육과', '국어교육과', '과학교육과', '수학교육과'];
-        }
-        else if (selectedCollege === '경영대학') {
-            var options = ['경영학부'];
-        }
-        else if (selectedCollege === '신산업융합대학') {
-            var options = ['융합콘텐츠학과', '의류산업학과', '국제사무학과', '식품영양학과', '융합보건학과', '체육과학부'];
-        }
-        else if (selectedCollege === '의과대학') {
-            var options = ['의예과', '의학과'];
-        }
-        else if (selectedCollege === '간호대학') {
-            var options = ['간호학부'];
-        }
-        else if (selectedCollege === '약학대학') {
-            var options = ['약학과'];
-        }
-        else if (selectedCollege === '스크랜튼대학') {
-            var options = ['스크랜튼학부', '뇌·인지과학전공', '국제학부'];
-        }
-        else if (selectedCollege === '호크마교양대학') {
-            var options = ['호크마교양대학'];
-        }
-    
-        //dropdown2에 option 배열 append
-        for (var i = 0; i < options.length; i++) {
-        var option = document.createElement("option");
-        option.value = options[i];
-        option.text = options[i];
-        option.selected = options[i].selected;
-        dropdown2.appendChild(option);
-    }
-
-    // major 값이 있을 경우 선택
-    if (major) {
-        dropdown2.value = major;
-    }
-
-        updateSessionData();
-    }
-
-    // 학과 session 저장
-    function updateSessionData() {
-        var selectedDepartment = document.getElementById("dropdown2").value;
-
-        // AJAX
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/signup_post", true);
-        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xhr.send(JSON.stringify({ department: selectedDepartment }));
-    }
-
-    document.getElementById("dropdown2").addEventListener("change", updateSessionData);
-
+    $(document).ready(function () {
+    // alert("{{college}}");
+    $('#college option:contains("{{college}}")').prop("selected", true);
+    });
     </script>
+
+<!-- 선택된 college에 따라 상위 10위 랭킹 동적으로 구현하기 -->
+{% for rank, user_data in datas %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        setBarWidth('bar{{ rank }}', {{ user_data['rankingpoint'] }});
+    });
+
+    function setBarWidth(barId, value) {
+        const bar = document.getElementById(barId);
+        {% if max is defined %}
+            const width = (value / {{ max }}) * 100;
+            bar.style.width = width + '%';
+        {% endif %}
+    }
+</script>
+{% endfor %}
 
     {% endblock section %}
 </body>
