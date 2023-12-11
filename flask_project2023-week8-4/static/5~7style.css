@@ -107,7 +107,10 @@ grid-area: left;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #ffffff;
+  color: white;
+}
+#reg-review-button:hover{
+  color: #000;
 }
 
 .oneLine h3, .oneLine p, .oneLine h1 {
@@ -154,9 +157,8 @@ grid-area: left;
 
 
 .keyword label:hover {
-  background-color: #00324E;
   color: #000000;
-  opacity: 0.4;
+  background-color: var(--light-grey);
 }
 
 .input-review-title ,.input-review-main{
