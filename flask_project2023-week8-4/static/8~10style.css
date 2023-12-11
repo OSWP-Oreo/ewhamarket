@@ -4,6 +4,11 @@
     text-align: left;
 }
 
+.ranking-inner {
+    display: inline-block;
+    text-align: center;
+}
+
 .login-inner {
     display: inline-block;
     text-align: center;
