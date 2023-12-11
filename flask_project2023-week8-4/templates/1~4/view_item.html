@@ -11,86 +11,12 @@
     <link href="../../static/style.css" type="text/css" rel="stylesheet">
     <link href="../../static/btn.css" type="text/css" rel="stylesheet">
     <script src="../../static/main.js"></script>
-    <script>
-        function updateCourseMajor() {
-            var course_faculty = document.getElementById("search-course-faculty");
-            var course_major = document.getElementById("search-item__department");
-            //var course_type = document.getElementByID("coursetype");
-        
-            // Clear existing options
-            course_major.innerHTML = '';
-        
-            // Add new options based on the selected value in course_faculty
-            var selectedCollege = course_faculty.value;
-            if (selectedCollege === '인문과학대학') {
-                var options = ['국어국문학과', '중어중문학과', '불어불문학과', '독어독문학과', '사학과', '철학과', '기독교학과', '영어영문학부'];
-            } else if (selectedCollege === '사회과학대학') {
-                // Add options for other colleges as needed
-                var options = ['정치외교학과', '행정학과', '경제학과', '문헌정보학과', '사회학과', '사회복지학과', '심리학과', '소비자학과', '커뮤니케이션·미디어학부'];
-            }
-            else if (selectedCollege === '자연과학대학') {
-                // Add options for other colleges as needed
-                var options = ['수학과', '통계학과', '물리학과', '화학·나노과학전공', '생명과학전공'];
-            }
-            else if (selectedCollege === '엘텍공과대학') {
-                // Add options for other colleges as needed
-                var options = ['컴퓨터공학전공', '사이버보안전공', '전자전기공학전공', '식품공학전공', '화학신소재공학전공', '건축학전공', '건축도시시스템전공', '환경공학전공', '기후·에너지시스템공학전공', '휴먼기계바이오공학부'];
-            }
-            else if (selectedCollege === '음악대학') {
-                // Add options for other colleges as needed
-                var options = ['건반악기과', '관현악기과', '성악과', '작곡과', '한국음악과', '무용과'];
-            }
-            else if (selectedCollege === '조형예술대학') {
-                // Add options for other colleges as needed
-                var options = ['동양화전공', '서양화전공', '조소전공', '도자예술전공', '디자인학부', '섬유예술전공', '패션디자인전공'];
-            }
-            else if (selectedCollege === '사범대학') {
-                // Add options for other colleges as needed
-                var options = ['교육학과', '유아교육과', '초등교육과', '교육공학과', '특수교육과', '영어교육과', '사회교육과', '국어교육과', '과학교육과', '수학교육과'];
-            }
-            else if (selectedCollege === '경영대학') {
-                // Add options for other colleges as needed
-                var options = ['경영학부'];
-            }
-            else if (selectedCollege === '신산업융합대학') {
-                // Add options for other colleges as needed
-                var options = ['융합콘텐츠학과', '의류산업학과', '국제사무학과', '식품영양학과', '융합보건학과', '체육과학부'];
-            }
-            else if (selectedCollege === '의과대학') {
-                // Add options for other colleges as needed
-                var options = ['의예과', '의학과'];
-            }
-            else if (selectedCollege === '간호대학') {
-                // Add options for other colleges as needed
-                var options = ['간호학부'];
-            }
-            else if (selectedCollege === '약학대학') {
-                // Add options for other colleges as needed
-                var options = ['약학과'];
-            }
-            else if (selectedCollege === '스크랜튼대학') {
-                // Add options for other colleges as needed
-                var options = ['스크랜튼학부', '뇌·인지과학전공', '국제학부'];
-            }
-            else if (selectedCollege === '호크마교양대학') {
-                // Add options for other colleges as needed
-                var options = ['호크마교양대학'];
-            }
-        
-            // Add the new options to dropdown2
-            for (var i = 0; i < options.length; i++) {
-                var option = document.createElement("option");
-                option.value = options[i];
-                option.text = options[i];
-                course_major.appendChild(option);
-            }
-        }
-        </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 
 <body> <!--1,8 가로폭 지정-->
     {% extends 'index.html' %}
-        {% block section %}
+    {% block section %}
     <main class="padding">
         <!-------------------------페이지 제목----------------------->
         <div class="main-header-left">
@@ -105,15 +31,66 @@
                 <!--과목명-->
                 <input class="course-name" type="search" name="course_name"
                     placeholder="과목명으로 검색하기 (정식 과목명을 띄어쓰기 없이 입력해주세요)">
-                    <button type="submit" value="검색" class="button btnFade btnDefaultblue">검색</button>
+                <button type="submit" value="검색" class="button btnFade btnDefaultblue">검색</button>
             </form>
             <div id="guide2">카테고리별로 보기</div>
             <div id="search-filter">
                 <!--전공/교양-->
                 <script>
+                    var major = "{{major}}";
+                    var faculty;
+                    
+                    if (['국어국문학과', '중어중문학과', '불어불문학과', '독어독문학과', '사학과', '철학과', '기독교학과', '영어영문학부'].includes(major)){
+                        faculty = '인문과학대학';
+                    }
+                    else if (['정치외교학과', '행정학과', '경제학과', '문헌정보학과', '사회학과', '사회복지학과', '심리학과', '소비자학과', '커뮤니케이션·미디어학부'].includes(major)){
+                        faculty = '사회과학대학';
+                    }
+                    else if (['수학과', '통계학과', '물리학과', '화학·나노과학전공', '생명과학전공'].includes(major)){
+                        faculty = '자연과학대학';
+                    }
+                    else if (['컴퓨터공학전공', '사이버보안전공', '전자전기공학전공', '식품공학전공', '화학신소재공학전공', '건축학전공', '건축도시시스템전공', '환경공학전공', '기후·에너지시스템공학전공', '휴먼기계바이오공학부'].includes(major)){
+                        faculty = '엘텍공과대학';
+                    }
+                    else if (['건반악기과', '관현악기과', '성악과', '작곡과', '한국음악과', '무용과'].includes(major)){
+                        faculty = '음악대학';
+                    }
+                    else if (['동양화전공', '서양화전공', '조소전공', '도자예술전공', '디자인학부', '섬유예술전공', '패션디자인전공'].includes(major)){
+                        faculty = '조형예술대학';
+                    }
+                    else if (['교육학과', '유아교육과', '초등교육과', '교육공학과', '특수교육과', '영어교육과', '사회교육과', '국어교육과', '과학교육과', '수학교육과'].includes(major)){
+                        faculty = '사범대학';
+                    }
+                    else if (major == '경영학부'){
+                        faculty = '경영대학';
+                    }
+                    else if (['융합콘텐츠학과', '의류산업학과', '국제사무학과', '식품영양학과', '융합보건학과', '체육과학부'].includes(major)){
+                        faculty = '신산업융합대학';
+                    }
+                    else if (['의예과', '의학과'].includes(major)){
+                        faculty = '의과대학';
+                    }
+                    else if (major == '간호학부'){
+                        faculty = '간호대학';
+                    }
+                    else if (major == '약학과'){
+                        faculty = '약학대학';
+                    }
+                    else if (['스크랜튼학부', '뇌·인지과학전공', '국제학부'].includes(major)){
+                        faculty = '스크랜튼대학';
+                    }
+                    else if (major == '호크마교양대학'){
+                        faculty = '호크마교양대학';
+                    }
+
                     $(document).ready(function () {
-                        $('#coursetype option:contains("{{coursetype}}")').prop("selected", true);
-                        });
+                    if (major!=""){$('#department').append('<option value="' + major + '">' + major + '</option>');}
+                    $('.course-name').val('{{course_name}}');
+                    $('#coursetype option:contains("{{coursetype}}")').prop("selected", true);
+                    $('#faculty option:contains('+faculty+')').prop("selected", true);
+                    $('#department option:contains("{{major}}")').prop("selected", true);
+                    $('#itemtype option:contains("{{itemtype}}")').prop("selected", true);
+                    });
                 </script>
                 <select id="coursetype" name="coursetype" class="course-type" onchange="location=this.value">
                     <option value="{{url_for('view_items', page=i, coursetype='all')}}" disabled selected>전공/교양</option>
@@ -121,7 +98,7 @@
                     <option value="{{url_for('view_items', page=i, coursetype='교양')}}">교양</option>
                 </select>
                 <!--단과대-->
-                <select id="search-course-faculty" class="course-faculty" name="faculty" onchange="updateCourseMajor();">
+                <select id="faculty" class="course-faculty" name="faculty" onchange="updateDepartmentOptions()">
                     <option value="" disabled selected>단과대</option>
                     <option value="인문과학대학">인문과학대학</option>
                     <option value="사회과학대학">사회과학대학</option>
@@ -139,17 +116,166 @@
                     <option value="호크마교양대학">호크마교양대학</option>
                 </select>
                 <!--학과-->
-                <select id="search-item__department" name="department" onchange="location=this.value">
+
+                <select id="department" name="department" onchange="location=this.value">
                     <option value="" disabled selected>학과</option>
-                    <!-- 옵션은 JavaScript로 동적으로 추가 -->
-                    <!-- '단과대'의 입력에 따라 '학과'의 입력 가능 범위를 동적으로 변경-->
                 </select>
+                <script> //학과 과별로 추가
+                    function updateDepartmentOptions() {
+                        var facultySelect = document.getElementById("faculty");
+                        var departmentSelect = document.getElementById("department");
+
+                        // Clear existing options
+                        departmentSelect.innerHTML = '<option value="" disabled selected>학과</option>';
+
+                        // Add new options based on the selected value in facultySelect
+                        var selectedFaculty = facultySelect.value;
+                        if (selectedFaculty === '인문과학대학') {
+                            departmentSelect.innerHTML += `
+                            <option value="{{url_for('view_items', page=i, major='국어국문학과')}}">국어국문학과</option>
+                            <option value="{{url_for('view_items', page=i, major='중어중문학과')}}">중어중문학과</option>
+                            <option value="{{url_for('view_items', page=i, major='불어불문학과')}}">불어불문학과</option>
+                            <option value="{{url_for('view_items', page=i, major='독어독문학과')}}">독어독문학과</option>
+                            <option value="{{url_for('view_items', page=i, major='사학과')}}">사학과</option>
+                            <option value="{{url_for('view_items', page=i, major='철학과')}}">철학과</option>
+                            <option value="{{url_for('view_items', page=i, major='기독교학과')}}">기독교학과</option>
+                            <option value="{{url_for('view_items', page=i, major='영어영문학부')}}">영어영문학부</option>
+                                `;
+                        }
+                        if (selectedFaculty === '사회과학대학') {
+                            departmentSelect.innerHTML += `
+                                <option value="{{url_for('view_items', page=i, major='정치외교학과')}}">정치외교학과</option>
+                                <option value="{{url_for('view_items', page=i, major='행정학과')}}">행정학과</option>
+                                <option value="{{url_for('view_items', page=i, major='경제학과')}}">경제학과</option>
+                                <option value="{{url_for('view_items', page=i, major='문헌정보학과')}}">문헌정보학과</option>
+                                <option value="{{url_for('view_items', page=i, major='사회학과')}}">사회학과</option>
+                                <option value="{{url_for('view_items', page=i, major='사회복지학과')}}">사회복지학과</option>
+                                <option value="{{url_for('view_items', page=i, major='심리학과')}}">심리학과</option>
+                                <option value="{{url_for('view_items', page=i, major='소비자학과')}}">소비자학과</option>
+                                <option value="{{url_for('view_items', page=i, major='커뮤니케이션·미디어학부')}}">커뮤니케이션·미디어학부</option>
+                                `;
+                        }
+                        if (selectedFaculty === '자연과학대학') {
+                            departmentSelect.innerHTML += `
+                                    <option value="{{url_for('view_items', page=i, major='수학과')}}">수학과</option>
+                                <option value="{{url_for('view_items', page=i, major='통계학과')}}">통계학과</option>
+                                <option value="{{url_for('view_items', page=i, major='물리학과')}}">물리학과</option>
+                                <option value="{{url_for('view_items', page=i, major='화학·나노과학전공')}}">화학·나노과학전공</option>
+                                <option value="{{url_for('view_items', page=i, major='생명과학전공')}}">생명과학전공</option>
+                                  `;
+                        }
+                        else if (selectedFaculty === '엘텍공과대학') {
+                            departmentSelect.innerHTML += `
+                                 <option value="{{url_for('view_items', page=i, major='컴퓨터공학전공')}}">컴퓨터공학전공</option>
+                                <option value="{{url_for('view_items', page=i, major='사이버보안전공')}}">사이버보안전공</option>
+                                <option value="{{url_for('view_items', page=i, major='전자전기공학전공')}}">전자전기공학전공</option>
+                                <option value="{{url_for('view_items', page=i, major='식품공학전공')}}">식품공학전공</option>
+                                <option value="{{url_for('view_items', page=i, major='화학신소재공학전공')}}">화학신소재공학전공</option>
+                                <option value="{{url_for('view_items', page=i, major='건축학전공')}}">건축학전공</option>
+                                <option value="{{url_for('view_items', page=i, major='건축도시시스템전공')}}">건축도시시스템전공</option>
+                                <option value="{{url_for('view_items', page=i, major='환경공학전공')}}">환경공학전공</option>
+                                <option value="{{url_for('view_items', page=i, major='기후·에너지시스템공학전공')}}">기후·에너지시스템공학전공</option>
+                                <option value="{{url_for('view_items', page=i, major='휴먼기계바이오공학부')}}">휴먼기계바이오공학부</option>
+                                `;
+                        }
+
+                        else if (selectedCollege === '음악대학') {
+                            departmentSelect.innerHTML += `
+                                <option value="{{url_for('view_items', page=i, major='건반악기과')}}">건반악기과</option>
+                                <option value="{{url_for('view_items', page=i, major='관현악기과')}}">관현악기과</option>
+                                <option value="{{url_for('view_items', page=i, major='성악과')}}">성악과</option>
+                                <option value="{{url_for('view_items', page=i, major='작곡과')}}">작곡과</option>
+                                <option value="{{url_for('view_items', page=i, major='한국음악과')}}">한국음악과</option>
+                                <option value="{{url_for('view_items', page=i, major='무용과')}}">무용과</option>
+                                `;
+                        }
+
+                        else if (selectedCollege === '조형예술대학') {
+                            departmentSelect.innerHTML += `
+                                    <option value="{{url_for('view_items', page=i, major='동양화전공')}}">동양화전공</option>
+                                    <option value="{{url_for('view_items', page=i, major='서양화전공')}}">서양화전공</option>
+                                    <option value="{{url_for('view_items', page=i, major='조소전공')}}">조소전공</option>
+                                    <option value="{{url_for('view_items', page=i, major='도자예술전공')}}">도자예술전공</option>
+                                    <option value="{{url_for('view_items', page=i, major='디자인학부')}}">디자인학부</option>
+                                    <option value="{{url_for('view_items', page=i, major='섬유예술전공')}}">섬유예술전공</option>
+                                    <option value="{{url_for('view_items', page=i, major='패션디자인전공')}}">패션디자인전공</option>
+                                    `;
+                        }
+
+
+                        else if (selectedCollege === '사범대학') {
+                            departmentSelect.innerHTML += `
+                                    <option value="{{url_for('view_items', page=i, major='교육학과')}}">교육학과</option>
+                                    <option value="{{url_for('view_items', page=i, major='유아교육과')}}">유아교육과</option>
+                                    <option value="{{url_for('view_items', page=i, major='초등교육과')}}">초등교육과</option>
+                                    <option value="{{url_for('view_items', page=i, major='교육공학과')}}">교육공학과</option>
+                                    <option value="{{url_for('view_items', page=i, major='특수교육과')}}">특수교육과</option>
+                                    <option value="{{url_for('view_items', page=i, major='영어교육과')}}">영어교육과</option>
+                                    <option value="{{url_for('view_items', page=i, major='사회교육과')}}">사회교육과</option>
+                                    <option value="{{url_for('view_items', page=i, major='국어교육과')}}">국어교육과</option>
+                                    <option value="{{url_for('view_items', page=i, major='과학교육과')}}">과학교육과</option>
+                                    <option value="{{url_for('view_items', page=i, major='수학교육과')}}">수학교육과</option>
+                                       `;
+                        }
+                        else if (selectedCollege === '경영대학') {
+                            departmentSelect.innerHTML += `
+                                    <option value="{{url_for('view_items', page=i, major='경영학부')}}">경영학부</option>
+                                    `;
+                        }
+
+                        else if (selectedCollege === '신산업융합대학') {
+                            departmentSelect.innerHTML += `
+                                    <option value="{{url_for('view_items', page=i, major='융합콘텐츠학과')}}">융합콘텐츠학과</option>
+                                    <option value="{{url_for('view_items', page=i, major='의류산업학과')}}">의류산업학과</option>
+                                    <option value="{{url_for('view_items', page=i, major='국제사무학과')}}">국제사무학과</option>
+                                    <option value="{{url_for('view_items', page=i, major='식품영양학과')}}">식품영양학과</option>
+                                    <option value="{{url_for('view_items', page=i, major='융합보건학과')}}">융합보건학과</option>
+                                    <option value="{{url_for('view_items', page=i, major='체육과학부')}}">체육과학부</option>
+                                    `;
+                        }
+                        else if (selectedCollege === '의과대학') {
+                            departmentSelect.innerHTML += `
+                                    <option value="{{url_for('view_items', page=i, major='의예과')}}">의예과</option>
+                                    <option value="{{url_for('view_items', page=i, major='의학과')}}">의학과</option>
+                                      `;
+                        }
+                        else if (selectedCollege === '간호대학') {
+                            departmentSelect.innerHTML += `
+                                    <option value="{{url_for('view_items', page=i, major='간호학부')}}">간호학부</option>
+                                    `;
+                        }
+                        else if (selectedCollege === '약학대학') {
+                            departmentSelect.innerHTML += `
+                                    <option value="{{url_for('view_items', page=i, major='약학과')}}">약학과</option>
+                                    `;
+                        }
+
+                        else if (selectedCollege === '스크랜튼대학') {
+                            departmentSelect.innerHTML += `
+                                    <option value="{{url_for('view_items', page=i, major='스크랜튼학부')}}">스크랜튼학부</option>
+                                    <option value="{{url_for('view_items', page=i, major='뇌·인지과학전공')}}">뇌·인지과학전공</option>
+                                    <option value="{{url_for('view_items', page=i, major='국제학부')}}">국제학부</option>
+                                `;}
+                        else if (selectedCollege === '호크마교양대학') {
+                            departmentSelect.innerHTML += `
+                                    <option value="{{url_for('view_items', page=i, major='호크마교양대학')}}">호크마교양대학</option>
+                                    `;
+                        }
+                    }
+                </script>
                 <!--타입-->
 
             </div>
-            <div id="search-item__type">
-                {% include '1~4/regitem__type.html' %}
-            </div>
+            <select id="itemtype" onchange="location=this.value">
+                <option value="" disabled selected>상품타입</option>
+                <option name="item_type" class="item-type"
+                    value="{{url_for('view_items', page=i, itemtype='과제물')}}" required>과제물
+                <option name="item_type" class="item-type"
+                    value="{{url_for('view_items', page=i, itemtype='노트 정리')}}" required>노트 정리
+                <option name="item_type" class="item-type"
+                    value="{{url_for('view_items', page=i, itemtype='기타')}}" required>기타
+
+            </select>
         </div>
         <!-------------------------본컨텐츠-------------------------->
         <div>
@@ -157,97 +283,101 @@
             <section id="view-item">
                 <!------정렬------->
                 <div class="sorting"> <!--js-->
-                    <form method="post" action="/view_item" enctype="multipart/form-data">
-                        <button type="submit"name="timesort" class="sortingbtn"> 최신등록순</button> 
-                        <button type="submit"name="popularsort" class="sortingbtn"> 인기순</button> |
+                    <form method="post" action="/view_item" enctype="multipart/form-data"
+                        style="color: var(--font-grey)">
+                        <button type="submit" name="timesort" class="sortingbtn"> 최신등록순</button> |
+                        <button type="submit" name="popularsort" class="sortingbtn"> 인기순</button> |
                         <button type="submit" name="pointsort" class="sortingbtn"> 낮은 가격순</button>
                     </form>
                     <p> 현재까지 등록된 상품: {{total}} 개</p>
                 </div>
                 <!-----상품카드----->
-                {% if total > 0 %}                
-                    {% for key, value in datas %}
-                    <li>
-                        {% if loop.index <= limit %}
-                        <div class="item-card" onclick="location.href='/1~4/view_item_detail/{{key}}/';" style="cursor:pointer;">
-                            <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
-                            <div id="item-card__img-container"><img class="item-card__img" src="/static/photos/{{value.photo_path[0]}}"></div>
-                            <div class="item-card__info">
-                                <div class="item-card__course-and-prof">
-                                    <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
-                                    {{value.course_number}} {{value.course_name}} | {{value.professor}} 교수님
-                                </div>
-                                <div class="item-card__title"><span class="item-card__item-name">
+                {% if total > 0 %}
+                {% for key, value in datas %}
+                <li>
+                    {% if loop.index <= limit %} <div class="item-card"
+                        onclick="location.href='/1~4/view_item_detail/{{key}}/';" style="cursor:pointer;">
+                        <!--백엔드에서 등록된 상품 regitem__photo-upload 불러오기-->
+                        <div id="item-card__img-container"><img class="item-card__img"
+                                src="/static/photos/{{value.photo_path[0]}}"></div>
+                        <div class="item-card__info">
+                            <div class="item-card__course-and-prof">
+                                <!--백엔드에서 등록된 상품의 과목, 교수님 정보 불러오기-->
+                                {{value.course_number}} {{value.course_name}} | {{value.professor}} 교수님
+                            </div>
+                            <div class="item-card__title"><span class="item-card__item-name">
                                     <!--백엔드에서 등록된 item-name 불러오기-->
                                     {{value.item_name}}
                                 </span>
                                 <span class="item-card__seller">
                                     <!--백엔드에서 등록된 판매자 이름 불러오기-->
                                     BY. {{value.writer}}
-                                </span> </div>
-                                <div class="price-rate-container">
-                                    <span class="item-card__price">
-                                        <img class="input-img" src="../../static/img/point.svg"
-                                            style="margin-right: 5px;">
-                                        <!--가격 백엔드에서 불러오기--> <!--style 수정-->
-                                        {{value.price}}
+                                </span>
+                            </div>
+                            <div class="price-rate-container">
+                                <span class="item-card__price">
+                                    <img class="input-img" src="../../static/img/point.svg" style="margin-right: 5px;">
+                                    <!--가격 백엔드에서 불러오기--> <!--style 수정-->
+                                    {{value.price}}
+                                </span>
+                                <span class="item-card__rate">
+                                    <span class="item-card__download">
+                                        <img class="input-img" src="../../static/img/download.svg">
+                                        <!--다운로드/판매횟수 백엔드에서 불러오기-->
+                                        {{value.download_count}}
                                     </span>
-                                    <span class="item-card__rate">
-                                        <span class="item-card__download">
-                                            <img class="input-img" src="../../static/img/download.svg">
-                                            <!--다운로드/판매횟수 백엔드에서 불러오기-->
-                                            {{value.download_count}}
-                                        </span>
-                                        <span class="item-card__star">
-                                            <img class="input-img" src="../../static/img/star.svg">
-                                            <!--별점 백엔드에서 불러오기-->
-                                            <span style="width:46px; text-align: left;">
+                                    <span class="item-card__star">
+                                        <img class="input-img" src="../../static/img/star.svg">
+                                        <!--별점 백엔드에서 불러오기-->
+                                        <span style="width:46px; text-align: left;">
                                             {%if value.average_star %} {{value.average_star}}
                                             {%elif not value.download_count %} NEW!
                                             {%else%} 0
                                             {%endif%}</span>
-                                        </span>
                                     </span>
-                                </div>
-                                <div class="item-card__tag">
-                                    <!--백엔드에서 불러오기-->
-                                    {% for tag in value.tag.split() %}
-                                        {% if tag.startswith('#') %}
-                                         {{tag}}
-                                         {% else %}
-                                         {{'#' + tag}}
-                                        {%endif%}
-                                    {% endfor %}
-                                </div>                                
+                                </span>
                             </div>
-                            <div class="item-card__review">
-                                    <!--추가: 리뷰화면으로 연결: 백에서 data['write']등의 값을 받아와서 넣기-->
-                                    <button onclick="itemcardReviewBtn('/review/{{value.writer}}_{{value.item_name}}/')" class="btnFade btnBorderLightgrey">리뷰</button>
+                            <div class="item-card__tag">
+                                <!--백엔드에서 불러오기-->
+                                {% for tag in value.tag.split() %}
+                                {% if tag.startswith('#') %}
+                                {{tag}}
+                                {% else %}
+                                {{'#' + tag}}
+                                {%endif%}
+                                {% endfor %}
                             </div>
                         </div>
-                        {% endif %}
+                        <div class="item-card__review">
+                            <!--추가: 리뷰화면으로 연결: 백에서 data['write']등의 값을 받아와서 넣기-->
+                            <button onclick="itemcardReviewBtn('/review/{{value.writer}}_{{value.item_name}}/')"
+                                class="btnFade btnBorderLightgrey">리뷰</button>
+                        </div>
+        </div>
+        {% endif %}
+        </li>
+        {% endfor %}
+
+        <!-- 페이지네이션을 위한 코드 시작 -->
+        <div class="page-wrap">
+            <div class="pagination">
+                <ul>
+                    <li>
+                        {% for i in range(1, page_count + 1) %} <!-- 페이지 번호 1부터 시작하도록 수정 -->
+                        <a href="{{url_for('view_items', page=i)}}" color="black">{{i}}</a>
+                        {% endfor %}
                     </li>
-                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% else %}
+        <p>
+            등록된 상품이 없습니다.
+        </p>
 
-                    <!-- 페이지네이션을 위한 코드 시작 -->
-                    <div class="page-wrap">
-                        <div class="pagination">
-                            <ul>
-                                <li>
-                                {% for i in range(1, page_count + 1) %}  <!-- 페이지 번호 1부터 시작하도록 수정 -->
-                                    <a href="{{url_for('view_items', page=i)}}" color="black">{{i}}</a>
-                                {% endfor %} </li>
-                            </ul>
-                        </div>
-                    </div>
-                {% else %}
-                <p>
-                    등록된 상품이 없습니다.
-                </p>
+        {% endif %}
 
-                {% endif %}
-                
-            </section>
+        </section>
         </div>
     </main>
     {% endblock section %}
