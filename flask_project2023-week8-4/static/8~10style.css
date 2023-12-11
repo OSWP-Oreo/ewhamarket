@@ -122,7 +122,7 @@
 .btn10:hover {
     width: 110px;
     color: white;
-    background-color: var(--deep-grey);
+    background-color: var(--default-blue);
     border:none;
     border-radius: 10px;
 }
