@@ -169,7 +169,6 @@
 }
 #regitem-input-uploadFile{
     grid-area: input-uploadFile;
-    border:none;
 }
 
 /*row13*/
@@ -178,7 +177,15 @@
 }
 #regitem-input-uploadImage{
     grid-area: input-uploadImage;
+}
+#regitem-input-uploadFile input,
+#regitem-input-uploadImage input{
     border:none;
+}
+#regitem-input-uploadFile .warning-msg,
+#regitem-input-uploadImage .warning-msg{
+    color: var(--font-grey);
+    padding-top: 5px;
 }
 
 
@@ -422,18 +429,19 @@ th {
 }
 
 .item-card__type {
+    display: flex;
+    align-items: center;
     color: var(--font-grey);
     padding-bottom: 6px;
     padding-right: 20px;
 }
-
 .item-card__type div {
     display: inline-block;
     text-align: center;
     width: 60px;
     height: 18px;
     padding: 2.5px 5px;
-    margin-right: 2px;
+    margin-right: 4px;
     font-size: 12px;
     background-color: var(--light-grey);
     border-radius: 3px;
@@ -614,28 +622,18 @@ th {
 /*detail.html 아이템카드*/
 #item-card__type-container{
     display: flex;
+    flex-wrap: wrap;
     justify-items: start;
     padding-bottom: 10px;
 }
 
 /*구매버튼, 좋아요 정렬 및 하트 크기*/
-@media (min-width:1800px) {
+/*@media (min-width:1800px) {
     #order-action-container a{
         width: 150px;
     }
-}
-@media (max-width:1257px){
-    #order-btn{
-        width: 150px;
-        margin-left: 5px;
-    }
-    #detail-view-review-btn{
-        width: 150px;
-    }
-    #detail-reg-review-btn{
-        display: none;
-    }
-}
+}*/
+
 #check_regitem-action, #order-action-container{
     grid-area:action-btn;
     display: flex;
@@ -649,19 +647,9 @@ th {
 };
 /*하트는 style.css에*/
 /**button**/
-#detail-reg-review-btn,
 #detail-view-review-btn{
     background: none;
     border-color: var(--default-blue);
-}
-#detail-reg-review-btn{
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-right:0;
-}
-#detail-view-review-btn{
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
 }
 #order-btn{
     border:1px solid var(--default-blue);
@@ -733,24 +721,9 @@ th {
 
 
 
-/*#order-action-container.button {
-    height: 40px;
-    width: 20%;
-    line-height: 2.5;
-    place-self: center;
-
-    border-top-right-radius: 5px;
-    display: block;
-    
-    padding: 0;
-    border: none;
-    box-shadow: 1px 1px var(--light-grey);
-    font-weight: 500;
-    font-size: 13pt;
-    text-align: center;
-    line-height: 50px;
-    transition: all 0.2s;
-}*/
+#order-action-container .button {
+    width: 45%;
+}
 
 /*#order-btn {
     width: 80%;
