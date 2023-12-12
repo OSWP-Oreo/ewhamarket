@@ -169,30 +169,38 @@ class DBhandler:
     def get_reviews_bycategory(self,target_name, cate):
         all_review = self.db.child("review").get().val() #전체리뷰
         target_reviews = {}
+        re = {}
 
         for review_key, review_value in all_review.items():
             name  = review_value.get("name")
             if name == target_name:
                 target_reviews[review_key] = review_value  #target_reviews = 특정 상품에 대한 리뷰들
 
-        reviews = list(target_reviews.values())  # 딕셔너리의 값들을 리스트로 변환
+        for key, value in target_reviews.items():
+            college  = value.get("reviewer_college")
+            if college == cate:
+                re[key] = value
+         
+        return re
 
-        target_value = []
-        target_key = []
+        #reviews = list(target_reviews.values())  # 딕셔너리의 값들을 리스트로 변환
 
-        for res in reviews:
-            value = res
-            key_value = review_key  # 루프에서 얻은 review_key를 사용
-            if value.get('reviewer_college') == cate:
-                target_value.append(value)
-                target_key.append(key_value)
-        print("######target_value",target_value)
-        new_dict={}
+        #target_value = []
+        #target_key = []
+
+        #for res in reviews:
+        #    value = res
+        #    key_value = review_key  # 루프에서 얻은 review_key를 사용
+        #    if value.get('reviewer_college') == cate:
+        #        target_value.append(value)
+        #        target_key.append(key_value)
+        #print("######target_value",target_value)
+        #new_dict={}
         
-        for k,v in zip(target_key,target_value):
-            new_dict[k]=v
-            
-        return new_dict
+        #for k,v in zip(target_key,target_value):
+        #    new_dict[k]=v
+        #    
+        #return new_dict
     
 
     #전체리뷰불러오기
