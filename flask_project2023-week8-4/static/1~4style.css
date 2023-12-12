@@ -581,16 +581,15 @@ th {
 #main-img__box{
     display: flex;
     grid-area: main-photo;
-    width:fit-content;
+    /* width:fit-content; */
     height: 278px;
     background-color: #f5f5f5;
     box-shadow: 2px 2px 2px #f1f1f1;
     border-radius: 2px;
+    justify-content: center;
+    align-items: center;
 }
 
-#item-detail__main-img__container{
-    place-self: center;
-}
 
 /*3 detail.html 큰 상품사진*/
 .item-detail__main-img {
