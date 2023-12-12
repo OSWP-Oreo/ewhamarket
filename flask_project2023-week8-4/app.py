@@ -447,7 +447,7 @@ def view_review(name):
     #모든 리뷰의 별의 합을 구하고 리뷰 개수로 나누어 평균별점 계산
     if(item_counts != 0):
         total_star = sum(int(i.get('rate', 0)) for i in data.values())
-        average_star = total_star/item_counts
+        average_star = round(total_star/item_counts)
         proportion_1 = round(keyword1/item_counts*100,1)
         proportion_2 = round(keyword2/item_counts*100,1)
         proportion_3 = round(keyword3/item_counts*100,1)
