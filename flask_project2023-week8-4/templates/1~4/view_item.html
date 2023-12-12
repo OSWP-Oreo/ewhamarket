@@ -266,14 +266,14 @@
                 <!--타입-->
 
             </div>
-            <select id="itemtype" onchange="location=this.value">
+            <select id="itemtype" name="item_type" onchange="location=this.value">
                 <option value="" disabled selected>상품타입</option>
-                <option name="item_type" class="item-type"
-                    value="{{url_for('view_items', page=i, itemtype='과제물')}}" required>과제물
-                <option name="item_type" class="item-type"
-                    value="{{url_for('view_items', page=i, itemtype='노트 정리')}}" required>노트 정리
-                <option name="item_type" class="item-type"
-                    value="{{url_for('view_items', page=i, itemtype='기타')}}" required>기타
+                <option
+                    value="{{url_for('view_items', page=i, itemtype='과제물')}}">과제물</option>
+                <option
+                    value="{{url_for('view_items', page=i, itemtype='노트 정리')}}">노트 정리</option>
+                <option
+                    value="{{url_for('view_items', page=i, itemtype='기타')}}">기타</option>
 
             </select>
         </div>
