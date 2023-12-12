@@ -656,6 +656,7 @@ th {
 #order-btn{
     border:1px solid var(--default-blue);
     margin-right: 10px;
+    color: #fff;
 }
 
 #detail-reg-review-btn:hover,
@@ -680,7 +681,7 @@ th {
     
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 52px 100px;
+    grid-template-rows: 52px minmax(100px,auto);
 }
 
 #descr-title {
@@ -756,7 +757,7 @@ th {
 /*2.html item card 상품사진*/
 .item-card__img {
     max-height: 110pt;
-    max-width: 200pt;
+    max-width: 180pt;
     height: auto;
     width: auto;
     border: 1px var(--light-grey) solid;
