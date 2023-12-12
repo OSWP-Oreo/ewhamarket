@@ -149,7 +149,7 @@
                                     </div>
                                     <div class="rowcontainer" id="profile-rowcontainer">
                                         <!--프로필 사진-->
-                                        <div class="review-profile"><img src="../../static/img/profile.jpg" width=100% height=100% alt=""></div>
+                                        <div class="review-profile"><img src="../../static/img/profile.jpg" width=100% height=100%></div>
                                         <!--백: 작성자 아이디 앞 3글자만 보이게 불러오기-->
                                         <div class="review-id">{{ value.reviewer }}</div>
                                         <!--백: 작성자 전공 불러오기-->
@@ -181,7 +181,7 @@
                             </div>
                             <div class="container" style="grid-area: img; justify-content: right;">
                                 <!--백: 작성자 등록 대표 사진 불러오기-->
-                                <img src="../../static/photos/{{ value.img_path }}" class="review-img" alt="리뷰 사진이 없습니다">
+                                <img src="../../static/photos/{{ value.img_path }}" class="review-img" onerror="this.style.display='none'" alt='' >
                             </div>
                         </div>
 <!-----------------------------------------------------------모달--------------------------------------------------------->
@@ -235,7 +235,7 @@
                                     
                                     <div style="grid-area: picture; place-self: center;">
                                         <!--백: 작성자 등록 대표 사진 불러오기-->
-                                        <img src="../../static/photos/{{ value.img_path }}" class="detail-review-img" alt="리뷰 사진이 없습니다">
+                                        <img src="../../static/photos/{{ value.img_path }}" class="detail-review-img"onerror="this.style.display='none'" alt='' >
                                     </div>
                                 </div>
                             </div>
@@ -270,7 +270,7 @@
                             <ul>
                                 <li>
                                 {% for i in range(1, page_count + 1) %}  <!-- 페이지 번호 1부터 시작하도록 수정 -->
-                                    <a href="{{url_for('view_review', name=key, page=i)}}" color="black">{{i}}</a>
+                                    <a href="{{url_for('view_review', name=name, page=i)}}" color="black">{{i}}</a>
                                 {% endfor %} </li>
                             </ul>
                         </div>
