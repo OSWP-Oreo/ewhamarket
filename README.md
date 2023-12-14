@@ -1,4 +1,6 @@
 # ✏️ 800.com
+![slice](https://capsule-render.vercel.app/api?type=slice&color=auto&height=200&text=🖤Team%20Oreo🤍&fontAlign=70&rotate=13&fontAlignY=25&desc=seulzzang's%20GitHub&descAlign=70.&descAlignY=44)
+
 
 ## ✨소개✨
 - 벗(pal)들과 자료를 공(0)유해서 같이 공(0)부해요
