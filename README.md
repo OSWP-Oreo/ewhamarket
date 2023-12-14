@@ -14,7 +14,7 @@
 [![Python](https://img.shields.io/badge/Python-3.9.0-blue)](https://www.python.org/)
 
 ## Most Used Language
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=깃허브 아이디)](https://github.com/anuraghazra/github-readme-stats)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=tunaunnie)](https://github.com/anuraghazra/github-readme-stats)
 
 
 ## Meet the Team 👩‍💻👨‍💻
