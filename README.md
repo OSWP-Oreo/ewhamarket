@@ -1,5 +1,5 @@
 # ✏️ 800.com
-![slice](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&text=🖤Team%20Oreo🤍&fontAlign=70)
+<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=🤍🖤Team Oreo🖤🤍&fontSize=90" />
 
 
 ## ✨소개✨
