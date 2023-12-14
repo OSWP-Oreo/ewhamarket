@@ -1,6 +1,6 @@
-# ✏️ 800.com
-<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=🤍🖤Team Oreo🖤🤍&fontSize=90" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=🤍🖤Team%20Oreo🖤🤍&fontSize=50" />
 
+# ✏️ 800.com
 
 ## ✨소개✨
 - 벗(pal)들과 자료를 공(0)유해서 같이 공(0)부해요
