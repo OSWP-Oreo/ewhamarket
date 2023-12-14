@@ -1,5 +1,5 @@
 # ✏️ 800.com
-![slice](https://capsule-render.vercel.app/api?type=slice&color=default(#00324E)&height=200&text=🖤Team%20Oreo🤍&fontAlign=70&rotate=13&fontAlignY=25&desc=seulzzang's%20GitHub&descAlign=70.&descAlignY=30)
+![slice](https://capsule-render.vercel.app/api?type=slice&color=0:00324E&height=200&text=🖤Team%20Oreo🤍&fontAlign=70&rotate=13&fontAlignY=25&desc=seulzzang's%20GitHub&descAlign=70.&descAlignY=30)
 
 
 ## ✨소개✨
