@@ -36,18 +36,22 @@
 6. 윤소민
 7. 황혜진
 
-   ### ✨지원's Github Stat✨
+### ✨지원's Github Stat✨
 [![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=tunaunnie)](https://github.com/anuraghazra/github-readme-stats)
 
-  ### ✨소민's Github Stat✨
+### ✨소민's Github Stat✨
 [![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=sominyun)](https://github.com/anuraghazra/github-readme-stats)
 
-  ### ✨혜진's Github Stat✨
+### ✨혜진's Github Stat✨
 [![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=hyejin2234)](https://github.com/anuraghazra/github-readme-stats)
 
 
+## 🖤 Team Oreo's Velog 🤍
+[![Velog's GitHub stats](https://velog-readme-stats.vercel.app/api?name=didi_delos)](https://velog.io/@didi_delos))
+
 ## 💻 구현 화면 소개 💻
-### 1. 상품 등록 화면 🎈
+### 1. 상품 등![image](https://github.com/OSWP-Oreo/ewhamarket/assets/100738440/44b56d25-96be-4935-8307-4e463b2b2b68)
+록 화면 🎈
 ![그림1](https://github.com/OSWP-Oreo/ewhamarket/assets/100738440/f7647c44-0f14-4888-815f-5a10fd2586b7)
 ![image](https://github.com/OSWP-Oreo/ewhamarket/assets/100738440/d55291d2-831f-40d7-ab7e-22c9bc3a23bb)
 
