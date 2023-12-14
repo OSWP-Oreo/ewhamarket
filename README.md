@@ -51,8 +51,7 @@
 
 
 ## 💻 구현 화면 소개 💻
-### 1. 상품 등![image](https://github.com/OSWP-Oreo/ewhamarket/assets/100738440/44b56d25-96be-4935-8307-4e463b2b2b68)
-록 화면 🎈
+### 1. 상품 등록 화면 🎈
 ![그림1](https://github.com/OSWP-Oreo/ewhamarket/assets/100738440/f7647c44-0f14-4888-815f-5a10fd2586b7)
 ![image](https://github.com/OSWP-Oreo/ewhamarket/assets/100738440/d55291d2-831f-40d7-ab7e-22c9bc3a23bb)
 
